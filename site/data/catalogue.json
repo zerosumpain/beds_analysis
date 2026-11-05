@@ -1,0 +1,3438 @@
+[
+ {
+  "title": "Annual Population Survey: employment, inactivity and qualifications",
+  "publisher": "Office for National Statistics (via Nomis)",
+  "source_url": "https://www.nomisweb.co.uk/sources/aps",
+  "api_url": [
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_17_5.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latest,latestMINUS4,latestMINUS8,latestMINUS12,latestMINUS16,latestMINUS20&variable=45,84,111,1487,1493,1494,1495,1496,1497,1498,1499,1207,1213,1219,46,112,47,113,544,114,115,117&measures=20599,21001,21002,21003&select=date_name,geography_code,variable,measures,obs_value,obs_status,obs_status_name",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_17_5.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS16-latest&variable=1902,2010,2011,1947&measures=20599,21001,21002,21003&select=date_name,geography_code,variable,measures,obs_value,obs_status,obs_status_name",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_127_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latest,latestMINUS4,latestMINUS8,latestMINUS12,latestMINUS16,latestMINUS20&item=1,2&measures=20100,20701&select=date_name,geography_code,item,measures,obs_value,obs_status"
+  ],
+  "geography": "LA, region, England",
+  "cohort": "16-19, 18-24, 25+ inactive, context",
+  "period": "Jul 2025-Jun 2026",
+  "latest_period": "Jul 2025-Jun 2026",
+  "qualifications_period": "Jan 2025-Dec 2025",
+  "frequency": "Quarterly",
+  "next_update": "Quarterly (rolling 12-month periods, roughly Jan/Apr/Jul/Oct)",
+  "access": "API",
+  "quality": "APS is a household survey; LA estimates rest on a few hundred respondents per LA (far fewer for 16-24 sub-groups). Nomis 95% CIs (`ci`, +/- percentage points) are typically +/-4-6 pts for 16-64 rates and +/-10-20 pts for youth rates or reasons for inactivity at LA level. LFS/APS is badged 'official statistics in development' after 2023-24 response-rate problems and reweighting.",
+  "limitations": "Values Nomis does not publish (sample size 0-2 / disclosive, '!') and estimates Nomis flags unreliable (sample 3-9, CI withheld, '*') are null with suppressed=true (180 rows) and the Nomis status in attrs.status; for '*' rows the published figure is kept in attrs.unreliable_estimate for reference only. Temporary-sick and discouraged reasons are suppressed for all three LAs. Annual points are the same rolling 12-month window each year (Jul-Jun), not calendar years. Year-to-year LA changes are usually within sampling error. Qualifications use RQF levels from 2022 (not comparable with older NVQ series) and are only released for Jan-Dec windows, so qualification rows have a different period. Reasons for inactivity sum to ~100% of inactive 16-64. num/den are survey-weighted counts rounded to the nearest 100. APS excludes most communal establishments (e.g. many student halls).",
+  "indicators": [
+   {
+    "id": "aps_emp_rate_16_64",
+    "label": "Employment rate 16-64",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "% of residents aged 16-64 in employment."
+   },
+   {
+    "id": "aps_unemp_rate_16_64",
+    "label": "Unemployment rate 16-64 (APS direct)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "Unemployed as % of economically active 16-64 (direct survey estimate; often unreliable at LA level - prefer the model-based rate)."
+   },
+   {
+    "id": "aps_inact_rate_16_64",
+    "label": "Economic inactivity rate 16-64",
+    "unit": "percent",
+    "cohort": "25+ inactive,context",
+    "polarity": "higher_is_worse",
+    "description": "% of residents aged 16-64 economically inactive. num = inactive count (rounded)."
+   },
+   {
+    "id": "aps_inact_want_job_16_64",
+    "label": "Inactive 16-64 who want a job",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "% of economically inactive 16-64 who say they want a job (latent labour supply)."
+   },
+   {
+    "id": "aps_inact_reason_student",
+    "label": "Inactive: student",
+    "unit": "percent",
+    "cohort": "25+ inactive,18-24",
+    "polarity": "neutral",
+    "description": "% of economically inactive 16-64 whose main reason is study."
+   },
+   {
+    "id": "aps_inact_reason_family_home",
+    "label": "Inactive: looking after family/home",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "% of economically inactive 16-64 looking after family or home."
+   },
+   {
+    "id": "aps_inact_reason_temp_sick",
+    "label": "Inactive: temporary sick",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "% of economically inactive 16-64 temporarily sick."
+   },
+   {
+    "id": "aps_inact_reason_lt_sick",
+    "label": "Inactive: long-term sick",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "% of economically inactive 16-64 who are long-term sick or disabled."
+   },
+   {
+    "id": "aps_inact_reason_discouraged",
+    "label": "Inactive: discouraged",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "% of economically inactive 16-64 who believe no jobs are available."
+   },
+   {
+    "id": "aps_inact_reason_retired",
+    "label": "Inactive: retired",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "% of economically inactive 16-64 who have retired (early retirement)."
+   },
+   {
+    "id": "aps_inact_reason_other",
+    "label": "Inactive: other reason",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "% of economically inactive 16-64 inactive for other reasons."
+   },
+   {
+    "id": "aps_emp_rate_16_24",
+    "label": "Employment rate 16-24",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_better",
+    "description": "% of residents aged 16-24 in employment (includes students)."
+   },
+   {
+    "id": "aps_unemp_rate_16_24",
+    "label": "Unemployment rate 16-24",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_worse",
+    "description": "Unemployed as % of economically active 16-24."
+   },
+   {
+    "id": "aps_inact_rate_16_24",
+    "label": "Economic inactivity rate 16-24",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "neutral",
+    "description": "% of residents aged 16-24 economically inactive (mostly full-time students)."
+   },
+   {
+    "id": "aps_emp_rate_16_19",
+    "label": "Employment rate 16-19",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "% of residents aged 16-19 in employment (most are in education)."
+   },
+   {
+    "id": "aps_inact_rate_16_19",
+    "label": "Economic inactivity rate 16-19",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "% of residents aged 16-19 economically inactive."
+   },
+   {
+    "id": "aps_emp_rate_20_24",
+    "label": "Employment rate 20-24",
+    "unit": "percent",
+    "cohort": "18-24",
+    "polarity": "higher_is_better",
+    "description": "% of residents aged 20-24 in employment."
+   },
+   {
+    "id": "aps_inact_rate_20_24",
+    "label": "Economic inactivity rate 20-24",
+    "unit": "percent",
+    "cohort": "18-24",
+    "polarity": "neutral",
+    "description": "% of residents aged 20-24 economically inactive."
+   },
+   {
+    "id": "aps_pct_18_24_ft_education",
+    "label": "18-24 in full-time education",
+    "unit": "percent",
+    "cohort": "18-24",
+    "polarity": "neutral",
+    "description": "% of residents aged 18-24 in full-time education."
+   },
+   {
+    "id": "aps_inact_rate_25_34",
+    "label": "Economic inactivity rate 25-34",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "% of residents aged 25-34 economically inactive."
+   },
+   {
+    "id": "aps_inact_rate_35_49",
+    "label": "Economic inactivity rate 35-49",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "% of residents aged 35-49 economically inactive."
+   },
+   {
+    "id": "aps_inact_rate_50_64",
+    "label": "Economic inactivity rate 50-64",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "% of residents aged 50-64 economically inactive."
+   },
+   {
+    "id": "aps_qual_rqf4plus_16_64",
+    "label": "Qualified to RQF4+ (16-64)",
+    "unit": "percent",
+    "cohort": "context,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "% of residents aged 16-64 with RQF level 4 or above (degree, HND, higher apprenticeship). Published for Jan-Dec periods only."
+   },
+   {
+    "id": "aps_qual_rqf3plus_16_64",
+    "label": "Qualified to RQF3+ (16-64)",
+    "unit": "percent",
+    "cohort": "context,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "% of residents aged 16-64 with RQF level 3 or above (A level / equivalent). Published for Jan-Dec periods only."
+   },
+   {
+    "id": "aps_qual_rqf2plus_16_64",
+    "label": "Qualified to RQF2+ (16-64)",
+    "unit": "percent",
+    "cohort": "context,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "% of residents aged 16-64 with RQF level 2 or above (5 GCSE 9-4 / equivalent). Published for Jan-Dec periods only."
+   },
+   {
+    "id": "aps_qual_none_16_64",
+    "label": "No qualifications (16-64)",
+    "unit": "percent",
+    "cohort": "context,18-24,25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "% of residents aged 16-64 with no qualifications. Published for Jan-Dec periods only."
+   },
+   {
+    "id": "aps_unemp_rate_model_16plus",
+    "label": "Unemployment rate 16+ (model-based)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "ONS model-based LA unemployment rate (APS combined with claimant count); more reliable than the direct APS estimate at LA level."
+   },
+   {
+    "id": "aps_unemp_count_model_16plus",
+    "label": "Unemployed 16+ (model-based count)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "ONS model-based estimate of unemployed residents 16+."
+   }
+  ],
+  "dataset_code": "NM_17_5 (variables), NM_127_1 (model-based unemployment)",
+  "id": "aps",
+  "retrieved_at": "2026-11-05T20:40Z",
+  "row_count": 800,
+  "sha256": "14471558e8e27d95",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Annual Survey of Hours and Earnings: median pay by residence and workplace",
+  "publisher": "Office for National Statistics (via Nomis)",
+  "source_url": "https://www.ons.gov.uk/employmentandlabourmarket/peopleinwork/earningsandworkinghours/bulletins/annualsurveyofhoursandearnings/latest",
+  "api_url": [
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_30_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS5-latest&sex=8&item=2&pay=1&measures=20100,20701&select=date_name,geography_code,measures,obs_value,obs_status",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_30_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS5-latest&sex=8&item=2&pay=5&measures=20100,20701&select=date_name,geography_code,measures,obs_value,obs_status",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_30_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS5-latest&sex=8&item=2&pay=6&measures=20100,20701&select=date_name,geography_code,measures,obs_value,obs_status",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_30_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS5-latest&sex=7&item=2&pay=1&measures=20100,20701&select=date_name,geography_code,measures,obs_value,obs_status",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_30_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS5-latest&sex=7&item=2&pay=5&measures=20100,20701&select=date_name,geography_code,measures,obs_value,obs_status",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_99_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS5-latest&sex=8&item=2&pay=1&measures=20100,20701&select=date_name,geography_code,measures,obs_value,obs_status",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_99_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS5-latest&sex=8&item=2&pay=5&measures=20100,20701&select=date_name,geography_code,measures,obs_value,obs_status",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_99_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS5-latest&sex=8&item=2&pay=6&measures=20100,20701&select=date_name,geography_code,measures,obs_value,obs_status",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_99_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS5-latest&sex=7&item=2&pay=1&measures=20100,20701&select=date_name,geography_code,measures,obs_value,obs_status",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_99_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS5-latest&sex=7&item=2&pay=5&measures=20100,20701&select=date_name,geography_code,measures,obs_value,obs_status"
+  ],
+  "geography": "LA, region, England",
+  "cohort": "context",
+  "period": "2025",
+  "latest_period": "2025",
+  "frequency": "Annual",
+  "next_update": "Oct/Nov each year (provisional), revised the following year",
+  "access": "API",
+  "quality": "Accredited official statistics from a 1% sample of HMRC PAYE records (employer-reported). `ci` is an approximate 95% half-width derived from the Nomis coefficient of variation (attrs.cv_pct): 1.96 x CV x value.",
+  "limitations": "Latest year is provisional and revised a year later. Employees only (no self-employed). Estimates with CV > 20% are suppressed by ONS (null, suppressed). Residence vs workplace gap indicates commuting to higher-paid jobs elsewhere (e.g. London). No BEDS total (medians cannot be summed).",
+  "indicators": [
+   {
+    "id": "ashe_res_wk_ft",
+    "label": "Median gross weekly pay, full-time (place of residence)",
+    "unit": "gbp",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "ASHE median gross weekly pay, full-time (GBP, April each year), by place of residence."
+   },
+   {
+    "id": "ashe_res_hr_ft",
+    "label": "Median gross hourly pay, full-time (place of residence)",
+    "unit": "gbp",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "ASHE median gross hourly pay, full-time (GBP, April each year), by place of residence."
+   },
+   {
+    "id": "ashe_res_hr_xot_ft",
+    "label": "Median hourly pay excl. overtime, full-time (place of residence)",
+    "unit": "gbp",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "ASHE median hourly pay excl. overtime, full-time (GBP, April each year), by place of residence."
+   },
+   {
+    "id": "ashe_res_wk_all",
+    "label": "Median gross weekly pay, all employees (place of residence)",
+    "unit": "gbp",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "ASHE median gross weekly pay, all employees (GBP, April each year), by place of residence."
+   },
+   {
+    "id": "ashe_res_hr_all",
+    "label": "Median gross hourly pay, all employees (place of residence)",
+    "unit": "gbp",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "ASHE median gross hourly pay, all employees (GBP, April each year), by place of residence."
+   },
+   {
+    "id": "ashe_wp_wk_ft",
+    "label": "Median gross weekly pay, full-time (place of work)",
+    "unit": "gbp",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "ASHE median gross weekly pay, full-time (GBP, April each year), by place of work."
+   },
+   {
+    "id": "ashe_wp_hr_ft",
+    "label": "Median gross hourly pay, full-time (place of work)",
+    "unit": "gbp",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "ASHE median gross hourly pay, full-time (GBP, April each year), by place of work."
+   },
+   {
+    "id": "ashe_wp_hr_xot_ft",
+    "label": "Median hourly pay excl. overtime, full-time (place of work)",
+    "unit": "gbp",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "ASHE median hourly pay excl. overtime, full-time (GBP, April each year), by place of work."
+   },
+   {
+    "id": "ashe_wp_wk_all",
+    "label": "Median gross weekly pay, all employees (place of work)",
+    "unit": "gbp",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "ASHE median gross weekly pay, all employees (GBP, April each year), by place of work."
+   },
+   {
+    "id": "ashe_wp_hr_all",
+    "label": "Median gross hourly pay, all employees (place of work)",
+    "unit": "gbp",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "ASHE median gross hourly pay, all employees (GBP, April each year), by place of work."
+   }
+  ],
+  "dataset_code": "NM_30_1 (resident), NM_99_1 (workplace)",
+  "id": "ashe_res",
+  "retrieved_at": "2026-11-05T20:40Z",
+  "row_count": 300,
+  "sha256": "fcd69fa0f25f415e",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Business Register and Employment Survey: employees by industry",
+  "publisher": "Office for National Statistics (via Nomis)",
+  "source_url": "https://www.nomisweb.co.uk/sources/bres",
+  "api_url": [
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_189_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS4-latest&industry=37748736,150994953,150994962,150994950,163577863,150994952,146800733,146800695,146800696,163577857,163577858,163577859,163577860,163577861,163577862,163577863,163577864,163577865,163577866,163577867,163577868,163577869,163577870,163577871,163577872,163577873,163577874&employment_status=1&measure=1&measures=20100&select=date_name,geography_code,industry,industry_name,obs_value,obs_status"
+  ],
+  "geography": "LA, region, England, Bedfordshire total",
+  "cohort": "context",
+  "period": "2024",
+  "latest_period": "2024",
+  "frequency": "Annual",
+  "next_update": "Autumn each year (latest year provisional)",
+  "access": "API",
+  "quality": "Accredited official statistics from a business survey of ~80,000 units, benchmarked to the IDBR; open-access LA figures are rounded (nearest 5 below 100, otherwise to the nearest 250 / 500 / 1,000 depending on size). Includes units registered for PAYE only. Latest year provisional.",
+  "limitations": "Employee jobs, not people; excludes self-employed (significant in construction) and HM Forces. Location in which the job is recorded can reflect head-office/reporting unit allocation. Rounding means small sectors (e.g. division 93) and year-on-year changes are coarse; location quotients and BEDS totals are computed from rounded counts. 'Retail' is a broad-group subset of section G.",
+  "indicators": [
+   {
+    "id": "bres_emp_total",
+    "label": "Employees, all industries",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "BRES employee jobs located in the area (workplace-based), all industries."
+   },
+   {
+    "id": "bres_emp_accom_food",
+    "label": "Employees: Accommodation & food services (I)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "BRES employee jobs in Accommodation & food services (I), workplace-based."
+   },
+   {
+    "id": "bres_share_accom_food",
+    "label": "Share of employees: Accommodation & food services (I)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Accommodation & food services (I) employees as % of all employees in the area."
+   },
+   {
+    "id": "bres_lq_accom_food",
+    "label": "Location quotient: Accommodation & food services (I)",
+    "unit": "ratio",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Area share of employees in Accommodation & food services (I) divided by England share (>1 = over-represented). Computed here from rounded counts."
+   },
+   {
+    "id": "bres_emp_arts_rec",
+    "label": "Employees: Arts, entertainment & recreation (R)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "BRES employee jobs in Arts, entertainment & recreation (R), workplace-based."
+   },
+   {
+    "id": "bres_share_arts_rec",
+    "label": "Share of employees: Arts, entertainment & recreation (R)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Arts, entertainment & recreation (R) employees as % of all employees in the area."
+   },
+   {
+    "id": "bres_lq_arts_rec",
+    "label": "Location quotient: Arts, entertainment & recreation (R)",
+    "unit": "ratio",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Area share of employees in Arts, entertainment & recreation (R) divided by England share (>1 = over-represented). Computed here from rounded counts."
+   },
+   {
+    "id": "bres_emp_construction",
+    "label": "Employees: Construction (F)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "BRES employee jobs in Construction (F), workplace-based."
+   },
+   {
+    "id": "bres_share_construction",
+    "label": "Share of employees: Construction (F)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Construction (F) employees as % of all employees in the area."
+   },
+   {
+    "id": "bres_lq_construction",
+    "label": "Location quotient: Construction (F)",
+    "unit": "ratio",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Area share of employees in Construction (F) divided by England share (>1 = over-represented). Computed here from rounded counts."
+   },
+   {
+    "id": "bres_emp_retail",
+    "label": "Employees: Retail (part G)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "BRES employee jobs in Retail (part G), workplace-based."
+   },
+   {
+    "id": "bres_share_retail",
+    "label": "Share of employees: Retail (part G)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Retail (part G) employees as % of all employees in the area."
+   },
+   {
+    "id": "bres_lq_retail",
+    "label": "Location quotient: Retail (part G)",
+    "unit": "ratio",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Area share of employees in Retail (part G) divided by England share (>1 = over-represented). Computed here from rounded counts."
+   },
+   {
+    "id": "bres_emp_transport",
+    "label": "Employees: Transport & storage (H)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "BRES employee jobs in Transport & storage (H), workplace-based."
+   },
+   {
+    "id": "bres_share_transport",
+    "label": "Share of employees: Transport & storage (H)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Transport & storage (H) employees as % of all employees in the area."
+   },
+   {
+    "id": "bres_lq_transport",
+    "label": "Location quotient: Transport & storage (H)",
+    "unit": "ratio",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Area share of employees in Transport & storage (H) divided by England share (>1 = over-represented). Computed here from rounded counts."
+   },
+   {
+    "id": "bres_emp_sports_amuse",
+    "label": "Employees: Sports, amusement & recreation (division 93)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "BRES employee jobs in Sports, amusement & recreation (division 93), workplace-based."
+   },
+   {
+    "id": "bres_share_sports_amuse",
+    "label": "Share of employees: Sports, amusement & recreation (division 93)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Sports, amusement & recreation (division 93) employees as % of all employees in the area."
+   },
+   {
+    "id": "bres_lq_sports_amuse",
+    "label": "Location quotient: Sports, amusement & recreation (division 93)",
+    "unit": "ratio",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Area share of employees in Sports, amusement & recreation (division 93) divided by England share (>1 = over-represented). Computed here from rounded counts."
+   },
+   {
+    "id": "bres_emp_accommodation",
+    "label": "Employees: Accommodation (division 55)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "BRES employee jobs in Accommodation (division 55), workplace-based."
+   },
+   {
+    "id": "bres_share_accommodation",
+    "label": "Share of employees: Accommodation (division 55)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Accommodation (division 55) employees as % of all employees in the area."
+   },
+   {
+    "id": "bres_lq_accommodation",
+    "label": "Location quotient: Accommodation (division 55)",
+    "unit": "ratio",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Area share of employees in Accommodation (division 55) divided by England share (>1 = over-represented). Computed here from rounded counts."
+   },
+   {
+    "id": "bres_emp_food_bev",
+    "label": "Employees: Food & beverage service (division 56)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "BRES employee jobs in Food & beverage service (division 56), workplace-based."
+   },
+   {
+    "id": "bres_share_food_bev",
+    "label": "Share of employees: Food & beverage service (division 56)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Food & beverage service (division 56) employees as % of all employees in the area."
+   },
+   {
+    "id": "bres_lq_food_bev",
+    "label": "Location quotient: Food & beverage service (division 56)",
+    "unit": "ratio",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Area share of employees in Food & beverage service (division 56) divided by England share (>1 = over-represented). Computed here from rounded counts."
+   },
+   {
+    "id": "bres_emp_by_group",
+    "label": "Employees by broad industrial group",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Latest-year BRES employees for each of the 18 ONS broad industrial groups (breakdown = group)."
+   },
+   {
+    "id": "bres_lq_by_group",
+    "label": "Location quotient by broad industrial group",
+    "unit": "ratio",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Area share / England share for each broad group (breakdown)."
+   }
+  ],
+  "dataset_code": "NM_189_1",
+  "id": "bres_sectors",
+  "retrieved_at": "2026-11-05T20:40Z",
+  "row_count": 966,
+  "sha256": "c44e99b2bb9a822f",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Census 2021: economic activity status by age (incl. reasons for inactivity)",
+  "publisher": "Office for National Statistics (Create a custom dataset API)",
+  "source_url": "https://www.ons.gov.uk/datasets/create",
+  "api_url": [
+   "https://api.beta.ons.gov.uk/v1/population-types/UR/census-observations?area-type=ltla,E06000055,E06000056,E06000032&dimensions=economic_activity_status_12a,resident_age_6a",
+   "https://api.beta.ons.gov.uk/v1/population-types/UR/census-observations?area-type=rgn,E12000006&dimensions=economic_activity_status_12a,resident_age_6a",
+   "https://api.beta.ons.gov.uk/v1/population-types/UR/census-observations?area-type=ctry,E92000001&dimensions=economic_activity_status_12a,resident_age_6a",
+   "https://api.beta.ons.gov.uk/v1/population-types/UR/census-observations?area-type=ltla,E06000055,E06000056,E06000032&dimensions=economic_activity_status_12a,resident_age_7a",
+   "https://api.beta.ons.gov.uk/v1/population-types/UR/census-observations?area-type=rgn,E12000006&dimensions=economic_activity_status_12a,resident_age_7a",
+   "https://api.beta.ons.gov.uk/v1/population-types/UR/census-observations?area-type=ctry,E92000001&dimensions=economic_activity_status_12a,resident_age_7a"
+  ],
+  "geography": "LA, region, England, Bedfordshire total",
+  "cohort": "25+ inactive, 18-24, 16-19",
+  "period": "Census 2021 (21 March 2021)",
+  "latest_period": "Census 2021",
+  "frequency": "Decennial",
+  "next_update": "Next census 2031 (subject to ONS decision)",
+  "access": "API",
+  "quality": "Accredited official statistics; full population count (no sampling error) with ~97% response. Cell-key perturbation adds small noise to each cell.",
+  "limitations": "No Nomis table cross-classifies the 12-category economic activity status (reasons for inactivity) by age at LA level (RM024 has only 7 statuses), so this uses the ONS custom-dataset API (economic_activity_status_12a x resident_age_6a / 7a). Taken on 21 March 2021 during a lockdown: furloughed workers were counted as employed, students may have been at family homes, and unemployment/inactivity patterns may differ from today. 'Unemployed' includes full-time students looking for work. Bands sum cells, so small perturbation noise accumulates; totals can differ slightly from other Census tables.",
+  "indicators": [
+   {
+    "id": "census_pop",
+    "label": "Usual residents in age band",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Census 2021 usual residents in the age band (breakdown)."
+   },
+   {
+    "id": "census_employed",
+    "label": "In employment",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Census 2021 residents: in employment, by age band (breakdown)."
+   },
+   {
+    "id": "census_employed_pct",
+    "label": "In employment (% of age band)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "In employment as % of all usual residents in the age band."
+   },
+   {
+    "id": "census_unemployed",
+    "label": "Unemployed (incl. full-time students seeking work)",
+    "unit": "count",
+    "cohort": "18-24,25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Census 2021 residents: unemployed (incl. full-time students seeking work), by age band (breakdown)."
+   },
+   {
+    "id": "census_unemployed_pct",
+    "label": "Unemployed (incl. full-time students seeking work) (% of age band)",
+    "unit": "percent",
+    "cohort": "18-24,25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Unemployed (incl. full-time students seeking work) as % of all usual residents in the age band."
+   },
+   {
+    "id": "census_inact_retired",
+    "label": "Inactive: retired",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "Census 2021 residents: inactive: retired, by age band (breakdown)."
+   },
+   {
+    "id": "census_inact_retired_pct",
+    "label": "Inactive: retired (% of age band)",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "Inactive: retired as % of all usual residents in the age band."
+   },
+   {
+    "id": "census_inact_student",
+    "label": "Inactive: student",
+    "unit": "count",
+    "cohort": "16-19,18-24",
+    "polarity": "neutral",
+    "description": "Census 2021 residents: inactive: student, by age band (breakdown)."
+   },
+   {
+    "id": "census_inact_student_pct",
+    "label": "Inactive: student (% of age band)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "neutral",
+    "description": "Inactive: student as % of all usual residents in the age band."
+   },
+   {
+    "id": "census_inact_home_family",
+    "label": "Inactive: looking after home or family",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "Census 2021 residents: inactive: looking after home or family, by age band (breakdown)."
+   },
+   {
+    "id": "census_inact_home_family_pct",
+    "label": "Inactive: looking after home or family (% of age band)",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "Inactive: looking after home or family as % of all usual residents in the age band."
+   },
+   {
+    "id": "census_inact_lt_sick",
+    "label": "Inactive: long-term sick or disabled",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Census 2021 residents: inactive: long-term sick or disabled, by age band (breakdown)."
+   },
+   {
+    "id": "census_inact_lt_sick_pct",
+    "label": "Inactive: long-term sick or disabled (% of age band)",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Inactive: long-term sick or disabled as % of all usual residents in the age band."
+   },
+   {
+    "id": "census_inact_other",
+    "label": "Inactive: other",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "Census 2021 residents: inactive: other, by age band (breakdown)."
+   },
+   {
+    "id": "census_inact_other_pct",
+    "label": "Inactive: other (% of age band)",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "Inactive: other as % of all usual residents in the age band."
+   },
+   {
+    "id": "census_inact_total",
+    "label": "Economically inactive (all reasons)",
+    "unit": "count",
+    "cohort": "25+ inactive,18-24",
+    "polarity": "neutral",
+    "description": "Census 2021 residents: economically inactive (all reasons), by age band (breakdown)."
+   },
+   {
+    "id": "census_inact_total_pct",
+    "label": "Economically inactive (all reasons) (% of age band)",
+    "unit": "percent",
+    "cohort": "25+ inactive,18-24",
+    "polarity": "neutral",
+    "description": "Economically inactive (all reasons) as % of all usual residents in the age band."
+   }
+  ],
+  "dataset_code": "ONS custom: economic_activity_status_12a x resident_age_6a, resident_age_7a",
+  "id": "census_age_activity",
+  "retrieved_at": "2026-11-05T20:40Z",
+  "row_count": 1020,
+  "sha256": "67ff038f37e06b9f",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Census 2021 small-area labour-market, skills, care and disability profile",
+  "publisher": "Office for National Statistics (via Nomis)",
+  "source_url": "https://www.nomisweb.co.uk/sources/census_2021_ts",
+  "api_url": [
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2083_1.data.csv?measures=20100&select=geography_code,C2021_EASTAT_20,obs_value&geography=%3C417+LSOA21+codes,+140%2Frequest%3E",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2083_1.data.csv?measures=20100&select=geography_code,C2021_EASTAT_20,obs_value&geography=E06000055,E06000056,E06000032,E12000006,E92000001",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2084_1.data.csv?measures=20100&select=geography_code,C2021_HIQUAL_8,obs_value&geography=%3C417+LSOA21+codes,+140%2Frequest%3E",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2084_1.data.csv?measures=20100&select=geography_code,C2021_HIQUAL_8,obs_value&geography=E06000055,E06000056,E06000032,E12000006,E92000001",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2057_1.data.csv?measures=20100&select=geography_code,C2021_CARER_7,obs_value&geography=%3C417+LSOA21+codes,+140%2Frequest%3E",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2057_1.data.csv?measures=20100&select=geography_code,C2021_CARER_7,obs_value&geography=E06000055,E06000056,E06000032,E12000006,E92000001",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2056_1.data.csv?measures=20100&select=geography_code,C2021_DISABILITY_5,obs_value&geography=%3C417+LSOA21+codes,+140%2Frequest%3E",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2056_1.data.csv?measures=20100&select=geography_code,C2021_DISABILITY_5,obs_value&geography=E06000055,E06000056,E06000032,E12000006,E92000001",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2027_1.data.csv?measures=20100&select=geography_code,C2021_AGE_102,obs_value&geography=%3C417+LSOA21+codes,+140%2Frequest%3E",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2027_1.data.csv?measures=20100&select=geography_code,C2021_AGE_102,obs_value&geography=E06000055,E06000056,E06000032,E12000006,E92000001"
+  ],
+  "geography": "LSOA21, LA, region, England",
+  "cohort": "16-19, 18-24, 25+ inactive, context",
+  "period": "Census 2021",
+  "latest_period": "Census 2021 (21 March 2021)",
+  "frequency": "Decennial",
+  "next_update": "Census 2031 (results c. 2032-33)",
+  "access": "API",
+  "quality": "Accredited official statistics (Census 2021, ~97% person response, estimates adjusted for non-response). LA, region and England rows are the published LA-level figures; BEDS sums the three LA counts and recomputes %.",
+  "limitations": "Census day 21 March 2021 fell in the third COVID-19 lockdown: furloughed people were counted as employed (temporarily away), labour-market activity may differ from normal, and students were counted at their term-time address (some were living elsewhere). Cell-key perturbation adds small noise to every cell, so LSOA counts do not sum exactly to LA totals and very small counts (<10) are unreliable; LSOA-to-LA sums differ slightly from LA rows. 2021 LSOAs differ from 2011 LSOAs (splits/merges), so direct comparison with 2011 needs the ONS LSOA11->LSOA21 lookup. Inactive/unemployed definitions use the ILO-style Census questions for the week before Census day; 'unemployed' includes full-time students seeking work. Hidden-potential pool = LT sick or disabled + looking after home/family + other (all 16+, incl. 65+).",
+  "indicators": [
+   {
+    "id": "census_inactive",
+    "label": "Economically inactive (16+) (count)",
+    "unit": "count",
+    "cohort": "25+ inactive,context",
+    "polarity": "higher_is_worse",
+    "description": "Count of residents: economically inactive (16+)."
+   },
+   {
+    "id": "census_inactive_pct",
+    "label": "Economically inactive (16+) (%)",
+    "unit": "percent",
+    "cohort": "25+ inactive,context",
+    "polarity": "higher_is_worse",
+    "description": "Economically inactive (16+) as % of usual residents aged 16+."
+   },
+   {
+    "id": "census_inactive_student",
+    "label": "Inactive: student (count)",
+    "unit": "count",
+    "cohort": "16-19,18-24",
+    "polarity": "neutral",
+    "description": "Count of residents: inactive: student."
+   },
+   {
+    "id": "census_inactive_student_pct",
+    "label": "Inactive: student (%)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "neutral",
+    "description": "Inactive: student as % of usual residents aged 16+."
+   },
+   {
+    "id": "census_inactive_retired",
+    "label": "Inactive: retired (count)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Count of residents: inactive: retired."
+   },
+   {
+    "id": "census_inactive_retired_pct",
+    "label": "Inactive: retired (%)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Inactive: retired as % of usual residents aged 16+."
+   },
+   {
+    "id": "census_inactive_home",
+    "label": "Inactive: looking after home or family (count)",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "Count of residents: inactive: looking after home or family."
+   },
+   {
+    "id": "census_inactive_home_pct",
+    "label": "Inactive: looking after home or family (%)",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "Inactive: looking after home or family as % of usual residents aged 16+."
+   },
+   {
+    "id": "census_inactive_ltsick",
+    "label": "Inactive: long-term sick or disabled (count)",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Count of residents: inactive: long-term sick or disabled."
+   },
+   {
+    "id": "census_inactive_ltsick_pct",
+    "label": "Inactive: long-term sick or disabled (%)",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Inactive: long-term sick or disabled as % of usual residents aged 16+."
+   },
+   {
+    "id": "census_inactive_other",
+    "label": "Inactive: other reason (count)",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Count of residents: inactive: other reason."
+   },
+   {
+    "id": "census_inactive_other_pct",
+    "label": "Inactive: other reason (%)",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Inactive: other reason as % of usual residents aged 16+."
+   },
+   {
+    "id": "census_inactive_non_student_non_retired",
+    "label": "Hidden-potential pool: inactive, not student or retired (LT sick + home/family + other) (count)",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Count of residents: hidden-potential pool: inactive, not student or retired (lt sick + home/family + other)."
+   },
+   {
+    "id": "census_inactive_non_student_non_retired_pct",
+    "label": "Hidden-potential pool: inactive, not student or retired (LT sick + home/family + other) (%)",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Hidden-potential pool: inactive, not student or retired (LT sick + home/family + other) as % of usual residents aged 16+."
+   },
+   {
+    "id": "census_unemployed",
+    "label": "Unemployed (incl. full-time students seeking work) (count)",
+    "unit": "count",
+    "cohort": "18-24,25+ inactive,context",
+    "polarity": "higher_is_worse",
+    "description": "Count of residents: unemployed (incl. full-time students seeking work)."
+   },
+   {
+    "id": "census_unemployed_pct",
+    "label": "Unemployed (incl. full-time students seeking work) (%)",
+    "unit": "percent",
+    "cohort": "18-24,25+ inactive,context",
+    "polarity": "higher_is_worse",
+    "description": "Unemployed (incl. full-time students seeking work) as % of usual residents aged 16+."
+   },
+   {
+    "id": "census_unemp_rate_pct",
+    "label": "Unemployment rate (unemployed / economically active incl. students)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "Unemployment rate (unemployed / economically active incl. students); denominator: economically active residents aged 16+."
+   },
+   {
+    "id": "census_noqual",
+    "label": "No qualifications (count)",
+    "unit": "count",
+    "cohort": "25+ inactive,context",
+    "polarity": "higher_is_worse",
+    "description": "Count of residents: no qualifications."
+   },
+   {
+    "id": "census_noqual_pct",
+    "label": "No qualifications (%)",
+    "unit": "percent",
+    "cohort": "25+ inactive,context",
+    "polarity": "higher_is_worse",
+    "description": "No qualifications as % of usual residents aged 16+."
+   },
+   {
+    "id": "census_level3plus",
+    "label": "Level 3+ highest qualification (L3 or L4+) (count)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "Count of residents: level 3+ highest qualification (l3 or l4+)."
+   },
+   {
+    "id": "census_level3plus_pct",
+    "label": "Level 3+ highest qualification (L3 or L4+) (%)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "Level 3+ highest qualification (L3 or L4+) as % of usual residents aged 16+."
+   },
+   {
+    "id": "census_level4plus",
+    "label": "Level 4+ highest qualification (count)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "Count of residents: level 4+ highest qualification."
+   },
+   {
+    "id": "census_level4plus_pct",
+    "label": "Level 4+ highest qualification (%)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "Level 4+ highest qualification as % of usual residents aged 16+."
+   },
+   {
+    "id": "census_apprenticeship",
+    "label": "Apprenticeship as highest qualification (count)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "Count of residents: apprenticeship as highest qualification."
+   },
+   {
+    "id": "census_apprenticeship_pct",
+    "label": "Apprenticeship as highest qualification (%)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "Apprenticeship as highest qualification as % of usual residents aged 16+."
+   },
+   {
+    "id": "census_care20plus",
+    "label": "Provides 20+ hours unpaid care a week (count)",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Count of residents: provides 20+ hours unpaid care a week."
+   },
+   {
+    "id": "census_care20plus_pct",
+    "label": "Provides 20+ hours unpaid care a week (%)",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Provides 20+ hours unpaid care a week as % of usual residents aged 5+."
+   },
+   {
+    "id": "census_disabled",
+    "label": "Disabled under the Equality Act (count)",
+    "unit": "count",
+    "cohort": "25+ inactive,context",
+    "polarity": "higher_is_worse",
+    "description": "Count of residents: disabled under the equality act."
+   },
+   {
+    "id": "census_disabled_pct",
+    "label": "Disabled under the Equality Act (%)",
+    "unit": "percent",
+    "cohort": "25+ inactive,context",
+    "polarity": "higher_is_worse",
+    "description": "Disabled under the Equality Act as % of all usual residents."
+   },
+   {
+    "id": "census_pop_16_19",
+    "label": "Census population aged 16-19",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "Census population aged 16-19 (usual residents, TS007 single year of age)."
+   },
+   {
+    "id": "census_pop_18_24",
+    "label": "Census population aged 18-24",
+    "unit": "count",
+    "cohort": "18-24",
+    "polarity": "neutral",
+    "description": "Census population aged 18-24 (usual residents, TS007 single year of age)."
+   }
+  ],
+  "tables": [
+   "TS066 Economic activity status (NM_2083_1)",
+   "TS067 Highest level of qualification (NM_2084_1)",
+   "TS039 Provision of unpaid care (NM_2057_1)",
+   "TS038 Disability (NM_2056_1)",
+   "TS007 Age by single year (NM_2027_1)"
+  ],
+  "id": "census_lsoa",
+  "retrieved_at": "2026-11-05T20:39Z",
+  "row_count": 12279,
+  "sha256": "580007d74e9b98c5",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Census 2021 origin-destination: residence vs place of work (LA)",
+  "publisher": "Office for National Statistics (Nomis bulk download)",
+  "source_url": "https://www.nomisweb.co.uk/sources/census_2021_od",
+  "api_url": [
+   "https://www.nomisweb.co.uk/output/census/2021/odwp01ew.zip",
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LAD_DEC_2021_EW_BUC_RUC/FeatureServer/0/query?where=1%3D1&outFields=LAD21CD,LAD21NM,LAT,LONG&returnGeometry=false&f=json"
+  ],
+  "geography": "LA (2021 LTLAs), Bedfordshire total",
+  "cohort": "context",
+  "period": "Census 2021 (21 March 2021)",
+  "latest_period": "Census 2021",
+  "frequency": "Decennial",
+  "next_update": "Next census 2031 (subject to ONS decision)",
+  "access": "CSV download",
+  "quality": "Census 2021 table ODWP01EW (LTLA level), accredited official statistics; full count with cell-key perturbation. Centroids are ONS Dec-2021 LAD BUC label points (LAT/LONG) from the ONS Open Geography Portal.",
+  "limitations": "Census day (21 March 2021) fell in a national lockdown with ~1/3 of workers at home and many furloughed (furloughed workers still reported a workplace): commuting volumes are understated vs today and home-workers are excluded from flows. Small flows are noisy due to perturbation. LA codes are 2021 LTLAs (pre-2023 Cumbria/Somerset/N Yorks reorganisation). BEDS rows treat the three UAs as one area; its flow end uses the mean of the three UA centroids.",
+  "indicators": [
+   {
+    "id": "od_inflow_by_residence",
+    "label": "Workers commuting in, by home LA",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "People whose workplace is in the focus area, by LA of usual residence (top 25 + 'all other areas'); includes those living and working in the same LA (attrs.same_la). Excludes home-workers. attrs give origin/dest lat/lon for flow maps."
+   },
+   {
+    "id": "od_outflow_by_workplace",
+    "label": "Residents commuting out, by workplace LA",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Employed residents of the focus area travelling to a workplace, by LA of workplace (top 25 + remainder); excludes home-workers, offshore and outside-UK."
+   },
+   {
+    "id": "od_workplace_commuters",
+    "label": "Workers travelling to a workplace in the area",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "All people travelling to a workplace in the area (any origin)."
+   },
+   {
+    "id": "od_resident_commuters",
+    "label": "Residents travelling to a workplace",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Employed residents travelling to a UK workplace (any destination)."
+   },
+   {
+    "id": "od_home_or_no_fixed_place",
+    "label": "Residents mainly working from home / no fixed place",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Employed residents mainly working at or from home or with no fixed place (high in March 2021 lockdown)."
+   },
+   {
+    "id": "od_net_commuting",
+    "label": "Net commuting (in minus out)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Workplace commuters minus resident commuters; negative = net out-commuting."
+   },
+   {
+    "id": "od_self_containment_pct",
+    "label": "Self-containment",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "% of resident commuters whose workplace is in the same area."
+   },
+   {
+    "id": "od_jobs_filled_by_incommuters_pct",
+    "label": "Workplace filled by in-commuters",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "% of people commuting to a workplace in the area who live outside it."
+   }
+  ],
+  "dataset_code": "ODWP01EW (LTLA)",
+  "id": "census_od",
+  "retrieved_at": "2026-11-05T20:40Z",
+  "row_count": 232,
+  "sha256": "4048e64ad820bf34",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Claimant count by age (monthly)",
+  "publisher": "DWP / ONS (via Nomis)",
+  "source_url": "https://www.nomisweb.co.uk/sources/cc",
+  "api_url": [
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_162_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS35-latest&gender=0&age=0,10,11,3,4,20&measure=1&measures=20100&select=date,date_name,geography_code,age,obs_value,obs_status"
+  ],
+  "geography": "LA, region, England, Bedfordshire total",
+  "cohort": "16-19, 18-24, 25+ inactive, context",
+  "period": "September 2026",
+  "latest_period": "September 2026",
+  "frequency": "Monthly",
+  "next_update": "Monthly (mid-month labour market release)",
+  "access": "API",
+  "quality": "Official statistics in development (ONS). Administrative count, not a survey: no sampling error. Latest month is provisional and can be revised.",
+  "limitations": "Since Universal Credit full service the count includes UC claimants required to search for work, including some who are employed on low earnings, so it is NOT a measure of unemployment and is not comparable with pre-2013 JSA-only counts. Counts rounded to nearest 5 (so 16-17 is very noisy). Rates are computed in this pipeline with ONS MYE denominators (Nomis only publishes the all-age rate at LA level) and may differ slightly from ONS-published rates. Not seasonally adjusted.",
+  "indicators": [
+   {
+    "id": "claimant_count_16_17",
+    "label": "Claimants aged 16-17",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "Claimant count (UC searching-for-work + JSA), aged 16-17."
+   },
+   {
+    "id": "claimant_rate_16_17",
+    "label": "Claimant rate 16-17",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "Claimants as % of residents aged 16-17 (ONS mid-year estimate for that year, latest available MYE for months after it). Computed here, not by ONS."
+   },
+   {
+    "id": "claimant_count_18_24",
+    "label": "Claimants aged 18-24",
+    "unit": "count",
+    "cohort": "18-24",
+    "polarity": "higher_is_worse",
+    "description": "Claimant count (UC searching-for-work + JSA), aged 18-24."
+   },
+   {
+    "id": "claimant_rate_18_24",
+    "label": "Claimant rate 18-24",
+    "unit": "percent",
+    "cohort": "18-24",
+    "polarity": "higher_is_worse",
+    "description": "Claimants as % of residents aged 18-24 (ONS mid-year estimate for that year, latest available MYE for months after it). Computed here, not by ONS."
+   },
+   {
+    "id": "claimant_count_25_49",
+    "label": "Claimants aged 25-49",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Claimant count (UC searching-for-work + JSA), aged 25-49."
+   },
+   {
+    "id": "claimant_rate_25_49",
+    "label": "Claimant rate 25-49",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Claimants as % of residents aged 25-49 (ONS mid-year estimate for that year, latest available MYE for months after it). Computed here, not by ONS."
+   },
+   {
+    "id": "claimant_count_50_plus",
+    "label": "Claimants aged 50+",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Claimant count (UC searching-for-work + JSA), aged 50+."
+   },
+   {
+    "id": "claimant_rate_50_plus",
+    "label": "Claimant rate 50+",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Claimants as % of residents aged 50-64; numerator = claimants 50+ minus 65+ (ONS mid-year estimate for that year, latest available MYE for months after it). Computed here, not by ONS."
+   },
+   {
+    "id": "claimant_count_16_plus",
+    "label": "Claimants aged 16+ (all)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "Claimant count (UC searching-for-work + JSA), aged 16+ (all)."
+   },
+   {
+    "id": "claimant_rate_16_plus",
+    "label": "Claimant rate 16+ (all)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "Claimants as % of residents aged 16-64 (ONS mid-year estimate for that year, latest available MYE for months after it). Computed here, not by ONS."
+   }
+  ],
+  "dataset_code": "NM_162_1 (denominators NM_2002_1)",
+  "id": "claimant",
+  "retrieved_at": "2026-11-05T20:40Z",
+  "row_count": 2160,
+  "sha256": "2e796bb16df41fdf",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Claimant count by LSOA (latest month) with LA trend",
+  "publisher": "Office for National Statistics / DWP (via Nomis)",
+  "source_url": "https://www.nomisweb.co.uk/sources/cc",
+  "api_url": [
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_162_1.data.csv?gender=0&age=0,2,3,4&measure=1&measures=20100&select=date,date_name,geography_code,age,obs_value&date=latest&geography=%3C417+LSOA21+codes,+140%2Frequest%3E",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_162_1.data.csv?gender=0&age=0,2,3,4&measure=1&measures=20100&select=date,date_name,geography_code,age,obs_value&date=latestMINUS23-latest&geography=E06000055,E06000056,E06000032,E12000006,E92000001"
+  ],
+  "geography": "LSOA21 (latest month); LA, region, England, county (24 months)",
+  "cohort": "16-19, 18-24, 25+ inactive, context",
+  "period": "September 2026",
+  "latest_period": "September 2026",
+  "frequency": "Monthly",
+  "next_update": "Monthly with the ONS labour market release (mid-month)",
+  "access": "API",
+  "quality": "Official statistics (experimental status removed); administrative count of people claiming JSA or UC with a 'searching for work' requirement on the count date. Rates here are recomputed by this pipeline using ONS small-area population (mid-2024), not Nomis's own 16-64 proportion.",
+  "limitations": "Counts are rounded to the nearest 5 at LSOA level (small cells 0/5 are highly uncertain); LA rows are the published LA figures, and LSOA sums do not equal them. Under Universal Credit the count includes some people in low-paid work required to seek more work, so it is not a pure unemployment measure and rose structurally with UC rollout; it excludes inactive people (e.g. LT sick on UC health) who are not searching for work. Population denominators lag the claimant month by up to two years. 50+ claimants have no matched denominator (rate omitted).",
+  "indicators": [
+   {
+    "id": "cc_all",
+    "label": "All claimants aged 16+ (count)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "Claimant count, all claimants aged 16+ (JSA + UC searching for work); LSOA values rounded to nearest 5."
+   },
+   {
+    "id": "cc_all_rate",
+    "label": "All claimants aged 16+ per resident aged 16-64 (%)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "Claimants (all claimants aged 16+) as % of residents aged 16-64 (ONS small-area estimate, mid-2024)."
+   },
+   {
+    "id": "cc_16_24",
+    "label": "Claimants aged 16-24 (count)",
+    "unit": "count",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_worse",
+    "description": "Claimant count, claimants aged 16-24 (JSA + UC searching for work); LSOA values rounded to nearest 5."
+   },
+   {
+    "id": "cc_16_24_rate",
+    "label": "Claimants aged 16-24 per resident aged 16-24 (%)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_worse",
+    "description": "Claimants (claimants aged 16-24) as % of residents aged 16-24 (ONS small-area estimate, mid-2024)."
+   },
+   {
+    "id": "cc_25_49",
+    "label": "Claimants aged 25-49 (count)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "Claimant count, claimants aged 25-49 (JSA + UC searching for work); LSOA values rounded to nearest 5."
+   },
+   {
+    "id": "cc_25_49_rate",
+    "label": "Claimants aged 25-49 per resident aged 25-49 (%)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "Claimants (claimants aged 25-49) as % of residents aged 25-49 (ONS small-area estimate, mid-2024)."
+   },
+   {
+    "id": "cc_50plus",
+    "label": "Claimants aged 50+ (count)",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Claimant count, claimants aged 50+ (JSA + UC searching for work); LSOA values rounded to nearest 5."
+   }
+  ],
+  "id": "claimant_lsoa",
+  "retrieved_at": "2026-11-05T20:39Z",
+  "row_count": 3507,
+  "sha256": "7d56e9e0238304ec",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "16-18 (key stage 5) attainment and retention by local authority",
+  "publisher": "Department for Education",
+  "source_url": "https://explore-education-statistics.service.gov.uk/find-statistics/16-to-19-performance",
+  "api_url": [
+   "POST https://api.education.gov.uk/statistics/v1/data-sets/019d9133-665e-77fc-8492-b8131d4b1f4f/query",
+   "POST https://api.education.gov.uk/statistics/v1/data-sets/019d9139-4416-70c8-9275-ed2def6c2eb9/query",
+   "POST https://api.education.gov.uk/statistics/v1/data-sets/019d9138-5da3-767e-a1b7-4c2c146370fe/query"
+  ],
+  "geography": "LA, region, England, Bedfordshire (3 UAs, student counts only)",
+  "cohort": "16-19",
+  "period": "2024/25",
+  "latest_period": "2024/25",
+  "frequency": "Annual",
+  "next_update": "Provisional Nov/Dec 2026; revised spring 2027",
+  "access": "API",
+  "quality": "Accredited official statistics covering state-funded schools and colleges; LA is the location of the institution, not student residence.",
+  "limitations": "Average point scores cannot be summed or averaged to a Bedfordshire figure (no entry counts published), so Bedfordshire rows exist only for student counts. T level results are not published at LA level in this data set (national only) - a gap. Bedford's figures are dominated by Bedford College, which draws students from a wide area. 2020/21 TAGs and 2021/22 transitional grading are not comparable with later years. Retention data cover students in two-year programmes; England figures come from the national cohort time series. Small-cohort suppression (c/x/z) -> null.",
+  "indicators": [
+   {
+    "id": "ks5_aps_per_entry",
+    "label": "Average point score per entry",
+    "unit": "score",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "APS per entry by qualification cohort (breakdown: A level, Applied general, Tech level, Technical certificate)."
+   },
+   {
+    "id": "ks5_pct_2_substantial_l3",
+    "label": "% achieving 2+ substantial level 3 qualifications",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "Share of level 3 students (or A level students) achieving at least two substantial level 3 qualifications."
+   },
+   {
+    "id": "ks5_students",
+    "label": "Students at end of 16-18 study",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "Number of students in each exam cohort at the end of 16-18 study (by institution location)."
+   },
+   {
+    "id": "ks5_retained_assessed_pct",
+    "label": "% retained and assessed",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "Percentage of students on two-year programmes retained to the end and assessed, by cohort and level."
+   }
+  ],
+  "id": "dfe_16_18_la",
+  "retrieved_at": "2026-11-05T20:43Z",
+  "row_count": 430,
+  "sha256": "cab8283499c9cb2d",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Secondary persistent absence and suspensions by local authority",
+  "publisher": "Department for Education",
+  "source_url": [
+   "https://explore-education-statistics.service.gov.uk/find-statistics/pupil-absence-in-schools-in-england",
+   "https://explore-education-statistics.service.gov.uk/find-statistics/suspensions-and-permanent-exclusions-in-england"
+  ],
+  "api_url": [
+   "POST https://api.education.gov.uk/statistics/v1/data-sets/019d209c-08dc-74b6-9edb-52d521406fcf/query",
+   "https://content.explore-education-statistics.service.gov.uk/api/data-set-files/59d8b51e-fea6-40f5-911a-0d916679d206/download"
+  ],
+  "geography": "LA, region, England, Bedfordshire (3 UAs)",
+  "cohort": "16-19",
+  "period": "2024/25",
+  "latest_period": "2024/25",
+  "frequency": "Annual",
+  "next_update": "March 2027 (absence); July 2027 (suspensions)",
+  "access": "API and CSV download",
+  "quality": "Accredited official statistics from the school census (full academic year). Rates are per 100 pupils enrolled.",
+  "limitations": "State-funded secondary schools only (excludes AP/PRUs, where at-risk pupils concentrate). Persistent absence = missing 10%+ of sessions. Suspension rate counts suspensions (events) per 100 pupils; one_plus counts pupils. 2020/21 affected by COVID-19 restrictions. The suspensions publication is not on the EES API so the data-catalogue CSV is used. Suppressed values (c/x/z/low) -> null.",
+  "indicators": [
+   {
+    "id": "abs_persistent_pct_secondary",
+    "label": "% persistently absent (secondary)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "Percentage of enrolments missing 10% or more of possible sessions - a leading indicator of NEET risk."
+   },
+   {
+    "id": "excl_suspension_rate_secondary",
+    "label": "Suspension rate (secondary)",
+    "unit": "rate",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "Suspensions per 100 pupils in state-funded secondary schools."
+   },
+   {
+    "id": "excl_one_plus_susp_pct_secondary",
+    "label": "% pupils with 1+ suspension (secondary)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "Pupils with at least one suspension per 100 pupils."
+   },
+   {
+    "id": "excl_perm_excl_rate_secondary",
+    "label": "Permanent exclusion rate (secondary)",
+    "unit": "rate",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "Permanent exclusions per 100 pupils."
+   }
+  ],
+  "id": "dfe_absence_exclusions",
+  "retrieved_at": "2026-11-05T20:43Z",
+  "row_count": 120,
+  "sha256": "e0fadab20e476b76",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Apprenticeships: starts, achievements and participation by learner home location, age, level and sector subject area",
+  "publisher": "Department for Education",
+  "source_url": "https://explore-education-statistics.service.gov.uk/find-statistics/apprenticeships",
+  "api_url": [
+   "https://content.explore-education-statistics.service.gov.uk/api/data-set-files/a7743194-48bc-4e04-9102-4b0177ff4a84/download",
+   "https://content.explore-education-statistics.service.gov.uk/api/data-set-files/8ea0da62-6f42-4477-a2af-de4c3f1a8d56/download",
+   "https://content.explore-education-statistics.service.gov.uk/api/data-set-files/da55facf-4480-4474-a2de-fcdf00e5e83c/download",
+   "https://content.explore-education-statistics.service.gov.uk/api/data-set-files/a1cca8cf-2b7f-473c-a4a0-559bd2cb6b9e/download"
+  ],
+  "geography": "LA, PCON (2024 constituencies whose name contains Bedford/Luton: Bedford, Mid Bedfordshire, North Bedfordshire, Luton North, Luton South and South Bedfordshire - Hitchin, which takes part of Central Bedfordshire, is not included), region, England; Bedfordshire 3-UA total",
+  "cohort": "16-19,18-24,25+ inactive",
+  "period": "2025/26 (Aug-Apr, provisional)",
+  "latest_period": "2025/26 (Aug-Apr, provisional)",
+  "latest_full_year": "2024/25",
+  "frequency": "Quarterly (in-year) / Annual (final full year)",
+  "next_update": "Late November 2026 (2025/26 full-year final data)",
+  "access": "CSV download",
+  "quality": "Accredited official statistics from the Individualised Learner Record (ILR); a census of funded apprenticeship learners. In-year figures (latest year, Aug-Apr) are provisional and will rise when the full year is reported; earlier years are final full-year counts.",
+  "limitations": "Geography is the LEARNER'S HOME postcode (not provider or employer location). Volumes rounded to the nearest 10 by DfE and cells below 5 shown as 'low' (null, suppressed=true), so Bedfordshire sums and small SSA x level cells carry rounding error. Sector subject area (SSA tier 1) x LA detail is published one year per release, so SSA rows cover 2023/24 and 2024/25 (full year, from the two previous releases) plus 2025/26 in-year only; hospitality sits within 'Retail and Commercial Enterprise' and 'Leisure, Travel and Tourism'. Starts counted per programme (one learner may start more than one). Methodology breaks: 2017 apprenticeship levy/funding reform (starts fell sharply in 2017/18); transition from frameworks to standards (all standards since 2020/21); COVID-19 depressed 2019/20-2020/21. Starts rates per 100,000 use ONS mid-year population for the age band. Age = age at start.",
+  "indicators": [
+   {
+    "id": "dfe_apps_starts",
+    "label": "Apprenticeship starts",
+    "unit": "count",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "Apprenticeship starts by learner home LA, breakdown by age at start and level."
+   },
+   {
+    "id": "dfe_apps_achievements",
+    "label": "Apprenticeship achievements",
+    "unit": "count",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "Apprenticeship completions/achievements by learner home LA."
+   },
+   {
+    "id": "dfe_apps_participation",
+    "label": "Apprenticeship participation",
+    "unit": "count",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "Learners on an apprenticeship at any point in the academic year."
+   },
+   {
+    "id": "dfe_apps_starts_rate",
+    "label": "Starts per 100,000 population",
+    "unit": "rate",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "Starts per 100,000 residents of the matching age band (ONS mid-year estimates)."
+   },
+   {
+    "id": "dfe_apps_population",
+    "label": "Population used for rates",
+    "unit": "count",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "neutral",
+    "description": "ONS mid-year population estimate for the age band, as used by DfE."
+   },
+   {
+    "id": "dfe_apps_ssa_starts",
+    "label": "Starts by sector subject area",
+    "unit": "count",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "Apprenticeship starts by SSA tier 1 and level (2023/24, 2024/25 full year; 2025/26 Aug-Apr)."
+   },
+   {
+    "id": "dfe_apps_ssa_achievements",
+    "label": "Achievements by sector subject area",
+    "unit": "count",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "Apprenticeship achievements by SSA tier 1 and level (2023/24, 2024/25 full year; 2025/26 Aug-Apr)."
+   }
+  ],
+  "id": "dfe_apprenticeships",
+  "retrieved_at": "2026-11-05T20:42Z",
+  "row_count": 6280,
+  "sha256": "c142cf4dc0449639",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Care leavers aged 17-21: activity (education, employment, training) by local authority",
+  "publisher": "Department for Education",
+  "source_url": "https://explore-education-statistics.service.gov.uk/find-statistics/children-looked-after-in-england-including-adoptions",
+  "api_url": "https://content.explore-education-statistics.service.gov.uk/api/data-set-files/5279794c-6b75-4187-86c1-0ed3789bbfd6/download",
+  "geography": "LA (responsible authority), region, England; Bedfordshire recomputed from summed counts",
+  "cohort": "16-19,18-24",
+  "period": "2025",
+  "latest_period": "2025",
+  "frequency": "Annual",
+  "next_update": "November 2026",
+  "access": "CSV download",
+  "quality": "Accredited official statistics from the SSDA903 children looked after return; activity recorded around the care leaver's 17th-21st birthday (census of eligible care leavers).",
+  "limitations": "Very small LA numbers: counts rounded/suppressed ('c', 'low', 'x' -> null) and percentages to whole numbers, so year-to-year LA changes are noisy. Responsible LA, which may differ from where the young person lives. 'Activity not known' / 'no information' categories reduce comparability. Reporting year = year ending 31 March.",
+  "indicators": [
+   {
+    "id": "dfe_cl_pct_neet",
+    "label": "Care leavers NEET (%)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_worse",
+    "description": "% of care leavers (17-18 or 19-21) not in education, employment or training."
+   },
+   {
+    "id": "dfe_cl_pct_eet",
+    "label": "Care leavers in education, employment or training (%)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_better",
+    "description": "% of care leavers in education, employment or training."
+   },
+   {
+    "id": "dfe_cl_pct_activity",
+    "label": "Care leavers by activity (%)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "neutral",
+    "description": "% of care leavers in each activity category (breakdown names the activity)."
+   },
+   {
+    "id": "dfe_cl_n_total",
+    "label": "Care leavers (number)",
+    "unit": "count",
+    "cohort": "16-19,18-24",
+    "polarity": "neutral",
+    "description": "Number of care leavers in the age group (denominator)."
+   }
+  ],
+  "id": "dfe_care_leavers",
+  "retrieved_at": "2026-11-05T20:46Z",
+  "row_count": 669,
+  "sha256": "255b60cb5346924b",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Education, health and care plans as at January by age band and local authority",
+  "publisher": "Department for Education",
+  "source_url": "https://explore-education-statistics.service.gov.uk/find-statistics/education-health-and-care-plans",
+  "api_url": [
+   "https://api.education.gov.uk/statistics/v1/data-sets/01a0aa37-1008-7183-9271-35e3bcbb26c8/query (POST)",
+   "https://api.education.gov.uk/statistics/v1/data-sets/01a0aa37-1008-7183-9271-35e3bcbb26c8/meta"
+  ],
+  "api_query": {
+   "criteria": {
+    "and": [
+     {
+      "geographicLevels": {
+       "in": [
+        "LA",
+        "REG",
+        "NAT"
+       ]
+      }
+     },
+     {
+      "locations": {
+       "in": [
+        {
+         "level": "LA",
+         "code": "E06000055"
+        },
+        {
+         "level": "LA",
+         "code": "E06000056"
+        },
+        {
+         "level": "LA",
+         "code": "E06000032"
+        },
+        {
+         "level": "REG",
+         "code": "E12000006"
+        },
+        {
+         "level": "NAT",
+         "code": "E92000001"
+        }
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "YTAGH",
+        "a1u9L"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "EY6Rq",
+        "u2S8o",
+        "tfiAE"
+       ]
+      }
+     }
+    ]
+   },
+   "indicators": [
+    "YJV9H"
+   ]
+  },
+  "geography": "LA (maintaining authority), region, England; Bedfordshire 3-UA sum",
+  "cohort": "16-19,18-24",
+  "period": "Jan 2026",
+  "latest_period": "Jan 2026",
+  "frequency": "Annual",
+  "next_update": "June 2027",
+  "access": "API",
+  "quality": "Official statistics from the SEN2 statutory return (child-level since 2023); census of EHC plans maintained by each LA at the January census date.",
+  "limitations": "Age = age at start of academic year (31 August); bands 16-19 (ages 16-19) and 20-25 are summed here from single-year ages by this pipeline, and age detail is only published from Jan 2024 (child-level SEN2); earlier years carry the all-ages total only. LA = authority maintaining the plan, not necessarily where the young person is educated. SEN2 moved to child-level collection in 2023, which affects comparability with earlier years. 'NEET' counts are plans where the named setting is 'Not in employment, education or training' (an administrative placement status, not the CCIS NEET measure). Small cells may be suppressed (null).",
+  "indicators": [
+   {
+    "id": "dfe_ehcp_n",
+    "label": "EHC plans (number)",
+    "unit": "count",
+    "cohort": "16-19,18-24",
+    "polarity": "neutral",
+    "description": "Number of EHC plans maintained in January, by age band (all ages / 16-19 / 20-25)."
+   },
+   {
+    "id": "dfe_ehcp_n_neet",
+    "label": "EHC plans with young person NEET (number)",
+    "unit": "count",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_worse",
+    "description": "EHC plans whose named setting is 'Not in employment, education or training'."
+   },
+   {
+    "id": "dfe_ehcp_n_fe_college",
+    "label": "EHC plans in general FE/tertiary colleges",
+    "unit": "count",
+    "cohort": "16-19,18-24",
+    "polarity": "neutral",
+    "description": "EHC plans naming a general FE or tertiary college as the setting."
+   }
+  ],
+  "id": "dfe_ehcp",
+  "retrieved_at": "2026-11-05T20:46Z",
+  "row_count": 216,
+  "sha256": "be52639e2a213c10",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Further education and skills: participation and achievements by learner home LA, provision type, level and age",
+  "publisher": "Department for Education",
+  "source_url": "https://explore-education-statistics.service.gov.uk/find-statistics/further-education-and-skills",
+  "api_url": [
+   "https://content.explore-education-statistics.service.gov.uk/api/data-set-files/66fd40a0-74f2-4683-bdb8-5eb95012bcdc/download",
+   "https://content.explore-education-statistics.service.gov.uk/api/data-set-files/c7199761-f795-4732-aa83-020867770c4e/download"
+  ],
+  "geography": "LA, region, England; Bedfordshire 3-UA total for counts",
+  "cohort": "16-19,18-24,25+ inactive",
+  "period": "2025/26 (Aug-Apr, provisional)",
+  "latest_period": "2025/26 (Aug-Apr, provisional)",
+  "latest_full_year": "2024/25",
+  "frequency": "Quarterly (in-year) / Annual (final full year)",
+  "next_update": "Late November 2026 (2025/26 full-year final data)",
+  "access": "CSV download",
+  "quality": "Accredited official statistics from the ILR (census of government-funded FE learners, mainly aged 19+ plus apprentices of all ages). Latest year is in-year (Aug-Apr) and provisional.",
+  "limitations": "Learner HOME location, not provider location. Figures rounded to nearest 10; 'low' (<5) and 'c' cells suppressed (null, suppressed=true). 'Further education and skills' total includes apprenticeships; 'Education and training' and 'Community learning' / 'Tailored learning' are sub-types. Funding-stream renames: Adult Education Budget became the Adult Skills Fund from 2024/25 and Community Learning was reclassified as 'Tailored learning' - provision-type labels change across years so check breakdown strings. Skills Bootcamps are NOT in these tables (separate publication, no home-LA split). 16-18 classroom learners in colleges/sixth forms are largely outside this publication (see 16-19 performance). SSA x level enrolments by LA only for the latest in-year period; rates per 100,000 use ONS mid-year population. Participation counts learners once per provision type; totals across types are not additive.",
+  "indicators": [
+   {
+    "id": "dfe_fe_participation",
+    "label": "FE & skills participation (learners)",
+    "unit": "count",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "Learners participating in government-funded FE and skills, by provision type/level and age."
+   },
+   {
+    "id": "dfe_fe_achievements",
+    "label": "FE & skills learner achievements",
+    "unit": "count",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "Learners achieving at least one aim in the year."
+   },
+   {
+    "id": "dfe_fe_starts",
+    "label": "FE & skills starts",
+    "unit": "count",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "Starts, where published (mainly apprenticeships)."
+   },
+   {
+    "id": "dfe_fe_participation_rate",
+    "label": "Participation per 100,000 population",
+    "unit": "rate",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "FE & skills learners per 100,000 residents of the age band."
+   },
+   {
+    "id": "dfe_fe_achievements_rate",
+    "label": "Achievements per 100,000 population",
+    "unit": "rate",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "FE & skills learner achievements per 100,000 residents of the age band."
+   },
+   {
+    "id": "dfe_fe_ssa_enrolments",
+    "label": "Education & training enrolments by sector subject area",
+    "unit": "count",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "Adult education and training aim enrolments by SSA tier 1 and level (latest in-year)."
+   },
+   {
+    "id": "dfe_fe_ssa_aim_achievements",
+    "label": "Education & training aim achievements by sector subject area",
+    "unit": "count",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "Aim achievements by SSA tier 1 and level (latest in-year)."
+   }
+  ],
+  "id": "dfe_fe_skills",
+  "retrieved_at": "2026-11-05T20:46Z",
+  "row_count": 8274,
+  "sha256": "05b72827480c6eb1",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Key stage 4 destination measures by local authority",
+  "publisher": "Department for Education",
+  "source_url": "https://explore-education-statistics.service.gov.uk/find-statistics/key-stage-4-destination-measures",
+  "api_url": [
+   "https://api.education.gov.uk/statistics/v1/data-sets/019d4f41-22d1-71b2-a1a7-f3b91026815b/query (POST)",
+   "https://api.education.gov.uk/statistics/v1/data-sets/019d4f41-22d1-71b2-a1a7-f3b91026815b/meta"
+  ],
+  "api_query": {
+   "criteria": {
+    "and": [
+     {
+      "geographicLevels": {
+       "in": [
+        "LA",
+        "REG",
+        "NAT"
+       ]
+      }
+     },
+     {
+      "locations": {
+       "in": [
+        {
+         "level": "LA",
+         "code": "E06000055"
+        },
+        {
+         "level": "LA",
+         "code": "E06000056"
+        },
+        {
+         "level": "LA",
+         "code": "E06000032"
+        },
+        {
+         "level": "REG",
+         "code": "E12000006"
+        },
+        {
+         "level": "NAT",
+         "code": "E92000001"
+        }
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "rgHcN"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "eLx0u",
+        "ml1m9"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "Y0RhH"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "9c6y4"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "X542f"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "jHdaA"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "wBpIb"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "p9WRS",
+        "OvPnC",
+        "7VmdX"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "wBvOb",
+        "dk3k0"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "EfSAq",
+        "WiEl2",
+        "mlKo9",
+        "QIJEw",
+        "RZrek",
+        "1j7Ui",
+        "lrqec"
+       ]
+      }
+     }
+    ]
+   },
+   "indicators": [
+    "V0Em5",
+    "Poghe",
+    "1roqi",
+    "dPjk0"
+   ]
+  },
+  "geography": "LA (of institution), region, England; Bedfordshire recomputed from summed num/den",
+  "cohort_basis": "State-funded mainstream and special schools",
+  "cohort": "16-19",
+  "period": "2023/24 leavers",
+  "latest_period": "2023/24 leavers",
+  "frequency": "Annual",
+  "next_update": "Autumn 2027",
+  "access": "API",
+  "quality": "Official statistics linking the National Pupil Database, ILR, HESA and DWP/HMRC employment and benefit records (census, no sampling error). A destination counts when sustained for two terms (education/apprenticeship) or 5 of 6 months (employment) in the year after leaving.",
+  "limitations": "Period = the year the cohort LEFT KS4 (EES time_period); destinations are measured in the following academic year (e.g. '2023/24 leavers' = sustained destination during 2024/25, published Oct 2026 as the 'Academic year 2024/25' release), so data are ~2 years old. LA geography is the location of the school/college attended, not residence. Cohort = DfE headline basis (KS5: state-funded mainstream schools and colleges; KS4: state-funded mainstream and special schools); independent schools excluded. Disadvantage = FSM in last 6 years or looked after. Small cohorts suppressed (null). Employment data have had linkage changes (e.g. inclusion of self-employment, HMRC data) over time; COVID affected 2019/20-2020/21 cohorts.",
+  "indicators": [
+   {
+    "id": "dfe_ks4d_pct_overall",
+    "label": "Sustained education, employment or apprenticeship (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "% of Key stage 4 (Year 11) leavers in a sustained education, apprenticeship or employment destination (2 terms / 6 months). Breakdown = disadvantage status."
+   },
+   {
+    "id": "dfe_ks4d_pct_education",
+    "label": "Sustained education (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "% of Key stage 4 (Year 11) leavers in sustained education (FE, school sixth form, HE etc.). Breakdown = disadvantage status."
+   },
+   {
+    "id": "dfe_ks4d_pct_apprenticeship",
+    "label": "Sustained apprenticeship (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "% of Key stage 4 (Year 11) leavers in a sustained apprenticeship. Breakdown = disadvantage status."
+   },
+   {
+    "id": "dfe_ks4d_pct_employment",
+    "label": "Sustained employment (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "% of Key stage 4 (Year 11) leavers in sustained employment. Breakdown = disadvantage status."
+   },
+   {
+    "id": "dfe_ks4d_pct_not_sustained",
+    "label": "Not recorded as sustained destination (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "% of Key stage 4 (Year 11) leavers with no sustained destination (not sustained + activity not captured). Breakdown = disadvantage status."
+   },
+   {
+    "id": "dfe_ks4d_pct_not_captured",
+    "label": "Activity not captured (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "% of Key stage 4 (Year 11) leavers with no activity captured in any data source. Breakdown = disadvantage status."
+   }
+  ],
+  "id": "dfe_ks4_destinations",
+  "retrieved_at": "2026-11-05T20:46Z",
+  "row_count": 538,
+  "sha256": "d39c6f5b72929477",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Key stage 4 (GCSE) performance by local authority",
+  "publisher": "Department for Education",
+  "source_url": "https://explore-education-statistics.service.gov.uk/find-statistics/key-stage-4-performance",
+  "api_url": [
+   "POST https://api.education.gov.uk/statistics/v1/data-sets/18e39901-b47f-4a75-9c4b-d529e590d916/query",
+   "POST https://api.education.gov.uk/statistics/v1/data-sets/18e39901-b47f-4a75-9c4b-d529e590d916/query?dataSetVersion=1.0.1",
+   "POST https://api.education.gov.uk/statistics/v1/data-sets/b3e19901-5d2b-b676-bb4c-e60937d74725/query"
+  ],
+  "geography": "LA, region, England, Bedfordshire (3 UAs)",
+  "cohort": "16-19",
+  "period": "2025/26",
+  "latest_period": "2025/26",
+  "frequency": "Annual",
+  "next_update": "February 2027 (revised 2025/26); October 2027 (2026/27 provisional)",
+  "access": "API",
+  "quality": "Accredited official statistics (state-funded schools, by school location). The latest year is provisional (October release) and is revised in February.",
+  "limitations": "2019/20 not published; 2020/21 teacher-assessed grades and 2021/22 transitional grading are not comparable with 2022/23 onwards (2020/21 rows carry a note). EBacc entry is taken from data set version 1.0.1 because the EBacc measure was removed from the 2025/26 release. Progress 8 is not available for 2024/25-2025/26 (no KS2 baseline) so is omitted. Disadvantaged gap here is the simple difference in average A8 between not-disadvantaged and disadvantaged pupils, not DfE's national gap index. Bedfordshire figures recomputed from summed numerators/denominators. LA = school location, state-funded only (independent schools excluded).",
+  "indicators": [
+   {
+    "id": "ks4_att8",
+    "label": "Average Attainment 8 score",
+    "unit": "score",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "Mean Attainment 8 score per pupil at the end of KS4, state-funded schools."
+   },
+   {
+    "id": "ks4_pct_em_5plus",
+    "label": "% grade 5+ in English and maths",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "Percentage of pupils achieving grade 5 or above in both English and maths GCSEs (strong pass)."
+   },
+   {
+    "id": "ks4_pct_em_4plus",
+    "label": "% grade 4+ in English and maths",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "Percentage achieving grade 4+ in English and maths (standard pass; below this, maths/English resits are compulsory post-16)."
+   },
+   {
+    "id": "ks4_pct_ebacc_entry",
+    "label": "% entering the EBacc",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "Percentage of pupils entering all English Baccalaureate pillars (to 2024/25)."
+   },
+   {
+    "id": "ks4_pupils",
+    "label": "Pupils at the end of KS4",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "Number of pupils at the end of key stage 4 (state-funded) - annual flow into post-16 education and training."
+   },
+   {
+    "id": "ks4_att8_disadv",
+    "label": "Average A8 - disadvantaged pupils",
+    "unit": "score",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "Attainment 8 for pupils eligible for FSM in the last six years or looked after."
+   },
+   {
+    "id": "ks4_att8_nondisadv",
+    "label": "Average A8 - other pupils",
+    "unit": "score",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "Attainment 8 for pupils not known to be disadvantaged."
+   },
+   {
+    "id": "ks4_att8_disadv_gap",
+    "label": "Disadvantage gap in Attainment 8 (points)",
+    "unit": "score",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "Average A8 of non-disadvantaged minus disadvantaged pupils."
+   },
+   {
+    "id": "ks4_pct_disadvantaged",
+    "label": "% of KS4 cohort disadvantaged",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "Disadvantaged pupils as a share of the end-of-KS4 cohort."
+   }
+  ],
+  "id": "dfe_ks4_la",
+  "retrieved_at": "2026-11-05T20:43Z",
+  "row_count": 318,
+  "sha256": "6b14e49f49ced222",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Key stage 4 headline measures by secondary school (Bedfordshire)",
+  "publisher": "Department for Education",
+  "source_url": "https://explore-education-statistics.service.gov.uk/find-statistics/key-stage-4-performance",
+  "api_url": [
+   "POST https://api.education.gov.uk/statistics/v1/data-sets/19e39901-a96c-be76-b9c2-6af54ae076d2/query",
+   "https://ea-edubase-api-prod.azurewebsites.net/edubase/downloads/public/edubasealldata20261105.csv"
+  ],
+  "geography": "point (schools in Bedford, Central Bedfordshire, Luton)",
+  "cohort": "16-19",
+  "period": "2025/26",
+  "latest_period": "2025/26",
+  "frequency": "Annual",
+  "next_update": "February 2027 (revised 2025/26)",
+  "access": "API",
+  "quality": "School performance tables data (accredited official statistics); latest year provisional. Coordinates from GIAS by URN.",
+  "limitations": "State-funded mainstream schools with KS4 cohorts only; independent schools are not in this data set. Small-cohort and disclosive values are suppressed (c/x/z/low -> null, suppressed:true). A URN changes when a school converts to an academy, so history for a site can sit under two URNs.",
+  "indicators": [
+   {
+    "id": "ks4s_att8",
+    "label": "School average Attainment 8",
+    "unit": "score",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "Average Attainment 8 score for the school's end-of-KS4 cohort."
+   },
+   {
+    "id": "ks4s_pct_em_5plus",
+    "label": "School % grade 5+ English and maths",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "Percentage of the school's pupils achieving 5+ in English and maths."
+   },
+   {
+    "id": "ks4s_pct_em_4plus",
+    "label": "School % grade 4+ English and maths",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "Percentage achieving 4+ in English and maths."
+   },
+   {
+    "id": "ks4s_pupils",
+    "label": "School end-of-KS4 cohort",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "Number of pupils at the end of KS4 in the school."
+   }
+  ],
+  "id": "dfe_ks4_school",
+  "retrieved_at": "2026-11-05T20:43Z",
+  "row_count": 772,
+  "sha256": "3eb229406c987c95",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "16-18 destination measures (16-19 study leavers) by local authority",
+  "publisher": "Department for Education",
+  "source_url": "https://explore-education-statistics.service.gov.uk/find-statistics/16-19-destination-measures",
+  "api_url": [
+   "https://api.education.gov.uk/statistics/v1/data-sets/019d4e73-6440-7523-b60c-bfab1ad4a30d/query (POST)",
+   "https://api.education.gov.uk/statistics/v1/data-sets/019d4e73-6440-7523-b60c-bfab1ad4a30d/meta"
+  ],
+  "api_query": {
+   "criteria": {
+    "and": [
+     {
+      "geographicLevels": {
+       "in": [
+        "LA",
+        "REG",
+        "NAT"
+       ]
+      }
+     },
+     {
+      "locations": {
+       "in": [
+        {
+         "level": "LA",
+         "code": "E06000055"
+        },
+        {
+         "level": "LA",
+         "code": "E06000056"
+        },
+        {
+         "level": "LA",
+         "code": "E06000032"
+        },
+        {
+         "level": "REG",
+         "code": "E12000006"
+        },
+        {
+         "level": "NAT",
+         "code": "E92000001"
+        }
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "S4ROV"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "Wirk2"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "NOBQD"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "BSdu7"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "tXHPE"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "gJpLO"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "Pa2Ae"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "o23fm"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "fde2Y"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "Y0PuH",
+        "HTeez",
+        "CnSVI"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "iAgq6",
+        "0hayT"
+       ]
+      }
+     },
+     {
+      "filters": {
+       "in": [
+        "o2c4m",
+        "wBXtb",
+        "PaLTe",
+        "9c8k4",
+        "Wi6R2",
+        "o2l7m",
+        "GFJsg"
+       ]
+      }
+     }
+    ]
+   },
+   "indicators": [
+    "cZSW3",
+    "tjybE",
+    "5TESd",
+    "fzKfY"
+   ]
+  },
+  "geography": "LA (of institution), region, England; Bedfordshire recomputed from summed num/den",
+  "cohort_basis": "State-funded mainstream schools and colleges",
+  "cohort": "16-19",
+  "period": "2023/24 leavers",
+  "latest_period": "2023/24 leavers",
+  "frequency": "Annual",
+  "next_update": "Autumn 2027",
+  "access": "API",
+  "quality": "Official statistics linking the National Pupil Database, ILR, HESA and DWP/HMRC employment and benefit records (census, no sampling error). A destination counts when sustained for two terms (education/apprenticeship) or 5 of 6 months (employment) in the year after leaving.",
+  "limitations": "Period = the year the cohort LEFT 16-18 study (EES time_period); destinations are measured in the following academic year (e.g. '2023/24 leavers' = sustained destination during 2024/25, published Oct 2026 as the 'Academic year 2024/25' release), so data are ~2 years old. LA geography is the location of the school/college attended, not residence. Cohort = DfE headline basis (KS5: state-funded mainstream schools and colleges; KS4: state-funded mainstream and special schools); independent schools excluded. Disadvantage = FSM in last 6 years or looked after. Small cohorts suppressed (null). Employment data have had linkage changes (e.g. inclusion of self-employment, HMRC data) over time; COVID affected 2019/20-2020/21 cohorts.",
+  "indicators": [
+   {
+    "id": "dfe_ks5d_pct_overall",
+    "label": "Sustained education, employment or apprenticeship (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "% of 16-18 (KS5) study leavers in a sustained education, apprenticeship or employment destination (2 terms / 6 months). Breakdown = disadvantage status."
+   },
+   {
+    "id": "dfe_ks5d_pct_education",
+    "label": "Sustained education (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "% of 16-18 (KS5) study leavers in sustained education (FE, school sixth form, HE etc.). Breakdown = disadvantage status."
+   },
+   {
+    "id": "dfe_ks5d_pct_apprenticeship",
+    "label": "Sustained apprenticeship (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "% of 16-18 (KS5) study leavers in a sustained apprenticeship. Breakdown = disadvantage status."
+   },
+   {
+    "id": "dfe_ks5d_pct_employment",
+    "label": "Sustained employment (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "% of 16-18 (KS5) study leavers in sustained employment. Breakdown = disadvantage status."
+   },
+   {
+    "id": "dfe_ks5d_pct_not_sustained",
+    "label": "Not recorded as sustained destination (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "% of 16-18 (KS5) study leavers with no sustained destination (not sustained + activity not captured). Breakdown = disadvantage status."
+   },
+   {
+    "id": "dfe_ks5d_pct_not_captured",
+    "label": "Activity not captured (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "% of 16-18 (KS5) study leavers with no activity captured in any data source. Breakdown = disadvantage status."
+   }
+  ],
+  "id": "dfe_ks5_destinations",
+  "retrieved_at": "2026-11-05T20:46Z",
+  "row_count": 540,
+  "sha256": "d982033e110ca611",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Level 2 and 3 attainment age 16 to 25 (by age 19) by local authority",
+  "publisher": "Department for Education",
+  "source_url": "https://explore-education-statistics.service.gov.uk/find-statistics/level-2-and-3-attainment-by-young-people-aged-19",
+  "api_url": "https://content.explore-education-statistics.service.gov.uk/api/data-set-files/882297f8-d6da-42fd-ac3e-791d1936ad4b/download",
+  "geography": "LA (of school at age 15), region, England; Bedfordshire recomputed from summed num/den",
+  "cohort": "16-19,18-24",
+  "period": "2024/25 (age 19)",
+  "latest_period": "2024/25 (age 19)",
+  "frequency": "Annual",
+  "next_update": "April 2027",
+  "access": "CSV download",
+  "quality": "Official statistics from matched NPD/ILR/awarding-body records for the cohort in state schools at academic age 15, followed to age 19 (census, no sampling error).",
+  "limitations": "Geography = LA of the school attended at age 15 (not current residence). Excludes young people not in English state schools at 15. Level 2 = 5 GCSEs 9-4 or equivalent; Level 3 = 2 A levels or equivalent. 2020 and 2021 GCSE/A level grades were centre/teacher assessed, inflating attainment for cohorts aged 19 in 2021/22-2022/23. Counts rounded; small cells suppressed (null). FSM = eligible for free school meals at age 15; disadvantaged = FSM in last 6 years or looked after. Gap rows are DfE's published percentage-point gaps (not recomputed for the Bedfordshire total).",
+  "indicators": [
+   {
+    "id": "dfe_l23_pct_l2_by19",
+    "label": "Achieved Level 2 by 19 (%)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_better",
+    "description": "% of the state-school cohort (by LA of school at 15) achieving Level 2 by age 19; breakdowns by FSM etc."
+   },
+   {
+    "id": "dfe_l23_gap_fsm_l2_by19",
+    "label": "Level 2 by 19 gap: FSM-eligible vs not eligible (pp)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_worse",
+    "description": "DfE-published percentage-point attainment gap in Level 2 by 19, FSM-eligible vs not eligible."
+   },
+   {
+    "id": "dfe_l23_gap_disadv_l2_by19",
+    "label": "Level 2 by 19 gap: disadvantaged vs non-disadvantaged (pp)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_worse",
+    "description": "DfE-published percentage-point attainment gap in Level 2 by 19, disadvantaged vs non-disadvantaged."
+   },
+   {
+    "id": "dfe_l23_gap_sen_l2_by19",
+    "label": "Level 2 by 19 gap: identified SEN vs no SEN (pp)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_worse",
+    "description": "DfE-published percentage-point attainment gap in Level 2 by 19, identified SEN vs no SEN."
+   },
+   {
+    "id": "dfe_l23_pct_l3_by19",
+    "label": "Achieved Level 3 by 19 (%)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_better",
+    "description": "% of the state-school cohort (by LA of school at 15) achieving Level 3 by age 19; breakdowns by FSM etc."
+   },
+   {
+    "id": "dfe_l23_gap_fsm_l3_by19",
+    "label": "Level 3 by 19 gap: FSM-eligible vs not eligible (pp)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_worse",
+    "description": "DfE-published percentage-point attainment gap in Level 3 by 19, FSM-eligible vs not eligible."
+   },
+   {
+    "id": "dfe_l23_gap_disadv_l3_by19",
+    "label": "Level 3 by 19 gap: disadvantaged vs non-disadvantaged (pp)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_worse",
+    "description": "DfE-published percentage-point attainment gap in Level 3 by 19, disadvantaged vs non-disadvantaged."
+   },
+   {
+    "id": "dfe_l23_gap_sen_l3_by19",
+    "label": "Level 3 by 19 gap: identified SEN vs no SEN (pp)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_worse",
+    "description": "DfE-published percentage-point attainment gap in Level 3 by 19, identified SEN vs no SEN."
+   },
+   {
+    "id": "dfe_l23_pct_l2_em_by19",
+    "label": "Achieved Level 2 in English and maths by 19 (%)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_better",
+    "description": "% of the state-school cohort (by LA of school at 15) achieving Level 2 in English and maths by age 19; breakdowns by FSM etc."
+   },
+   {
+    "id": "dfe_l23_gap_fsm_l2_em_by19",
+    "label": "Level 2 in English and maths by 19 gap: FSM-eligible vs not eligible (pp)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_worse",
+    "description": "DfE-published percentage-point attainment gap in Level 2 in English and maths by 19, FSM-eligible vs not eligible."
+   },
+   {
+    "id": "dfe_l23_gap_disadv_l2_em_by19",
+    "label": "Level 2 in English and maths by 19 gap: disadvantaged vs non-disadvantaged (pp)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_worse",
+    "description": "DfE-published percentage-point attainment gap in Level 2 in English and maths by 19, disadvantaged vs non-disadvantaged."
+   },
+   {
+    "id": "dfe_l23_gap_sen_l2_em_by19",
+    "label": "Level 2 in English and maths by 19 gap: identified SEN vs no SEN (pp)",
+    "unit": "percent",
+    "cohort": "16-19,18-24",
+    "polarity": "higher_is_worse",
+    "description": "DfE-published percentage-point attainment gap in Level 2 in English and maths by 19, identified SEN vs no SEN."
+   }
+  ],
+  "id": "dfe_l2l3_19",
+  "retrieved_at": "2026-11-05T20:46Z",
+  "row_count": 1242,
+  "sha256": "081921c5d9c6fed6",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Participation in education, training and NEET age 16 to 17 by local authority",
+  "publisher": "Department for Education",
+  "source_url": "https://explore-education-statistics.service.gov.uk/find-statistics/participation-in-education-training-and-neet-age-16-to-17-by-local-authority",
+  "api_url": [
+   "https://content.explore-education-statistics.service.gov.uk/api/data-set-files/a9b8ebe6-1d51-41c3-babe-ee7d16ea5f78/download",
+   "https://content.explore-education-statistics.service.gov.uk/api/data-set-files/a7bc111a-9503-40df-99fa-764fcb13a2e9/download",
+   "https://content.explore-education-statistics.service.gov.uk/api/data-set-files/e1f4011a-ed67-408e-8b7b-076a44a6cc8c/download"
+  ],
+  "geography": "LA, region, England (+ Bedfordshire 3-UA total for counts and recomputed rates)",
+  "cohort": "16-19",
+  "period": "end-2025 (Dec 2025-Feb 2026 avg)",
+  "latest_period": "end-2025 (Dec 2025-Feb 2026 avg)",
+  "frequency": "Annual",
+  "next_update": "Summer 2027 (end-2026 figures)",
+  "access": "CSV download",
+  "quality": "Official statistics from local authority Client Caseload Information System (CCIS) tracking of academic-age 16-17 residents; 'NEET' and 'not known' are averages of the Dec, Jan and Feb monthly snapshots (so LA counts can be fractional), participation is at end of December. Census of LA records (no sampling error) but quality depends on each LA's tracking.",
+  "limitations": "LA NEET rates are only comparable when 'activity not known' rates are similar: an LA with weak tracking shows low NEET but high not-known, so the combined 'NEET or not known' rate is the headline. National/regional counts are rounded to the nearest 10 by DfE; LA figures are unrounded (percentages to 2 dp); small characteristic cells suppressed (null, suppressed=true). Covers young people resident in the LA (academic age 16-17, i.e. Years 12-13), not where they study. Characteristic breakdowns (sex, ethnicity, SEND) only for ages 16-17 combined. Period label: EES time_period 2026 = end-2025 tracking. Bedfordshire rows sum the three UAs' rounded counts.",
+  "indicators": [
+   {
+    "id": "dfe_neet_pct_neet_nk",
+    "label": "NEET or activity not known (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "% of academic-age 16-17 residents NEET or whose activity is not known (Dec-Feb average)."
+   },
+   {
+    "id": "dfe_neet_pct_neet",
+    "label": "NEET (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "% of 16-17 year olds known to be not in education, employment or training."
+   },
+   {
+    "id": "dfe_neet_pct_not_known",
+    "label": "Activity not known (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "% of 16-17 cohort whose current activity the LA does not know (tracking quality)."
+   },
+   {
+    "id": "dfe_neet_n_neet_nk",
+    "label": "NEET or not known (number)",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "Number of 16-17 year olds NEET or not known (Dec-Feb average, rounded to 10)."
+   },
+   {
+    "id": "dfe_neet_n_neet",
+    "label": "NEET (number)",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "Number of 16-17s NEET."
+   },
+   {
+    "id": "dfe_neet_n_not_known",
+    "label": "Activity not known (number)",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "Number of 16-17s whose activity is not known."
+   },
+   {
+    "id": "dfe_neet_n_cohort_avg",
+    "label": "Cohort known to LA (Dec-Feb average)",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "Denominator for NEET/not known rates: 16-17 year olds tracked by the LA."
+   },
+   {
+    "id": "dfe_neet_cohort",
+    "label": "Participation cohort (end Dec)",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "Denominator for participation rates: academic-age 16-17 residents at end of December."
+   },
+   {
+    "id": "dfe_neet_pct_participating",
+    "label": "Participating in education or training (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "% of 16-17s meeting the duty to participate (all education/training routes)."
+   },
+   {
+    "id": "dfe_neet_pct_meeting_duty",
+    "label": "Meeting the duty to participate (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "% of 16-17s meeting the statutory duty to participate (RPA) at end of December."
+   },
+   {
+    "id": "dfe_neet_pct_fte",
+    "label": "Full-time education (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "% of 16-17s in full-time education (school sixth form, college, etc.)."
+   },
+   {
+    "id": "dfe_neet_pct_apprenticeship",
+    "label": "Apprenticeship (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "% of 16-17s in an apprenticeship."
+   },
+   {
+    "id": "dfe_neet_pct_wbl",
+    "label": "Work-based learning (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "% of 16-17s in work-based learning (excluding apprenticeships)."
+   },
+   {
+    "id": "dfe_neet_pct_pte",
+    "label": "Part-time education (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "% of 16-17s in part-time education."
+   },
+   {
+    "id": "dfe_neet_pct_emp_study",
+    "label": "Employment combined with study (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "% of 16-17s in employment with accredited study."
+   },
+   {
+    "id": "dfe_neet_pct_other_et",
+    "label": "Other participation type (%)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "% of 16-17s in other education or training (e.g. custodial, re-engagement)."
+   }
+  ],
+  "id": "dfe_neet",
+  "retrieved_at": "2026-11-05T20:42Z",
+  "row_count": 4035,
+  "sha256": "5ee14d491939bf94",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Map boundaries and LSOA lookup (ONS Open Geography Portal)",
+  "publisher": "Office for National Statistics (Open Geography Portal)",
+  "source_url": "https://geoportal.statistics.gov.uk/",
+  "api_url": [
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Local_Authority_Districts_DEC_2025_Boundaries_UK_BGC/FeatureServer/0/query?where=LAD25CD+IN+%28%27E06000055%27%2C%27E06000056%27%2C%27E06000032%27%29&outFields=LAD25CD%2CLAD25NM&outSR=4326&returnGeometry=true&resultOffset=0&resultRecordCount=1000&f=geojson",
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Local_Authority_Districts_DEC_2025_Boundaries_UK_BGC/FeatureServer/0/query (POST: spatial intersects with Bedfordshire, distance 50 m)",
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Local_Authority_Districts_DEC_2025_Boundaries_UK_BGC/FeatureServer/0/query?where=LAD25CD+IN+%28%27E06000042%27%2C%27E06000060%27%2C%27E06000061%27%2C%27E07000011%27%2C%27E07000012%27%2C%27E07000096%27%2C%27E07000099%27%2C%27E07000240%27%29&outFields=LAD25CD%2CLAD25NM&outSR=4326&returnGeometry=true&resultOffset=0&resultRecordCount=1000&f=geojson",
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LSOA21_WD25_LAD25_EW_LU_v2/FeatureServer/0/query?where=LAD25CD+IN+%28%27E06000055%27%2C%27E06000056%27%2C%27E06000032%27%29&outFields=LSOA21CD%2CLSOA21NM%2CWD25CD%2CWD25NM%2CLAD25CD%2CLAD25NM&outSR=4326&returnGeometry=false&resultOffset=0&resultRecordCount=1000&f=geojson",
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LSOA21_PCON24_LAD21_EW_LU/FeatureServer/0/query?where=LAD21CD+IN+%28%27E06000055%27%2C%27E06000056%27%2C%27E06000032%27%29&outFields=LSOA21CD%2CPCON24CD%2CPCON24NM&outSR=4326&returnGeometry=false&resultOffset=0&resultRecordCount=1000&f=geojson",
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Middle_layer_Super_Output_Areas_December_2021_Boundaries_EW_BGC_V3/FeatureServer/0/query?where=MSOA21NM+IN+%28%27Bedford+001%27%2C%27Bedford+002%27%2C%27Bedford+003%27%2C%27Bedford+004%27%2C%27Bedford+005%27%2C%27Bedford+006%27%2C%27Bedford+007%27%2C%27Bedford+008%27%2C%27Bedford+009%27%2C%27Bedford+010%27%2C%27Bedford+011%27%2C%27Bedford+012%27%2C%27Bedford+013%27%2C%27Bedford+014%27%2C%27Bedford+015%27%2C%27Bedford+016%27%2C%27Bedford+017%27%2C%27Bedford+018%27%2C%27Bedford+020%27%2C%27Bedford+021%27%2C%27Bedford+022%27%2C%27Central+Bedfordshire+001%27%2C%27Central+Bedfordshire+002%27%2C%27Central+Bedfordshire+003%27%2C%27Central+Bedfordshire+004%27%2C%27Central+Bedfordshire+005%27%2C%27Central+Bedfordshire+006%27%2C%27Central+Bedfordshire+007%27%2C%27Central+Bedfordshire+008%27%2C%27Central+Bedfordshire+009%27%2C%27Central+Bedfordshire+010%27%2C%27Central+Bedfordshire+011%27%2C%27Central+Bedfordshire+012%27%2C%27Central+Bedfordshire+013%27%2C%27Central+Bedfordshire+014%27%2C%27Central+Bedfordshire+015%27%2C%27Central+Bedfordshire+016%27%2C%27Central+Bedfordshire+017%27%2C%27Central+Bedfordshire+018%27%2C%27Central+Bedfordshire+019%27%2C%27Central+Bedfordshire+020%27%2C%27Central+Bedfordshire+021%27%2C%27Central+Bedfordshire+022%27%2C%27Central+Bedfordshire+023%27%2C%27Central+Bedfordshire+024%27%2C%27Central+Bedfordshire+025%27%2C%27Central+Bedfordshire+026%27%2C%27Central+Bedfordshire+027%27%2C%27Central+Bedfordshire+028%27%2C%27Central+Bedfordshire+029%27%2C%27Central+Bedfordshire+030%27%2C%27Central+Bedfordshire+031%27%2C%27Central+Bedfordshire+032%27%2C%27Central+Bedfordshire+033%27%2C%27Luton+001%27%2C%27Luton+002%27%2C%27Luton+003%27%2C%27Luton+004%27%2C%27Luton+005%27%2C%27Luton+006%27%2C%27Luton+007%27%2C%27Luton+008%27%2C%27Luton+009%27%2C%27Luton+010%27%2C%27Luton+011%27%2C%27Luton+012%27%2C%27Luton+013%27%2C%27Luton+014%27%2C%27Luton+015%27%2C%27Luton+016%27%2C%27Luton+017%27%2C%27Luton+019%27%2C%27Luton+020%27%2C%27Luton+021%27%2C%27Luton+022%27%2C%27Luton+023%27%29&outFields=MSOA21CD%2CMSOA21NM&outSR=4326&returnGeometry=true&resultOffset=0&resultRecordCount=1000&f=geojson",
+   "https://houseofcommonslibrary.github.io/msoanames/MSOA-Names-Latest2.csv",
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BGC_V5/FeatureServer/0/query?where=LSOA21CD+IN+%28%27E01015693%27%2C%27E01015694%27%2C%27E01015695%27%2C%27E01015696%27%2C%27E01015697%27%2C%27E01015698%27%2C%27E01015699%27%2C%27E01015700%27%2C%27E01015701%27%2C%27E01015702%27%2C%27E01015703%27%2C%27E01015704%27%2C%27E01015705%27%2C%27E01015706%27%2C%27E01015707%27%2C%27E01015708%27%2C%27E01015709%27%2C%27E01015710%27%2C%27E01015711%27%2C%27E01015712%27%2C%27E01015713%27%2C%27E01015714%27%2C%27E01015715%27%2C%27E01015716%27%2C%27E01015717%27%2C%27E01015718%27%2C%27E01015719%27%2C%27E01015720%27%2C%27E01015721%27%2C%27E01015722%27%2C%27E01015723%27%2C%27E01015724%27%2C%27E01015725%27%2C%27E01015726%27%2C%27E01015727%27%2C%27E01015728%27%2C%27E01015729%27%2C%27E01015730%27%2C%27E01015731%27%2C%27E01015732%27%2C%27E01015733%27%2C%27E01015734%27%2C%27E01015735%27%2C%27E01015736%27%2C%27E01015737%27%2C%27E01015738%27%2C%27E01015739%27%2C%27E01015740%27%2C%27E01015742%27%2C%27E01015743%27%2C%27E01015744%27%2C%27E01015745%27%2C%27E01015746%27%2C%27E01015747%27%2C%27E01015748%27%2C%27E01015749%27%2C%27E01015750%27%2C%27E01015751%27%2C%27E01015752%27%2C%27E01015753%27%29&outFields=LSOA21CD%2CLSOA21NM&outSR=4326&returnGeometry=true&resultOffset=0&resultRecordCount=1000&f=geojson",
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BGC_V5/FeatureServer/0/query?where=LSOA21CD+IN+%28%27E01015754%27%2C%27E01015755%27%2C%27E01015756%27%2C%27E01015757%27%2C%27E01015758%27%2C%27E01015759%27%2C%27E01015760%27%2C%27E01015761%27%2C%27E01015762%27%2C%27E01015763%27%2C%27E01015764%27%2C%27E01015765%27%2C%27E01015766%27%2C%27E01015767%27%2C%27E01015768%27%2C%27E01015769%27%2C%27E01015770%27%2C%27E01015771%27%2C%27E01015772%27%2C%27E01015773%27%2C%27E01015774%27%2C%27E01015775%27%2C%27E01015776%27%2C%27E01015777%27%2C%27E01015778%27%2C%27E01015779%27%2C%27E01015780%27%2C%27E01015781%27%2C%27E01015782%27%2C%27E01015783%27%2C%27E01015784%27%2C%27E01015785%27%2C%27E01015786%27%2C%27E01015787%27%2C%27E01015788%27%2C%27E01015789%27%2C%27E01015790%27%2C%27E01015792%27%2C%27E01015793%27%2C%27E01015795%27%2C%27E01015796%27%2C%27E01015797%27%2C%27E01015798%27%2C%27E01015799%27%2C%27E01015800%27%2C%27E01015801%27%2C%27E01015802%27%2C%27E01015803%27%2C%27E01015804%27%2C%27E01015805%27%2C%27E01015806%27%2C%27E01015807%27%2C%27E01015808%27%2C%27E01015809%27%2C%27E01015810%27%2C%27E01015811%27%2C%27E01015812%27%2C%27E01015813%27%2C%27E01017371%27%2C%27E01017372%27%29&outFields=LSOA21CD%2CLSOA21NM&outSR=4326&returnGeometry=true&resultOffset=0&resultRecordCount=1000&f=geojson",
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BGC_V5/FeatureServer/0/query?where=LSOA21CD+IN+%28%27E01017373%27%2C%27E01017374%27%2C%27E01017375%27%2C%27E01017376%27%2C%27E01017377%27%2C%27E01017378%27%2C%27E01017379%27%2C%27E01017380%27%2C%27E01017381%27%2C%27E01017382%27%2C%27E01017383%27%2C%27E01017384%27%2C%27E01017385%27%2C%27E01017386%27%2C%27E01017387%27%2C%27E01017388%27%2C%27E01017391%27%2C%27E01017392%27%2C%27E01017393%27%2C%27E01017394%27%2C%27E01017397%27%2C%27E01017398%27%2C%27E01017399%27%2C%27E01017400%27%2C%27E01017401%27%2C%27E01017402%27%2C%27E01017403%27%2C%27E01017404%27%2C%27E01017405%27%2C%27E01017406%27%2C%27E01017407%27%2C%27E01017408%27%2C%27E01017409%27%2C%27E01017410%27%2C%27E01017412%27%2C%27E01017413%27%2C%27E01017414%27%2C%27E01017415%27%2C%27E01017418%27%2C%27E01017419%27%2C%27E01017420%27%2C%27E01017421%27%2C%27E01017422%27%2C%27E01017423%27%2C%27E01017424%27%2C%27E01017425%27%2C%27E01017426%27%2C%27E01017427%27%2C%27E01017428%27%2C%27E01017429%27%2C%27E01017430%27%2C%27E01017431%27%2C%27E01017432%27%2C%27E01017433%27%2C%27E01017434%27%2C%27E01017435%27%2C%27E01017436%27%2C%27E01017437%27%2C%27E01017438%27%2C%27E01017439%27%29&outFields=LSOA21CD%2CLSOA21NM&outSR=4326&returnGeometry=true&resultOffset=0&resultRecordCount=1000&f=geojson",
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BGC_V5/FeatureServer/0/query?where=LSOA21CD+IN+%28%27E01017440%27%2C%27E01017441%27%2C%27E01017442%27%2C%27E01017443%27%2C%27E01017444%27%2C%27E01017446%27%2C%27E01017447%27%2C%27E01017449%27%2C%27E01017450%27%2C%27E01017451%27%2C%27E01017452%27%2C%27E01017453%27%2C%27E01017454%27%2C%27E01017455%27%2C%27E01017456%27%2C%27E01017457%27%2C%27E01017458%27%2C%27E01017459%27%2C%27E01017460%27%2C%27E01017462%27%2C%27E01017463%27%2C%27E01017464%27%2C%27E01017465%27%2C%27E01017466%27%2C%27E01017467%27%2C%27E01017468%27%2C%27E01017470%27%2C%27E01017471%27%2C%27E01017472%27%2C%27E01017474%27%2C%27E01017475%27%2C%27E01017476%27%2C%27E01017477%27%2C%27E01017478%27%2C%27E01017479%27%2C%27E01017480%27%2C%27E01017481%27%2C%27E01017482%27%2C%27E01017483%27%2C%27E01017484%27%2C%27E01017485%27%2C%27E01017487%27%2C%27E01017488%27%2C%27E01017489%27%2C%27E01017490%27%2C%27E01017491%27%2C%27E01017492%27%2C%27E01017493%27%2C%27E01017495%27%2C%27E01017496%27%2C%27E01017497%27%2C%27E01017498%27%2C%27E01017499%27%2C%27E01017500%27%2C%27E01017501%27%2C%27E01017502%27%2C%27E01017503%27%2C%27E01017504%27%2C%27E01017505%27%2C%27E01017506%27%29&outFields=LSOA21CD%2CLSOA21NM&outSR=4326&returnGeometry=true&resultOffset=0&resultRecordCount=1000&f=geojson",
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BGC_V5/FeatureServer/0/query?where=LSOA21CD+IN+%28%27E01017507%27%2C%27E01017508%27%2C%27E01017509%27%2C%27E01017510%27%2C%27E01017511%27%2C%27E01017512%27%2C%27E01017513%27%2C%27E01017514%27%2C%27E01017515%27%2C%27E01017517%27%2C%27E01017518%27%2C%27E01017519%27%2C%27E01017520%27%2C%27E01017521%27%2C%27E01017522%27%2C%27E01017523%27%2C%27E01017524%27%2C%27E01017525%27%2C%27E01017526%27%2C%27E01017527%27%2C%27E01017528%27%2C%27E01017529%27%2C%27E01017530%27%2C%27E01017531%27%2C%27E01017532%27%2C%27E01017533%27%2C%27E01017534%27%2C%27E01017535%27%2C%27E01017536%27%2C%27E01017537%27%2C%27E01017538%27%2C%27E01017539%27%2C%27E01017540%27%2C%27E01017541%27%2C%27E01017542%27%2C%27E01017543%27%2C%27E01017544%27%2C%27E01017545%27%2C%27E01017546%27%2C%27E01017547%27%2C%27E01017549%27%2C%27E01017552%27%2C%27E01017553%27%2C%27E01017554%27%2C%27E01017555%27%2C%27E01017556%27%2C%27E01017557%27%2C%27E01017558%27%2C%27E01017559%27%2C%27E01017560%27%2C%27E01017561%27%2C%27E01017562%27%2C%27E01017563%27%2C%27E01017564%27%2C%27E01017565%27%2C%27E01017566%27%2C%27E01017567%27%2C%27E01017568%27%2C%27E01017569%27%2C%27E01017571%27%29&outFields=LSOA21CD%2CLSOA21NM&outSR=4326&returnGeometry=true&resultOffset=0&resultRecordCount=1000&f=geojson",
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BGC_V5/FeatureServer/0/query?where=LSOA21CD+IN+%28%27E01017572%27%2C%27E01017573%27%2C%27E01017576%27%2C%27E01017577%27%2C%27E01017578%27%2C%27E01017579%27%2C%27E01017580%27%2C%27E01017581%27%2C%27E01017582%27%2C%27E01017583%27%2C%27E01017584%27%2C%27E01017585%27%2C%27E01017586%27%2C%27E01017587%27%2C%27E01017588%27%2C%27E01017589%27%2C%27E01017590%27%2C%27E01017591%27%2C%27E01017592%27%2C%27E01017593%27%2C%27E01017594%27%2C%27E01017595%27%2C%27E01017596%27%2C%27E01017597%27%2C%27E01017598%27%2C%27E01017600%27%2C%27E01017601%27%2C%27E01017602%27%2C%27E01017603%27%2C%27E01017604%27%2C%27E01017605%27%2C%27E01017606%27%2C%27E01017607%27%2C%27E01017608%27%2C%27E01017609%27%2C%27E01017610%27%2C%27E01017611%27%2C%27E01017612%27%2C%27E01017613%27%2C%27E01017614%27%2C%27E01017616%27%2C%27E01017617%27%2C%27E01017618%27%2C%27E01017619%27%2C%27E01017620%27%2C%27E01017621%27%2C%27E01017622%27%2C%27E01017623%27%2C%27E01017624%27%2C%27E01017625%27%2C%27E01017626%27%2C%27E01033188%27%2C%27E01033189%27%2C%27E01033190%27%2C%27E01033191%27%2C%27E01033192%27%2C%27E01033431%27%2C%27E01033801%27%2C%27E01033802%27%2C%27E01033803%27%29&outFields=LSOA21CD%2CLSOA21NM&outSR=4326&returnGeometry=true&resultOffset=0&resultRecordCount=1000&f=geojson",
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Lower_layer_Super_Output_Areas_December_2021_Boundaries_EW_BGC_V5/FeatureServer/0/query?where=LSOA21CD+IN+%28%27E01033804%27%2C%27E01033805%27%2C%27E01033806%27%2C%27E01033807%27%2C%27E01033808%27%2C%27E01033809%27%2C%27E01033810%27%2C%27E01033811%27%2C%27E01033812%27%2C%27E01033813%27%2C%27E01033814%27%2C%27E01033815%27%2C%27E01033816%27%2C%27E01033817%27%2C%27E01033818%27%2C%27E01033819%27%2C%27E01033820%27%2C%27E01033821%27%2C%27E01033822%27%2C%27E01033823%27%2C%27E01033824%27%2C%27E01033825%27%2C%27E01033826%27%2C%27E01033827%27%2C%27E01033828%27%2C%27E01033829%27%2C%27E01033830%27%2C%27E01033831%27%2C%27E01033832%27%2C%27E01033833%27%2C%27E01033834%27%2C%27E01033835%27%2C%27E01033836%27%2C%27E01033837%27%2C%27E01034412%27%2C%27E01034413%27%2C%27E01034414%27%2C%27E01034415%27%2C%27E01034416%27%2C%27E01034417%27%2C%27E01034418%27%2C%27E01034419%27%2C%27E01034420%27%2C%27E01034421%27%2C%27E01034422%27%2C%27E01034423%27%2C%27E01034424%27%2C%27E01034425%27%2C%27E01034426%27%2C%27E01034427%27%2C%27E01034428%27%2C%27E01034429%27%2C%27E01034430%27%2C%27E01034431%27%2C%27E01034432%27%2C%27E01034433%27%2C%27E01034434%27%29&outFields=LSOA21CD%2CLSOA21NM&outSR=4326&returnGeometry=true&resultOffset=0&resultRecordCount=1000&f=geojson",
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Westminster_Parliamentary_Constituencies_July_2024_Boundaries_UK_BGC/FeatureServer/0/query?where=PCON24CD+IN+%28%27E14001084%27%2C%27E14001206%27%2C%27E14001289%27%2C%27E14001345%27%2C%27E14001346%27%2C%27E14001359%27%2C%27E14001384%27%29&outFields=PCON24CD%2CPCON24NM&outSR=4326&returnGeometry=true&resultOffset=0&resultRecordCount=1000&f=geojson",
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/Wards_December_2024_Boundaries_UK_BGC/FeatureServer/0/query?where=LAD24CD+IN+%28%27E06000055%27%2C%27E06000056%27%2C%27E06000032%27%29&outFields=WD24CD%2CWD24NM%2CLAD24CD&outSR=4326&returnGeometry=true&resultOffset=0&resultRecordCount=1000&f=geojson"
+  ],
+  "geography": "LA (Dec 2025), LSOA21, MSOA21, PCON (Jul 2024), wards (Dec 2024 / May 2025 lookup)",
+  "cohort": "context",
+  "period": "LSOA/MSOA Dec 2021; PCON Jul 2024; wards Dec 2024; LAD Dec 2025",
+  "frequency": "Ad hoc",
+  "next_update": "Annual LAD/ward releases (Dec/May); LSOA/MSOA fixed until Census 2031",
+  "access": "API",
+  "quality": "Official ONS boundary products, generalised to 20 m (BGC). Contains OS data (c) Crown copyright and database right; source: ONS licensed under OGL v3.",
+  "limitations": "Generalised (20 m) boundaries rounded to 5 dp: for display, not area measurement. LSOA->ward and LSOA->constituency lookups are best-fit (LSOAs need not nest in 2024 constituencies or wards). Ward polygons are Dec 2024; the lookup is May 2025 (codes identical for these LAs at build). MSOA codes derived from LSOA names (MSOA name + letter), verified against the MSOA layer. HCL MSOA names are informal neighbourhood names.",
+  "licence": "Open Government Licence v3.0 (contains OS data (c) Crown copyright and database right)",
+  "indicators": [
+   {
+    "id": "geo_feature_count",
+    "label": "Boundary features per map layer",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Number of polygons in each site/data/geo layer (breakdown = file)."
+   }
+  ],
+  "files": {
+   "geo/la.geojson": {
+    "features": 3,
+    "bytes": 31556
+   },
+   "geo/la_context.geojson": {
+    "features": 8,
+    "bytes": 133103
+   },
+   "geo/msoa.geojson": {
+    "features": 76,
+    "bytes": 170785
+   },
+   "geo/lsoa.geojson": {
+    "features": 417,
+    "bytes": 475067
+   },
+   "geo/pcon.geojson": {
+    "features": 7,
+    "bytes": 50953
+   },
+   "geo/wards.geojson": {
+    "features": 79,
+    "bytes": 138295
+   }
+  },
+  "id": "geo_boundaries",
+  "retrieved_at": "2026-11-05T20:36Z",
+  "row_count": 15,
+  "sha256": "578b7280b85415eb"
+ },
+ {
+  "title": "English Indices of Deprivation 2025 (LSOA 2021)",
+  "publisher": "Ministry of Housing, Communities and Local Government",
+  "source_url": "https://www.gov.uk/government/statistics/english-indices-of-deprivation-2025",
+  "api_url": [
+   "https://assets.publishing.service.gov.uk/media/691ded56d140bbbaa59a2a7d/File_7_IoD2025_All_Ranks_Scores_Deciles_Population_Denominators.csv"
+  ],
+  "geography": "LSOA21; LA and county summary counts",
+  "cohort": "16-19, 18-24, 25+ inactive, context",
+  "period": "IoD2025",
+  "latest_period": "IoD2025 (published 2025; most indicators 2022/23, population mid-2022)",
+  "frequency": "Ad hoc",
+  "next_update": "Unknown (historically every 4-5 years)",
+  "access": "CSV download",
+  "quality": "Accredited official statistics. First IoD on 2021 LSOAs; 33755 English LSOAs ranked. Education domain combines the Children & Young People sub-domain (attainment, absence, staying on, HE entry) and Adult Skills sub-domain (no/low qualifications, English proficiency, working-age adults, Census 2021).",
+  "limitations": "Ranks and deciles are relative: they show how an LSOA compares with others in England, not absolute levels, and a change of rank does not mean deprivation rose or fell. Not every person in a deprived LSOA is deprived. Not directly comparable with IoD2019 (2011 LSOAs, changed indicators). Domain scores (other than income and employment rates) are standardised composites without natural units. Indicator reference years vary (mostly 2022/23; Adult Skills uses Census 2021). LA summary rows here count LSOAs only; MHCLG's official LA summary measures (rank of average score etc.) are in File 10/11.",
+  "indicators": [
+   {
+    "id": "imd25_imd_score",
+    "label": "Index of Multiple Deprivation score",
+    "unit": "score",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "IoD2025 Index of Multiple Deprivation score (higher = more deprived)."
+   },
+   {
+    "id": "imd25_imd_rank",
+    "label": "Index of Multiple Deprivation rank",
+    "unit": "rank",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "National rank of 33755 English LSOAs (1 = most deprived)."
+   },
+   {
+    "id": "imd25_imd_decile",
+    "label": "Index of Multiple Deprivation decile",
+    "unit": "decile",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "National decile (1 = most deprived 10% of LSOAs in England)."
+   },
+   {
+    "id": "imd25_income_score",
+    "label": "Income domain score",
+    "unit": "rate",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "IoD2025 Income domain score (higher = more deprived) - proportion of population deprived."
+   },
+   {
+    "id": "imd25_income_rank",
+    "label": "Income domain rank",
+    "unit": "rank",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "National rank of 33755 English LSOAs (1 = most deprived)."
+   },
+   {
+    "id": "imd25_income_decile",
+    "label": "Income domain decile",
+    "unit": "decile",
+    "cohort": "context",
+    "polarity": "higher_is_better",
+    "description": "National decile (1 = most deprived 10% of LSOAs in England)."
+   },
+   {
+    "id": "imd25_employment_score",
+    "label": "Employment domain score",
+    "unit": "rate",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "IoD2025 Employment domain score (higher = more deprived) - proportion of population deprived."
+   },
+   {
+    "id": "imd25_employment_rank",
+    "label": "Employment domain rank",
+    "unit": "rank",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "National rank of 33755 English LSOAs (1 = most deprived)."
+   },
+   {
+    "id": "imd25_employment_decile",
+    "label": "Employment domain decile",
+    "unit": "decile",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "National decile (1 = most deprived 10% of LSOAs in England)."
+   },
+   {
+    "id": "imd25_education_score",
+    "label": "Education, Skills & Training domain score",
+    "unit": "score",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "IoD2025 Education, Skills & Training domain score (higher = more deprived)."
+   },
+   {
+    "id": "imd25_education_rank",
+    "label": "Education, Skills & Training domain rank",
+    "unit": "rank",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "National rank of 33755 English LSOAs (1 = most deprived)."
+   },
+   {
+    "id": "imd25_education_decile",
+    "label": "Education, Skills & Training domain decile",
+    "unit": "decile",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "National decile (1 = most deprived 10% of LSOAs in England)."
+   },
+   {
+    "id": "imd25_cyp_score",
+    "label": "Children & Young People sub-domain (education) score",
+    "unit": "score",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "IoD2025 Children & Young People sub-domain (education) score (higher = more deprived)."
+   },
+   {
+    "id": "imd25_cyp_rank",
+    "label": "Children & Young People sub-domain (education) rank",
+    "unit": "rank",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "National rank of 33755 English LSOAs (1 = most deprived)."
+   },
+   {
+    "id": "imd25_cyp_decile",
+    "label": "Children & Young People sub-domain (education) decile",
+    "unit": "decile",
+    "cohort": "16-19",
+    "polarity": "higher_is_better",
+    "description": "National decile (1 = most deprived 10% of LSOAs in England)."
+   },
+   {
+    "id": "imd25_adultskills_score",
+    "label": "Adult Skills sub-domain (education) score",
+    "unit": "score",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "IoD2025 Adult Skills sub-domain (education) score (higher = more deprived)."
+   },
+   {
+    "id": "imd25_adultskills_rank",
+    "label": "Adult Skills sub-domain (education) rank",
+    "unit": "rank",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "National rank of 33755 English LSOAs (1 = most deprived)."
+   },
+   {
+    "id": "imd25_adultskills_decile",
+    "label": "Adult Skills sub-domain (education) decile",
+    "unit": "decile",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "National decile (1 = most deprived 10% of LSOAs in England)."
+   },
+   {
+    "id": "imd25_imd_lsoas_top10",
+    "label": "LSOAs in England's most deprived 10% (Index of Multiple Deprivation)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "Number of LSOAs in national Index of Multiple Deprivation decile 1."
+   },
+   {
+    "id": "imd25_imd_lsoas_top10_pct",
+    "label": "% of LSOAs in England's most deprived 10% (Index of Multiple Deprivation)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "Share of the area's LSOAs in national Index of Multiple Deprivation decile 1 (England = 10% by design)."
+   },
+   {
+    "id": "imd25_imd_lsoas_top20",
+    "label": "LSOAs in England's most deprived 20% (Index of Multiple Deprivation)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "Number of LSOAs in national Index of Multiple Deprivation decile 1-2."
+   },
+   {
+    "id": "imd25_imd_lsoas_top20_pct",
+    "label": "% of LSOAs in England's most deprived 20% (Index of Multiple Deprivation)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "Share of the area's LSOAs in national Index of Multiple Deprivation decile 1-2 (England = 20% by design)."
+   },
+   {
+    "id": "imd25_income_lsoas_top10",
+    "label": "LSOAs in England's most deprived 10% (Income domain)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "Number of LSOAs in national Income domain decile 1."
+   },
+   {
+    "id": "imd25_income_lsoas_top10_pct",
+    "label": "% of LSOAs in England's most deprived 10% (Income domain)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "Share of the area's LSOAs in national Income domain decile 1 (England = 10% by design)."
+   },
+   {
+    "id": "imd25_income_lsoas_top20",
+    "label": "LSOAs in England's most deprived 20% (Income domain)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "Number of LSOAs in national Income domain decile 1-2."
+   },
+   {
+    "id": "imd25_income_lsoas_top20_pct",
+    "label": "% of LSOAs in England's most deprived 20% (Income domain)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "higher_is_worse",
+    "description": "Share of the area's LSOAs in national Income domain decile 1-2 (England = 20% by design)."
+   },
+   {
+    "id": "imd25_employment_lsoas_top10",
+    "label": "LSOAs in England's most deprived 10% (Employment domain)",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Number of LSOAs in national Employment domain decile 1."
+   },
+   {
+    "id": "imd25_employment_lsoas_top10_pct",
+    "label": "% of LSOAs in England's most deprived 10% (Employment domain)",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Share of the area's LSOAs in national Employment domain decile 1 (England = 10% by design)."
+   },
+   {
+    "id": "imd25_employment_lsoas_top20",
+    "label": "LSOAs in England's most deprived 20% (Employment domain)",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Number of LSOAs in national Employment domain decile 1-2."
+   },
+   {
+    "id": "imd25_employment_lsoas_top20_pct",
+    "label": "% of LSOAs in England's most deprived 20% (Employment domain)",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Share of the area's LSOAs in national Employment domain decile 1-2 (England = 20% by design)."
+   },
+   {
+    "id": "imd25_education_lsoas_top10",
+    "label": "LSOAs in England's most deprived 10% (Education, Skills & Training domain)",
+    "unit": "count",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Number of LSOAs in national Education, Skills & Training domain decile 1."
+   },
+   {
+    "id": "imd25_education_lsoas_top10_pct",
+    "label": "% of LSOAs in England's most deprived 10% (Education, Skills & Training domain)",
+    "unit": "percent",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Share of the area's LSOAs in national Education, Skills & Training domain decile 1 (England = 10% by design)."
+   },
+   {
+    "id": "imd25_education_lsoas_top20",
+    "label": "LSOAs in England's most deprived 20% (Education, Skills & Training domain)",
+    "unit": "count",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Number of LSOAs in national Education, Skills & Training domain decile 1-2."
+   },
+   {
+    "id": "imd25_education_lsoas_top20_pct",
+    "label": "% of LSOAs in England's most deprived 20% (Education, Skills & Training domain)",
+    "unit": "percent",
+    "cohort": "16-19,18-24,25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Share of the area's LSOAs in national Education, Skills & Training domain decile 1-2 (England = 20% by design)."
+   }
+  ],
+  "id": "imd2025",
+  "retrieved_at": "2026-11-05T20:39Z",
+  "row_count": 7570,
+  "sha256": "b815cd4ebcf6240d",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Jobs density and total jobs",
+  "publisher": "Office for National Statistics (via Nomis)",
+  "source_url": "https://www.nomisweb.co.uk/sources/jd",
+  "api_url": [
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_57_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS5-latest&item=1,3&measures=20100&select=date_name,geography_code,item,obs_value,obs_status"
+  ],
+  "geography": "LA, region, England, Bedfordshire total",
+  "cohort": "context",
+  "period": "2024",
+  "latest_period": "2024",
+  "frequency": "Annual",
+  "next_update": "Annual (usually early in the year)",
+  "access": "API",
+  "quality": "Official statistics combining BRES, APS (self-employment), DWP and MoD data; rounded to nearest 1,000 jobs.",
+  "limitations": "Jobs are counted at the workplace, people may hold more than one job. Self-employment component comes from APS and carries sampling error. Denominator is the mid-year estimate of 16-64 population.",
+  "indicators": [
+   {
+    "id": "jobs_total",
+    "label": "Total jobs (workplace)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "ONS total jobs located in the area: employees + self-employed + government-supported trainees + HM Forces."
+   },
+   {
+    "id": "jobs_density",
+    "label": "Jobs density",
+    "unit": "ratio",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Total jobs / resident population aged 16-64. <1 means fewer local jobs than working-age residents (net out-commuting). BEDS value computed here."
+   }
+  ],
+  "dataset_code": "NM_57_1",
+  "id": "jobs_density",
+  "retrieved_at": "2026-11-05T20:40Z",
+  "row_count": 71,
+  "sha256": "a6f81b130d17f966",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Small-area population estimates by age (LSOA 2021)",
+  "publisher": "Office for National Statistics (via Nomis)",
+  "source_url": "https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/lowersuperoutputareamidyearpopulationestimates",
+  "api_url": [
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2014_1.data.csv?date=latest&gender=0&c_age=117,118,119,120,200,203,205,207,208,250&measures=20100&select=date_name,geography_code,c_age,obs_value&geography=%3C417+LSOA21+codes,+140%2Frequest%3E"
+  ],
+  "geography": "LSOA21, LA (sum of LSOAs), county",
+  "cohort": "16-19, 18-24, 25+ inactive, context",
+  "period": "mid-2024",
+  "latest_period": "mid-2024",
+  "frequency": "Annual",
+  "next_update": "Autumn each year (next mid-year release c. Nov 2026 - check Nomis)",
+  "access": "API",
+  "quality": "Official statistics (ONS small-area population estimates, Census-2021 based, constrained to LA mid-year estimates, so LSOAs sum exactly to LA totals).",
+  "limitations": "Modelled from administrative data (GP registrations, child benefit, students) rolled forward from Census 2021; accuracy declines with time since the census and for LSOAs with student halls, care homes or new housing. Not rebased to any later census.",
+  "indicators": [
+   {
+    "id": "popsa_16_19",
+    "label": "Population aged 16-19",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "ONS small-area mid-year estimate: population aged 16-19."
+   },
+   {
+    "id": "popsa_18_24",
+    "label": "Population aged 18-24",
+    "unit": "count",
+    "cohort": "18-24",
+    "polarity": "neutral",
+    "description": "ONS small-area mid-year estimate: population aged 18-24."
+   },
+   {
+    "id": "popsa_16_24",
+    "label": "Population aged 16-24",
+    "unit": "count",
+    "cohort": "16-19,18-24",
+    "polarity": "neutral",
+    "description": "ONS small-area mid-year estimate: population aged 16-24."
+   },
+   {
+    "id": "popsa_25_49",
+    "label": "Population aged 25-49",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "ONS small-area mid-year estimate: population aged 25-49."
+   },
+   {
+    "id": "popsa_25_64",
+    "label": "Population aged 25-64",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "ONS small-area mid-year estimate: population aged 25-64."
+   },
+   {
+    "id": "popsa_16_64",
+    "label": "Population aged 16-64 (working age)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "ONS small-area mid-year estimate: population aged 16-64 (working age)."
+   },
+   {
+    "id": "popsa_all",
+    "label": "Total population (all ages)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "ONS small-area mid-year estimate: total population (all ages)."
+   }
+  ],
+  "id": "pop_lsoa",
+  "retrieved_at": "2026-11-05T20:39Z",
+  "row_count": 2947,
+  "sha256": "521e0be7f1684b11",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Mid-year population estimates by age (local authority)",
+  "publisher": "Office for National Statistics (via Nomis)",
+  "source_url": "https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates",
+  "api_url": [
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2002_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS5-latest&gender=0&c_age=115,116,117,118,119,120,121,122,123,124,125,200,203,204,205,207,208,209,250&measures=20100&select=date_name,geography_code,c_age,c_age_name,obs_value,obs_status"
+  ],
+  "geography": "LA, region, England, Bedfordshire total",
+  "cohort": "16-19, 18-24, 25+ inactive, context",
+  "period": "mid-2025",
+  "latest_period": "mid-2025",
+  "frequency": "Annual",
+  "next_update": "Summer 2027 (mid-2026 estimates)",
+  "access": "API",
+  "quality": "Accredited official statistics; mid-2022 onward rolled forward from Census 2021 using admin data. International migration component is the largest source of uncertainty and is revised as ONS improves admin-based migration estimates.",
+  "limitations": "Point estimates with no published confidence intervals. Student-age (18-24) counts depend on term-time address rules (students counted at term-time address). Earlier years may be revised. 16-19 and 25-64 are sums of published single-year/band counts.",
+  "indicators": [
+   {
+    "id": "pop_mye_16_17",
+    "label": "Population aged 16-17",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "ONS mid-year estimate of usual residents aged 16-17."
+   },
+   {
+    "id": "pop_mye_16_19",
+    "label": "Population aged 16-19",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "ONS mid-year estimate of usual residents aged 16-19."
+   },
+   {
+    "id": "pop_mye_18_24",
+    "label": "Population aged 18-24",
+    "unit": "count",
+    "cohort": "18-24",
+    "polarity": "neutral",
+    "description": "ONS mid-year estimate of usual residents aged 18-24."
+   },
+   {
+    "id": "pop_mye_16_24",
+    "label": "Population aged 16-24",
+    "unit": "count",
+    "cohort": "16-19,18-24",
+    "polarity": "neutral",
+    "description": "ONS mid-year estimate of usual residents aged 16-24."
+   },
+   {
+    "id": "pop_mye_25_49",
+    "label": "Population aged 25-49",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "ONS mid-year estimate of usual residents aged 25-49."
+   },
+   {
+    "id": "pop_mye_25_64",
+    "label": "Population aged 25-64",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "ONS mid-year estimate of usual residents aged 25-64."
+   },
+   {
+    "id": "pop_mye_16_64",
+    "label": "Population aged 16-64",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "ONS mid-year estimate of usual residents aged 16-64."
+   },
+   {
+    "id": "pop_mye_50_64",
+    "label": "Population aged 50-64",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "ONS mid-year estimate of usual residents aged 50-64."
+   },
+   {
+    "id": "pop_mye_65_plus",
+    "label": "Population aged 65+",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "ONS mid-year estimate of usual residents aged 65+."
+   },
+   {
+    "id": "pop_mye_total",
+    "label": "Population aged all ages",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "ONS mid-year estimate of usual residents aged all ages."
+   },
+   {
+    "id": "pop_single_age",
+    "label": "Population by single year of age (14-24)",
+    "unit": "count",
+    "cohort": "16-19,18-24",
+    "polarity": "neutral",
+    "description": "Mid-2025 residents by single year of age 14-24 (breakdown 'age N'); ages 14-15 show the cohort reaching 16 in the next two years."
+   }
+  ],
+  "dataset_code": "NM_2002_1",
+  "id": "pop_mye",
+  "retrieved_at": "2026-11-05T20:40Z",
+  "row_count": 426,
+  "sha256": "28a31bbd7a9fb638",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Subnational population projections, 2022-based (principal)",
+  "publisher": "Office for National Statistics (via Nomis)",
+  "source_url": "https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationprojections/bulletins/subnationalpopulationprojectionsforengland/2022based",
+  "api_url": [
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2006_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&projected_year=2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035,2036,2037,2038,2039,2040&gender=0&c_age=117,118,119,120,205,203,250,200&measures=20100&select=date_name,projected_year_name,geography_code,c_age,obs_value,obs_status"
+  ],
+  "geography": "LA, region, England, Bedfordshire total",
+  "cohort": "16-19, 18-24, context",
+  "period": "2025-2040 (2022-based)",
+  "latest_period": "2040",
+  "frequency": "Ad hoc",
+  "next_update": "Unknown (SNPP normally every 2 years; next likely 2024-based)",
+  "access": "API",
+  "quality": "Official statistics (ONS); projections, not forecasts. They assume recent trends in births, deaths and migration continue and do not model local policy or development (e.g. housing growth or a resort opening).",
+  "limitations": "Base year 2022; base pre-dates the mid-2023 to mid-2025 MYEs so early projection years will not match published estimates. Migration assumptions dominate at LA level and 18-24 counts are sensitive to student migration. No uncertainty intervals at LA level.",
+  "indicators": [
+   {
+    "id": "snpp_16_19",
+    "label": "Projected population aged 16-19",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "ONS 2022-based SNPP principal projection of residents aged 16-19, by projection year (period = projection year, mid-year)."
+   },
+   {
+    "id": "snpp_18_24",
+    "label": "Projected population aged 18-24",
+    "unit": "count",
+    "cohort": "18-24",
+    "polarity": "neutral",
+    "description": "ONS 2022-based SNPP principal projection of residents aged 18-24, by projection year (period = projection year, mid-year)."
+   },
+   {
+    "id": "snpp_16_24",
+    "label": "Projected population aged 16-24",
+    "unit": "count",
+    "cohort": "16-19,18-24",
+    "polarity": "neutral",
+    "description": "ONS 2022-based SNPP principal projection of residents aged 16-24, by projection year (period = projection year, mid-year)."
+   },
+   {
+    "id": "snpp_16_64",
+    "label": "Projected population aged 16-64",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "ONS 2022-based SNPP principal projection of residents aged 16-64, by projection year (period = projection year, mid-year)."
+   },
+   {
+    "id": "snpp_total",
+    "label": "Projected population aged all ages",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "ONS 2022-based SNPP principal projection of residents aged all ages, by projection year (period = projection year, mid-year)."
+   }
+  ],
+  "dataset_code": "NM_2006_1",
+  "id": "pop_snpp",
+  "retrieved_at": "2026-11-05T20:40Z",
+  "row_count": 480,
+  "sha256": "a667420be0634f03",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Education and training providers for 14-19 and adult skills (GIAS)",
+  "publisher": "Department for Education - Get Information About Schools",
+  "source_url": "https://get-information-schools.service.gov.uk/Downloads",
+  "api_url": [
+   "https://ea-edubase-api-prod.azurewebsites.net/edubase/downloads/public/edubasealldata20261105.csv",
+   "https://ea-edubasepublic.service.gov.uk/edubasepublicdata/public/edubasealldata20261105.csv"
+  ],
+  "geography": "point (providers); LA counts; Bedfordshire total",
+  "cohort": "16-19, 14-16, adult",
+  "period": "GIAS extract 2026-11-05",
+  "latest_period": "20261105",
+  "frequency": "Daily extract",
+  "next_update": "Daily",
+  "access": "CSV download",
+  "quality": "Administrative register maintained by DfE from establishments and LAs; status, type and address are reliable, but pupil numbers and % FSM are copied from the last school census (CensusDate attribute) and some fields are self-reported by establishments.",
+  "limitations": "Open establishments in Bedford, Central Bedfordshire and Luton that are secondary, all-through, 16-19, UTC/studio, FE/sixth-form college, HEI, alternative provision (age 15+), special schools with post-16 (statutory high age >16) and independent schools with 16+ provision; plus FE and sixth-form colleges in neighbouring LAs within 25 km of the site. Middle schools (9-13, Bedford/Central Bedfordshire three-tier system) and primaries are excluded. Pupil numbers and % FSM are blank for FE colleges, HEIs and many independents (not collected via the school census) and FE college counts are a single head-office record - campuses are not separate rows, so the point is the registered address. GIAS no longer publishes Ofsted grades (ofsted_rating is null; use Ofsted management information). Independent training providers and employer apprenticeship providers are NOT included: no open download links UKPRN to delivery location. Distances are straight-line from the site (52.087N, 0.516W); OSGB36->WGS84 by Helmert (~2 m).",
+  "indicators": [
+   {
+    "id": "providers_pupils",
+    "label": "Pupils on roll (school census)",
+    "unit": "count",
+    "cohort": "16-19, 14-16",
+    "polarity": "neutral",
+    "description": "Number of pupils from the latest school census held in GIAS (NumberOfPupils); one point per provider with attrs (urn, type, phase, age range, sixth form, % FSM, LA, postcode, website, dist_km)."
+   },
+   {
+    "id": "providers_pct_fsm",
+    "label": "% pupils eligible for free school meals",
+    "unit": "percent",
+    "cohort": "16-19, 14-16",
+    "polarity": "higher_is_worse",
+    "description": "PercentageFSM from GIAS (census-based) - deprivation marker for the provider's intake."
+   },
+   {
+    "id": "providers_count",
+    "label": "Number of open providers by category",
+    "unit": "count",
+    "cohort": "16-19, 14-16, adult",
+    "polarity": "neutral",
+    "description": "Count of open providers in each Bedfordshire LA by category (breakdown)."
+   }
+  ],
+  "id": "providers",
+  "retrieved_at": "2026-11-05T20:43Z",
+  "row_count": 168,
+  "sha256": "d9bb1ab222affdc4",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Future 16-19 cohort: pupils by national curriculum year, FSM and SEN",
+  "publisher": "Department for Education",
+  "source_url": [
+   "https://explore-education-statistics.service.gov.uk/find-statistics/school-pupils-and-their-characteristics",
+   "https://explore-education-statistics.service.gov.uk/find-statistics/special-educational-needs-in-england"
+  ],
+  "api_url": [
+   "POST https://api.education.gov.uk/statistics/v1/data-sets/019e7403-0e46-7122-9bc2-3252d775517c/query",
+   "POST https://api.education.gov.uk/statistics/v1/data-sets/019e7404-df19-71ce-90a8-f2e3db7dd7fa/query",
+   "POST https://api.education.gov.uk/statistics/v1/data-sets/019df85e-ab00-7458-a4ff-b381997776cb/query"
+  ],
+  "geography": "LA, region, England, Bedfordshire (3 UAs)",
+  "cohort": "16-19",
+  "period": "2025/26",
+  "latest_period": "2025/26",
+  "frequency": "Annual",
+  "next_update": "June 2027",
+  "access": "API",
+  "quality": "Accredited official statistics from the January school census (all schools including independent for year-group counts); full count, no sampling error.",
+  "limitations": "Counts are by school location (LA where the school is), not pupil residence - Luton and Central Bedfordshire have material cross-border flows (Hertfordshire, Milton Keynes, Buckinghamshire). Excludes home-educated and children missing education. FSM % and SEN % are state-funded secondary schools only; in Bedfordshire's three-tier areas middle schools are counted as secondary. The derived pipeline_aged16_* indicators are a simple cohort roll-forward with NO adjustment for migration, mortality, or movement into/out of independent schools - they indicate scale, not a forecast. Suppressed values (c/x/z/low) are null.",
+  "indicators": [
+   {
+    "id": "pipeline_pupils_by_ncy",
+    "label": "Pupils by national curriculum year (Y7-Y13)",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "Headcount of pupils in each NC year group, all school types, latest January census (breakdown = year group)."
+   },
+   {
+    "id": "pipeline_pupils_y7_11",
+    "label": "Pupils in Y7-Y11",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "Sum of NC years 7-11, all school types (history 2021/22 onwards)."
+   },
+   {
+    "id": "pipeline_pupils_y12_13",
+    "label": "Pupils in school sixth forms (Y12-Y13)",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "Sum of NC years 12-13 in schools (excludes FE/sixth-form colleges)."
+   },
+   {
+    "id": "pipeline_aged16_by_year",
+    "label": "Derived: pupils reaching age 16 by academic year",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "DERIVED indicator. Cohort roll-forward of the 2025/26 census: pupils in NC year N are aged N+4 at the start of that year, so they are aged 16 at the start of academic year T when N = 12 - (T - 2025). E.g. today's Y6 is the cohort aged 16 in 2031/32. period/breakdown = target year (start of academic year). No migration/mortality adjustment."
+   },
+   {
+    "id": "pipeline_aged16_18_by_year",
+    "label": "Derived: 16-18 cohort size by academic year",
+    "unit": "count",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "DERIVED indicator. Sum of the three single-year cohorts aged 16, 17 and 18 at the start of target academic year T (the 16-19 study cohort), rolled forward from the latest census as for pipeline_aged16_by_year. Only years whose three cohorts are all still in Y1-Y11 today (full school coverage) are given - earlier years would rely on school-only Y12-13 counts that omit FE colleges. No migration/mortality adjustment."
+   },
+   {
+    "id": "pipeline_fsm_pct_secondary",
+    "label": "% eligible for FSM (state-funded secondary)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "higher_is_worse",
+    "description": "Percentage of pupils in state-funded secondary schools known to be eligible for free school meals (January census)."
+   },
+   {
+    "id": "pipeline_sen_support_pct_secondary",
+    "label": "% with SEN support (state-funded secondary)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "Percentage of pupils on SEN support (no EHC plan) in state-funded secondary schools - indicates support needs in the future cohort."
+   },
+   {
+    "id": "pipeline_ehcp_pct_secondary",
+    "label": "% with an EHC plan (state-funded secondary)",
+    "unit": "percent",
+    "cohort": "16-19",
+    "polarity": "neutral",
+    "description": "Percentage of pupils with an education, health and care plan in state-funded secondary schools."
+   }
+  ],
+  "id": "school_pipeline",
+  "retrieved_at": "2026-11-05T20:43Z",
+  "row_count": 288,
+  "sha256": "1240494825f429f1",
+  "licence": "Open Government Licence v3.0"
+ }
+]

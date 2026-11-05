@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="govuk-template">
+<head>
+  <meta charset="utf-8">
+  <title>Bedfordshire Labour and Skills Evidence Base</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Open-data evidence base and business case engine for labour supply, skills and training in Bedfordshire.">
+  <meta name="theme-color" content="#0b0c0c">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231d70b8'/%3E%3Cpath d='M6 24V12h4v12zm8 0V6h4v18zm8 0v-8h4v8z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/vendor/govuk-frontend.min.css">
+  <link rel="stylesheet" href="assets/vendor/leaflet.min.css">
+  <link rel="stylesheet" href="assets/app.css?v=__V__">
+</head>
+<body class="govuk-template__body govuk-frontend-supported">
+  <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+
+  <header class="govuk-header ba-header" role="banner">
+    <div class="govuk-header__container govuk-width-container">
+      <div class="govuk-header__logo">
+        <a href="#/" class="govuk-header__link govuk-header__link--homepage ba-logo">
+          <span class="ba-logo__mark" aria-hidden="true"></span>
+          <span class="ba-logo__text">Bedfordshire Labour &amp; Skills</span>
+        </a>
+      </div>
+      <div class="govuk-header__content">
+        <span class="govuk-header__service-name ba-header__strap">Evidence base and business case engine</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="govuk-service-navigation" aria-label="Service information">
+    <div class="govuk-width-container">
+      <div class="govuk-service-navigation__container">
+        <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
+          <ul class="govuk-service-navigation__list" id="nav">
+            <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/">Summary</a></li>
+            <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/explore">Map explorer</a></li>
+            <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/cohort/16-19">16 to 19</a></li>
+            <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/cohort/18-24">18 to 24</a></li>
+            <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/cohort/25-inactive">Inactive 25+</a></li>
+            <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/case">Business case</a></li>
+            <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/analysis">Gaps &amp; linkage</a></li>
+            <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/sources">Sources</a></li>
+            <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/lineage">Data lineage</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <div class="govuk-width-container ba-wide">
+    <div class="govuk-phase-banner">
+      <p class="govuk-phase-banner__content">
+        <strong class="govuk-tag govuk-phase-banner__content__tag">Beta</strong>
+        <span class="govuk-phase-banner__text">Independent analysis of published open data. Not an official statistic or a government service. Aggregate figures only &mdash; no personal data.</span>
+      </p>
+    </div>
+    <main class="govuk-main-wrapper" id="main-content" role="main" tabindex="-1">
+      <div id="app"><p class="govuk-body">Loading evidence base&hellip;</p></div>
+    </main>
+  </div>
+
+  <footer class="govuk-footer" role="contentinfo">
+    <div class="govuk-width-container ba-wide">
+      <div class="govuk-footer__meta">
+        <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+          <h2 class="govuk-visually-hidden">Support links</h2>
+          <ul class="govuk-footer__inline-list">
+            <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#/lineage">Data lineage</a></li>
+            <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#/method">Method and caveats</a></li>
+            <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="data/catalogue.json">Machine-readable catalogue</a></li>
+          </ul>
+          <p class="govuk-footer__meta-custom">Built on GOV.UK Design System patterns. This site is not part of GOV.UK.
+            Source data &copy; Crown copyright and database right, used under the
+            <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>.
+            Contains OS data &copy; Crown copyright and database right. Basemap &copy; OpenStreetMap contributors.</p>
+          <p class="govuk-footer__meta-custom" id="build-stamp"></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/vendor/chart.umd.min.js"></script>
+  <script src="assets/vendor/leaflet.min.js"></script>
+  <script>window.BA_VERSION = "__V__";</script>
+  <script src="assets/core.js?v=__V__"></script>
+  <script src="assets/pages.js?v=__V__"></script>
+  <script src="assets/map.js?v=__V__"></script>
+  <script src="assets/engine.js?v=__V__"></script>
+  <script src="assets/boot.js?v=__V__"></script>
+</body>
+</html>

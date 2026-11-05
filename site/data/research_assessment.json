@@ -1,0 +1,1299 @@
+{
+  "project": {
+    "name": "Universal United Kingdom Resort (planning name: Universal Destinations & Experiences UK Project / Entertainment Resort Complex, Bedford)",
+    "promoter": "Universal Destinations & Experiences (UDX), a business unit of Comcast NBCUniversal; agreement with HM Government (DCMS, HM Treasury, DBT) and Bedford Borough Council",
+    "location_name": "Former brickworks at Kempston Hardwick, south-west of Bedford, between the Marston Vale line (Kempston Hardwick station) and the Midland Main Line (Wixams station), south of the A421. Bedford Borough; ward Wixams & Wilstead; PCON Mid Bedfordshire; nearest LSOA E01034424 (Bedford 018H). SDO site c. 268 ha.",
+    "lat": 52.0898,
+    "lon": -0.4996,
+    "coordinates_note": "52.08975, -0.49958 from the Wikipedia article 'Universal United Kingdom' (site centroid), cross-checked 2026-11-05 with postcodes.io: nearest postcode MK43 9NS (117 m) in LSOA Bedford 018H, which the ES lists as one of the 12 'Local Area' LSOAs. Reference points: Kempston Hardwick station 52.092,-0.504; Wixams station site 52.0871,-0.4867. Site area: SDO/ES say ~268 ha (~662 acres); government press releases say a '476-acre' resort complex - the discrepancy is unresolved (476 acres may refer to the developable resort area rather than the full red line).",
+    "status_as_of": "As at 2026-11-05: (1) 9 Apr 2025 - Prime Minister announced deal between Universal, government and Bedford BC, opening 2031 subject to planning (GOV.UK). (2) Jul 2025 - planning proposal with ES and Employment & Skills Plan published by MHCLG for consultation; Bedford BC final consultation response 28 Aug 2025. (3) 15 Dec 2025 - The Town and Country Planning (Entertainment Resort Complex, Bedford) Special Development (No. 2) Order 2025 (SI 2025/1322) made by the Secretary of State (MHCLG) - planning permission granted by Special Development Order rather than by the council; in force 12 Jan 2026; statement of reasons 22 Dec 2025. (4) Feb 2026 - government named Bedford, Central Beds, Luton and Milton Keynes as its preferred Foundation Strategic Authority grouping (per LSIP 2.0). (5) 3 Jun 2026 - formal investment agreement and name 'Universal United Kingdom Resort': Comcast >£5bn over ~5-year build + £1bn capex in first 10 years of operation; government £1.3bn (£400m Regional Growth Fund grant, £438m DCMS community-infrastructure grant - both paid only after completion/opening - and £474m DfT for A421 and Wixams station); enabling works in progress; >100 UK staff hired; >33,000 expressions of employment interest. (6) ~Jun 2026 - Bedford BC confirmed preliminary on-site construction had begun (Blooloop, 10 Jun 2026). (7) 20 Aug 2026 - Tourism Minister roundtable in Bedford with 8 councils; Socio-Economic Taskforce and themed working groups set up. (8) 15 Sep 2026 - first 23 suppliers named (contractors incl. Galliford Try, Morgan Sindall, Sir Robert McAlpine, Wates, Winvic, Bovis Construction (Europe), PJ Carey). (9) Jun-Oct 2026 - SDO conditions discharged for demolitions, temporary roads, flood resilience and mass grading phases 4.1 and 5.1 (latest 16 Oct 2026).",
+    "timeline": [
+      {
+        "phase": "Deal, planning and SDO",
+        "years": "2023-2026",
+        "description": "Land acquired c.2023; deal 9 Apr 2025; SDO made 15 Dec 2025, in force 12 Jan 2026; condition discharges through 2026.",
+        "source": "https://www.gov.uk/guidance/special-development-order-entertainment-resort-complex-and-associated-development-in-bedford"
+      },
+      {
+        "phase": "Enabling works",
+        "years": "2025-2026",
+        "description": "Archaeology, demolition (Vine Cottage, Guard House), temporary roads, mass grading (packages 4.1 and 5.1), Manor Road closures (to 27 Nov 2026 per Universal project site, secondary report).",
+        "source": "https://www.gov.uk/guidance/special-development-order-entertainment-resort-complex-and-associated-development-in-bedford"
+      },
+      {
+        "phase": "Primary Phase construction",
+        "years": "2026-2031",
+        "description": "ES assumes ~5 years of construction; peak on-site workforce of 5,380 in winter 2029 (Q4 2029 for accommodation demand).",
+        "source": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf"
+      },
+      {
+        "phase": "Pre-opening recruitment and training (inferred)",
+        "years": "c.2029-2031",
+        "description": "Not a published phase: inferred from the need to hire ~8,050 operational staff before opening; Universal already hiring corporate/project staff (>100 by Jun 2026).",
+        "source": "https://www.gov.uk/government/news/universal-theme-park-to-be-uks-most-popular-tourist-attraction"
+      },
+      {
+        "phase": "Primary opening",
+        "years": "2031",
+        "description": "Destination theme park (>=32.37 ha), entry plaza dining/retail, >=500 hotel rooms, >=7,106 car parking spaces; designed for 8.5m visitors/year and 55,000 on a peak day.",
+        "source": "https://assets.publishing.service.gov.uk/media/685bc3df0433072fce0e0fad/01_-_5.1.0_Non-Technical_Summary.pdf"
+      },
+      {
+        "phase": "Full Buildout",
+        "years": "2031-2051",
+        "description": "Balance of the resort (further hotels, retail/dining/entertainment, roads, rail-related works) over ~20 years to 2051; ES 2051 assessment year; Bedford BC cites up to 12.5m visitors/year.",
+        "source": "https://assets.publishing.service.gov.uk/media/685bc3df0433072fce0e0fad/01_-_5.1.0_Non-Technical_Summary.pdf"
+      }
+    ],
+    "jobs_claims": [
+      {
+        "figure": "c. 28,000",
+        "what": "Total jobs headline = ~20,000 construction + ~8,000 operational",
+        "source_title": "GOV.UK press release: Multi-billion-pound investment secured as Universal theme park and resort set to be built in Bedford",
+        "url": "https://www.gov.uk/government/news/multi-billion-pound-investment-secured-as-universal-theme-park-and-resort-set-to-be-built-in-bedford-bringing-thousands-of-jobs",
+        "date": "2025-04-09"
+      },
+      {
+        "figure": "nearly 20,000",
+        "what": "Construction jobs during the build (cumulative headcount over ~5 years, not simultaneous - see peak figure)",
+        "source_title": "GOV.UK press release: Universal theme park to be UK's most popular tourist attraction",
+        "url": "https://www.gov.uk/government/news/universal-theme-park-to-be-uks-most-popular-tourist-attraction",
+        "date": "2026-06-03"
+      },
+      {
+        "figure": "8,000",
+        "what": "Operational (permanent) jobs when it opens in 2031, across hospitality and creative industries",
+        "source_title": "GOV.UK press release (3 Jun 2026); Bedford BC resort page",
+        "url": "https://www.gov.uk/government/news/universal-theme-park-to-be-uks-most-popular-tourist-attraction",
+        "date": "2026-06-03"
+      },
+      {
+        "figure": "5,380 (4,525 UK-hired, 855 from abroad)",
+        "what": "Peak on-site construction workforce, winter 2029; 5,020 on the theme park",
+        "source_title": "Employment & Skills Plan (Doc 6.12.0) para 4.3; ES Chapter 13",
+        "url": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+        "date": "2025-06"
+      },
+      {
+        "figure": "3,215",
+        "what": "Peak construction jobs expected to go to residents of the 60-minute labour catchment (71% resident assumption from CITB survey)",
+        "source_title": "ES Chapter 13 Socio-economics",
+        "url": "https://assets.publishing.service.gov.uk/media/685a8a36db207fc18744d5f0/13_-_2.13.0_Chapter_13_-_Socio-Economics.pdf",
+        "date": "2025-06"
+      },
+      {
+        "figure": "6,110",
+        "what": "Net additional jobs in labour catchment at construction peak incl. indirect/induced (25% displacement, 1.8 multiplier)",
+        "source_title": "ES Chapter 13 Socio-economics",
+        "url": "https://assets.publishing.service.gov.uk/media/685a8a36db207fc18744d5f0/13_-_2.13.0_Chapter_13_-_Socio-Economics.pdf",
+        "date": "2025-06"
+      },
+      {
+        "figure": "8,050 jobs = 5,950 FTE (4,090 FT / 3,960 PT)",
+        "what": "Direct theme-park employment in opening year 2031",
+        "source_title": "Employment & Skills Plan Table 13",
+        "url": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+        "date": "2025-06"
+      },
+      {
+        "figure": "10,000 jobs = 7,395 FTE (5,075 FT / 4,920 PT)",
+        "what": "Direct theme-park employment at maturity 2051 (ES uses 12,465 gross direct for the whole resort in 2051)",
+        "source_title": "Employment & Skills Plan Table 14; ES Ch13 Table 13-56",
+        "url": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+        "date": "2025-06"
+      },
+      {
+        "figure": "5,530 (2031) rising to 6,650 (2051)",
+        "what": "Operational jobs expected to be taken by residents of Bedford + Central Bedfordshire (~69%)",
+        "source_title": "Employment & Skills Plan Table 16",
+        "url": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+        "date": "2025-06"
+      },
+      {
+        "figure": "~80%",
+        "what": "Share of theme park and resort employees expected to come from Bedfordshire and surrounding regions",
+        "source_title": "GOV.UK press releases 9 Apr 2025 and 3 Jun 2026",
+        "url": "https://www.gov.uk/government/news/universal-theme-park-to-be-uks-most-popular-tourist-attraction",
+        "date": "2026-06-03"
+      },
+      {
+        "figure": "11,045 (CSA) / 15,545 (LCA) / 25,195 (national)",
+        "what": "Net additional jobs in 2031 including indirect, worker-induced and visitor-induced effects",
+        "source_title": "ES Chapter 13 Table 13-55",
+        "url": "https://assets.publishing.service.gov.uk/media/685a8a36db207fc18744d5f0/13_-_2.13.0_Chapter_13_-_Socio-Economics.pdf",
+        "date": "2025-06"
+      },
+      {
+        "figure": "16,685 (CSA) / 24,095 (LCA) / 42,485 (national)",
+        "what": "Net additional jobs at full buildout 2051",
+        "source_title": "ES Chapter 13 Table 13-56",
+        "url": "https://assets.publishing.service.gov.uk/media/685a8a36db207fc18744d5f0/13_-_2.13.0_Chapter_13_-_Socio-Economics.pdf",
+        "date": "2025-06"
+      },
+      {
+        "figure": "9.3% (2031), 10.5% (2051)",
+        "what": "Theme park direct jobs as share of projected Bedford workplace employment; 3.9%/4.2% of Bedford + Central Beds",
+        "source_title": "Employment & Skills Plan Table 17",
+        "url": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+        "date": "2025-06"
+      },
+      {
+        "figure": "55 rising to 70 apprenticeships/yr; 15 rising to 35 paid internships/yr; 5% earn-and-learn headcount; 1,430 employee encounters + 400 work experiences/yr at maturity; 40 disadvantaged students/yr; 15 executive mentees/yr",
+        "what": "Employment & skills commitments (operational commitments run at least 5 years from opening; apprenticeship portion for care leavers; Care Leavers Covenant; NLW for all employees)",
+        "source_title": "Employment & Skills Plan Table 23 (secured via SDO controlling documents)",
+        "url": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+        "date": "2025-06"
+      },
+      {
+        "figure": ">100 hired; >33,000 expressions of interest",
+        "what": "UK people already employed on the project and individuals registering employment interest",
+        "source_title": "GOV.UK press release 3 Jun 2026",
+        "url": "https://www.gov.uk/government/news/universal-theme-park-to-be-uks-most-popular-tourist-attraction",
+        "date": "2026-06-03"
+      }
+    ],
+    "visitors": "Primary Phase designed for 8.5m annual visitors and 55,000 on a peak day (ES NTS); government expects 8.5m in the first year, making it the UK's largest visitor attraction (9 Apr 2025), with >1m additional overseas visitors (3 Jun 2026); Bedford BC cites 8.5m rising to 12.5m a year.",
+    "transport": "Road: new A421 junction, Manor Road realigned/dualled between Ampthill Road and the Marston Vale line; Broadmead Road level-crossing improvement (SDO condition 18). Rail: expanded 4-platform Wixams station on the Midland Main Line (Thameslink up to 4 tph each way; EMR may stop) with shuttle buses to the park; DfT committed £474m for A421 and Wixams upgrades (3 Jun 2026). Wixams station works began autumn 2024 with entry into service previously 'anticipated second half of 2026 (prior to Universal announcement)'; 4-platform redesign under review (Bedford BC FAQ, undated). East West Rail: land safeguarded for a new EWR station at Kempston Hardwick; Oxford-Bletchley/MK stage in progress; Bedford-Cambridge route consultation 14 Apr-9 Jun 2026, DCO application planned 2027, full route mid/late 2030s - so EWR will not be complete for a 2031 opening; ES fallback assumes buses from Milton Keynes. Parking >=7,106 cars, 100 coaches, 250 cycles. Shift-worker access from Luton (c. 30 km) is not directly served by rail without changing at Bedford.",
+    "context_notes": "Local labour market (verified via Nomis 2026-11-05): mid-2025 population Bedford 196,398, Central Beds 321,605, Luton 236,380. APS Jul 2025-Jun 2026 16-64 employment rate Bedford 79.7% (95% CI +/-5.0), Central Beds 85.4%, Luton 66.5%, England 75.8%; inactivity 18.7%, 11.4%, 27.8% vs 20.5%. Claimant count Sep 2026: Bedford 5,465 (4.5%), Central Beds 5,150 (2.6%), Luton 10,320 (6.6%); aged 16-24: 980, 1,090, 1,800. Bedfordshire county council was abolished in 2009: analysis must use the three unitaries (E06000055, E06000056, E06000032). ES study areas: Local Area (12 LSOAs), Core Study Area (Bedford + Central Beds), Sub-Regional Context Area (+ Milton Keynes + Luton), 60-min Labour Catchment Area. Competing demand: Luton Airport DCO (granted 3 Apr 2025; up to 11,000 new jobs at 32 mppa), East West Rail, Wixams new town, and the wider Oxford-Cambridge Growth Corridor. South Midlands LSIP 2.0 (Jun 2026) names Universal UK for construction, hospitality, creative and design skills."
+  },
+  "phases": [
+    {
+      "id": "construction",
+      "years": "2026-2031 (peak winter 2029); further build to 2051",
+      "demand_profile": "Peak 5,380 on site (16% from abroad: UDX staff and specialist ride & show installers). Workforce curve components (UDX): archaeological investigation; earthworks & grading; land trades; ride & show vendors; ops & tech services; Universal staff; hotel; back-of-house & resort development; construction support; supporting infrastructure. Mix of entry-level groundwork/labouring (CSCS card, no formal quals), Level 2-3 trades (NVQ/apprenticeship), Level 4-6 engineering/project management, and specialist theming (rockwork, scenic art). ESP Principal Contractor commitments: 'The 5% Club' accreditation (5% of headcount in earn-and-learn), local advertising, school/college engagement, NLW minimum.",
+      "typical_occupations": [
+        "Groundworkers and construction operatives (SOC 8159/9120)",
+        "Plant and machine operatives (8229)",
+        "Civil engineering operatives",
+        "Steel erectors and concrete finishers",
+        "Carpenters and joiners (5316)",
+        "Electricians and electrical fitters (5241)",
+        "Plumbers and HVAC/mechanical engineers (5314)",
+        "Scaffolders and riggers",
+        "Ride and show installation technicians (specialist, partly overseas)",
+        "Theming/scenic artists and rockwork sculptors",
+        "Site supervisors and construction managers (1122)",
+        "Quantity surveyors (2453)",
+        "Civil engineers (2121)",
+        "Health and safety officers",
+        "Archaeologists (Oxford Archaeology appointed)"
+      ],
+      "evidence": [
+        {
+          "claim": "Peak 5,380 workers winter 2029 (4,525 UK; 855 abroad); domestic peak = 3.2% of LCA resident construction workforce",
+          "url": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+          "type": "project estimate"
+        },
+        {
+          "claim": "Construction apprenticeships 24.6% of Bedford+Central Beds starts in 2021/22 (280/1,140) vs 9.8% East of England and 8.0% England",
+          "url": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+          "type": "project evidence base (DfE data)"
+        },
+        {
+          "claim": "BENCHMARK: UK construction needs ~206,000 extra workers 2026-2030 (41,200 a year, 1.6% of 2025 workforce)",
+          "url": "https://www.citb.co.uk/cwo",
+          "type": "benchmark"
+        },
+        {
+          "claim": "ASSUMPTION: 71% of construction jobs to labour-catchment residents, from CITB survey share of East of England workers resident in region (lowest of the regions considered)",
+          "url": "https://assets.publishing.service.gov.uk/media/685a8a36db207fc18744d5f0/13_-_2.13.0_Chapter_13_-_Socio-Economics.pdf",
+          "type": "benchmark/assumption"
+        },
+        {
+          "claim": "Worker accommodation: ~1,375 peak workers expected to need serviced accommodation",
+          "url": "https://assets.publishing.service.gov.uk/media/685a8a36db207fc18744d5f0/13_-_2.13.0_Chapter_13_-_Socio-Economics.pdf",
+          "type": "project estimate"
+        },
+        {
+          "claim": "First 7 contractors named 15 Sep 2026 (Galliford Try, Morgan Sindall, Sir Robert McAlpine, Wates, Winvic, Bovis Construction (Europe), PJ Carey)",
+          "url": "https://www.constructionnews.co.uk/contracts/universal-names-contractors-for-bedford-resort-development-15-09-2026/",
+          "type": "news"
+        }
+      ]
+    },
+    {
+      "id": "pre_opening",
+      "years": "c.2029-2031 (inferred; not a published phase)",
+      "demand_profile": "Bulk recruitment of ~8,050 operational staff in roughly 12-24 months before opening, plus training/rehearsal (entertainment, ride operations, safety). Early hiring of corporate, technical services and maintenance (2-4 year apprenticeships in ride & show maintenance at Universal Orlando suggest technical pipelines must start by ~2027-28). Frontline roles: secondary education, customer-service attitude; skilled: vocational/trade/FE; corporate/creative: FE/degree (ESP Table 19).",
+      "typical_occupations": [
+        "Recruitment and HR officers",
+        "Trainers",
+        "Ride and show maintenance technicians/apprentices",
+        "Engineering technicians",
+        "Performers (rehearsal)",
+        "Security staff (SIA licence)",
+        "Hotel opening teams",
+        "IT and digital support"
+      ],
+      "evidence": [
+        {
+          "claim": "BENCHMARK: Epic Universe (Orlando) announced in 2019 with >14,000 new team members on top of ~25,000 existing Universal Orlando staff, $15 starting wage",
+          "url": "https://www.cfpublic.org/2019-08-01/universal-is-building-a-new-epic-theme-park-that-will-bring-14000-jobs-to-orlando",
+          "type": "benchmark"
+        },
+        {
+          "claim": "BENCHMARK: Universal Orlando apprenticeship programme ~150 apprentices (95 ride & show maintenance, 2-year; 45 on a 4-year programme; 12 restaurant equipment, 3-year)",
+          "url": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+          "type": "benchmark (promoter-reported)"
+        },
+        {
+          "claim": ">33,000 expressions of employment interest by Jun 2026; >100 already employed",
+          "url": "https://www.gov.uk/government/news/universal-theme-park-to-be-uks-most-popular-tourist-attraction",
+          "type": "project fact"
+        },
+        {
+          "claim": "Government Socio-Economic Taskforce (Aug 2026) to prepare local workforce incl. apprenticeships and internships",
+          "url": "https://www.gov.uk/government/news/government-convenes-local-partners-in-bedford-to-maximise-benefits-of-landmark-universal-united-kingdom-resort-across-the-region",
+          "type": "policy"
+        }
+      ]
+    },
+    {
+      "id": "operations",
+      "years": "2031 onwards (opening-year assessment 2031)",
+      "demand_profile": "8,050 direct jobs (5,950 FTE). 49% part-time; part-time roles concentrated in entertainment (750 of 1,060), park & resort operations (1,400 of 2,485), revenue operations (1,400 of 2,795), visitor accommodation (220 of 380); some seasonal. By career level: 57% 'Limited Skill', 24% 'Vocational Skill', 9% Early-Mid Career, 7% Early Career, 3% Mid/Late career. Technical services (720) and digital (90) all full-time. Expected staff residence 2031: Central Beds 35%, Bedford 34%, Luton 7%, Milton Keynes 5%, Oxford 5%, Northampton 4%, Huntingdonshire 3%, Cambridge 2%, North Herts 2%.",
+      "typical_occupations": [
+        "Leisure and theme park attendants / ride operators (SOC 2020 9267)",
+        "Food and beverage servers and baristas (9264/9265)",
+        "Kitchen and catering assistants (9263); chefs and cooks (5434/5435)",
+        "Sales and retail assistants; cashiers (7111/7112)",
+        "Customer service and guest relations (7219)",
+        "Security guards (9241)",
+        "Cleaners/custodial (9219) and housekeepers (9225)",
+        "Hotel receptionists (4216) and porters",
+        "Actors, dancers, entertainers and costume staff (3411/3412)",
+        "Engineering technicians and maintenance fitters (3113/5223)",
+        "Electricians (5241)",
+        "Paramedics and first aid (2255)",
+        "Environmental health and safety officers",
+        "Marketing, finance, HR, IT professionals"
+      ],
+      "evidence": [
+        {
+          "claim": "Department-level FT/PT split for 2031 and 2051 (Tables 13-14)",
+          "url": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+          "type": "project estimate"
+        },
+        {
+          "claim": "81% Vocational or Limited-skill roles (Table 18)",
+          "url": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+          "type": "project estimate"
+        },
+        {
+          "claim": "BENCHMARK: Alton Towers recruited >1,000 seasonal vacancies (theme park + hotels) for the 2024 season",
+          "url": "https://www.expressandstar.com/news/business/2023/12/20/1000-seasonal-jobs-available-at-alton-towers/",
+          "type": "benchmark"
+        },
+        {
+          "claim": "BENCHMARK: Legoland Windsor runs annual seasonal recruitment, season roughly February-November plus Christmas",
+          "url": "https://legoland.co.uk/jobs",
+          "type": "benchmark"
+        },
+        {
+          "claim": "BENCHMARK: ES cites a study that one Disneyland Paris job supports three more elsewhere in France (economy-wide multiplier ~4); ES applies 1.1-2.2 composite multipliers plus visitor-induced effects",
+          "url": "https://assets.publishing.service.gov.uk/media/685a8a36db207fc18744d5f0/13_-_2.13.0_Chapter_13_-_Socio-Economics.pdf",
+          "type": "benchmark"
+        },
+        {
+          "claim": "Staff residence distribution (SLR 2024) used for 5,530 local jobs",
+          "url": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+          "type": "project estimate"
+        }
+      ]
+    },
+    {
+      "id": "growth",
+      "years": "2031-2051 (Full Buildout)",
+      "demand_profile": "Direct theme-park jobs rise to 10,000 (7,395 FTE) by 2051 with the same FT/PT mix; ES gross direct resort employment 12,465 in 2051; additional hotels, retail/dining/entertainment and possible further park(s); continuing construction workforce below the 2029 peak. Supply-chain and visitor-induced jobs (net 24,095 in the LCA by 2051) in food supply, logistics, local accommodation, transport and creative services. Progression demand for supervisors and managers grows as cohorts mature.",
+      "typical_occupations": [
+        "Hospitality supervisors and managers (1221/1223)",
+        "Hotel staff",
+        "Logistics and warehouse operatives (supply chain)",
+        "Bus/coach drivers",
+        "Creative and digital production",
+        "Facilities management",
+        "Construction trades (ongoing phases)"
+      ],
+      "evidence": [
+        {
+          "claim": "10,000 direct theme-park jobs by 2051",
+          "url": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+          "type": "project estimate"
+        },
+        {
+          "claim": "Net additional employment 2051 (Table 13-56)",
+          "url": "https://assets.publishing.service.gov.uk/media/685a8a36db207fc18744d5f0/13_-_2.13.0_Chapter_13_-_Socio-Economics.pdf",
+          "type": "project estimate"
+        },
+        {
+          "claim": "Comcast £1bn capital investment over first 10 years of operation",
+          "url": "https://www.gov.uk/government/news/universal-theme-park-to-be-uks-most-popular-tourist-attraction",
+          "type": "project fact"
+        },
+        {
+          "claim": "Competing growth: Luton Airport up to 11,000 jobs at 32 mppa",
+          "url": "https://lutonrising.org.uk/dco-decision/",
+          "type": "context"
+        }
+      ]
+    }
+  ],
+  "benchmarks": [
+    {
+      "benchmark": "Part-time share of theme park jobs",
+      "value": "49% in 2031 (3,960 of 8,050)",
+      "source": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+      "note": "Promoter estimate; based on UDX worldwide operations."
+    },
+    {
+      "benchmark": "Entry-level share",
+      "value": "57% 'Limited Skill' + 24% 'Vocational Skill' = 81%",
+      "source": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+      "note": "UDX career-level taxonomy, not RQF levels."
+    },
+    {
+      "benchmark": "FTE per head",
+      "value": "0.74 (5,950 FTE / 8,050 jobs)",
+      "source": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+      "note": "Use to convert head-count demand to labour-hours."
+    },
+    {
+      "benchmark": "Construction peak vs headline",
+      "value": "Peak 5,380 vs 'nearly 20,000' headline (~27%)",
+      "source": "https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf",
+      "note": "Headline is cumulative over the build."
+    },
+    {
+      "benchmark": "Overseas construction labour",
+      "value": "855 of 5,380 at peak (16%)",
+      "source": "https://assets.publishing.service.gov.uk/media/685a8a36db207fc18744d5f0/13_-_2.13.0_Chapter_13_-_Socio-Economics.pdf",
+      "note": ""
+    },
+    {
+      "benchmark": "Epic Universe hiring",
+      "value": ">14,000 new team members (announced 2019)",
+      "source": "https://www.cfpublic.org/2019-08-01/universal-is-building-a-new-epic-theme-park-that-will-bring-14000-jobs-to-orlando",
+      "note": "Universal Orlando had ~25,000 staff then; Epic drew heavily on internal transfers. Bedford has no existing Universal workforce to transfer from."
+    },
+    {
+      "benchmark": "Alton Towers seasonal recruitment",
+      "value": ">1,000 seasonal vacancies for 2024 season",
+      "source": "https://www.expressandstar.com/news/business/2023/12/20/1000-seasonal-jobs-available-at-alton-towers/",
+      "note": "Regional theme park; scale of seasonal churn."
+    },
+    {
+      "benchmark": "Disneyland Paris multiplier",
+      "value": "1 direct job : 3 jobs elsewhere in France",
+      "source": "https://assets.publishing.service.gov.uk/media/685a8a36db207fc18744d5f0/13_-_2.13.0_Chapter_13_-_Socio-Economics.pdf",
+      "note": "As cited in the ES; headcount of DLP (~18,000-20,000 cast members in press) not verified from a live primary source."
+    }
+  ],
+  "can_answer": [
+    {
+      "question": "How many 16-19 and 18-24 year olds live in each authority now and in 2031?",
+      "answerable": "yes",
+      "how": "MYE single-year-of-age for current; SNPP 2022-based to 2031; school census year groups as cross-check for the 2031 18-22 cohort.",
+      "sources": [
+        "ons_mye",
+        "ons_snpp",
+        "dfe_spc"
+      ],
+      "geography": "LA (LSOA for current via small-area MYE)"
+    },
+    {
+      "question": "What share of 16-17 year olds are NEET or 'not known' locally, and how does that compare with England?",
+      "answerable": "yes",
+      "how": "DfE NEET LA table (Dec-Feb average) incl. not-known and SEND/ethnicity breakdowns.",
+      "sources": [
+        "dfe_neet_la"
+      ],
+      "geography": "LA"
+    },
+    {
+      "question": "Where (which neighbourhoods) are NEET 16-17 year olds concentrated?",
+      "answerable": "partly",
+      "how": "Not published below LA; needs NCCIS aggregates from the three LAs. Proxy via IoD education & skills domain and absence/FSM by school.",
+      "sources": [
+        "nccis",
+        "iod2025",
+        "dfe_absence",
+        "dfe_spc"
+      ],
+      "geography": "LSOA/ward only with LA data"
+    },
+    {
+      "question": "How many 18-24 year olds are NEET locally?",
+      "answerable": "partly",
+      "how": "No official LA estimate. Model: APS pooled 3-year inactivity/unemployment for 20-24 (often suppressed) + claimant count 18-24 + UC by age from Stat-Xplore + regional NEET rate applied to MYE.",
+      "sources": [
+        "ons_aps",
+        "ons_claimant_count",
+        "dwp_stat_xplore",
+        "dfe_neet_1624",
+        "ons_mye"
+      ],
+      "geography": "LA (wide uncertainty)"
+    },
+    {
+      "question": "How many economically inactive people aged 25-64 are there, and why are they inactive?",
+      "answerable": "partly",
+      "how": "APS gives totals and broad reasons by LA (with CIs and suppression); Census 2021 gives LSOA counts by activity, health, caring and qualifications for 2021.",
+      "sources": [
+        "ons_aps",
+        "census2021_ts",
+        "census2021_rm"
+      ],
+      "geography": "LA (APS); LSOA (Census 2021)"
+    },
+    {
+      "question": "How many inactive people are NOT claiming any benefit ('hidden inactive')?",
+      "answerable": "partly",
+      "how": "Estimate = Census/APS inactive minus Stat-Xplore UC (no work requirements/preparing), ESA, PIP-only and Carer's Allowance claimants of working age, with overlap adjustment; caveated.",
+      "sources": [
+        "ons_aps",
+        "census2021_ts",
+        "dwp_stat_xplore",
+        "dwp_uc_health"
+      ],
+      "geography": "LA; LSOA for Census-year snapshot"
+    },
+    {
+      "question": "What qualifications do local residents hold, and how many lack L2/L3?",
+      "answerable": "yes",
+      "how": "Census TS067 (LSOA, 2021), APS RQF levels (LA), DfE L2/L3 at 19 (LA).",
+      "sources": [
+        "census2021_ts",
+        "ons_aps",
+        "dfe_l2l3_at19"
+      ],
+      "geography": "LSOA/LA"
+    },
+    {
+      "question": "How many apprenticeships and adult FE learners in relevant sectors are there each year?",
+      "answerable": "yes",
+      "how": "DfE apprenticeships and FE & skills by LA/PCON and sector subject area.",
+      "sources": [
+        "dfe_apprenticeships",
+        "dfe_fe_skills"
+      ],
+      "geography": "LA/PCON"
+    },
+    {
+      "question": "What jobs will Universal create, when, and at what skill level?",
+      "answerable": "yes",
+      "how": "Promoter ESP/ES tables (department, FT/PT, career level, residence), benchmarked; timing from SDO discharges.",
+      "sources": [
+        "universal_esp",
+        "universal_es_ch13",
+        "sdo_conditions"
+      ],
+      "geography": "Site/LA"
+    },
+    {
+      "question": "Can local supply meet construction peak demand, and which trades will be scarce?",
+      "answerable": "partly",
+      "how": "Compare 5,380 peak with BRES construction employment, Census occupation, CITB regional recruitment requirement and Textkernel adverts; trade-level mix for Universal not published.",
+      "sources": [
+        "universal_esp",
+        "ons_bres",
+        "census2021_ts",
+        "citb_cwo",
+        "ons_textkernel"
+      ],
+      "geography": "LA/region"
+    },
+    {
+      "question": "How many existing hospitality/leisure jobs could be displaced or poached?",
+      "answerable": "partly",
+      "how": "BRES SIC 55/56/93 employment and ASHE pay vs Universal pay; actual flows need RTI microdata.",
+      "sources": [
+        "ons_bres",
+        "ons_ashe",
+        "ons_textkernel",
+        "hmrc_rti_micro"
+      ],
+      "geography": "LA/LSOA"
+    },
+    {
+      "question": "Which neighbourhoods can reach the site within 45-60 minutes by public transport for shift times?",
+      "answerable": "partly",
+      "how": "Build travel-time matrix from BODS + rail timetables (scenario-adding Wixams shuttle), using LSOA population-weighted centroids; DfT JTS only as baseline.",
+      "sources": [
+        "dft_bods",
+        "dft_journey_times",
+        "ons_geography"
+      ],
+      "geography": "LSOA"
+    },
+    {
+      "question": "How many care leavers and young people with EHCPs could take Universal's reserved opportunities?",
+      "answerable": "yes",
+      "how": "CLA care leavers 17-21 activity and EHCP counts by age; small numbers suppressed.",
+      "sources": [
+        "dfe_cla",
+        "dfe_ehcp"
+      ],
+      "geography": "LA"
+    },
+    {
+      "question": "Will the 2031 opening cohort have been tracked through school (early warning)?",
+      "answerable": "partly",
+      "how": "Year groups 7-11 in 2026 become 18-22 in 2031; school-level absence, attainment, FSM and destination data allow risk profiling by school; pupil-level needs NPD/LA data.",
+      "sources": [
+        "dfe_spc",
+        "dfe_absence",
+        "dfe_ks4_perf",
+        "dfe_ks4_destinations",
+        "npd"
+      ],
+      "geography": "School/LA"
+    },
+    {
+      "question": "How many people commuting in from outside Bedfordshire will take the jobs?",
+      "answerable": "partly",
+      "how": "Promoter residence distribution (31% outside Bedford/Central Beds); Census 2021 OD flows (COVID-distorted). Real answer only once Universal shares HR postcode data.",
+      "sources": [
+        "universal_esp",
+        "census2021_od"
+      ],
+      "geography": "LA"
+    },
+    {
+      "question": "What are local health barriers to work among young people?",
+      "answerable": "partly",
+      "how": "UC health, PIP by condition, Fingertips mental-health indicators, fit notes; no LA measure of non-claimant ill-health below Census.",
+      "sources": [
+        "dwp_uc_health",
+        "dwp_stat_xplore",
+        "ohid_fingertips",
+        "nhs_fit_notes",
+        "census2021_ts"
+      ],
+      "geography": "LA/ICB"
+    },
+    {
+      "question": "What are employers' current hard-to-fill vacancies in hospitality and construction locally?",
+      "answerable": "partly",
+      "how": "ESS 2024 at LSIP area; Textkernel adverts by LA/SOC; LSIP 2.0 employer evidence.",
+      "sources": [
+        "dfe_ess",
+        "ons_textkernel",
+        "lsip_south_midlands"
+      ],
+      "geography": "LSIP area/LA"
+    },
+    {
+      "question": "How many home-educated or 'missing' young people are there?",
+      "answerable": "partly",
+      "how": "DfE EHE (LA, termly, in development); unregistered children invisible.",
+      "sources": [
+        "dfe_ehe"
+      ],
+      "geography": "LA"
+    },
+    {
+      "question": "Will Universal's local-employment and skills commitments be met?",
+      "answerable": "no",
+      "how": "Requires Universal/MHCLG monitoring returns (ESP section 7 compliance regime) - not yet public.",
+      "sources": [
+        "universal_esp",
+        "sdo_conditions"
+      ],
+      "geography": "Site"
+    }
+  ],
+  "gaps": [
+    {
+      "gap": "Economically inactive people not claiming any benefit",
+      "who_is_invisible": "Inactive 25+ (and 18-24) supported by partners/family, early retirees, people with savings, students' partners",
+      "why": "Admin data only sees claimants; APS sample too small to break down by reason at LA; Census 2021 is a one-off snapshot during COVID",
+      "impact": "Largest untapped pool for 'Limited Skill' roles is unsized locally; outreach via Jobcentres misses it",
+      "mitigation": "Hidden-inactive estimate (Census/APS minus Stat-Xplore); pooled APS microdata via UKDS Secure; community/VCS outreach; library/GP-surgery channels."
+    },
+    {
+      "gap": "Hidden NEET 18-24s",
+      "who_is_invisible": "18-24s not in education, work or training and not on UC",
+      "why": "LA tracking stops at academic age 18 (except EHCP); England estimate is ~314,000 of ~678,000 NEET 18-24s (46%) claiming nothing",
+      "impact": "Biggest youth pool for opening-year hiring cannot be counted or reached by DWP",
+      "mitigation": "Apply Milburn/RAPID-LEO hidden-NEET share to local NEET estimate; seek LEO via SRS; extend LA tracking to 18-24 with Universal-funded Youth Hub."
+    },
+    {
+      "gap": "'Not known' activity in NCCIS",
+      "who_is_invisible": "16-17s whose activity the LA cannot confirm",
+      "why": "Contact failures, moves, out-of-area colleges",
+      "impact": "NEET rate understated; at-risk young people unreachable",
+      "mitigation": "Report NEET + not known; request ward-level not-known counts; data-matching with colleges' ILR."
+    },
+    {
+      "gap": "Carers",
+      "who_is_invisible": "Unpaid carers (esp. women 25-64, young carers) not on Carer's Allowance",
+      "why": "CA has earnings and hours thresholds; Census unpaid care is self-reported once a decade",
+      "impact": "Need for flexible/part-time roles underestimated - yet 49% of Universal roles are part-time",
+      "mitigation": "Census TS039 by LSOA + CA from Stat-Xplore; carers' centre data; design shift patterns accordingly."
+    },
+    {
+      "gap": "People with health conditions not on health benefits",
+      "who_is_invisible": "People managing mental-health or musculoskeletal conditions without UC LCWRA/PIP",
+      "why": "Benefit data captures assessed claimants only; fit notes record GP practice not residence",
+      "impact": "Supported-employment demand understated",
+      "mitigation": "Census general health/disability by LSOA; Fingertips; NHS Talking Therapies employment advisers; IPS data from ICB."
+    },
+    {
+      "gap": "Home-educated and children missing education",
+      "who_is_invisible": "Teenagers educated at home or off-roll",
+      "why": "Registers are voluntary/incomplete; no exam/destination data",
+      "impact": "Missing GCSE English/maths - barrier to apprenticeships",
+      "mitigation": "DfE EHE counts; LA EHE teams; target functional skills courses."
+    },
+    {
+      "gap": "18-24s not in UC and not in HE",
+      "who_is_invisible": "Young people living with parents, in informal/cash work or gig work",
+      "why": "No admin footprint; APS 18-24 cells suppressed locally",
+      "impact": "Over-reliance on claimant count understates youth labour slack",
+      "mitigation": "Census 2021 activity by age at LSOA; HESA domicile to net out students; social-media recruitment analytics from Universal."
+    },
+    {
+      "gap": "Migrants with unrecognised qualifications",
+      "who_is_invisible": "Recent migrants, refugees, Ukrainian/Afghan arrivals, partners of skilled-worker visa holders",
+      "why": "Census records overseas quals as 'other'; APS small samples; no recognition data (ENIC) by area",
+      "impact": "Skilled workers (engineers, hospitality managers) misclassified as low-skilled; ESOL need under-planned",
+      "mitigation": "NINo allocations by LA; Home Office LA scheme data; Census English proficiency; ENIC statements of comparability fund."
+    },
+    {
+      "gap": "In-commuters from outside Bedfordshire",
+      "who_is_invisible": "Workers from MK, Northampton, Huntingdonshire, Oxford, Cambridge (~31% of staff modelled)",
+      "why": "Tool is built on Bedfordshire geographies; Census OD is 2021 and COVID-distorted",
+      "impact": "Local-share targets and supply/demand gaps mis-stated",
+      "mitigation": "Extend tool to the 60-min LCA LAs; request anonymised staff postcode sectors from Universal annually."
+    },
+    {
+      "gap": "Small-sample APS estimates",
+      "who_is_invisible": "Any LA x age x reason combination (e.g. Central Beds 20-24 inactivity, 'inactive want a job')",
+      "why": "LFS/APS response collapse; suppression; Bedford employment rate CI +/-5pp",
+      "impact": "Spurious trends; false precision in business case",
+      "mitigation": "Pool 3 years; show CIs; prefer Census/admin for small areas; triangulate with claimant and RTI."
+    },
+    {
+      "gap": "Universal's own workforce plan detail",
+      "who_is_invisible": "Exact trades mix, hiring calendar, shift patterns, wage bands, minimum qualifications",
+      "why": "Commercial confidentiality; ESP gives department totals only",
+      "impact": "Supply/demand by occupation relies on benchmarks",
+      "mitigation": "Data-sharing agreement via Socio-Economic Taskforce; MHCLG monitoring returns."
+    },
+    {
+      "gap": "Construction workforce origin and trades",
+      "who_is_invisible": "Subcontractor and agency workers, CIS self-employed, overseas specialists",
+      "why": "BRES/ASHE exclude most self-employed; no site-level reporting yet",
+      "impact": "Cannot test 71% local assumption or displacement from other projects",
+      "mitigation": "Require Principal Contractors to report postcode-sector, trade and apprenticeship data (e.g. via Considerate Constructors/CITB Client-Based Approach)."
+    },
+    {
+      "gap": "Learners at out-of-area or private providers",
+      "who_is_invisible": "Bedfordshire residents studying at MK/Northampton colleges or unfunded private training",
+      "why": "DfE releases by residence are available but provider-level local partnerships unknown; private provision not in ILR",
+      "impact": "Training capacity mis-estimated",
+      "mitigation": "ILR by residence (LA/PCON) from EES; provider surveys via LSIP."
+    },
+    {
+      "gap": "Census 2021 COVID distortion",
+      "who_is_invisible": "Furloughed workers counted as employed; home-workers' commuting",
+      "why": "Census day 21 March 2021 during lockdown",
+      "impact": "Activity and travel-to-work baselines biased",
+      "mitigation": "Use Census for structure (shares), APS/admin for levels; flag in tool."
+    }
+  ],
+  "linkage": [
+    {
+      "analysis": "Hidden-inactive estimate (25-64)",
+      "combine": [
+        "census2021_ts",
+        "ons_aps",
+        "dwp_stat_xplore",
+        "dwp_uc_health",
+        "ons_mye"
+      ],
+      "method": "Inactive working-age (APS level; Census 2021 LSOA distribution) minus claimants of UC (no work requirements + preparing for work), ESA, PIP-only and Carer's Allowance (de-duplicated using DWP 'benefit combinations' where available); scale LSOA shares to current APS LA total.",
+      "output": "Count and rate of inactive non-claimants by LSOA with uncertainty band",
+      "geography": "LSOA (benchmarked to LA)",
+      "caveats": "Different reference dates; overlaps between benefits; students inactive by definition (remove full-time students using Census)."
+    },
+    {
+      "analysis": "Hidden-NEET 18-24 estimate",
+      "combine": [
+        "ons_mye",
+        "dfe_neet_1624",
+        "ons_aps",
+        "dwp_stat_xplore",
+        "milburn_ypw"
+      ],
+      "method": "Regional NEET rate x local 18-24 MYE (adjusted by local APS where unsuppressed), minus UC/PIP 18-24 claimants; cross-check against national 46% non-claimant share from Milburn annex.",
+      "output": "Estimated NEET 18-24 and hidden NEETs per LA",
+      "geography": "LA",
+      "caveats": "Regional rates may not reflect Luton's very different profile; students-at-home effects."
+    },
+    {
+      "analysis": "School cohort roll-forward to 2031",
+      "combine": [
+        "dfe_spc",
+        "ons_mye",
+        "ons_snpp",
+        "dfe_ks4_perf",
+        "dfe_ks4_destinations",
+        "dfe_l2l3_at19"
+      ],
+      "method": "Take Year 7-11 counts (2025/26) by school/LA, age forward to 2031 with SNPP migration factors; apply historic KS4 attainment, destination and L2/L3-at-19 rates to estimate 18-22s with/without L2 English & maths in 2031.",
+      "output": "Projected 2031 pool of 18-22s by qualification level and LA",
+      "geography": "LA (school-level inputs)",
+      "caveats": "School vs residence mismatch; policy changes (post-16 reforms)."
+    },
+    {
+      "analysis": "NEET-risk early-warning index",
+      "combine": [
+        "dfe_absence",
+        "dfe_exclusions",
+        "dfe_spc",
+        "dfe_sen",
+        "dfe_ehcp",
+        "iod2025",
+        "dwp_cilif",
+        "dfe_ks4_destinations",
+        "nccis"
+      ],
+      "method": "Composite z-score: persistent/severe absence, suspension rate, FSM %, SEN support + EHCP %, IDACI of pupil-residence LSOAs, 'not sustained' KS4 destination rate; validate against NCCIS NEET by school/ward when obtained (RONI-style).",
+      "output": "Risk score by school and LSOA; ranked outreach list",
+      "geography": "School/LSOA",
+      "caveats": "Ecological inference; needs LA validation; avoid labelling individuals in published outputs."
+    },
+    {
+      "analysis": "Public-transport catchment for shift work",
+      "combine": [
+        "dft_bods",
+        "ons_geography",
+        "ons_mye",
+        "census2021_ts",
+        "dft_journey_times"
+      ],
+      "method": "OpenTripPlanner/r5 with BODS GTFS + rail, LSOA population-weighted centroids to site and Wixams station, at 06:30/23:30 departure times; scenarios with/without Wixams shuttle and EWR.",
+      "output": "Population and inactive/claimant counts within 30/45/60 min by mode and time",
+      "geography": "LSOA",
+      "caveats": "Future timetables unknown; car access (Census TS045) matters for night shifts."
+    },
+    {
+      "analysis": "Supply/demand by occupation",
+      "combine": [
+        "universal_esp",
+        "census2021_ts",
+        "ons_aps",
+        "ons_textkernel",
+        "ons_bres",
+        "citb_cwo"
+      ],
+      "method": "Map Universal departments to SOC 2020 groups; compare with resident workers in those SOCs (Census/APS), current adverts (Textkernel) and projected construction requirement (CITB).",
+      "output": "Gap ratio by occupation and phase",
+      "geography": "LA / LCA",
+      "caveats": "Department-to-SOC mapping is judgemental; 2021 occupation base."
+    },
+    {
+      "analysis": "Displacement risk in hospitality and leisure",
+      "combine": [
+        "ons_bres",
+        "ons_ashe",
+        "ons_textkernel",
+        "ons_paye_rti"
+      ],
+      "method": "Size SIC 55/56/93 employment by LSOA within 30 min; compare median pay to Universal entry wage (NLW floor); monitor advert and payroll trends post-2029.",
+      "output": "Exposure index of incumbent employers",
+      "geography": "LSOA/LA",
+      "caveats": "No flows observed without RTI microdata."
+    },
+    {
+      "analysis": "Skills-academy siting optimisation",
+      "combine": [
+        "census2021_ts",
+        "dwp_stat_xplore",
+        "iod2025",
+        "dft_bods",
+        "gias"
+      ],
+      "method": "Location-allocation (maximise target-population within 30 min PT) over candidate sites (Bedford town centre, Kempston, Wixams, Luton, Biggleswade/Flitwick) weighting by hidden-inactive and NEET-risk counts.",
+      "output": "Ranked candidate sites with coverage",
+      "geography": "LSOA",
+      "caveats": "Sensitive to weights; site availability."
+    },
+    {
+      "analysis": "Care leaver and EHCP pathway sizing",
+      "combine": [
+        "dfe_cla",
+        "dfe_ehcp",
+        "dfe_neet_la",
+        "universal_esp"
+      ],
+      "method": "Count care leavers 17-21 NEET and EHCP 19-25 in FE/NEET; compare with Universal's apprenticeship/internship allocations.",
+      "output": "Target numbers per year for reserved places",
+      "geography": "LA",
+      "caveats": "Small numbers - suppression; LA of responsibility vs residence."
+    },
+    {
+      "analysis": "Adult skills pipeline readiness",
+      "combine": [
+        "dfe_fe_skills",
+        "dfe_apprenticeships",
+        "dfe_fe_outcomes",
+        "ofsted_fe_mi",
+        "lsip_south_midlands"
+      ],
+      "method": "Current starts/achievements in hospitality, retail, customer service, engineering, construction by LA vs required annual throughput to 2031; outcome rates from LEO-based FE outcomes; provider quality from Ofsted MI.",
+      "output": "Capacity gap by sector subject area",
+      "geography": "LA/provider",
+      "caveats": "Funding/devolution changes (Foundation Strategic Authority)."
+    }
+  ],
+  "additional_data": [
+    {
+      "data": "NCCIS/CCIS client-level aggregates (NEET by reason, not known, by ward/LSOA, age 16-18 and EHCP to 25)",
+      "likely_holder": "Tracking/careers teams at Bedford BC, Central Bedfordshire Council, Luton BC",
+      "granularity_needed": "Ward/LSOA, monthly",
+      "use": "Map NEET and not-known hot spots; validate NEET-risk index",
+      "route_to_access": "Data-sharing agreement via Socio-Economic Taskforce; aggregate, suppressed (<5) outputs"
+    },
+    {
+      "data": "Universal Credit people by conditionality regime and age at LSOA; UC health (LCWRA) by LSOA",
+      "likely_holder": "DWP (Stat-Xplore; bespoke via DWP Local Partnerships)",
+      "granularity_needed": "LSOA, monthly",
+      "use": "Hidden-inactive estimate and outreach targeting",
+      "route_to_access": "Stat-Xplore API (free); bespoke tables via DWP analytical request"
+    },
+    {
+      "data": "Jobcentre Plus caseload, Youth Hub/Youth Guarantee participation, Restart/Connect to Work referrals",
+      "likely_holder": "DWP district (Beds, Northants, Cambs & Herts) and LA employment teams",
+      "granularity_needed": "Jobcentre/LA, monthly",
+      "use": "Track flows into Universal pre-employment programmes",
+      "route_to_access": "DWP partnership manager MI (non-public); Get Britain Working plan governance"
+    },
+    {
+      "data": "Local college ILR extracts (enrolments, achievements, destinations by postcode)",
+      "likely_holder": "The Bedford College Group, Central Bedfordshire College, Barnfield College/Luton Sixth Form, adult learning services",
+      "granularity_needed": "Postcode sector, course, termly",
+      "use": "Training capacity and pipeline monitoring",
+      "route_to_access": "DSA with providers; LSIP partnership"
+    },
+    {
+      "data": "Council adult & community learning data (ESOL, functional skills, employability)",
+      "likely_holder": "Bedford BC Adult Skills & Community Learning, Central Beds adult learning, Luton Adult Learning",
+      "granularity_needed": "Ward/postcode sector, termly",
+      "use": "Reach into inactive adults",
+      "route_to_access": "Request from LA services"
+    },
+    {
+      "data": "Universal workforce plan: hiring calendar, roles by SOC, shift patterns, wage bands, minimum quals, staff home postcode sectors",
+      "likely_holder": "Universal Destinations & Experiences UK",
+      "granularity_needed": "Role/month; postcode sector",
+      "use": "Replace benchmarks in supply/demand model; monitor local share",
+      "route_to_access": "ESP monitoring regime (designated representative, MHCLG compliance logs); Taskforce DSA"
+    },
+    {
+      "data": "Principal Contractor workforce returns (headcount, trades, postcode, apprentices, 5% Club)",
+      "likely_holder": "Galliford Try, Morgan Sindall, Sir Robert McAlpine, Wates, Winvic etc. via UDX",
+      "granularity_needed": "Monthly, trade x postcode district",
+      "use": "Test 71% local assumption, apprenticeship delivery",
+      "route_to_access": "ESP construction commitments; request through Bedford BC/MHCLG"
+    },
+    {
+      "data": "LSIP employer survey microdata (South Midlands)",
+      "likely_holder": "Northamptonshire, MK and Bedfordshire Chambers of Commerce",
+      "granularity_needed": "Employer by sector/LA",
+      "use": "Local hard-to-fill vacancies and displacement concerns",
+      "route_to_access": "Request anonymised extract from ERB"
+    },
+    {
+      "data": "School-level and pupil-level absence, exclusions, FSM, SEN (current year)",
+      "likely_holder": "LA education/data teams (school census returns)",
+      "granularity_needed": "Pupil-level (in LA) -> school/LSOA aggregates",
+      "use": "NEET-risk index with current data",
+      "route_to_access": "LA internal processing; outputs aggregated"
+    },
+    {
+      "data": "Elective home education registers and children-missing-education case counts",
+      "likely_holder": "LA EHE/CME teams",
+      "granularity_needed": "LA/ward, age",
+      "use": "Size the home-educated 14-17 group",
+      "route_to_access": "LA request"
+    },
+    {
+      "data": "Carers' centre and young carers registers",
+      "likely_holder": "Carers in Bedfordshire; Luton carers services",
+      "granularity_needed": "Postcode sector",
+      "use": "Flexible-work targeting for carers",
+      "route_to_access": "VCS partnership agreement"
+    },
+    {
+      "data": "NHS Talking Therapies / IPS employment support activity",
+      "likely_holder": "Bedfordshire, Luton and Milton Keynes ICB",
+      "granularity_needed": "Place, quarterly",
+      "use": "Health-related inactivity pathway",
+      "route_to_access": "ICB request"
+    },
+    {
+      "data": "Real-time job adverts at employer level",
+      "likely_holder": "Lightcast (commercial); LA/college licences",
+      "granularity_needed": "Employer x SOC x postcode, weekly",
+      "use": "Live demand and competition",
+      "route_to_access": "Licence or piggy-back on existing LA/LSIP licence"
+    },
+    {
+      "data": "LEO / RAPID-LEO extracts for local cohorts",
+      "likely_holder": "DfE / DWP via ONS SRS",
+      "granularity_needed": "LA, annual",
+      "use": "Hidden NEET and post-school trajectories",
+      "route_to_access": "Accredited researcher project in SRS"
+    }
+  ],
+  "minimum_dataset": [
+    {
+      "source": "ons_mye",
+      "measures": "Population 16-19, 18-24, 25-64 by sex",
+      "geography": "LA, LSOA",
+      "frequency": "Annual",
+      "role_in_case": "Denominators; cohort size"
+    },
+    {
+      "source": "ons_snpp",
+      "measures": "Projected 16-24 to 2031/2041",
+      "geography": "LA",
+      "frequency": "When re-based",
+      "role_in_case": "Future labour pool"
+    },
+    {
+      "source": "ons_aps",
+      "measures": "Employment, unemployment, inactivity (by age, reason), quals (RQF), with CIs",
+      "geography": "LA",
+      "frequency": "Quarterly",
+      "role_in_case": "Headline labour-market slack"
+    },
+    {
+      "source": "ons_claimant_count",
+      "measures": "Claimants total and 18-24",
+      "geography": "LA, LSOA",
+      "frequency": "Monthly",
+      "role_in_case": "Timely unemployment signal"
+    },
+    {
+      "source": "dwp_stat_xplore",
+      "measures": "UC by conditionality and age; ESA; PIP; Carer's Allowance",
+      "geography": "LA, LSOA",
+      "frequency": "Monthly/quarterly",
+      "role_in_case": "Hidden-inactive arithmetic; outreach targeting"
+    },
+    {
+      "source": "census2021_ts",
+      "measures": "Economic activity, quals, health, unpaid care, car availability, occupation",
+      "geography": "LSOA",
+      "frequency": "Static (2021)",
+      "role_in_case": "Small-area structure"
+    },
+    {
+      "source": "census2021_od",
+      "measures": "Commuting flows to site MSOA and Bedford",
+      "geography": "MSOA/LA",
+      "frequency": "Static (2021)",
+      "role_in_case": "Catchment calibration"
+    },
+    {
+      "source": "iod2025",
+      "measures": "IMD and employment/education/skills domains",
+      "geography": "LSOA",
+      "frequency": "Static (2025)",
+      "role_in_case": "Targeting"
+    },
+    {
+      "source": "dfe_neet_la",
+      "measures": "NEET, not known, combined, by SEND",
+      "geography": "LA",
+      "frequency": "Annual",
+      "role_in_case": "16-17 NEET baseline"
+    },
+    {
+      "source": "dfe_l2l3_at19",
+      "measures": "L2, L3, L2 with English & maths by 19; FSM gap",
+      "geography": "LA",
+      "frequency": "Annual",
+      "role_in_case": "Qualification readiness"
+    },
+    {
+      "source": "dfe_apprenticeships",
+      "measures": "Starts/achievements by age band and sector subject area",
+      "geography": "LA/PCON",
+      "frequency": "Quarterly/annual",
+      "role_in_case": "Pipeline and ESP commitment context"
+    },
+    {
+      "source": "dfe_fe_skills",
+      "measures": "Adult FE participation incl. ESOL, English & maths",
+      "geography": "LA/PCON",
+      "frequency": "Quarterly/annual",
+      "role_in_case": "Adult re-skilling throughput"
+    },
+    {
+      "source": "dfe_ks4_destinations",
+      "measures": "Sustained destinations, not sustained, by disadvantage",
+      "geography": "School/LA",
+      "frequency": "Annual",
+      "role_in_case": "NEET-risk index; transitions"
+    },
+    {
+      "source": "dfe_absence",
+      "measures": "Persistent and severe absence",
+      "geography": "School/LA",
+      "frequency": "Termly",
+      "role_in_case": "Early-warning index"
+    },
+    {
+      "source": "dfe_cla",
+      "measures": "Care leavers 17-21 in EET/NEET",
+      "geography": "LA",
+      "frequency": "Annual",
+      "role_in_case": "Care-leaver commitment baseline"
+    },
+    {
+      "source": "ons_bres",
+      "measures": "Employment in SIC 55, 56, 93, 41-43",
+      "geography": "LA/LSOA",
+      "frequency": "Annual",
+      "role_in_case": "Displacement exposure"
+    },
+    {
+      "source": "ons_textkernel",
+      "measures": "Adverts by SOC (hospitality, leisure, construction)",
+      "geography": "LA",
+      "frequency": "Monthly",
+      "role_in_case": "Live demand and competition"
+    },
+    {
+      "source": "universal_esp",
+      "measures": "Jobs by department/FT-PT/career level; construction curve; commitments",
+      "geography": "Site",
+      "frequency": "Update on any revised plan",
+      "role_in_case": "Demand side of the case"
+    },
+    {
+      "source": "nccis",
+      "measures": "NEET by reason and ward (aggregate)",
+      "geography": "Ward/LSOA",
+      "frequency": "Monthly (requested)",
+      "role_in_case": "Local targeting (requires DSA)"
+    }
+  ],
+  "risks_issues": [
+    {
+      "title": "APS volatility and suppression",
+      "type": "issue",
+      "description": "LA estimates carry +/-3-5pp CIs; key cells (20-24 inactivity in Central Beds, inactive-want-a-job everywhere) suppressed in the Jul25-Jun26 release; LFS reweighting/TLFS transition may break series.",
+      "likelihood": "high",
+      "impact": "medium",
+      "mitigation": "Show CIs, pool 3 years, triangulate with Census/admin; avoid quarter-on-quarter narratives."
+    },
+    {
+      "title": "Census 2021 COVID distortion",
+      "type": "issue",
+      "description": "Furlough and lockdown affected economic activity, workplace and travel-to-work; promoter residence model inherits commuting bias.",
+      "likelihood": "high",
+      "impact": "medium",
+      "mitigation": "Use Census for distributions, not levels; flag in UI."
+    },
+    {
+      "title": "Geography changes and code mismatches",
+      "type": "issue",
+      "description": "Bedfordshire County abolished 2009 (three unitaries); LSOA 2011->2021 change; PCON 2024; DfE LA codes and old/new codes in different releases; 2023 LGR did not affect Bedfordshire but did reshape neighbouring Northamptonshire (2021) and may again under devolution.",
+      "likelihood": "high",
+      "impact": "medium",
+      "mitigation": "Single lookup layer from ONS Geography Portal; tests on code joins."
+    },
+    {
+      "title": "DfE publication changes",
+      "type": "risk",
+      "description": "Releases rename/re-slug (e.g. 16-18 -> 16-19 destinations), measures redefined, Ofsted moved to report cards (Nov 2025), participation 16-18 release delayed beyond June 2026.",
+      "likelihood": "medium",
+      "impact": "medium",
+      "mitigation": "Pin release IDs; schema checks in pipeline; monitor EES 'upcoming releases'."
+    },
+    {
+      "title": "Displacement from existing hospitality and leisure employers",
+      "type": "risk",
+      "description": "8,050 jobs ~9% of Bedford workplace employment; Universal NLW-plus offer and brand could drain incumbent hospitality, care and retail staff; ES assumes only 5-25% displacement.",
+      "likelihood": "high",
+      "impact": "high",
+      "mitigation": "Track BRES/RTI by sector; prioritise inactive/NEET recruits; employer collaboration in visitor economy working group."
+    },
+    {
+      "title": "Competing labour demand",
+      "type": "risk",
+      "description": "Luton Airport expansion (up to 11,000 jobs), East West Rail (Bedford-Cambridge construction after 2027 DCO), Wixams and Local Plan housing, A421 works, national shortfall of 206,000 construction workers 2026-30.",
+      "likelihood": "high",
+      "impact": "high",
+      "mitigation": "Shared construction-skills pipeline across projects; phase-aware demand dashboard; CITB Client-Based Approach."
+    },
+    {
+      "title": "Transport access for Luton and rural residents",
+      "type": "risk",
+      "description": "Luton has highest inactivity (27.8%) yet ~7% of modelled staff; no direct rail Luton-Wixams without change; early/late shifts; EWR not complete by 2031; Wixams station date uncertain.",
+      "likelihood": "high",
+      "impact": "high",
+      "mitigation": "Shift-time catchment analysis; staff shuttle from Luton/Bedford estates; travel-plan monitoring; car-share and e-bike schemes."
+    },
+    {
+      "title": "Project timing uncertainty",
+      "type": "risk",
+      "description": "Opening '2031' depends on construction programme, grants paid only after opening, infrastructure delivery; slippage shifts training cohorts.",
+      "likelihood": "medium",
+      "impact": "high",
+      "mitigation": "Scenario years (2031/2032/2033) in tool; anchor pipeline to SDO condition discharges and contractor appointments."
+    },
+    {
+      "title": "Over-reliance on promoter estimates",
+      "type": "risk",
+      "description": "Jobs, FT/PT split and residence distribution are UDX/Volterra figures; ES and ESP disagree for 2051 (12,465 vs 10,000).",
+      "likelihood": "medium",
+      "impact": "medium",
+      "mitigation": "Label promoter figures; sensitivity ranges; benchmark against Epic Universe and UK parks."
+    },
+    {
+      "title": "Headline 28,000 jobs misread",
+      "type": "issue",
+      "description": "'20,000 construction jobs' is cumulative; peak on site is 5,380. Stakeholders may plan training for the wrong volume.",
+      "likelihood": "high",
+      "impact": "medium",
+      "mitigation": "Present peak and annual requirement alongside headline."
+    },
+    {
+      "title": "Hidden populations under-counted",
+      "type": "issue",
+      "description": "Non-claimant inactive, hidden NEETs, carers and home-educated are not in admin data.",
+      "likelihood": "high",
+      "impact": "high",
+      "mitigation": "Linkage estimates with explicit uncertainty; LA data-sharing."
+    },
+    {
+      "title": "Data-sharing agreements fail or stall",
+      "type": "risk",
+      "description": "NCCIS, ILR, Universal HR data need DSAs and DPIAs; three LAs plus Universal plus colleges.",
+      "likelihood": "medium",
+      "impact": "high",
+      "mitigation": "Use Socio-Economic Taskforce mandate; start with aggregate, suppressed outputs; template DSA."
+    },
+    {
+      "title": "Disclosure control limits small-area work",
+      "type": "issue",
+      "description": "Rounding/suppression (DWP, DfE, Census cell-key perturbation) makes LSOA sums inconsistent; care leaver and EHCP counts suppressed.",
+      "likelihood": "high",
+      "impact": "low",
+      "mitigation": "Aggregate to ward/MSOA; never derive suppressed cells by subtraction."
+    },
+    {
+      "title": "Benefit reforms shift claimant baselines",
+      "type": "risk",
+      "description": "UC health element and WCA reforms, Youth Guarantee and Pathways to Work change conditionality groups independent of real need.",
+      "likelihood": "high",
+      "impact": "medium",
+      "mitigation": "Track policy dates; show breaks in series; use APS/Census as anchor."
+    },
+    {
+      "title": "Devolution and funding changes",
+      "type": "risk",
+      "description": "Proposed Foundation Strategic Authority (Bedford, Central Beds, Luton, MK, announced Feb 2026) may take over Adult Skills Fund and change reporting geographies.",
+      "likelihood": "medium",
+      "impact": "medium",
+      "mitigation": "Design tool to aggregate to MK+Beds+Luton; watch devolution legislation."
+    },
+    {
+      "title": "Worker accommodation and housing pressure",
+      "type": "risk",
+      "description": "ES expects ~1,375 peak construction workers needing serviced accommodation; upward pressure on private rents could push lower-paid local staff out.",
+      "likelihood": "medium",
+      "impact": "medium",
+      "mitigation": "Monitor rents/HMOs; Temporary Workforce Accommodation Strategy compliance."
+    },
+    {
+      "title": "Youth labour market weakening",
+      "type": "risk",
+      "description": "NEET 16-24 near 1m nationally (Apr-Jun 2026); hospitality job losses after NICs rises; mental-health-related inactivity rising among 18-24s.",
+      "likelihood": "high",
+      "impact": "medium",
+      "mitigation": "Pre-employment support with health element (IPS); early engagement from 2027."
+    },
+    {
+      "title": "Seasonality and part-time hours",
+      "type": "risk",
+      "description": "49% of jobs part-time and some seasonal: may not lift claimants off UC or suit main earners; churn could be high.",
+      "likelihood": "medium",
+      "impact": "medium",
+      "mitigation": "Model FTE and earnings, not headcount; track retention via Universal returns."
+    }
+  ],
+  "opportunities": [
+    {
+      "title": "Live job-advert feed",
+      "description": "Monthly ingest of ONS Textkernel SOC x LA adverts (and Lightcast if licensed) to track hospitality/construction demand and spot Universal/contractor hiring waves.",
+      "value": "Early warning of skills pinch points and displacement; evidence for course commissioning."
+    },
+    {
+      "title": "Stat-Xplore API integration",
+      "description": "Automate UC (conditionality x age), PIP, ESA, Carer's Allowance pulls at LSOA via the Open Data API.",
+      "value": "Monthly hidden-inactive estimates without manual downloads."
+    },
+    {
+      "title": "School-cohort early-warning dashboard",
+      "description": "Roll Y7-Y11 cohorts to 2031 with NEET-risk scores by school, refreshed termly with absence data.",
+      "value": "Targets careers encounters (Universal's 1,430 encounters/400 work experiences) at highest-risk schools 4-5 years ahead of opening."
+    },
+    {
+      "title": "Skills-academy siting by drive/public-transport time",
+      "description": "Location-allocation of a Universal/college skills academy against LSOA pools of hidden inactive, NEET-risk and claimants, under Wixams/EWR scenarios.",
+      "value": "Maximises reach of training capital and Universal's DCMS-funded community infrastructure."
+    },
+    {
+      "title": "Three-LA data-sharing agreement",
+      "description": "Common DSA for NCCIS, adult learning and school-census aggregates via the Socio-Economic Taskforce.",
+      "value": "Unlocks ward-level NEET and not-known mapping; reusable for Luton Airport and EWR."
+    },
+    {
+      "title": "Monthly refresh and versioned evidence base",
+      "description": "Automated pipeline with release calendars (claimant/RTI monthly, APS quarterly, DfE annual) and change logs.",
+      "value": "Keeps business case current; auditable for MHCLG ESP compliance reviews."
+    },
+    {
+      "title": "Link to LSIP 2.0 actions",
+      "description": "Feed occupational gap ratios into South Midlands LSIP annual progress reports and Local Skills Improvement Fund bids.",
+      "value": "Aligns provider curriculum with Universal demand; strengthens funding cases."
+    },
+    {
+      "title": "Universal workforce monitoring feed",
+      "description": "Agree quarterly anonymised returns (hires by postcode sector, age band, prior status, role, FT/PT, retention) under the ESP compliance regime.",
+      "value": "Turns promoter projections into measured local outcomes; tests the 80% local claim."
+    },
+    {
+      "title": "Construction skills pipeline across projects",
+      "description": "Joint demand curve for Universal, EWR, Luton Airport and housing; shared apprenticeship pool (flexi-job/shared apprenticeship) leveraging Bedfordshire's construction apprenticeship strength.",
+      "value": "Reduces poaching; sustains apprentices across project gaps."
+    },
+    {
+      "title": "Hidden-NEET local estimate with LEO",
+      "description": "Commission an SRS project replicating the Milburn RAPID-LEO method for Bedford, Central Beds and Luton.",
+      "value": "First robust local count of NEETs not in contact with services."
+    },
+    {
+      "title": "Carer- and health-friendly job design",
+      "description": "Use Census carers/health LSOA data with Universal's part-time roles to co-design shift patterns and IPS-style support.",
+      "value": "Opens roles to inactive 25+ groups who need flexibility."
+    },
+    {
+      "title": "Extend tool to the 60-minute catchment",
+      "description": "Add MK, Northampton, Huntingdonshire, North Herts and Oxford/Cambridge LAs using the same pipeline.",
+      "value": "Matches the ES Labour Catchment Area so local-share claims can be tested."
+    }
+  ],
+  "sources_notes": "Refresh the minimum dataset on a release-driven schedule rather than ad hoc: monthly (claimant count ~mid-month with the ONS labour market release, next 17 Nov 2026; Stat-Xplore UC; ONS RTI; Textkernel adverts ~25th); quarterly (APS on Nomis ~Jan/Apr/Jul/Oct; UC health, PIP, Carer's Allowance; DfE in-year apprenticeships/FE); termly (DfE absence, EHE); annual (MYE ~summer, BRES ~autumn, ASHE ~Oct-Nov, DfE NEET LA ~Jun-Jul, L2/L3 at 19 ~Apr, KS4/16-19 destinations and KS4 performance ~Oct, CLA ~Nov, EHCP ~Jun, school census ~Jun). Static layers (Census 2021, IoD2025, ONS geography) are loaded once and only re-run when boundaries or a new IoD release change. Each refresh should record release date, period and source URL, run code/geography join checks (E06000055/E06000056/E06000032; LSOA21), compare against the previous vintage to catch revisions, and carry CIs/suppression flags through to outputs. Promoter figures (ESP/ES) should be re-checked whenever SDO conditions are discharged or Universal/government issue new announcements; the GOV.UK SDO page change log is the best trigger.",
+  "meta": {
+    "compiled": "2026-11-05",
+    "method": "Desk research; all URLs HTTP-checked or retrieved on 2026-11-05; promoter figures labelled; benchmarks labelled BENCHMARK."
+  }
+}
