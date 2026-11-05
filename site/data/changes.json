@@ -1,0 +1,51 @@
+[
+ {
+  "date": "2026-11-05",
+  "tag": "data-2026-11-05",
+  "datasets": [
+   {
+    "id": "travel_lsoa",
+    "title": "Journey times from each LSOA to the proposed Universal resort site (Kempston Hardwick)",
+    "change": "new dataset",
+    "to_period": "Timetables for Tue 17 Nov 2026",
+    "rows_after": 2518
+   },
+   {
+    "id": "census_barriers",
+    "title": "Census 2021 barriers to work: no car, English proficiency, lone parents, bad health",
+    "change": "new dataset",
+    "to_period": "Census 2021 (21 March 2021)",
+    "rows_after": 3384
+   },
+   {
+    "id": "affordability",
+    "title": "Housing affordability: house price to earnings ratios and private rents",
+    "change": "new dataset",
+    "to_period": "Sep 2026",
+    "rows_after": 1310
+   },
+   {
+    "id": "childcare",
+    "title": "Childcare supply: Ofsted-registered early years providers and places",
+    "change": "new dataset",
+    "to_period": "30 Jun 2026",
+    "rows_after": 56
+   },
+   {
+    "id": "ofsted_fe",
+    "title": "Ofsted further education and skills inspections (providers in Bedfordshire)",
+    "change": "new dataset",
+    "to_period": "31 Aug 2026",
+    "rows_after": 65
+   },
+   {
+    "id": "bres_sectors",
+    "title": "Business Register and Employment Survey: employees by industry",
+    "change": "revised",
+    "to_period": "2024",
+    "rows_before": 966,
+    "rows_after": 1326
+   }
+  ]
+ }
+]
