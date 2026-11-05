@@ -570,6 +570,12 @@ KEY_SECTORS = {  # indicator suffix -> (Nomis industry code, label)
     "sports_amuse": ("146800733", "Sports, amusement & recreation (division 93)"),
     "accommodation": ("146800695", "Accommodation (division 55)"),
     "food_bev": ("146800696", "Food & beverage service (division 56)"),
+    # Competitors for the same entry-level labour (warehousing belt on the M1/A421,
+    # Luton Airport). Divisions 49/51/52 are subsets of section H ("transport").
+    "warehousing": ("146800692", "Warehousing & support for transportation (division 52)"),
+    "land_transport": ("146800689", "Land transport (division 49)"),
+    "air": ("146800691", "Air transport (division 51)"),
+    "wholesale": ("146800686", "Wholesale trade (division 46)"),
 }
 TOTAL_IND = "37748736"
 BROAD = [str(163577857 + i) for i in range(18)]
@@ -591,7 +597,8 @@ def build_bres():
     for suf, (code, _) in KEY_SECTORS.items():
         if code not in names:
             raise RuntimeError(f"BRES industry {code} ({suf}) missing")
-    for k in ("sports_amuse", "accommodation", "food_bev"):
+    for k in ("sports_amuse", "accommodation", "food_bev", "warehousing", "land_transport", "air",
+              "wholesale"):
         print(f"  BRES {k}: {names[KEY_SECTORS[k][0]]}")
     geos = list(GEOS) + ["BEDS"]
 
@@ -661,7 +668,12 @@ def build_bres():
                        "reflect head-office/reporting unit allocation. Rounding means small "
                        "sectors (e.g. division 93) and year-on-year changes are coarse; location "
                        "quotients and BEDS totals are computed from rounded counts. "
-                       "'Retail' is a broad-group subset of section G.",
+                       "'Retail' is a broad-group subset of section G. Divisions 49 (land "
+                       "transport), 51 (air) and 52 (warehousing) are subsets of section H "
+                       "'transport' - do not add them to it. Air transport (51) counts airline "
+                       "jobs where the employer's reporting unit sits (e.g. an airline base at "
+                       "Luton Airport); airport operation and ground handling (52.23) fall in "
+                       "warehousing & support (52), and airport retail/security elsewhere.",
         "indicators": inds, "dataset_code": "NM_189_1",
     }
     return meta, rows

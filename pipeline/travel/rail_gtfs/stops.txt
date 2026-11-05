@@ -1,0 +1,18 @@
+stop_id,stop_name,stop_lat,stop_lon,location_type
+9100BEDFDM,Bedford Rail Station,52.13619,-0.47944,0
+9100BESJOHN,Bedford St Johns Rail Station,52.12948,-0.46750,0
+9100KMPSTNH,Kempston Hardwick Rail Station,52.09222,-0.50391,0
+9100STWRTBY,Stewartby Rail Station,52.06908,-0.52069,0
+9100MLBRKB,Millbrook (Beds) Rail Station,52.05384,-0.53270,0
+9100LDLNGTN,Lidlington Rail Station,52.04154,-0.55893,0
+9100RIDGMNT,Ridgmont Rail Station,52.02640,-0.59456,0
+9100ASPLEYG,Aspley Guise Rail Station,52.02124,-0.63233,0
+9100WOBURNS,Woburn Sands Rail Station,52.01815,-0.65408,0
+9100BOWBRKH,Bow Brickhill Rail Station,52.00430,-0.69608,0
+9100FSTR,Fenny Stratford Rail Station,52.00007,-0.71600,0
+9100BLTCHLY,Bletchley Rail Station,51.99533,-0.73632,0
+9100FLITWCK,Flitwick Rail Station,52.00364,-0.49526,0
+9100HRLG,Harlington (Beds) Rail Station,51.96206,-0.49569,0
+9100LEAGRVE,Leagrave Rail Station,51.90516,-0.45850,0
+9100LUTON,Luton Rail Station,51.88230,-0.41404,0
+9100LUTOAPY,Luton Airport Parkway Rail Station,51.87244,-0.39588,0

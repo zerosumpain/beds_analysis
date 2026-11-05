@@ -1,0 +1,4 @@
+agency_id,agency_name,agency_url,agency_timezone,agency_lang
+LNR,London Northwestern Railway (modelled),https://www.londonnorthwesternrailway.co.uk/,Europe/London,en
+TL,Thameslink (modelled),https://www.thameslinkrailway.com/,Europe/London,en
+EMR,East Midlands Railway (modelled),https://www.eastmidlandsrailway.co.uk/,Europe/London,en

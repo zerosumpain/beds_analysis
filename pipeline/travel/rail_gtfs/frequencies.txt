@@ -1,0 +1,7 @@
+trip_id,start_time,end_time,headway_secs,exact_times
+TL_SB_day,05:16:00,21:47:00,900,1
+TL_SB_late,22:14:00,23:45:00,1800,1
+TL_NB_day,05:31:00,22:56:00,900,1
+TL_NB_late,23:10:00,24:56:00,900,1
+EM_SB_day,06:10:00,21:11:00,1800,1
+EM_NB_day,06:07:00,22:38:00,1800,1

@@ -21,6 +21,15 @@
     return 2 * R * Math.asin(Math.sqrt(s));
   }
   BA.km = km;
+  // ukprn -> latest Ofsted FE and skills judgement text (legacy grade or report card).
+  BA.ofstedFE = async function () {
+    if (BA._ofsted) return BA._ofsted;
+    const o = {};
+    if (BA.has('ofsted_fe')) (await BA.dataset('ofsted_fe')).rows.filter((r) => r.indicator === 'ofsted_fe_overall' && r.attrs && r.attrs.ukprn).forEach((r) => {
+      const a = r.attrs; o[a.ukprn] = a.report_card ? 'report card ' + (a.report_card_date || '') : a.legacy_overall_effectiveness ? `${a.legacy_overall_effectiveness} (${r.period})` : null;
+    });
+    return (BA._ofsted = o);
+  };
   function providerType(a) {
     const c = String(a.category || '');
     if (c) {
@@ -42,7 +51,10 @@
 
   BA.route(/^\/explore$/, async (app) => {
     const smallInds = Object.values(BA.indicators).filter((i) => /LSOA|MSOA/i.test(i.levels));
-    const want = BA.query.get('ind') || 'census_inactive_non_student_non_retired_pct';
+    const Q = BA.query;
+    const want = Q.get('ind') || 'census_inactive_non_student_non_retired_pct';
+    const wantLayers = Q.has('layers') ? new Set(Q.get('layers').split(',')) : null;
+    wantLayersG = wantLayers;
     app.innerHTML = `<span class="govuk-caption-xl">Explore</span><h1 class="govuk-heading-xl">Where is the potential workforce?</h1>
       <p class="govuk-body">Shade neighbourhoods (2021 LSOAs, about 1,500 residents each) by any small-area indicator. Overlay schools, colleges and commuting flows, then draw a catchment around the site to total the cohorts within reach. Select an area for every indicator held for it.</p>
       <div class="ba-mapwrap"><div class="ba-panel">
@@ -57,12 +69,15 @@
             ${cb('l-prov', 'Schools and colleges', false)}${cb('l-ks4', 'Schools shaded by GCSE attainment', false)}
             ${cb('l-od', 'Commuting into Bedfordshire (Census 2021)', false)}${cb('l-ring', 'Distance rings from the site', true)}
           </div></fieldset></div>
-        <div class="govuk-form-group"><label class="govuk-label govuk-label--s" for="rad">Catchment radius from site: <span id="radv">15</span> km</label>
+        <div class="govuk-form-group"><label class="govuk-label govuk-label--s" for="cmode">Catchment measured by</label>
+          <select class="govuk-select" id="cmode"><option value="km">Straight-line distance</option><option value="mixed">Journey time: car if available, else bus, rail or bike</option><option value="pt">Journey time: public transport</option><option value="noncar">Journey time: public transport or cycle</option><option value="car">Journey time: car</option></select></div>
+        <div class="govuk-form-group"><label class="govuk-label govuk-label--s" for="rad">Catchment: <span id="radv">15</span> <span id="radu">km</span></label>
           <input type="range" id="rad" min="3" max="40" value="15" step="1" style="width:100%"></div>
         <div class="ba-info" id="catch"><p class="govuk-body-s">Loading…</p></div>
       </div><div><div id="map" role="region" aria-label="Map of Bedfordshire"></div>
         <div class="ba-two govuk-!-margin-top-4"><div><h2 class="govuk-heading-s">Selected area</h2><div class="ba-info" id="info"><p class="govuk-body-s">Select an area on the map.</p></div></div>
         <div><h2 class="govuk-heading-s">Highest 15 areas on this measure</h2><div class="ba-info" id="top"></div></div></div>
+        <details class="govuk-details govuk-!-margin-top-4"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">View every area as a table</span></summary><div class="govuk-details__text" id="alltable"></div></details>
         <p class="ba-small govuk-!-margin-top-2">Shading uses quantiles (six equal-count classes) within the selected area. Suppressed or missing values are grey. LSOA figures carry Census perturbation and survey caveats. See <a class="govuk-link" href="#/method">method</a>.</p>
       </div></div>`;
 
@@ -82,6 +97,11 @@
     const ringLayer = L.layerGroup([5, 10, 20, 30].map((r) => L.circle(site, { radius: r * 1000, color: '#d4351c', weight: 1, fill: false, dashArray: '4 4', interactive: false }))
       .concat([L.marker(site, { icon: L.divIcon({ className: 'ba-site-icon', iconSize: [14, 14] }), title: BA.SITE.name }).bindPopup(`<strong>${esc(BA.SITE.name)}</strong>`)]));
     const catchCircle = L.circle(site, { radius: 15000, color: '#d4351c', weight: 2, fillColor: '#d4351c', fillOpacity: 0.04, interactive: false }).addTo(map);
+    const catchLayer = L.layerGroup().addTo(map);
+    let areaLayer = null;
+    const travel = await BA.travelLsoa();
+    if (!travel) [...document.getElementById('cmode').options].forEach((o) => { if (o.value !== 'km') o.disabled = true; });
+    if (Q.get('cm') && travel) document.getElementById('cmode').value = Q.get('cm');
     let provLayer = null, ks4Layer = null, odLayer = null;
     const legend = L.control({ position: 'bottomright' }); legend.onAdd = () => L.DomUtil.create('div', 'ba-maplegend'); legend.addTo(map);
 
@@ -89,10 +109,11 @@
     async function buildPoints() {
       if (!provLayer && BA.has('providers')) {
         const ds = await BA.dataset('providers');
+        const ofs = await BA.ofstedFE();
         provLayer = L.layerGroup(ds.rows.filter((r) => r.level === 'point' && r.lat).filter((r, i, a) => a.findIndex((x) => x.code === r.code) === i).map((r) => {
           const a = r.attrs || {}; const t = providerType(a);
           return L.circleMarker([r.lat, r.lon], { radius: t === 'FE college' ? 8 : 5, color: '#fff', weight: 1.5, fillColor: PROVIDER_COLORS[t], fillOpacity: 1 })
-            .bindPopup(`<strong>${esc(r.name)}</strong><br>${esc(a.category || t)} · ${esc(a.type || '')}<br>${a.sixth_form ? esc(a.sixth_form) + '<br>' : ''}${a.pupils || a.number_of_pupils ? 'Pupils: ' + esc(a.pupils || a.number_of_pupils) + '<br>' : ''}${a.pct_fsm != null ? 'Free school meals: ' + esc(a.pct_fsm) + '%<br>' : ''}${a.age_range ? 'Ages ' + esc(a.age_range) + '<br>' : ''}${a.dist_km != null ? esc(a.dist_km) + ' km from site' : ''}${a.website ? '<br>' + BA.link(String(a.website).startsWith('http') ? a.website : 'https://' + a.website, 'Website') : ''}`);
+            .bindPopup(`<strong>${esc(r.name)}</strong><br>${esc(a.category || t)} · ${esc(a.type || '')}<br>${a.sixth_form ? esc(a.sixth_form) + '<br>' : ''}${a.pupils || a.number_of_pupils ? 'Pupils: ' + esc(a.pupils || a.number_of_pupils) + '<br>' : ''}${a.pct_fsm != null ? 'Free school meals: ' + esc(a.pct_fsm) + '%<br>' : ''}${a.age_range ? 'Ages ' + esc(a.age_range) + '<br>' : ''}${ofs[a.ukprn] ? 'Ofsted (FE and skills): ' + esc(ofs[a.ukprn]) + '<br>' : ''}${a.dist_km != null ? esc(a.dist_km) + ' km from site' : ''}${a.website ? '<br>' + BA.link(String(a.website).startsWith('http') ? a.website : 'https://' + a.website, 'Website') : ''}`);
         }));
       }
       if (!ks4Layer && BA.has('dfe_ks4_school')) {
@@ -165,8 +186,19 @@
       const top = geo.features.filter(inLA).map((f) => ({ f, r: vals[f.properties.code] })).filter((x) => x.r && x.r.value != null).sort((a, b) => b.r.value - a.r.value).slice(0, 15);
       $('top').innerHTML = `<table><tbody>${top.map((x, i) => `<tr><td>${i + 1}. <a href="#" class="govuk-link" data-code="${x.f.properties.code}">${esc(x.f.properties.hcl_name || x.f.properties.name)}</a> <span class="ba-small">${esc(x.f.properties.la_name || BA.LAS[x.f.properties.la] || '')}</span></td><td>${BA.fmt(x.r.value, ind.unit)}</td></tr>`).join('')}</tbody></table>`;
       $('top').querySelectorAll('a').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); const f = feats[a.dataset.code]; map.setView(f.properties._c, 13); showInfo(f); }));
+      const allRows = geo.features.filter(inLA).map((f) => ({ f, r: vals[f.properties.code] })).sort((a, b) => ((b.r && b.r.value) ?? -Infinity) - ((a.r && a.r.value) ?? -Infinity));
+      $('alltable').innerHTML = `<div class="ba-table-wrap" style="max-height:480px;overflow:auto"><table class="govuk-table ba-mini"><caption class="govuk-table__caption govuk-table__caption--s">${esc(ind.label)}${bd ? ' (' + esc(bd) + ')' : ''}, ${esc(lp || '')}: ${allRows.length} areas, highest first</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th class="govuk-table__header" scope="col">Rank</th><th class="govuk-table__header" scope="col">Area</th><th class="govuk-table__header" scope="col">Authority</th><th class="govuk-table__header govuk-table__header--numeric" scope="col">Value</th></tr></thead><tbody class="govuk-table__body">${allRows.map((x, i) => `<tr class="govuk-table__row"><td class="govuk-table__cell">${i + 1}</td><td class="govuk-table__cell"><a class="govuk-link" href="#/area/${x.f.properties.code}">${esc(x.f.properties.hcl_name || x.f.properties.name)}</a></td><td class="govuk-table__cell">${esc(BA.LAS[x.f.properties.la] || '')}</td><td class="govuk-table__cell govuk-table__cell--numeric">${x.r ? (x.r.suppressed ? 'suppressed' : BA.fmt(x.r.value, ind.unit)) : 'no data'}</td></tr>`).join('')}</tbody></table></div>`;
       updateCatch();
-      history.replaceState(null, '', '#/explore?ind=' + id);
+      syncURL();
+    }
+    function syncURL() {
+      const q = new URLSearchParams({ ind: $('ind').value });
+      if ($('bd').value && !$('bdwrap').hidden) q.set('bd', $('bd').value);
+      if ($('laf').value) q.set('la', $('laf').value);
+      q.set('layers', [...document.querySelectorAll('.ba-panel input[type=checkbox]')].filter((c) => c.checked).map((c) => c.id.slice(2)).join(','));
+      q.set('cm', $('cmode').value); q.set('r', $('rad').value);
+      if (Q.get('area')) q.set('area', Q.get('area'));
+      history.replaceState(null, '', '#/explore?' + q.toString());
     }
 
     async function showInfo(f) {
@@ -176,34 +208,62 @@
       const latest = {};
       rows.forEach((r) => { const k = r.indicator + '|' + (r.breakdown || ''); if (!latest[k] || BA.periodCmp(r.period, latest[k].period) > 0) latest[k] = r; });
       const dist = km(site, f.properties._c);
-      $('info').innerHTML = `<p class="govuk-body-s govuk-!-margin-bottom-1"><strong>${esc(f.properties.hcl_name || f.properties.name)}</strong> (${esc(code)})<br>${esc(f.properties.la_name || BA.LAS[f.properties.la] || '')} · ${dist.toFixed(1)} km from the site</p>
+      const tt = travel && travel[code];
+      $('info').innerHTML = `<p class="govuk-body-s govuk-!-margin-bottom-1"><strong>${esc(f.properties.hcl_name || f.properties.name)}</strong> (${esc(code)})<br>${esc(f.properties.la_name || BA.LAS[f.properties.la] || '')} · ${dist.toFixed(1)} km from the site${tt && tt.pt != null ? ' · ' + BA.fmt(tt.pt, 'minutes') + ' by public transport' : ''}<br><a class="govuk-link" href="#/area/${esc(code)}">Open the full area profile</a></p>
         <table><tbody>${Object.values(latest).map((r) => { const ind = BA.indicators[r.indicator] || {}; return `<tr><td>${esc(ind.label || r.indicator)}${r.breakdown ? ' <span class="ba-small">(' + esc(r.breakdown) + ')</span>' : ''}</td><td>${r.suppressed ? 'supp.' : BA.fmt(r.value, ind.unit)}</td></tr>`; }).join('')}</tbody></table>`;
     }
 
+    function setSlider(mode, keep) {
+      const r = $('rad');
+      if (mode === 'km') { r.min = 3; r.max = 40; r.step = 1; if (!keep) r.value = 15; $('radu').textContent = 'km'; }
+      else { r.min = 15; r.max = 90; r.step = 5; if (!keep) r.value = 45; $('radu').textContent = 'minutes'; }
+    }
     async function updateCatch() {
-      const rad = +$('rad').value; $('radv').textContent = rad; catchCircle.setRadius(rad * 1000);
-      const inside = new Set(Object.values(feats).filter((f) => /^E01/.test(f.properties.code) && km(site, f.properties._c) <= rad).map((f) => f.properties.code));
+      const mode = $('cmode').value; const rad = +$('rad').value; $('radv').textContent = rad;
+      // weight per LSOA: 1 inside, 0 outside (distance), or the share of residents able to make the journey
+      const weight = {};
+      Object.values(feats).forEach((f) => { const c = f.properties.code; if (!/^E01/.test(c)) return;
+        weight[c] = mode === 'km' ? (km(site, f.properties._c) <= rad ? 1 : 0) : (BA.reachFrac(travel && travel[c], { mode, minutes: rad, late: false }) || 0); });
+      catchCircle.setRadius(mode === 'km' ? rad * 1000 : 0); catchCircle.setStyle({ opacity: mode === 'km' ? 1 : 0, fillOpacity: mode === 'km' ? 0.04 : 0 });
+      catchLayer.clearLayers();
+      if (mode !== 'km') Object.entries(weight).forEach(([c, w]) => { if (w >= 0.5 && feats[c]) catchLayer.addLayer(L.geoJSON(feats[c], { style: { color: '#d4351c', weight: 1.6, fill: false }, interactive: false })); });
       const countInds = smallInds.filter((i) => i.unit === 'count');
       const sums = await Promise.all(countInds.map(async (ind) => {
         const rows = (await BA.rowsFor(ind.id, { level: 'LSOA' })).filter((r) => !r.breakdown);
         const lp = BA.latestPeriod(rows);
-        let s = 0, n = 0; rows.forEach((r) => { if (r.period === lp && inside.has(r.code) && r.value != null) { s += r.value; n++; } });
+        let s = 0, n = 0; rows.forEach((r) => { if (r.period === lp && weight[r.code] && r.value != null) { s += r.value * weight[r.code]; n++; } });
         return { ind, s, n };
       }));
-      $('catch').innerHTML = `<p class="govuk-body-s govuk-!-margin-bottom-1"><strong>${inside.size}</strong> Bedfordshire neighbourhoods within ${rad} km of the site (by centroid). Neighbouring authorities are not included.</p><table><tbody>${sums.filter((x) => x.n).map((x) => `<tr><td>${esc(x.ind.label)}</td><td>${BA.fmt(x.s, 'count')}</td></tr>`).join('')}</tbody></table>`;
-      BA.lastCatchment = { rad, sums };
+      const nIn = Object.values(weight).filter((w) => w >= 0.5).length;
+      $('catch').innerHTML = `<p class="govuk-body-s govuk-!-margin-bottom-1">${mode === 'km' ? `<strong>${nIn}</strong> Bedfordshire neighbourhoods within ${rad} km of the site (by centroid).` : `People who can reach the site within <strong>${rad} minutes</strong> (${esc(BA.REACH_MODES[mode].toLowerCase())}), arriving by 08:30. Mostly reachable neighbourhoods are outlined in red.`} Neighbouring authorities are not included.</p><table><tbody>${sums.filter((x) => x.n).map((x) => `<tr><td>${esc(x.ind.label)}</td><td>${BA.fmt(Math.round(x.s), 'count')}</td></tr>`).join('')}</tbody></table>`;
+      BA.lastCatchment = { mode, rad, sums };
+      syncURL();
+    }
+    function showArea(code) {
+      const set = new Set(BA.lsoasFor ? BA.lsoasFor(code) : [code]);
+      if (areaLayer) map.removeLayer(areaLayer);
+      areaLayer = L.geoJSON({ type: 'FeatureCollection', features: [...set].map((c) => feats[c]).filter(Boolean) }, { style: { color: '#0b0c0c', weight: 3, fill: false }, interactive: false }).addTo(map);
+      if (areaLayer.getBounds().isValid()) map.fitBounds(areaLayer.getBounds(), { padding: [30, 30], maxZoom: 14 });
+      if (/^E01/.test(code) && feats[code]) showInfo(feats[code]);
     }
 
+    $('cmode').addEventListener('change', () => { setSlider($('cmode').value); updateCatch(); });
+    setSlider($('cmode').value, false);
+    if (Q.get('r')) $('rad').value = Q.get('r');
+    if (Q.get('la')) $('laf').value = Q.get('la');
     $('ind').addEventListener('change', () => { $('bd').innerHTML = ''; drawChoro(); });
     $('bd').addEventListener('change', drawChoro);
     $('laf').addEventListener('change', drawChoro);
     let t; $('rad').addEventListener('input', () => { clearTimeout(t); t = setTimeout(updateCatch, 120); });
-    document.querySelectorAll('.ba-panel input[type=checkbox]').forEach((c) => c.addEventListener('change', () => { syncLayers(); if (c.id === 'l-prov') drawChoro(); }));
+    document.querySelectorAll('.ba-panel input[type=checkbox]').forEach((c) => c.addEventListener('change', () => { syncLayers(); syncURL(); if (c.id === 'l-prov') drawChoro(); }));
     await syncLayers();
+    if (Q.get('bd')) { await drawChoro(); $('bd').value = Q.get('bd'); }
     await drawChoro();
+    if (Q.get('area')) showArea(Q.get('area'));
   });
 
-  function cb(id, label, on) { return `<div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="${id}" type="checkbox" ${on ? 'checked' : ''}><label class="govuk-label govuk-checkboxes__label" for="${id}">${label}</label></div>`; }
+  let wantLayersG = null;
+  function cb(id, label, on) { if (wantLayersG) on = wantLayersG.has(id.slice(2)); return `<div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="${id}" type="checkbox" ${on ? 'checked' : ''}><label class="govuk-label govuk-checkboxes__label" for="${id}">${label}</label></div>`; }
   function groupOptions(inds, want) {
     const groups = {};
     inds.forEach((i) => { const g = BA.cohortsOf(i)[0]; (groups[g] = groups[g] || []).push(i); });

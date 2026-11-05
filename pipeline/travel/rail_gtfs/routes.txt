@@ -1,0 +1,4 @@
+route_id,agency_id,route_short_name,route_long_name,route_type
+MV,LNR,MV,Marston Vale line Bedford - Bletchley,2
+TLB,TL,TL,Thameslink Bedford - Luton (stopping),2
+EMC,EMR,EMR,EMR Connect Bedford - Luton,2

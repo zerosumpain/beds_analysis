@@ -1,0 +1,194 @@
+[
+ {
+  "id": "ons_affordability_ratio",
+  "name": "House price to residence-based earnings ratio (median and lower quartile)",
+  "publisher": "Office for National Statistics",
+  "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/housing/datasets/ratioofhousepricetoresidencebasedearningslowerquartileandmedian",
+  "granularity": [
+   "England",
+   "region",
+   "county",
+   "LA"
+  ],
+  "lowest_geography": "LA",
+  "cohorts": [
+   "context",
+   "18-24"
+  ],
+  "variables": [
+   "median and lower-quartile house price",
+   "median and lower-quartile residence-based full-time earnings",
+   "affordability ratios"
+  ],
+  "frequency": "Annual",
+  "latest_period": "2025 (house prices year ending Sep 2025; ASHE April 2025)",
+  "next_release": "March 2027",
+  "access": "Excel download",
+  "api_notes": "Single workbook aff2ratioofhousepricetoresidencebasedearnings.xlsx at a stable /current/ URL; tables 5c (LA median) and 6c (LA lower quartile), 1c/2c (region, England). Parsed with zipfile + xml.etree.",
+  "limitations": "Full-time residence-based earnings, not young entrants' pay; LA earnings are ASHE survey estimates with sampling noise. 2025 median ratios: Bedford 8.37, Central Bedfordshire 8.36, Luton 9.07 vs East of England 8.52 and England 7.64; lower quartile Bedford 9.10, Central Beds 9.35, Luton 9.81 vs England 6.99.",
+  "quality": "Official statistics",
+  "provider_type": "Government",
+  "priority": "supporting",
+  "used_in_tool": true,
+  "why_it_matters": "Entry-level (lower-quartile) home ownership is less affordable in all three UAs than in England, which shapes whether NLW-paid resort staff can live near the site."
+ },
+ {
+  "id": "ons_pipr",
+  "name": "Price Index of Private Rents (PIPR): monthly average private rents by LA",
+  "publisher": "Office for National Statistics",
+  "url": "https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics",
+  "granularity": [
+   "England",
+   "region",
+   "LA"
+  ],
+  "lowest_geography": "LA",
+  "cohorts": [
+   "context",
+   "18-24"
+  ],
+  "variables": [
+   "average monthly rent",
+   "rent by bedrooms",
+   "rent by property type",
+   "index and annual change"
+  ],
+  "frequency": "Monthly",
+  "latest_period": "Sep 2026",
+  "next_release": "Monthly, alongside consumer price inflation",
+  "access": "Excel download",
+  "api_notes": "Latest workbook link scraped from the dataset page (dated folder, e.g. /21october2026/); Table 1 long format, time period as Excel date serial.",
+  "limitations": "Stock of existing tenancies, so new-let rents a newcomer pays are typically higher; latest months provisional. Sep 2026 average rent: Bedford GBP 1,177 (1-bed 802), Central Bedfordshire 1,258 (870), Luton 1,231 (913); England 1,466 (1,199), East of England 1,298 (900).",
+  "quality": "Official statistics in development",
+  "provider_type": "Government",
+  "priority": "supporting",
+  "used_in_tool": true,
+  "why_it_matters": "A one-bed private rent in the three UAs takes 39-44% of gross full-time NLW pay (GBP 24,784.50 a year), so housing cost is a real barrier to in-migrating workers."
+ },
+ {
+  "id": "ofsted_childcare_mi",
+  "name": "Childcare providers and inspections: management information",
+  "publisher": "Ofsted",
+  "url": "https://www.gov.uk/government/statistical-data-sets/childcare-providers-and-inspections-management-information",
+  "granularity": [
+   "England",
+   "region",
+   "LA",
+   "provider"
+  ],
+  "lowest_geography": "Provider (childminder addresses redacted)",
+  "cohorts": [
+   "25+ inactive"
+  ],
+  "variables": [
+   "registered providers by type",
+   "Early Years Register places",
+   "latest inspection outcomes (renewed EIF report-card areas and legacy grades)"
+  ],
+  "frequency": "Quarterly",
+  "latest_period": "30 Jun 2026",
+  "next_release": "Next quarterly extract (30 Sep 2026 data expected late 2026)",
+  "access": "CSV download",
+  "api_notes": "Latest 'childcare provider data as at <date>' CSV found via the GOV.UK content API (https://www.gov.uk/api/content/government/statistical-data-sets/childcare-providers-and-inspections-management-information).",
+  "limitations": "Management information, not official statistics. Excludes maintained nursery schools/classes, so understates early education capacity; places are registered capacity, not vacancies or hours. 30 Jun 2026: EYR places per 100 children aged 0-4 Bedford 42.9, Central Bedfordshire 39.5, Luton 25.4 vs East of England 46.0, England 43.8.",
+  "quality": "Management information (Ofsted)",
+  "provider_type": "Government",
+  "priority": "supporting",
+  "used_in_tool": true,
+  "why_it_matters": "Childcare capacity constrains how many economically inactive parents (25+) could take shift work at the resort; Luton has markedly fewer registered places per child."
+ },
+ {
+  "id": "ofsted_fe_mi",
+  "name": "Further education and skills inspections and outcomes: management information",
+  "publisher": "Ofsted",
+  "url": "https://www.gov.uk/government/statistical-data-sets/further-education-and-skills-inspections-and-outcomes-management-information-from-november-2025-to-august-2026",
+  "granularity": [
+   "England",
+   "region",
+   "LA",
+   "provider"
+  ],
+  "lowest_geography": "Provider (by Ofsted-recorded LA)",
+  "cohorts": [
+   "16-19",
+   "18-24"
+  ],
+  "variables": [
+   "latest overall effectiveness before renewed EIF (1-4)",
+   "renewed EIF report-card grades by evaluation area",
+   "provider type"
+  ],
+  "frequency": "Monthly",
+  "latest_period": "31 Aug 2026",
+  "next_release": "Monthly (new 2026/27 series)",
+  "access": "CSV download",
+  "api_notes": "'as at <date>' provider-state CSV plus the renewed-EIF inspections CSV (10 Nov 2025 onwards), joined on Provider URN; attachments discovered via the GOV.UK content API.",
+  "limitations": "Provider LA is head office, so national apprenticeship providers delivering locally are missed. No single overall grade under report cards (from 10 Nov 2025); legacy grades may be several years old. 16 providers recorded in the three UAs; all 14 with a legacy grade are Good; one (Intelligencia Training) has a report card, all areas at Expected standard.",
+  "quality": "Management information (Ofsted)",
+  "provider_type": "Government",
+  "priority": "supporting",
+  "used_in_tool": true,
+  "why_it_matters": "Shows the quality and thinness of the local FE/apprenticeship provider base that would deliver pre-employment and hospitality training for the resort."
+ },
+ {
+  "id": "gmca_unit_cost_database",
+  "name": "GMCA Unit Cost Database v3.0 (fiscal value of moving claimants into work; NEET costs)",
+  "publisher": "Greater Manchester Combined Authority (Research Team)",
+  "url": "https://www.greatermanchester-ca.gov.uk/what-we-do/research/research-cost-benefit-analysis/",
+  "granularity": [
+   "England"
+  ],
+  "lowest_geography": "National unit costs",
+  "cohorts": [
+   "18-24",
+   "25+ inactive"
+  ],
+  "variables": [
+   "fiscal benefit of UC jobseeker into work",
+   "ESA claimant into work",
+   "NEET cost per year (fiscal and economic)"
+  ],
+  "frequency": "Ad hoc",
+  "latest_period": "v3.0, autumn 2025 (2025/26 prices)",
+  "next_release": "Unknown",
+  "access": "Excel download",
+  "api_notes": "Workbook https://www.greatermanchester-ca.gov.uk/media/sbdg15pr/gmca-unit-cost-database-v3-0-final.xlsx, sheet 'Employment & Economy'; values extracted to research/unit_costs.json.",
+  "limitations": "Fiscal values are transfers (excluded from public value); NEET rows are 2010/11-based and rated lowest confidence; ESA value is 2017/18 modelling uprated; no UC health-claimant value. UC jobseeker into work GBP 17,736/yr, ESA claimant GBP 15,470/yr, NEET 18-24 GBP 6,325/yr fiscal (2025/26 prices).",
+  "quality": "Curated secondary unit costs (HM Treasury Green Book supplementary guidance)",
+  "provider_type": "Government",
+  "priority": "supporting",
+  "used_in_tool": false,
+  "why_it_matters": "Gives a defensible GBP value per local resident moved from benefits into resort jobs for the business case."
+ },
+ {
+  "id": "local_hire_benchmarks",
+  "name": "Local-hire outcomes at comparable large developments (compiled)",
+  "publisher": "Various (DCMS Olympic meta-evaluation, LLDC, Battersea Power Station, Center Parcs, Disneyland Paris impact study, Eden Project)",
+  "url": "https://assets.publishing.service.gov.uk/media/5a7c3dd6e5274a2041cf2aca/Report_5_East_London_Evidence_Base_FINAL.pdf",
+  "granularity": [
+   "development"
+  ],
+  "lowest_geography": "Development",
+  "cohorts": [
+   "18-24",
+   "25+ inactive",
+   "context"
+  ],
+  "variables": [
+   "local definition",
+   "local-hire target",
+   "achieved local share"
+  ],
+  "frequency": "Ad hoc",
+  "latest_period": "1992-2026 (varies by entry)",
+  "next_release": "Unknown",
+  "access": "Dashboard only",
+  "api_notes": "Compiled by hand into research/local_hire_benchmarks.json, each entry with its own source URL.",
+  "limitations": "'Local' is defined differently in every case (host boroughs, single borough, county, 15-mile radius), so shares are not directly comparable; several are operator claims, not independent monitoring. Center Parcs Woburn Forest (2014, 1,500 jobs): 90% live within 15 miles; London 2012 ODA construction: 17.5% host-borough residents vs 15% target; Westfield Stratford: ~3,000 unemployed Newham residents vs 2,000 target.",
+  "quality": "Mixed: evaluation reports and monitoring data alongside operator press statements",
+  "provider_type": "Mixed",
+  "priority": "supporting",
+  "used_in_tool": false,
+  "why_it_matters": "Benchmarks what a realistic local-recruitment target for the resort's ~8,050 operational jobs could be, and how much it depends on how 'local' is defined."
+ }
+]

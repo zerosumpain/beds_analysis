@@ -131,3 +131,17 @@ body, .govuk-template, button, input, select, textarea { font-family: arial, san
 .govuk-header__container.govuk-width-container, .govuk-service-navigation .govuk-width-container { max-width: 1280px; }
 .ba-filterbar .govuk-select, .ba-filterbar .govuk-input { max-width: 100%; } .govuk-select { max-width: 100%; }
 .ba-filterbar .govuk-form-group { min-width: 0; max-width: 100%; } .ba-filterbar .govuk-select { min-width: 0; width: 100%; }
+.ba-age { font-size: .75rem; padding: 1px 6px; }
+.ba-mini { font-size: .875rem !important; margin-bottom: 0; }
+.ba-mini .govuk-table__header, .ba-mini .govuk-table__cell { padding: 6px 10px 6px 0; }
+.ba-cardtable { max-height: 340px; overflow: auto; }
+/* key findings */
+.ba-findings { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 15px; margin-bottom: 30px; }
+.ba-finding { display: block; text-decoration: none; color: var(--ink); border-left: 6px solid var(--blue); background: #fff; border-top: 1px solid var(--line); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 14px 16px; }
+.ba-finding:hover { background: var(--soft); }
+.ba-finding:focus { outline: 3px solid #fd0; outline-offset: 0; background: #fd0; box-shadow: 0 -2px #fd0, 0 4px #0b0c0c; }
+.ba-finding__num { display: block; font-size: 2.25rem; font-weight: 700; line-height: 1.1; margin-bottom: 6px; }
+.ba-finding__text { display: block; font-size: 1rem; line-height: 1.4; }
+.ba-finding--warn { border-left-color: var(--amber); }
+.ba-finding--bad { border-left-color: var(--red); }
+.ba-finding--good { border-left-color: var(--green); }

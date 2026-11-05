@@ -9,18 +9,28 @@ statistics only and holds no personal data).
 
 ## What it does
 
-- **Summary**: the brief, what could and could not be met, lineage at a glance,
-  risks and issues, opportunities and the recommended minimum dataset.
+- **Summary**: key findings computed from the latest data, then the brief, what could
+  and could not be met, lineage at a glance, risks, opportunities and the minimum dataset.
+- **Labour balance**: each cohort from population → can reach a shift (journey times per
+  neighbourhood) → engaged → trained → into work, against local jobs by level; competing
+  sectors; local-hire benchmarks from comparable developments.
+- **Area profiles**: printable profile for any LSOA, MSOA, ward, constituency or authority,
+  searchable by place or postcode.
 - **Map explorer**: LSOA choropleths for every small-area indicator. Layers for
   schools and colleges, GCSE attainment, Census commuting flows and constituencies.
-  Distance rings and a catchment calculator total each cohort within a radius of the site.
+  Catchments by distance or by journey time (public transport, cycle, car, or mixed by
+  household car access) total each cohort that can reach the site. Map state is in the URL
+  and every view has a table alternative.
 - **Cohort pages** (16-19, 18-24, inactive 25+): every indicator compared across
   the three authorities, East of England and England. Each shows confidence
   intervals, trends and breakdowns, and can be downloaded as CSV.
 - **Business case engine**: cohort sizes come from the data. Demand by phase,
   conversion rates, costs, deadweight and displacement are editable. Outputs
-  include a Green Book style BCR, a tornado sensitivity chart, shareable scenario
-  URLs and a CSV export.
+  include a Green Book style BCR with per-cohort fiscal values from the GMCA Unit Cost
+  Database, a year-by-year profile, a tornado chart, a 1,500-run Monte Carlo range,
+  side-by-side saved scenarios, shareable URLs and a CSV export.
+- **Downloads and changes**: every dataset as CSV plus a zip (built at image build time),
+  and a log of what changed at each weekly refresh.
 - **Sources**: the researched catalogue of 45+ sources, including those not
   integrated, with access route, granularity and limitations.
 - **Data lineage**: one record for each feed, with publisher, the exact URL
@@ -41,10 +51,19 @@ statistics only and holds no personal data).
 ## Refresh and deploy
 
 ```bash
-scripts/refresh-data.sh          # clears data/raw cache and re-fetches all feeds
+scripts/refresh-data.sh          # clears data/raw cache (except travel) and re-fetches all feeds
+scripts/refresh-data.sh --travel # also re-runs the OpenTripPlanner journey-time batch (Docker)
+(cd pipeline && python3 check_data.py)   # refuses broken refreshes; prints CHANGED/UNCHANGED
 git add -A && git commit -m "Refresh data"
 scripts/deploy.sh                # porkserv only: /srv/apps/beds (home-app lane)
 ```
+
+`scripts/scheduled-refresh.sh` runs weekly from cron on porkserv (Tuesday 07:15). It refreshes,
+runs the checks, and only when something substantive changed commits, tags `data-YYYY-MM-DD`,
+pushes and deploys. Log: `~/.local/state/beds-refresh.log`.
+
+Universal Credit by conditionality (DWP Stat-Xplore) switches on once a free API key is saved to
+`~/.config/beds/statxplore.key`; see `pipeline/fetch_dwp_uc.py`.
 
 Local preview: `PORT=5661 HOST=<bind address> node server.mjs`, then open
 `http://<bind address>:5661/`.

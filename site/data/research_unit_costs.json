@@ -1,0 +1,119 @@
+{
+ "source": "GMCA Research Team, Unit Cost Database v3.0 (FINAL), updated autumn 2025 (published Nov 2025); workbook gmca-unit-cost-database-v3-0-final.xlsx",
+ "url": "https://www.greatermanchester-ca.gov.uk/media/sbdg15pr/gmca-unit-cost-database-v3-0-final.xlsx",
+ "price_base": "2025/26 prices (column J 'Updated cost/saving' / column M; workbook Lookups!K10 = 2025/26, uprated by the workbook's GDP-deflator lookup from the source year in column I)",
+ "retrieved": "2026-11-05",
+ "landing_page": "https://www.greatermanchester-ca.gov.uk/what-we-do/research/research-cost-benefit-analysis/",
+ "items": [
+  {
+   "id": "uc_jobseeker_into_work",
+   "label": "Universal Credit: single workless claimant, no children, entering full-time work - fiscal benefit",
+   "value": 17735.73,
+   "unit": "\u00a3 per person per year",
+   "components": "benefit savings + tax/NI (DWP benefit payments and operational costs \u00a311,249.96 [E&E1.0.1] + income tax/employee and employer NIC/indirect tax \u00a36,486.00 [E&E1.0.2])",
+   "source_ref": "Sheet 'Employment & Economy', row 3, cost code E&E1.0, column H/J (fiscal value); subsidiaries rows 4-5 (E&E1.0.1, E&E1.0.2)",
+   "url": "https://www.greatermanchester-ca.gov.uk/media/sbdg15pr/gmca-unit-cost-database-v3-0-final.xlsx",
+   "price_base": "2025/26 (source year 2025/26, no uprating)",
+   "note": "Source: DWP modelling (unpublished), RAG amber. Assumes 37 h/week at the 2025/26 National Living Wage (21+), privately renting at \u00a31,332/month, one additional year in work. Comment gives a no-rent alternative of \u00a312,867 fiscal, which suits younger claimants. Also includes reduced DWP operational costs and VAT/indirect tax, so it is slightly wider than benefits + direct tax/NI. Components sum to \u00a317,735.96, a \u00a30.23 rounding difference from the headline. Same row: economic value \u00a326,297.40 (col M), social value \u00a33,204.00 (col P). The workbook says fiscal values are transfers to exclude from public value; WP86 displacement sensitivity is 20% supply-side and 45% demand-side. Part-time alternative E&E1.1 = \u00a36,685.18."
+  },
+  {
+   "id": "health_claimant_into_work",
+   "label": "Employment and Support Allowance: workless claimant entering work - fiscal benefit (benefits + tax/NI, excluding NHS health element)",
+   "value": 15469.5,
+   "unit": "\u00a3 per person per year",
+   "components": "benefit savings + tax/NI (E&E3.0.1 benefits payments incl. HB and operational costs \u00a312,820.20 + E&E3.0.2 income tax/NIC/indirect tax net of tax credits \u00a32,649.30)",
+   "source_ref": "Sheet 'Employment & Economy', rows 38-39, cost codes E&E3.0.1 + E&E3.0.2, column J (headline E&E3.0 row 37)",
+   "url": "https://www.greatermanchester-ca.gov.uk/media/sbdg15pr/gmca-unit-cost-database-v3-0-final.xlsx",
+   "price_base": "2025/26 (uprated by the workbook from 2017/18 source values)",
+   "note": "No UC health / LCW / LCWRA into-work entry exists in v3.0; the new UC entries E&E1.0-1.7 cover only jobseeker-type household scenarios, so this uses the legacy ESA entry. Source: DWP modelling (unpublished), 2017/18 prices, RAG amber. The 2017/18 constituents are \u00a37,270 ESA, \u00a31,942 HB and \u00a3442 operational costs (total \u00a39,654), plus \u00a3968 income tax, \u00a3928 employer NIC, \u00a3790 employee NIC and \u00a3495 indirect tax, minus a \u00a31,186 tax-credit offset (net \u00a31,995). Adding the NHS improved-health element E&E3.0.3 (\u00a31,552.39, from WP86 Appendix D, flagged 'use with caution') gives the headline E&E3.0 fiscal value of \u00a317,021.90. The E&E3.0 economic value is \u00a319,059.00 (col M)."
+  },
+  {
+   "id": "health_claimant_into_work_incl_nhs",
+   "label": "Employment and Support Allowance: workless claimant entering work - headline fiscal benefit incl. NHS improved-health saving",
+   "value": 17021.9,
+   "unit": "\u00a3 per person per year",
+   "components": "benefit savings + tax/NI + NHS improved health (E&E3.0.1 + E&E3.0.2 + E&E3.0.3)",
+   "source_ref": "Sheet 'Employment & Economy', row 37, cost code E&E3.0, column J",
+   "url": "https://www.greatermanchester-ca.gov.uk/media/sbdg15pr/gmca-unit-cost-database-v3-0-final.xlsx",
+   "price_base": "2025/26 (uprated from 2017/18 source value \u00a312,818)",
+   "note": "Headline ESA value; RAG amber. The NHS element comes from DWP WP86 and is uncertain."
+  },
+  {
+   "id": "jsa_jobseeker_into_work",
+   "label": "Jobseeker's Allowance (legacy): workless claimant entering work - fiscal benefit (benefits + tax/NI, excluding NHS health element)",
+   "value": 16031.23,
+   "unit": "\u00a3 per person per year",
+   "components": "benefit savings + tax/NI (E&E2.0.1 benefits incl. HB and operational costs \u00a39,927.89 + E&E2.0.2 income tax/NIC/indirect tax \u00a36,103.34)",
+   "source_ref": "Sheet 'Employment & Economy', rows 28-29, cost codes E&E2.0.1 + E&E2.0.2, column J (headline E&E2.0 row 27)",
+   "url": "https://www.greatermanchester-ca.gov.uk/media/sbdg15pr/gmca-unit-cost-database-v3-0-final.xlsx",
+   "price_base": "2025/26 (uprated by the workbook from 2017/18 source values)",
+   "note": "Cross-check for uc_jobseeker_into_work; it is on the same benefit+tax basis as health_claimant_into_work. The 2017/18 constituents are \u00a34,000 JSA, \u00a32,328 HB and \u00a31,148 operational costs, plus \u00a31,375 income tax, \u00a31,244 employer NIC, \u00a31,024 employee NIC and \u00a31,016 indirect tax, minus a \u00a363 tax-credit offset. Adding the NHS element E&E2.0.3 (\u00a3776.86) gives the headline E&E2.0 fiscal value of \u00a316,808.09. Economic value is \u00a323,133.20. Source: DWP modelling (unpublished), RAG amber."
+  },
+  {
+   "id": "neet_per_year",
+   "label": "NEET: average current fiscal cost per 18-24 year old NEET",
+   "value": 6324.97,
+   "unit": "\u00a3 per person per year",
+   "components": "benefit payments (worklessness + housing benefit, DWP \u00a34,781.24 [E&E10.0.1]) + HMRC element \u00a31,543.73 [E&E10.0.2]",
+   "source_ref": "Sheet 'Employment & Economy', row 82, cost code E&E10.0, column J (fiscal)",
+   "url": "https://www.greatermanchester-ca.gov.uk/media/sbdg15pr/gmca-unit-cost-database-v3-0-final.xlsx",
+   "price_base": "2025/26 (uprated from 2010/11 source value \u00a34,257)",
+   "note": "Source: ACEVO Commission on Youth Unemployment (2012), 'Youth Unemployment: the crisis we cannot afford'; Coles et al 2010 is the source only for the lifetime entry E&E10.4. RAG red: a top-down national total divided by NEET numbers, old data, and no health or crime costs. This is the cost while the person is NEET. The HMRC element is internally inconsistent: the headline note says foregone tax/NI net of WTC/CTC, but the E&E10.0.2 note says it 'relates to payments of Working Tax Credits and Child Tax Credits'."
+  },
+  {
+   "id": "neet_per_year_economic_18_24",
+   "label": "NEET: average current economic cost (lost earnings) per 18-24 year old NEET",
+   "value": 13369.05,
+   "unit": "\u00a3 per person per year",
+   "components": "lost earnings to the individual while NEET",
+   "source_ref": "Sheet 'Employment & Economy', row 82, cost code E&E10.0, column M (economic)",
+   "url": "https://www.greatermanchester-ca.gov.uk/media/sbdg15pr/gmca-unit-cost-database-v3-0-final.xlsx",
+   "price_base": "2025/26 (uprated from 2010/11 source value \u00a38,998)",
+   "note": "ACEVO 2012; RAG red. Social value not quantified."
+  },
+  {
+   "id": "neet_per_year_fiscal_16_17",
+   "label": "NEET: average current fiscal cost per 16-17 year old NEET",
+   "value": 796.38,
+   "unit": "\u00a3 per person per year",
+   "components": "benefit payments (DWP); net HMRC element nil",
+   "source_ref": "Sheet 'Employment & Economy', row 85, cost code E&E10.1, column J (economic value col M = \u00a36,798.93)",
+   "url": "https://www.greatermanchester-ca.gov.uk/media/sbdg15pr/gmca-unit-cost-database-v3-0-final.xlsx",
+   "price_base": "2025/26 (uprated from 2010/11 source value \u00a3536; economic \u00a34,576)",
+   "note": "ACEVO 2012; RAG red."
+  },
+  {
+   "id": "neet_future_annual_fiscal_male",
+   "label": "NEET: average future annual fiscal cost per individual related to earlier NEET status - males",
+   "value": 4326.59,
+   "unit": "\u00a3 per person per year",
+   "components": "foregone tax/NI (HMRC \u00a33,604.04, E&E10.2.1) + future workless benefit payments (DWP \u00a3722.98, E&E10.2.2)",
+   "source_ref": "Sheet 'Employment & Economy', row 86, cost code E&E10.2, column J (economic col M = \u00a310,360.35)",
+   "url": "https://www.greatermanchester-ca.gov.uk/media/sbdg15pr/gmca-unit-cost-database-v3-0-final.xlsx",
+   "price_base": "2025/26 (uprated from 2010/11 source value \u00a32,912)",
+   "note": "This is a scarring cost in later life, not the cost while NEET. ACEVO 2012; RAG red."
+  },
+  {
+   "id": "neet_future_annual_fiscal_female",
+   "label": "NEET: average future annual fiscal cost per individual related to earlier NEET status - females",
+   "value": 3371.24,
+   "unit": "\u00a3 per person per year",
+   "components": "foregone tax/NI (HMRC) + future workless benefit payments (DWP)",
+   "source_ref": "Sheet 'Employment & Economy', row 89, cost code E&E10.3, column J (economic col M = \u00a36,693.44)",
+   "url": "https://www.greatermanchester-ca.gov.uk/media/sbdg15pr/gmca-unit-cost-database-v3-0-final.xlsx",
+   "price_base": "2025/26 (uprated from 2010/11 source value \u00a32,269)",
+   "note": "This is a scarring cost in later life. ACEVO 2012; RAG red."
+  },
+  {
+   "id": "neet_lifetime_fiscal_coles_2010",
+   "label": "NEET (16-18): lifetime public finance cost - welfare payments (less pensions) + lost tax/NI",
+   "value": 95807.57,
+   "unit": "\u00a3 per person, lifetime (not annual)",
+   "components": "benefit payments + lost tax/NI over lifetime",
+   "source_ref": "Sheet 'Employment & Economy', row 92, cost code E&E10.4, column J",
+   "url": "https://www.greatermanchester-ca.gov.uk/media/sbdg15pr/gmca-unit-cost-database-v3-0-final.xlsx",
+   "price_base": "2025/26 (uprated from 2010/11 source value \u00a364,483)",
+   "note": "Source: Coles et al 2010, 'Estimating the life-time cost of NEET: 16-18 year olds not in Education, Employment or Training' (University of York), p37 table 3.7. This is a case-study-based LIFETIME figure, not per year. RAG red."
+  }
+ ]
+}

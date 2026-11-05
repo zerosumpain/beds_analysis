@@ -18,7 +18,7 @@ cached in `data/raw/` (gitignored); outputs go to `site/data/<dataset_id>.json` 
 - `limitations`: suppression, disclosure control, rounding, coverage gaps — be specific
 - `licence`: default OGL v3 (set otherwise)
 - `indicators`: LIST of `{"id","label","unit","cohort","polarity","description"}` where
-  unit ∈ count|percent|rate|score|rank|decile|gbp|ratio, polarity ∈ higher_is_worse|higher_is_better|neutral.
+  unit ∈ count|percent|rate|score|rank|decile|gbp|ratio|minutes (minutes = journey time, e.g. travel_lsoa), polarity ∈ higher_is_worse|higher_is_better|neutral.
   Indicator ids are globally unique across datasets: prefix with dataset short name, e.g. `aps_inact_rate_16_64`.
 
 ## Row (long format, one value per row)

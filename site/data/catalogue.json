@@ -1,5 +1,63 @@
 [
  {
+  "title": "Housing affordability: house price to earnings ratios and private rents",
+  "publisher": "Office for National Statistics",
+  "source_url": "https://www.ons.gov.uk/peoplepopulationandcommunity/housing/datasets/ratioofhousepricetoresidencebasedearningslowerquartileandmedian ; https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics",
+  "api_url": [
+   "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/housing/datasets/ratioofhousepricetoresidencebasedearningslowerquartileandmedian/current/aff2ratioofhousepricetoresidencebasedearnings.xlsx",
+   "https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics/21october2026/priceindexofprivaterentsukmonthlypricestatistics.xlsx"
+  ],
+  "geography": "LA, region, England",
+  "cohort": "context, 18-24",
+  "period": "ratios 2025; rents Sep 2026",
+  "latest_period": "Sep 2026",
+  "frequency": "Annual (ratios), Monthly (rents)",
+  "next_update": "Ratios: March 2027 (annual); rents: monthly with ONS consumer price inflation",
+  "access": "Excel download",
+  "quality": "Affordability ratios are official statistics combining HM Land Registry price paid data with ASHE residence-based earnings (survey; LA earnings carry sampling error so year-to-year moves of a few tenths are noise). PIPR is an official statistic in development built from VOA, Valuation Office and devolved administration rental data covering existing tenancies, not only new lets.",
+  "limitations": "Ratios use full-time workplace-independent residence earnings and median or lower-quartile prices, not what an 18-24 year old earns. PIPR prices are averages of the rental stock, so advertised new-let rents faced by a newcomer are typically higher; the latest months are provisional and revised. The NLW rent share is gross pay, single earner, before tax and benefits, and uses the 21+ NLW rate (18-20 rate is lower). No Bedfordshire total: averages and ratios cannot be summed.",
+  "indicators": [
+   {
+    "id": "aff_hp_earn_ratio",
+    "label": "House price to residence-based earnings ratio (median)",
+    "unit": "ratio",
+    "cohort": "context, 18-24",
+    "polarity": "higher_is_worse",
+    "description": "ONS: median house price (year ending September) divided by median gross annual earnings of full-time employees living in the area (ASHE, April). Table 5c (LA) and 1c (region, England)."
+   },
+   {
+    "id": "aff_lq_hp_earn_ratio",
+    "label": "House price to residence-based earnings ratio (lower quartile)",
+    "unit": "ratio",
+    "cohort": "context, 18-24",
+    "polarity": "higher_is_worse",
+    "description": "ONS: lower-quartile house price divided by lower-quartile gross annual residence-based full-time earnings - the entry-level affordability measure. Tables 6c (LA) and 2c."
+   },
+   {
+    "id": "aff_rent_monthly",
+    "label": "Average monthly private rent (PIPR)",
+    "unit": "gbp",
+    "cohort": "context, 18-24",
+    "polarity": "higher_is_worse",
+    "description": "ONS Price Index of Private Rents: average monthly private rental price (stock of existing tenancies and new lets, rounded to the nearest pound). No breakdown = all property sizes; breakdown = number of bedrooms."
+   },
+   {
+    "id": "aff_rent_share_nlw",
+    "label": "Rent as % of full-time National Living Wage pay",
+    "unit": "percent",
+    "cohort": "context, 18-24",
+    "polarity": "higher_is_worse",
+    "description": "Derived: 12 x average monthly private rent / annual gross pay of a full-time NLW worker x 100, where annual NLW pay = GBP 12.71/hour x 37.5 hours x 52 weeks = GBP 24,784.50 (NLW rate from 1 April 2026, age 21+). Gross pay before tax/NI; ignores Universal Credit housing support. num = annual rent, den = annual NLW pay. Breakdown = bedrooms (1 bedroom is the relevant comparator for a single new entrant)."
+   }
+  ],
+  "nlw_annual_gbp": 24784.5,
+  "id": "affordability",
+  "retrieved_at": "2026-11-05T22:30Z",
+  "row_count": 1310,
+  "sha256": "fd1cc437cea330a0",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
   "title": "Annual Population Survey: employment, inactivity and qualifications",
   "publisher": "Office for National Statistics (via Nomis)",
   "source_url": "https://www.nomisweb.co.uk/sources/aps",
@@ -370,7 +428,7 @@
   "publisher": "Office for National Statistics (via Nomis)",
   "source_url": "https://www.nomisweb.co.uk/sources/bres",
   "api_url": [
-   "https://www.nomisweb.co.uk/api/v01/dataset/NM_189_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS4-latest&industry=37748736,150994953,150994962,150994950,163577863,150994952,146800733,146800695,146800696,163577857,163577858,163577859,163577860,163577861,163577862,163577863,163577864,163577865,163577866,163577867,163577868,163577869,163577870,163577871,163577872,163577873,163577874&employment_status=1&measure=1&measures=20100&select=date_name,geography_code,industry,industry_name,obs_value,obs_status"
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_189_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latestMINUS4-latest&industry=37748736,150994953,150994962,150994950,163577863,150994952,146800733,146800695,146800696,146800692,146800689,146800691,146800686,163577857,163577858,163577859,163577860,163577861,163577862,163577863,163577864,163577865,163577866,163577867,163577868,163577869,163577870,163577871,163577872,163577873,163577874&employment_status=1&measure=1&measures=20100&select=date_name,geography_code,industry,industry_name,obs_value,obs_status"
   ],
   "geography": "LA, region, England, Bedfordshire total",
   "cohort": "context",
@@ -380,7 +438,7 @@
   "next_update": "Autumn each year (latest year provisional)",
   "access": "API",
   "quality": "Accredited official statistics from a business survey of ~80,000 units, benchmarked to the IDBR; open-access LA figures are rounded (nearest 5 below 100, otherwise to the nearest 250 / 500 / 1,000 depending on size). Includes units registered for PAYE only. Latest year provisional.",
-  "limitations": "Employee jobs, not people; excludes self-employed (significant in construction) and HM Forces. Location in which the job is recorded can reflect head-office/reporting unit allocation. Rounding means small sectors (e.g. division 93) and year-on-year changes are coarse; location quotients and BEDS totals are computed from rounded counts. 'Retail' is a broad-group subset of section G.",
+  "limitations": "Employee jobs, not people; excludes self-employed (significant in construction) and HM Forces. Location in which the job is recorded can reflect head-office/reporting unit allocation. Rounding means small sectors (e.g. division 93) and year-on-year changes are coarse; location quotients and BEDS totals are computed from rounded counts. 'Retail' is a broad-group subset of section G. Divisions 49 (land transport), 51 (air) and 52 (warehousing) are subsets of section H 'transport' - do not add them to it. Air transport (51) counts airline jobs where the employer's reporting unit sits (e.g. an airline base at Luton Airport); airport operation and ground handling (52.23) fall in warehousing & support (52), and airport retail/security elsewhere.",
   "indicators": [
    {
     "id": "bres_emp_total",
@@ -583,6 +641,102 @@
     "description": "Area share of employees in Food & beverage service (division 56) divided by England share (>1 = over-represented). Computed here from rounded counts."
    },
    {
+    "id": "bres_emp_warehousing",
+    "label": "Employees: Warehousing & support for transportation (division 52)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "BRES employee jobs in Warehousing & support for transportation (division 52), workplace-based."
+   },
+   {
+    "id": "bres_share_warehousing",
+    "label": "Share of employees: Warehousing & support for transportation (division 52)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Warehousing & support for transportation (division 52) employees as % of all employees in the area."
+   },
+   {
+    "id": "bres_lq_warehousing",
+    "label": "Location quotient: Warehousing & support for transportation (division 52)",
+    "unit": "ratio",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Area share of employees in Warehousing & support for transportation (division 52) divided by England share (>1 = over-represented). Computed here from rounded counts."
+   },
+   {
+    "id": "bres_emp_land_transport",
+    "label": "Employees: Land transport (division 49)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "BRES employee jobs in Land transport (division 49), workplace-based."
+   },
+   {
+    "id": "bres_share_land_transport",
+    "label": "Share of employees: Land transport (division 49)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Land transport (division 49) employees as % of all employees in the area."
+   },
+   {
+    "id": "bres_lq_land_transport",
+    "label": "Location quotient: Land transport (division 49)",
+    "unit": "ratio",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Area share of employees in Land transport (division 49) divided by England share (>1 = over-represented). Computed here from rounded counts."
+   },
+   {
+    "id": "bres_emp_air",
+    "label": "Employees: Air transport (division 51)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "BRES employee jobs in Air transport (division 51), workplace-based."
+   },
+   {
+    "id": "bres_share_air",
+    "label": "Share of employees: Air transport (division 51)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Air transport (division 51) employees as % of all employees in the area."
+   },
+   {
+    "id": "bres_lq_air",
+    "label": "Location quotient: Air transport (division 51)",
+    "unit": "ratio",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Area share of employees in Air transport (division 51) divided by England share (>1 = over-represented). Computed here from rounded counts."
+   },
+   {
+    "id": "bres_emp_wholesale",
+    "label": "Employees: Wholesale trade (division 46)",
+    "unit": "count",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "BRES employee jobs in Wholesale trade (division 46), workplace-based."
+   },
+   {
+    "id": "bres_share_wholesale",
+    "label": "Share of employees: Wholesale trade (division 46)",
+    "unit": "percent",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Wholesale trade (division 46) employees as % of all employees in the area."
+   },
+   {
+    "id": "bres_lq_wholesale",
+    "label": "Location quotient: Wholesale trade (division 46)",
+    "unit": "ratio",
+    "cohort": "context",
+    "polarity": "neutral",
+    "description": "Area share of employees in Wholesale trade (division 46) divided by England share (>1 = over-represented). Computed here from rounded counts."
+   },
+   {
     "id": "bres_emp_by_group",
     "label": "Employees by broad industrial group",
     "unit": "count",
@@ -601,9 +755,9 @@
   ],
   "dataset_code": "NM_189_1",
   "id": "bres_sectors",
-  "retrieved_at": "2026-11-05T20:40Z",
-  "row_count": 966,
-  "sha256": "c44e99b2bb9a822f",
+  "retrieved_at": "2026-11-05T22:25Z",
+  "row_count": 1326,
+  "sha256": "a37dca61093b8866",
   "licence": "Open Government Licence v3.0"
  },
  {
@@ -770,6 +924,107 @@
   "retrieved_at": "2026-11-05T20:40Z",
   "row_count": 1020,
   "sha256": "67ff038f37e06b9f",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Census 2021 barriers to work: no car, English proficiency, lone parents, bad health",
+  "publisher": "Office for National Statistics (via Nomis)",
+  "source_url": "https://www.nomisweb.co.uk/sources/census_2021_ts",
+  "api_url": [
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2063_1.data.csv?measures=20100&select=geography_code,C2021_CARS_5,obs_value&geography=%3C417+LSOA21+codes,+140%2Frequest%3E",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2063_1.data.csv?measures=20100&select=geography_code,C2021_CARS_5,obs_value&geography=E06000055,E06000056,E06000032,E12000006,E92000001",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2048_1.data.csv?measures=20100&select=geography_code,C2021_ENGPRF_6,obs_value&geography=%3C417+LSOA21+codes,+140%2Frequest%3E",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2048_1.data.csv?measures=20100&select=geography_code,C2021_ENGPRF_6,obs_value&geography=E06000055,E06000056,E06000032,E12000006,E92000001",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2023_1.data.csv?measures=20100&select=geography_code,C2021_HHCOMP_15,obs_value&geography=%3C417+LSOA21+codes,+140%2Frequest%3E",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2023_1.data.csv?measures=20100&select=geography_code,C2021_HHCOMP_15,obs_value&geography=E06000055,E06000056,E06000032,E12000006,E92000001",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2055_1.data.csv?measures=20100&select=geography_code,C2021_HEALTH_6,obs_value&geography=%3C417+LSOA21+codes,+140%2Frequest%3E",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2055_1.data.csv?measures=20100&select=geography_code,C2021_HEALTH_6,obs_value&geography=E06000055,E06000056,E06000032,E12000006,E92000001"
+  ],
+  "geography": "LSOA21, LA, region, England, county",
+  "cohort": "18-24, 25+ inactive, context",
+  "period": "Census 2021",
+  "latest_period": "Census 2021 (21 March 2021)",
+  "frequency": "Decennial",
+  "next_update": "Census 2031 (results c. 2032-33)",
+  "access": "API",
+  "quality": "Accredited official statistics (Census 2021, ~97% person response, estimates adjusted for non-response). LA, region and England rows are the published LA-level figures; BEDS sums the three LA counts and recomputes %.",
+  "limitations": "Census day 21 March 2021 fell in the third COVID-19 lockdown, which may have affected self-reported health and household arrangements (e.g. students at home). Cell-key perturbation adds small noise to every cell, so LSOA counts do not sum exactly to LA totals and small counts (<10, common for 'cannot speak English' and lone-parent cells) are unreliable. Car/van availability counts vehicles available to the household, not driving licences or individual access, and is a household (not person) measure. English proficiency is self- or householder-reported and only asked of people whose main language is not English. General health is not age-standardised, so older areas score worse (ONS TS037ASP gives age-standardised LA figures). Lone-parent count excludes lone parents in multi-family households. Measures are five years old and Luton's population in particular has grown since.",
+  "indicators": [
+   {
+    "id": "cb_hh_nocar",
+    "label": "Households with no car or van (count)",
+    "unit": "count",
+    "cohort": "context, 25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Census 2021 count: households with no car or van. TS045 category 1 'No cars or vans in household'."
+   },
+   {
+    "id": "cb_hh_nocar_pct",
+    "label": "Households with no car or van (%)",
+    "unit": "percent",
+    "cohort": "context, 25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Households with no car or van as % of all households. TS045 category 1 'No cars or vans in household'."
+   },
+   {
+    "id": "cb_eng_poor",
+    "label": "Cannot speak English well or at all (count)",
+    "unit": "count",
+    "cohort": "25+ inactive, 18-24",
+    "polarity": "higher_is_worse",
+    "description": "Census 2021 count: cannot speak english well or at all. TS029 categories 4 'Cannot speak English well' + 5 'Cannot speak English' (main language not English; self/householder-reported)."
+   },
+   {
+    "id": "cb_eng_poor_pct",
+    "label": "Cannot speak English well or at all (%)",
+    "unit": "percent",
+    "cohort": "25+ inactive, 18-24",
+    "polarity": "higher_is_worse",
+    "description": "Cannot speak English well or at all as % of usual residents aged 3+. TS029 categories 4 'Cannot speak English well' + 5 'Cannot speak English' (main language not English; self/householder-reported)."
+   },
+   {
+    "id": "cb_lone_parent_dep",
+    "label": "Lone-parent households with dependent children (count)",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Census 2021 count: lone-parent households with dependent children. TS003 category 10 'Single family household: Lone parent family: With dependent children' (excludes lone parents living in multi-family/other households)."
+   },
+   {
+    "id": "cb_lone_parent_dep_pct",
+    "label": "Lone-parent households with dependent children (%)",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Lone-parent households with dependent children as % of all households. TS003 category 10 'Single family household: Lone parent family: With dependent children' (excludes lone parents living in multi-family/other households)."
+   },
+   {
+    "id": "cb_bad_health",
+    "label": "General health bad or very bad (count)",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "Census 2021 count: general health bad or very bad. TS037 categories 4 'Bad health' + 5 'Very bad health' (all ages; not age-standardised)."
+   },
+   {
+    "id": "cb_bad_health_pct",
+    "label": "General health bad or very bad (%)",
+    "unit": "percent",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_worse",
+    "description": "General health bad or very bad as % of all usual residents. TS037 categories 4 'Bad health' + 5 'Very bad health' (all ages; not age-standardised)."
+   }
+  ],
+  "tables": [
+   "TS045 Car or van availability (NM_2063_1)",
+   "TS029 Proficiency in English (NM_2048_1)",
+   "TS003 Household composition (NM_2023_1)",
+   "TS037 General health (NM_2055_1)"
+  ],
+  "id": "census_barriers",
+  "retrieved_at": "2026-11-05T22:26Z",
+  "row_count": 3384,
+  "sha256": "af675b0b244015d8",
   "licence": "Open Government Licence v3.0"
  },
  {
@@ -1148,6 +1403,63 @@
   "retrieved_at": "2026-11-05T20:40Z",
   "row_count": 232,
   "sha256": "4048e64ad820bf34",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Childcare supply: Ofsted-registered early years providers and places",
+  "publisher": "Ofsted (childcare MI); ONS mid-year estimates via Nomis",
+  "source_url": "https://www.gov.uk/government/statistical-data-sets/childcare-providers-and-inspections-management-information",
+  "api_url": [
+   "https://assets.publishing.service.gov.uk/media/6a6ca4eb0c36759b5ccaa2e0/Management_information_-_childcare_providers_and_inspections_-_childcare_providers_data_as_at_30_June_2026.csv",
+   "https://www.nomisweb.co.uk/api/v01/dataset/NM_2002_1.data.csv?geography=E06000055,E06000056,E06000032,E12000006,E92000001&date=latest&gender=0&c_age=101,102,103,104,105&measures=20100&select=date_name,geography_code,c_age,obs_value"
+  ],
+  "geography": "LA, region, England, Bedfordshire total",
+  "cohort": "25+ inactive",
+  "period": "30 Jun 2026",
+  "latest_period": "30 Jun 2026",
+  "frequency": "Quarterly",
+  "next_update": "Quarterly (next quarter-end extract, typically published ~6 weeks later)",
+  "access": "CSV download",
+  "quality": "Ofsted management information (not official statistics; not reconciled with the official statistics series) extracted from the live register. Provider-level file of 60,007 active registered providers in England; LA, region and England totals are summed from the complete file and match Ofsted's published Table 2a.",
+  "limitations": "Counts registered places, not vacancies, opening hours or prices; a place can be used by more than one child. Excludes provision not on the Ofsted register: maintained nursery schools and nursery classes in schools (a large share of 3-4 year old funded hours), so places per 100 understates total early education capacity. Home childcarers (nannies) and Childcare Register-only providers have no places and are excluded. Childminder addresses are redacted, so no point data. Denominator is mid-2025 0-4 population against a 30 Jun 2026 register.",
+  "indicators": [
+   {
+    "id": "cc_providers",
+    "label": "Registered early years childcare providers",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "Active providers on Ofsted's Early Years Register (childminders, nurseries/pre-schools/out-of-school clubs on non-domestic premises, childcare on domestic premises) by provider local authority. Breakdown = provider type."
+   },
+   {
+    "id": "cc_places",
+    "label": "Registered early years childcare places",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "Sum of 'Places including estimates' for active Early Years Register providers (Ofsted uses averages for the few providers with no place number; reproduces Ofsted MI Table 2a 'EYR places at end', rounded to whole places)."
+   },
+   {
+    "id": "cc_places_per_100_0_4",
+    "label": "Early years childcare places per 100 children aged 0-4",
+    "unit": "rate",
+    "cohort": "25+ inactive",
+    "polarity": "higher_is_better",
+    "description": "cc_places / ONS mid-year population aged 0-4 x 100 (num = places, den = population 0-4, Nomis NM_2002_1). A capacity proxy for parents (mostly mothers) returning to work; places are not full-time-equivalent and many serve 0-7s."
+   },
+   {
+    "id": "cc_pop_0_4",
+    "label": "Population aged 0-4 (denominator)",
+    "unit": "count",
+    "cohort": "25+ inactive",
+    "polarity": "neutral",
+    "description": "ONS mid-year population estimate, persons aged 0-4 (sum of single years 0-4)."
+   }
+  ],
+  "id": "childcare",
+  "retrieved_at": "2026-11-05T22:30Z",
+  "row_count": 56,
+  "sha256": "914186c68a6b7a20",
   "licence": "Open Government Licence v3.0"
  },
  {
@@ -3036,6 +3348,79 @@
   "licence": "Open Government Licence v3.0"
  },
  {
+  "title": "Ofsted further education and skills inspections (providers in Bedfordshire)",
+  "publisher": "Ofsted",
+  "source_url": "https://www.gov.uk/government/statistical-data-sets/further-education-and-skills-inspections-and-outcomes-management-information-from-november-2025-to-august-2026",
+  "api_url": [
+   "https://assets.publishing.service.gov.uk/media/6a9fec1e92e72b8ac437eef3/Management_information_-_further_education_and_skills_-_as_at_31_August_2026.csv",
+   "https://assets.publishing.service.gov.uk/media/6a9feda65f6e942efe37eed6/Management_information_-_further_education_and_skills_-_10_November_2025_to_31_August_2026.csv"
+  ],
+  "geography": "point / provider (Bedfordshire FE and skills providers); LA, region, England, Bedfordshire total counts",
+  "cohort": "16-19, 18-24",
+  "period": "31 Aug 2026",
+  "latest_period": "31 Aug 2026",
+  "frequency": "Monthly",
+  "next_update": "Monthly (new academic-year series from September 2026)",
+  "access": "CSV download",
+  "quality": "Ofsted management information, not official statistics; provider-level extract of all FE and skills providers in remit with their latest inspection outcomes. Point locations borrowed from GIAS (providers dataset) where URN or UKPRN match; other providers are 'provider' rows without coordinates.",
+  "limitations": "Location is Ofsted's recorded local authority for the provider (usually head office), not where learners are taught: national apprenticeship providers delivering in Bedfordshire but based elsewhere are not captured, and a Bedfordshire-based provider may teach mostly elsewhere. Since 10 Nov 2025 Ofsted grades providers on a report card with no single overall judgement, so the 1-4 grade shown is the latest under the previous framework and may be several years old; report-card outcomes are in attrs and in ofsted_fe_rc_* indicators. Providers in Wales and Scotland in the file are excluded from England counts.",
+  "indicators": [
+   {
+    "id": "ofsted_fe_overall",
+    "label": "Ofsted overall effectiveness (latest before renewed EIF)",
+    "unit": "score",
+    "cohort": "16-19, 18-24",
+    "polarity": "higher_is_worse",
+    "description": "Field 'Latest overall effectiveness before renewed EIF' (1 Outstanding, 2 Good, 3 Requires improvement, 4 Inadequate) for each FE and skills provider whose Ofsted record places it in Bedford, Central Bedfordshire or Luton. Null = no graded inspection under the old framework (new providers). Report-card grades from inspections under the renewed EIF (from 10 Nov 2025; no single overall grade) are in attrs.report_card; the legacy grade may predate them."
+   },
+   {
+    "id": "ofsted_fe_rc_below_expected",
+    "label": "Report-card evaluation areas below expected standard (renewed EIF)",
+    "unit": "count",
+    "cohort": "16-19, 18-24",
+    "polarity": "higher_is_worse",
+    "description": "For providers inspected under the renewed EIF report-card format: number of graded evaluation areas judged 'Needs attention' or 'Urgent improvement' (scale: Exceptional, Strong standard, Expected standard, Needs attention, Urgent improvement). Full text grades in attrs.report_card."
+   },
+   {
+    "id": "ofsted_fe_providers",
+    "label": "FE and skills providers in Ofsted's inspection remit",
+    "unit": "count",
+    "cohort": "16-19, 18-24",
+    "polarity": "neutral",
+    "description": "Number of FE and skills providers (colleges, independent learning providers, employer providers, local authority providers, HEIs with apprenticeships, 16-19 academies, dance and drama colleges) recorded against the area in the Ofsted MI."
+   },
+   {
+    "id": "ofsted_fe_grade_count",
+    "label": "FE and skills providers by latest legacy overall grade",
+    "unit": "count",
+    "cohort": "16-19, 18-24",
+    "polarity": "neutral",
+    "description": "Count of providers by 'Latest overall effectiveness before renewed EIF'; breakdown = grade."
+   },
+   {
+    "id": "ofsted_fe_pct_good_plus",
+    "label": "% of graded FE and skills providers good or outstanding",
+    "unit": "percent",
+    "cohort": "16-19, 18-24",
+    "polarity": "higher_is_better",
+    "description": "Providers graded 1 or 2 / providers with a legacy overall grade x 100 (num/den given; Bedfordshire total recomputed from summed counts)."
+   },
+   {
+    "id": "ofsted_fe_rc_count",
+    "label": "FE and skills providers with a renewed-EIF report card",
+    "unit": "count",
+    "cohort": "16-19, 18-24",
+    "polarity": "neutral",
+    "description": "Providers with a full inspection under the renewed EIF (report card) published since 10 November 2025."
+   }
+  ],
+  "id": "ofsted_fe",
+  "retrieved_at": "2026-11-05T22:30Z",
+  "row_count": 65,
+  "sha256": "15fc252a3e267c2d",
+  "licence": "Open Government Licence v3.0"
+ },
+ {
   "title": "Small-area population estimates by age (LSOA 2021)",
   "publisher": "Office for National Statistics (via Nomis)",
   "source_url": "https://www.ons.gov.uk/peoplepopulationandcommunity/populationandmigration/populationestimates/datasets/lowersuperoutputareamidyearpopulationestimates",
@@ -3434,5 +3819,143 @@
   "row_count": 288,
   "sha256": "1240494825f429f1",
   "licence": "Open Government Licence v3.0"
+ },
+ {
+  "title": "Journey times from each LSOA to the proposed Universal resort site (Kempston Hardwick)",
+  "publisher": "Derived: DfT Bus Open Data Service (BODS) timetables; OpenStreetMap contributors (ODbL); rail modelled from London Northwestern Railway / Thameslink / EMR published timetables; ONS LSOA 2021 population-weighted centroids; routed with OpenTripPlanner 2",
+  "source_url": "https://data.bus-data.dft.gov.uk/timetable/download/",
+  "api_url": [
+   "https://download.geofabrik.de/europe/united-kingdom/england/bedfordshire-latest.osm.pbf",
+   "https://data.bus-data.dft.gov.uk/timetable/download/gtfs-file/south_east/",
+   "https://data.bus-data.dft.gov.uk/timetable/download/gtfs-file/east_anglia/",
+   "https://data.bus-data.dft.gov.uk/timetable/download/gtfs-file/east_midlands/",
+   "https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LSOA_PopCentroids_EW_2021_V4/FeatureServer/0/query?where=LSOA21CD IN (<417 Bedfordshire LSOAs>)&outSR=4326&f=json",
+   "https://www.londonnorthwesternrailway.co.uk/media/44855/download",
+   "https://naptan.api.dft.gov.uk/v1/access-nodes?dataFormat=csv&atcoAreaCodes=910 (station coordinates)"
+  ],
+  "geography": "LSOA21, LA",
+  "cohort": "16-19, 18-24, 25+ inactive",
+  "period": "Timetables for Tue 17 Nov 2026",
+  "latest_period": "Timetables for Tue 17 Nov 2026",
+  "frequency": "Ad hoc (re-run on refresh)",
+  "next_update": "Re-run when BODS timetables or the Dec 2026 rail timetable change",
+  "access": "API",
+  "quality": "Modelled journey times, not observed. Routed by OpenTripPlanner 2.8.1 (Docker, batch) over the Geofabrik Bedfordshire OSM extract and BODS GTFS (south_east, east_anglia, east_midlands regional feeds, cut to trips on the modelled day calling within (51.8, -0.8, 52.36, -0.1)). Destination 52.0898,-0.4996 (Kempston Hardwick site; not common.SITE). Origins: 417 of 417 LSOAs use ONS LSOA 2021 population-weighted centroids, the rest geometric centroids. tt_pt_am_min = shortest public-transport+walk journey (leave origin -> reach site) among itineraries arriving 07:30-08:30 (OTP arriveBy 08:30, 60-min search window); the traveller leaves just in time, so it excludes waiting before the first departure and any early-arrival slack at the site (slack_at_site_min in attrs). tt_pt_late_min = minutes from 22:30 (shift end) until arrival home, earliest arrival, so it includes waiting at the site; null if not home by 00:30. tt_pt_late_ok_pct = 100 if home within 90 min (by 00:00). Walk-only answers count as PT only up to 60 min. Walk 1.33 m/s, cycle 5 m/s (18 km/h), 2-min transfer slack, access/egress walk <= 45 min.",
+  "limitations": "Single modelled weekday (Tue 17 Nov 2026) - school-day timetables; Saturdays/Sundays, school holidays and real-time disruption are not modelled. Car times are free-flow from OSM road speeds and ignore congestion, junction delay and parking (so they understate peak driving times, especially Luton-A6/M1 and Bedford town). Cycle times ignore hills and route quality. One point per LSOA: residents far from the centroid may face longer walks. Demand-responsive transport, works shuttles, taxis and any future resort bus/rail link are excluded. Bus timetables are as registered in BODS (published schedules, not punctuality). Rail is a hand-built GTFS (pipeline/travel/rail_gtfs/): Marston Vale line Bedford-Bletchley Mon-Fri trips transcribed train-by-train from London Northwestern Railway's timetable valid 18 May-11 Dec 2026 (https://www.londonnorthwesternrailway.co.uk/media/44855/download; full hourly train service assumed running as published, after the 2022-24 suspension ended 19 Feb 2024 - no current suspension found, but East West Rail works can bring bus replacement at short notice). Thameslink Bedford-Flitwick-Harlington-Leagrave-Luton-Luton Airport Parkway (every 15 min ~05:15-22:00, then every 30 min; ~25 min end to end) and EMR Connect Bedford-Luton-Luton Airport Parkway (every 30 min, 15 min non-stop) are MODELLED as regular headways (frequencies.txt) from the Summer 2026 (to 12 Dec 2026) weekday pattern; real departures differ by a few minutes and peak-only fast Thameslink trains are omitted. No other rail.",
+  "licence": "BODS timetable data: Open Government Licence v3.0; OpenStreetMap: Open Database Licence (ODbL) 1.0, (c) OpenStreetMap contributors; ONS centroids & NaPTAN: OGL v3.0; rail timetable facts from operators' published timetables",
+  "rail_assumption": "Rail is a hand-built GTFS (pipeline/travel/rail_gtfs/): Marston Vale line Bedford-Bletchley Mon-Fri trips transcribed train-by-train from London Northwestern Railway's timetable valid 18 May-11 Dec 2026 (https://www.londonnorthwesternrailway.co.uk/media/44855/download; full hourly train service assumed running as published, after the 2022-24 suspension ended 19 Feb 2024 - no current suspension found, but East West Rail works can bring bus replacement at short notice). Thameslink Bedford-Flitwick-Harlington-Leagrave-Luton-Luton Airport Parkway (every 15 min ~05:15-22:00, then every 30 min; ~25 min end to end) and EMR Connect Bedford-Luton-Luton Airport Parkway (every 30 min, 15 min non-stop) are MODELLED as regular headways (frequencies.txt) from the Summer 2026 (to 12 Dec 2026) weekday pattern; real departures differ by a few minutes and peak-only fast Thameslink trains are omitted. No other rail.",
+  "router": "opentripplanner/opentripplanner:2.8.1",
+  "destination": {
+   "lat": 52.0898,
+   "lon": -0.4996
+  },
+  "inputs_stamp": "fe932efa0ce1",
+  "gtfs_filter": {
+   "south_east": {
+    "trips": 6288,
+    "stops": 6327,
+    "routes": 264,
+    "feed_validity": [
+     "20261105",
+     "20270901"
+    ]
+   },
+   "east_anglia": {
+    "trips": 533,
+    "stops": 1181,
+    "routes": 27,
+    "feed_validity": [
+     "20261105",
+     "20270829"
+    ]
+   },
+   "east_midlands": {
+    "trips": 667,
+    "stops": 1210,
+    "routes": 36,
+    "feed_validity": [
+     "20261105",
+     "20271003"
+    ]
+   }
+  },
+  "indicators": [
+   {
+    "id": "tt_pt_am_min",
+    "label": "Public transport to site, arrive by 08:30 (min)",
+    "unit": "minutes",
+    "cohort": "all",
+    "polarity": "higher_is_worse",
+    "description": "Shortest bus/rail + walk journey from the LSOA centroid arriving at the site between 07:30 and 08:30 on a typical weekday; null when no journey exists (attrs.no_journey)."
+   },
+   {
+    "id": "tt_pt_late_min",
+    "label": "Public transport home after 22:30 shift end (min)",
+    "unit": "minutes",
+    "cohort": "all",
+    "polarity": "higher_is_worse",
+    "description": "Minutes from 22:30 at the site until arrival at the LSOA centroid (earliest arrival, includes waiting); null when not home by 00:30."
+   },
+   {
+    "id": "tt_pt_late_ok_pct",
+    "label": "Can get home by public transport within 90 min of a 22:30 finish",
+    "unit": "percent",
+    "cohort": "all",
+    "polarity": "higher_is_better",
+    "description": "LSOA: 100 or 0. LA/county: % of residents aged 16-64 living in LSOAs where it is possible (population-weighted, num/den given)."
+   },
+   {
+    "id": "tt_car_min",
+    "label": "Car to site (min, free-flow)",
+    "unit": "minutes",
+    "cohort": "all",
+    "polarity": "higher_is_worse",
+    "description": "OTP car routing on OSM roads; no congestion."
+   },
+   {
+    "id": "tt_cycle_min",
+    "label": "Cycle to site (min)",
+    "unit": "minutes",
+    "cohort": "all",
+    "polarity": "higher_is_worse",
+    "description": "OTP bicycle routing at 18 km/h."
+   },
+   {
+    "id": "tt_walk_min",
+    "label": "Walk to site (min)",
+    "unit": "minutes",
+    "cohort": "all",
+    "polarity": "higher_is_worse",
+    "description": "OTP walk routing at 4.8 km/h (up to 4 h)."
+   },
+   {
+    "id": "tt_pop1664_pt45_pct",
+    "label": "16-64s within 45 min by public transport (am)",
+    "unit": "percent",
+    "cohort": "all",
+    "polarity": "higher_is_better",
+    "description": "% of residents aged 16-64 (ONS SAPE, mid-2024) in LSOAs with tt_pt_am_min <= 45."
+   },
+   {
+    "id": "tt_pop1664_pt60_pct",
+    "label": "16-64s within 60 min by public transport (am)",
+    "unit": "percent",
+    "cohort": "all",
+    "polarity": "higher_is_better",
+    "description": "% of residents aged 16-64 in LSOAs with tt_pt_am_min <= 60."
+   },
+   {
+    "id": "tt_pop1664_car30_pct",
+    "label": "16-64s within 30 min by car",
+    "unit": "percent",
+    "cohort": "all",
+    "polarity": "higher_is_better",
+    "description": "% of residents aged 16-64 in LSOAs with tt_car_min <= 30 (free-flow)."
+   }
+  ],
+  "id": "travel_lsoa",
+  "retrieved_at": "2026-11-05T22:36Z",
+  "row_count": 2518,
+  "sha256": "bbb9aaec30086347"
  }
 ]

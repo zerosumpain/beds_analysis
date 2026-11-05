@@ -30,7 +30,7 @@
   // Census 2021 commuting: inflows into each Bedfordshire UA from other authorities.
   BA.odLines = (rows) => rows.filter((r) => r.indicator === 'od_inflow_by_residence' && BA.LAS[r.code] && r.attrs && !r.attrs.same_la && r.attrs.origin_lat != null && r.value > 0)
     .map((r) => ({ from: [r.attrs.origin_lat, r.attrs.origin_lon], to: [r.attrs.dest_lat, r.attrs.dest_lon], n: r.value, label: `${r.attrs.origin_name} → ${r.attrs.dest_name}` }));
-  BA.ENGINE_DATASETS = ['pop_mye', 'dfe_neet', 'claimant', 'census_age_activity', 'pop_snpp', 'ashe_res'];
+  BA.ENGINE_DATASETS = ['pop_mye', 'dfe_neet', 'claimant', 'census_age_activity', 'pop_snpp', 'ashe_res', 'travel_lsoa', 'census_barriers', 'pop_lsoa', 'claimant_lsoa', 'census_lsoa'];
 
   BA.init().then(() => {
     const stamp = document.getElementById('build-stamp');

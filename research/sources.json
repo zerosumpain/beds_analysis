@@ -1665,12 +1665,12 @@
     "latest_period": "Live",
     "next_release": "Not announced",
     "access": "API",
-    "api_notes": "Free API key; combine with rail GTFS and OpenTripPlanner/r5 for LSOA-to-site travel times.",
+    "api_notes": "Regional GTFS timetable files download without a key (https://data.bus-data.dft.gov.uk/timetable/download/gtfs-file/<region>/); the SIRI/API endpoints need a free API key. Bedfordshire operators sit mostly in the south_east file. Used for journey times to the site (travel_lsoa) via OpenTripPlanner.",
     "limitations": "Future services (Wixams shuttle, EWR) must be scenario-added; demand-responsive buses not captured.",
     "quality": "Management information",
     "provider_type": "Government",
     "priority": "supporting",
-    "used_in_tool": false,
+    "used_in_tool": true,
     "why_it_matters": "Enables realistic public-transport catchment for shift workers (early/late starts) from Luton, Bedford estates and rural Central Beds."
   },
   {

@@ -25,9 +25,13 @@
   BA.tryJson = (path) => BA.json(path).catch(() => null);
 
   BA.init = async function () {
-    const [cat, sources, assessment] = await Promise.all([
+    const [cat, sources, assessment, unitCosts, benchmarks] = await Promise.all([
       BA.tryJson('data/catalogue.json'), BA.tryJson('data/research_sources.json'), BA.tryJson('data/research_assessment.json'),
+      BA.tryJson('data/research_unit_costs.json'), BA.tryJson('data/research_local_hire_benchmarks.json'),
     ]);
+    BA.lsoaLookup = (await BA.tryJson('data/geo/lookup_lsoa.json')) || {};
+    BA.unitCosts = unitCosts; BA.hireBenchmarks = benchmarks;
+    BA.unitCost = (id) => (BA.unitCosts && (BA.unitCosts.items || []).find((x) => x.id === id && typeof x.value === 'number')) || null;
     BA.catalogue = (cat || []).filter((m) => m.id !== 'geo_boundaries' || true);
     BA.sources = sources || [];
     BA.assessment = assessment || {};
@@ -95,6 +99,7 @@
     switch (unit) {
       case 'percent': return nf1.format(v) + '%';
       case 'gbp': return '£' + nf0.format(v);
+      case 'minutes': return nf0.format(v) + ' min';
       case 'rate': case 'ratio': case 'score': return nf1.format(v);
       default: return Math.abs(v) >= 100 ? nf0.format(v) : nf1.format(v);
     }
@@ -119,6 +124,20 @@
     const cls = k.startsWith('yes') || k === 'met' ? 'yes' : k.startsWith('part') ? 'partly' : k.startsWith('no') || k === 'gap' ? 'no' : 'na';
     const label = { yes: 'Met', partly: 'Partly', no: 'Not met', na: s || 'n/a' }[cls];
     return `<span class="ba-status ba-status--${cls}">${BA.esc(label)}</span>`;
+  };
+  // How old a period is, as a tag: amber when the figure is 3+ years old (e.g. Census 2021).
+  BA.periodYear = function (p) { const ys = String(p || '').match(/(19|20)\d\d/g); return ys ? +ys[ys.length - 1] : null; };
+  BA.ageTag = function (p) {
+    const y = BA.periodYear(p); if (!y) return '';
+    const age = new Date().getFullYear() - y;
+    if (age < 3) return '';
+    return `<strong class="govuk-tag govuk-tag--${age >= 4 ? 'orange' : 'yellow'} ba-age" title="Latest period ${BA.esc(p)}">${age} years old</strong>`;
+  };
+  // Plain accessible table for any set of rows (the alternative to each chart).
+  BA.rowsTable = function (rows, unit, opts) {
+    opts = opts || {};
+    const hasCI = rows.some((r) => r.ci != null), hasBd = rows.some((r) => r.breakdown);
+    return `<div class="ba-table-wrap govuk-!-margin-bottom-0"><table class="govuk-table ba-mini">${opts.caption ? `<caption class="govuk-table__caption govuk-table__caption--s">${BA.esc(opts.caption)}</caption>` : ''}<thead class="govuk-table__head"><tr class="govuk-table__row"><th class="govuk-table__header" scope="col">Area</th>${hasBd ? '<th class="govuk-table__header" scope="col">Breakdown</th>' : ''}<th class="govuk-table__header" scope="col">Period</th><th class="govuk-table__header govuk-table__header--numeric" scope="col">Value</th>${hasCI ? '<th class="govuk-table__header govuk-table__header--numeric" scope="col">± 95% CI</th>' : ''}</tr></thead><tbody class="govuk-table__body">${rows.map((r) => `<tr class="govuk-table__row"><th class="govuk-table__header" scope="row">${BA.esc(BA.GEO_NAMES[r.code] || r.name)}</th>${hasBd ? `<td class="govuk-table__cell">${BA.esc(r.breakdown || '')}</td>` : ''}<td class="govuk-table__cell">${BA.esc(r.period || '')}</td><td class="govuk-table__cell govuk-table__cell--numeric">${r.suppressed ? 'suppressed' : BA.fmt(r.value, unit)}</td>${hasCI ? `<td class="govuk-table__cell govuk-table__cell--numeric">${r.ci != null ? BA.fmt(r.ci, unit) : ''}</td>` : ''}</tr>`).join('')}</tbody></table></div>`;
   };
   BA.el = function (html) { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };
 

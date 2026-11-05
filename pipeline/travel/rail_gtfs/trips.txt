@@ -1,0 +1,43 @@
+route_id,service_id,trip_id,trip_headsign
+MV,WKDY,MV_NB_0517,Bedford
+MV,WKDY,MV_NB_0616,Bedford
+MV,WKDY,MV_NB_0718,Bedford
+MV,WKDY,MV_NB_0800,Bedford
+MV,WKDY,MV_NB_0952,Bedford
+MV,WKDY,MV_NB_1052,Bedford
+MV,WKDY,MV_NB_1152,Bedford
+MV,WKDY,MV_NB_1252,Bedford
+MV,WKDY,MV_NB_1352,Bedford
+MV,WKDY,MV_NB_1452,Bedford
+MV,WKDY,MV_NB_1552,Bedford
+MV,WKDY,MV_NB_1652,Bedford
+MV,WKDY,MV_NB_1752,Bedford
+MV,WKDY,MV_NB_1852,Bedford
+MV,WKDY,MV_NB_1952,Bedford
+MV,WKDY,MV_NB_2052,Bedford
+MV,WKDY,MV_NB_2145,Bedford
+MV,WKDY,MV_SB_0610,Bletchley
+MV,WKDY,MV_SB_0710,Bletchley
+MV,WKDY,MV_SB_0808,Bletchley
+MV,WKDY,MV_SB_0924,Bletchley
+MV,WKDY,MV_SB_1047,Bletchley
+MV,WKDY,MV_SB_1147,Bletchley
+MV,WKDY,MV_SB_1247,Bletchley
+MV,WKDY,MV_SB_1347,Bletchley
+MV,WKDY,MV_SB_1447,Bletchley
+MV,WKDY,MV_SB_1547,Bletchley
+MV,WKDY,MV_SB_1647,Bletchley
+MV,WKDY,MV_SB_1747,Bletchley
+MV,WKDY,MV_SB_1847,Bletchley
+MV,WKDY,MV_SB_1947,Bletchley
+MV,WKDY,MV_SB_2047,Bletchley
+MV,WKDY,MV_SB_2147,Bletchley
+MV,WKDY,MV_SB_2238,Bletchley
+TLB,WKDY,TL_SB_day,Luton Airport Parkway
+TLB,WKDY,TL_SB_late,Luton Airport Parkway
+TLB,WKDY,TL_NB_day,Bedford
+TLB,WKDY,TL_NB_late,Bedford
+EMC,WKDY,EM_SB_day,Luton Airport Parkway
+EMC,WKDY,EM_SB_2211,Luton Airport Parkway
+EMC,WKDY,EM_SB_2303,Luton Airport Parkway
+EMC,WKDY,EM_NB_day,Bedford

@@ -34,14 +34,15 @@
         <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
           <ul class="govuk-service-navigation__list" id="nav">
             <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/">Summary</a></li>
+            <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/balance">Labour balance</a></li>
             <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/explore">Map explorer</a></li>
+            <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/area">Area profiles</a></li>
             <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/cohort/16-19">16 to 19</a></li>
             <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/cohort/18-24">18 to 24</a></li>
             <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/cohort/25-inactive">Inactive 25+</a></li>
             <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/case">Business case</a></li>
             <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/analysis">Gaps &amp; linkage</a></li>
             <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/sources">Sources</a></li>
-            <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="#/lineage">Data lineage</a></li>
           </ul>
         </nav>
       </div>
@@ -68,12 +69,14 @@
           <ul class="govuk-footer__inline-list">
             <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#/lineage">Data lineage</a></li>
             <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#/method">Method and caveats</a></li>
-            <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="data/catalogue.json">Machine-readable catalogue</a></li>
+            <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#/downloads">Download the data</a></li>
+            <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#/changes">What has changed</a></li>
+            <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="https://github.com/zerosumpain/beds_analysis">Source code</a></li>
           </ul>
           <p class="govuk-footer__meta-custom">Built on GOV.UK Design System patterns. This site is not part of GOV.UK.
             Source data &copy; Crown copyright and database right, used under the
             <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>.
-            Contains OS data &copy; Crown copyright and database right. Basemap &copy; OpenStreetMap contributors.</p>
+            Contains OS data &copy; Crown copyright and database right. Basemap and journey-time network &copy; OpenStreetMap contributors (ODbL). Postcode lookup by postcodes.io.</p>
           <p class="govuk-footer__meta-custom" id="build-stamp"></p>
         </div>
       </div>
@@ -87,6 +90,8 @@
   <script src="assets/pages.js?v=__V__"></script>
   <script src="assets/map.js?v=__V__"></script>
   <script src="assets/engine.js?v=__V__"></script>
+  <script src="assets/balance.js?v=__V__"></script>
+  <script src="assets/area.js?v=__V__"></script>
   <script src="assets/boot.js?v=__V__"></script>
 </body>
 </html>

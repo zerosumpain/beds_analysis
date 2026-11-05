@@ -1,0 +1,117 @@
+[
+ {
+  "id": "census2021_barriers",
+  "name": "Census 2021 barrier-to-work measures: car/van availability (TS045), English proficiency (TS029), household composition (TS003), general health (TS037)",
+  "publisher": "Office for National Statistics (via Nomis)",
+  "url": "https://www.nomisweb.co.uk/sources/census_2021_ts",
+  "granularity": [
+   "England",
+   "region",
+   "LA",
+   "ward",
+   "PCON",
+   "MSOA",
+   "LSOA",
+   "OA"
+  ],
+  "lowest_geography": "Output Area (pipeline uses LSOA21)",
+  "cohorts": [
+   "18-24",
+   "25+ inactive",
+   "context"
+  ],
+  "variables": [
+   "households with no car or van (TS045 cat 1 / all households)",
+   "residents aged 3+ who cannot speak English well or at all (TS029 cats 4+5)",
+   "lone-parent households with dependent children (TS003 cat 10 / all households)",
+   "residents in bad or very bad general health (TS037 cats 4+5)"
+  ],
+  "frequency": "Decennial",
+  "latest_period": "Census Day 21 March 2021",
+  "next_release": "No 2031 census confirmed; ONS moving to admin-based population estimates",
+  "access": "API",
+  "api_notes": "Nomis REST API v01 (https://www.nomisweb.co.uk/api/v01/help); CSV/JSON/SDMX; no key needed for <25k cells per call; use geography TYPE codes (e.g. TYPE154 = 2023 LADs, TYPE151 = LSOA 2021). Datasets NM_2063_1 (TS045, dim C2021_CARS_5), NM_2048_1 (TS029, C2021_ENGPRF_6), NM_2023_1 (TS003, C2021_HHCOMP_15), NM_2055_1 (TS037, C2021_HEALTH_6); measures=20100. Fetcher: pipeline/fetch_census_barriers.py -> site/data/census_barriers.json.",
+  "limitations": "Cell-key perturbation makes small LSOA cells (<10) unreliable, notably English proficiency and lone parents. Car availability is a household measure (not licences or individual access). General health is not age-standardised (TS037ASP / NM_2092_1 gives age-standardised LA rates). COVID lockdown timing; five years old by 2026 and Luton has grown since.",
+  "quality": "National Statistics",
+  "provider_type": "Government",
+  "priority": "core",
+  "used_in_tool": true,
+  "why_it_matters": "Practical barriers for a site at Kempston Hardwick with shift work and limited public transport: households without a car are 25.0% in Luton, 18.2% Bedford, 11.3% Central Beds (BEDS 17.1%, England 23.5%); 5.5% of Luton residents (12,000) cannot speak English well or at all vs 1.9% England; 19,075 lone-parent households with dependent children across the 3 UAs (6.9%); 30,000 residents in bad/very bad health (4.3%)."
+ },
+ {
+  "id": "ons_bres_competing_sectors",
+  "name": "BRES employees in competing entry-level sectors: warehousing & support for transport (SIC 52), land transport (49), air transport (51), wholesale (46)",
+  "publisher": "Office for National Statistics (via Nomis)",
+  "url": "https://www.nomisweb.co.uk/sources/bres",
+  "granularity": [
+   "England",
+   "region",
+   "LA",
+   "MSOA",
+   "LSOA"
+  ],
+  "lowest_geography": "LSOA (rounded open-access); pipeline uses LA",
+  "cohorts": [
+   "demand",
+   "context"
+  ],
+  "variables": [
+   "employees by SIC 2007 division 52, 49, 51, 46",
+   "share of all employees",
+   "location quotient vs England"
+  ],
+  "frequency": "Annual (September reference)",
+  "latest_period": "2024 (published 28 Oct 2025)",
+  "next_release": "2025 results expected autumn 2026",
+  "access": "API",
+  "api_notes": "Nomis REST API v01 (https://www.nomisweb.co.uk/api/v01/help); CSV/JSON/SDMX; no key needed for <25k cells per call; use geography TYPE codes (e.g. TYPE154 = 2023 LADs, TYPE151 = LSOA 2021). NM_189_1, industry codes 146800692 (52), 146800689 (49), 146800691 (51), 146800686 (46); employment_status=1 (employees), measure=1. Added to pipeline/fetch_nomis_la.py BRES section -> bres_sectors (bres_emp_/bres_share_/bres_lq_ warehousing, land_transport, air, wholesale).",
+  "limitations": "Divisions 49/51/52 are subsets of section H (existing bres_*_transport) - do not add them together. Open-access counts rounded (Bedford and Central Beds air transport round to 0). Workplace-based; jobs are allocated to the reporting unit's location; airport operation and ground handling (52.23) sit in division 52, not 51.",
+  "quality": "National Statistics",
+  "provider_type": "Government",
+  "priority": "core",
+  "used_in_tool": true,
+  "why_it_matters": "Universal will recruit from the same entry-level pool as the M1/A421 logistics belt and Luton Airport: warehousing & transport support employs 14,500 across the 3 UAs (LQ 2.1; Central Beds 8,000, LQ 3.2; Bedford 4,000, LQ 2.1), air transport 4,000 in Luton (LQ 12.8), land transport 6,000 and wholesale 14,500 (2024)."
+ },
+ {
+  "id": "dwp_uc_conditionality",
+  "name": "People on Universal Credit by conditionality regime (Stat-Xplore UC_Monthly)",
+  "publisher": "Department for Work and Pensions",
+  "url": "https://stat-xplore.dwp.gov.uk/",
+  "granularity": [
+   "GB",
+   "country",
+   "region",
+   "LA",
+   "ward",
+   "PCON",
+   "MSOA",
+   "LSOA",
+   "OA"
+  ],
+  "lowest_geography": "Census 2021 Output Area (pipeline requests LSOA21, falls back to MSOA21)",
+  "cohorts": [
+   "18-24",
+   "25+ inactive"
+  ],
+  "variables": [
+   "people on UC (total)",
+   "searching for work",
+   "working - with requirements",
+   "no work requirements",
+   "planning / preparing for work",
+   "working - no requirements",
+   "no-work-requirements per 100 residents aged 16-64 (computed)"
+  ],
+  "frequency": "Monthly",
+  "latest_period": "Not yet fetched (no API key on this machine)",
+  "next_release": "Monthly (DWP UC official statistics)",
+  "access": "API",
+  "api_notes": "Open Data API https://stat-xplore.dwp.gov.uk/webapi/rest/v1 with free key in an APIKey header. database str:database:UC_Monthly; measure str:count:UC_Monthly:V_F_UC_CASELOAD_FULL; fields F_UC_DATE:DATE_NAME, V_F_UC_CASELOAD_FULL:COA_CODE (National - Regional - LA - OAs, 2021 MASTERGEOG21 valuesets), V_F_UC_CASELOAD_FULL:CCCONDITIONALITY_REGIME. Rate limit 2,000 requests per window. Fetcher: pipeline/fetch_dwp_uc.py (key from STATXPLORE_API_KEY, /etc/beds/statxplore.key or ~/.config/beds/statxplore.key; --dry-run prints queries; --schema prints discovered ids).",
+  "limitations": "Fetcher written and unit-tested offline but not yet run against the live API. Statistical disclosure control perturbs cells (small LSOA cells noisy, components may not sum). 'No work requirements' mixes health (LCWRA), carers, parents of under-1s, students and over-SPA claimants. Legacy benefits (ESA, IS, JSA) excluded. Latest month provisional.",
+  "quality": "Official Statistics",
+  "provider_type": "Government",
+  "priority": "core",
+  "used_in_tool": false,
+  "why_it_matters": "Most current small-area count of benefit-recipients not expected to work (the inactive-on-UC pool) and of in-work claimants who must seek more hours - both target groups for Universal's part-time, entry-level roles."
+ }
+]

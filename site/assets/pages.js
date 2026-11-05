@@ -25,13 +25,13 @@
       { item: 'Employment and unemployment', ds: ['aps', 'claimant', 'census_age_activity'], ceiling: 'partly',
         note: 'APS figures for 16-24 at LA level have wide confidence intervals and are often suppressed. Census 2021 by age is robust but dated and was taken during furlough.' },
       { item: 'Economic inactivity', ds: ['aps', 'census_age_activity'], ceiling: 'partly', note: 'Census gives inactivity by reason by age band. APS youth inactivity is unreliable at LA level.' },
-      { item: 'Benefits or claimant data', ds: ['claimant', 'claimant_lsoa'], ceiling: 'partly',
-        note: 'Claimant count by age is monthly down to LSOA. Universal Credit by conditionality regime (Stat-Xplore) needs a free API key and is not yet integrated.' },
+      { item: 'Benefits or claimant data', ds: ['claimant', 'claimant_lsoa', 'dwp_uc'], ceiling: 'partly',
+        note: 'Claimant count by age is monthly down to LSOA. The Universal Credit by conditionality fetcher (Stat-Xplore) is built and switches on once a free API key is added.' },
       { item: 'Participation in FE, adult skills and apprenticeships', ds: ['dfe_fe_skills', 'dfe_apprenticeships'], ceiling: 'yes', note: 'Age bands 19-24 by learner home LA.' },
       { item: 'Qualifications and skills', ds: ['dfe_l2l3_19', 'aps', 'census_lsoa'], ceiling: 'partly', note: 'L2 and L3 by 19 (to age 25). Census qualifications are for all ages 16+, not 18-24, below LA level.' },
     ] },
     { cohort: '25+ inactive', items: [
-      { item: 'Size and characteristics of the inactive population', ds: ['census_age_activity', 'aps', 'census_lsoa'], ceiling: 'yes', note: 'Census 2021 by age band and reason (LA and LSOA), with APS for trend.' },
+      { item: 'Size and characteristics of the inactive population', ds: ['census_age_activity', 'aps', 'census_lsoa', 'census_barriers', 'childcare'], ceiling: 'yes', note: 'Census 2021 by age band and reason (LA and LSOA), with APS for trend. Barriers by neighbourhood: car access, English, lone parenthood, health. Childcare places per child by LA.' },
       { item: 'Reasons for inactivity', ds: ['aps', 'census_age_activity', 'census_lsoa'], ceiling: 'yes', note: 'Student, retired, looking after home, long-term sick or disabled, other. APS reasons have wide CIs at LA level.' },
       { item: 'Skills and qualification levels', ds: ['aps', 'census_lsoa'], ceiling: 'partly', note: 'Open tables give quals for the whole population. Qualifications of the inactive only are not open at LA level and need a commissioned Census table or APS microdata.' },
       { item: 'Inactive people not claiming benefits', ds: [], ceiling: 'no',
@@ -103,6 +103,9 @@
         <p class="govuk-body govuk-!-margin-bottom-0 ba-small">Data last fetched ${esc(latestFetch || '–')}</p></div>
       </div></div>
 
+      <h2 class="govuk-heading-l">Key findings</h2>
+      <div class="ba-findings" id="findings"><p class="govuk-body">Working out the findings from the latest data…</p></div>
+
       <h2 class="govuk-heading-l">Headline figures</h2>
       <div class="ba-tiles" id="tiles"></div>
 
@@ -132,7 +135,44 @@
       ${minDatasetTable(a.minimum_dataset || [])}
     `;
     renderTiles(document.getElementById('tiles'), BA.TILES);
+    renderFindings(document.getElementById('findings')).catch((e) => { console.error(e); document.getElementById('findings').innerHTML = ''; });
   });
+
+  // Findings are computed from the loaded data each time, so they follow every refresh.
+  async function renderFindings(el) {
+    const T = (n) => BA.fmt(Math.round(n), 'count');
+    const pc = (n) => Math.round(n) + '%';
+    const v = async (id, code, bd) => { if (!BA.indicators[id]) return null; const r = await BA.value(id, code || 'BEDS', bd === undefined ? null : bd); return r && r.value != null ? r : null; };
+    const out = [];
+    const add = (num, text, href, tone) => out.push({ num, text, href, tone });
+    const { s } = await BA.engineState(BA.REACH_DEFAULT);
+    const m = BA.engineModel(s);
+    add(T(m.demand.ops), `of the resort's ${T(s.ops_jobs)} operational jobs at opening in ${s.open_year} are expected to go to local residents, on top of ${T(s.constr_peak)} construction workers on site at the peak.`, '#/case');
+    add(pc(100 * m.tot.jobs / Math.max(1, m.demand.ops)), `of those local jobs (about ${T(m.tot.jobs)}) could realistically be filled from the three target cohorts on the central assumptions. The other ${T(Math.max(0, m.demand.ops - m.tot.jobs))} would come from people already in work, in-commuters or a bigger programme.`, '#/balance', 'warn');
+    const tt = await BA.travelLsoa();
+    if (tt) {
+      const w = await BA.lsoaWeights(['popsa_16_64']); const tot = Object.values(w).reduce((a, x) => a + x, 0);
+      const share = (o) => { let n = 0; Object.entries(w).forEach(([c, x]) => (n += x * (BA.reachFrac(tt[c], o) || 0))); return 100 * n / tot; };
+      const pt = share({ mode: 'pt', minutes: 45 }), car = share({ mode: 'car', minutes: 45 }), late = share({ mode: 'pt', minutes: 90, late: true }), ptAny = share({ mode: 'pt', minutes: 90 });
+      add(pc(pt), `of working-age residents can get to an 08:30 shift within 45 minutes by public transport, against ${pc(car)} by car in free-flowing traffic. Transport, not distance, is the binding constraint for people without a car.`, '#/balance?mode=pt', pt < 50 ? 'bad' : 'warn');
+      if (ptAny > 0) add(pc(late), `of working-age residents could get home by public transport after a shift ending at 22:30 (${pc(ptAny)} can get there by public transport within 90 minutes). Late finishes need staff transport or shift design.`, '#/balance?mode=pt&late=1&min=90', 'bad');
+    }
+    const a25 = await v('snpp_16_19'); const rows = BA.indicators.snpp_16_19 ? (await BA.rowsFor('snpp_16_19')).filter((r) => r.code === 'BEDS') : [];
+    const y0 = rows.find((r) => String(r.period) === '2025'), y1 = rows.find((r) => String(r.period) === String(s.open_year));
+    if (a25 && y0 && y1) add((y1.value >= y0.value ? '+' : '') + T(y1.value - y0.value), `more 16 to 19 year olds in Bedfordshire by ${s.open_year} than in 2025 (${T(y0.value)} to ${T(y1.value)}, ONS projection). Today's secondary pupils are the opening-year intake.`, '#/cohort/16-19', 'good');
+    const ia = ['census_inact_home_family', 'census_inact_lt_sick', 'census_inact_other'];
+    const parts = await Promise.all(ia.map((id) => v(id, 'BEDS', 'age 25-64')));
+    if (parts.every(Boolean)) add(T(parts.reduce((x, r) => x + r.value, 0)), `adults aged 25-64 were economically inactive for reasons other than study or retirement at the 2021 Census, ${T(parts[1].value)} of them long-term sick or disabled. Most are invisible in benefit data.`, '#/cohort/25-inactive');
+    const lut = await v('aps_inact_rate_16_64', 'E06000032'), eng = await v('aps_inact_rate_16_64', 'E92000001');
+    if (lut && eng) add(BA.fmt(lut.value, 'percent'), `of Luton's 16-64 population is economically inactive (England ${BA.fmt(eng.value, 'percent')}, ${esc(lut.period)}). Luton residents are not counted in the promoter's 69% local-jobs figure.`, '#/cohort/25-inactive', 'bad');
+    let neet = 0, ok = true; for (const c of Object.keys(BA.LAS)) { const r = await v('dfe_neet_n_neet_nk', c, 'age 16-17'); if (!r) { ok = false; break; } neet += r.value; }
+    if (ok) add(T(neet), `16 and 17 year olds are NEET or their activity is not known, the most direct target for pre-employment and apprenticeship routes.`, '#/cohort/16-19', 'warn');
+    const wh = await v('bres_emp_warehousing'), af = await v('bres_emp_accom_food');
+    if (wh && af) add(T(wh.value), `people already work in warehousing and logistics in Bedfordshire, and ${T(af.value)} in accommodation and food. The resort will compete with both for entry-level staff.`, '#/balance', 'warn');
+    const rent = await v('aff_rent_share_nlw', 'E06000055');
+    if (rent) add(BA.fmt(rent.value, 'percent'), `of a full-time National Living Wage worker's gross pay would go on the average private rent in Bedford. Pay and housing costs affect who can take the jobs.`, '#/data/affordability', 'warn');
+    el.innerHTML = out.map((f) => `<a class="ba-finding ba-finding--${f.tone || 'info'}" href="${f.href}"><span class="ba-finding__num">${f.num}</span><span class="ba-finding__text">${f.text}</span></a>`).join('');
+  }
 
   function projectBlock(p) {
     const status = String(p.status_as_of || '');
@@ -190,7 +230,7 @@
     const ORDER = {
       '16-19': ['dfe_neet', 'school_pipeline', 'pop_mye', 'pop_snpp', 'dfe_apprenticeships', 'dfe_fe_skills', 'dfe_ks4_destinations', 'dfe_ks5_destinations', 'dfe_l2l3_19', 'dfe_ks4_la', 'dfe_16_18_la', 'dfe_care_leavers', 'dfe_ehcp', 'dfe_absence_exclusions'],
       '18-24': ['claimant', 'pop_mye', 'census_age_activity', 'aps', 'dfe_apprenticeships', 'dfe_fe_skills', 'dfe_l2l3_19', 'dfe_care_leavers', 'claimant_lsoa'],
-      '25+ inactive': ['census_age_activity', 'aps', 'census_lsoa', 'claimant', 'dfe_fe_skills', 'dfe_apprenticeships'],
+      '25+ inactive': ['census_age_activity', 'aps', 'dwp_uc', 'census_barriers', 'census_lsoa', 'childcare', 'claimant', 'dfe_fe_skills', 'dfe_apprenticeships'],
     }[key] || [];
     const rank = (d) => { const i = ORDER.indexOf(d); return i < 0 ? 99 : i; };
     const dsIds = Object.keys(byDs).sort((a, b) => rank(a) - rank(b));
@@ -257,15 +297,25 @@
     if (plain.length) modes.push('Latest');
     if (periods.length > 1) modes.push('Trend');
     if (bdRows.length) modes.push('Breakdown');
+    modes.push('Table');
+    const tableBox = BA.el('<div class="ba-cardtable" hidden></div>');
+    chartBox.after(tableBox);
     const draw = (mode) => {
       const old = Chart.getChart(canvas); if (old) old.destroy();
+      chartBox.hidden = mode === 'Table'; tableBox.hidden = mode !== 'Table';
+      if (mode === 'Table') {
+        const ord = (r) => { const i = BA.GEO_ORDER.indexOf(r.code); return i < 0 ? 99 : i; };
+        const latest = plain.filter((r) => r.period === lp).concat(bdRows.filter((r) => r.period === BA.latestPeriod(bdRows))).sort((a, b) => ord(a) - ord(b));
+        tableBox.innerHTML = BA.rowsTable(latest.length ? latest : all.slice(0, 40), ind.unit);
+        return;
+      }
       chartBox.classList.toggle('ba-chart--tall', mode === 'Breakdown');
       if (mode === 'Latest') BA.barGeo(canvas, plain.filter((r) => r.period === lp), ind.unit);
       else if (mode === 'Trend') BA.lineGeo(canvas, plain, ind.unit);
       else { const blp = BA.latestPeriod(bdRows); BA.barBreakdown(canvas, bdRows.filter((r) => r.period === blp), ind.unit); }
     };
     const tog = modes.length > 1 ? `<span class="ba-toggle ba-noprint" role="group" aria-label="Chart view">${modes.map((m, i) => `<button type="button" aria-pressed="${i === 0}" data-m="${m}">${m}</button>`).join(' ')}</span>` : '';
-    foot.innerHTML = `${tog}<span>${esc(lp || '')}</span>${dsLink}${mapLink}<a class="govuk-link ba-dl" href="#">CSV</a>`;
+    foot.innerHTML = `${tog}<span>${esc(lp || '')}</span>${BA.ageTag(lp)}${dsLink}${mapLink}<a class="govuk-link ba-dl" href="#">CSV</a>`;
     foot.querySelectorAll('button').forEach((b) => b.addEventListener('click', () => { foot.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', x === b)); draw(b.dataset.m); }));
     foot.querySelector('.ba-dl').addEventListener('click', (e) => { e.preventDefault(); BA.downloadCSV(ind.id + '.csv', all); });
     draw(modes[0]);
@@ -410,6 +460,38 @@
     app.querySelectorAll('[data-j]').forEach((x) => x.addEventListener('click', (e) => { e.preventDefault(); document.getElementById(x.dataset.j).scrollIntoView(); }));
   });
 
+  /* ---------- downloads ---------- */
+  BA.route(/^\/downloads$/, async (app) => {
+    const cat = BA.catalogue.slice().sort((a, b) => String(a.title).localeCompare(String(b.title)));
+    app.innerHTML = `<span class="govuk-caption-xl">Open data</span><h1 class="govuk-heading-xl">Download the evidence base</h1>
+      <div class="govuk-grid-row"><div class="govuk-grid-column-two-thirds">
+      <p class="govuk-body-l">Everything on this site is published aggregate statistics, reshaped into one consistent format. Take it into Excel, R, Python or a BI tool.</p>
+      <p class="govuk-body"><a class="govuk-button govuk-!-margin-bottom-2" href="data/downloads/bedfordshire-evidence-base.zip" download>Download everything (zip of CSVs)</a></p>
+      <p class="govuk-body">The zip holds one CSV per dataset, an indicator dictionary, the full lineage catalogue and the sources assessed. Or take single files below.</p>
+      <h2 class="govuk-heading-m">Format</h2>
+      <p class="govuk-body">Every dataset is long format, one value per row: <code>code, name, level, indicator, breakdown, period, value, ci, num, den, suppressed, lat, lon, attrs</code>. Codes are ONS GSS codes; <code>BEDS</code> is the sum of the three unitary authorities, used for counts only. A blank value means suppressed or not published. <a class="govuk-link" href="data/downloads/indicators.csv">indicators.csv</a> gives each indicator's label, unit, cohort and whether higher is better.</p>
+      <h2 class="govuk-heading-m">Machine-readable</h2>
+      <ul class="govuk-list govuk-list--bullet"><li><a class="govuk-link" href="data/catalogue.json">catalogue.json</a>: the lineage record for every dataset (publisher, exact URLs, retrieval time, checksum, quality, limitations)</li><li><code>data/&lt;dataset&gt;.json</code>: each dataset with its lineage block</li><li><a class="govuk-link" href="data/changes.json">changes.json</a>: what changed at each refresh</li></ul>
+      <h2 class="govuk-heading-m">Citing a fixed version</h2>
+      <p class="govuk-body">Each published refresh is tagged <code>data-YYYY-MM-DD</code> in the <a class="govuk-link" href="https://github.com/zerosumpain/beds_analysis/tags">public repository</a>. To cite the data behind a business case, link to the tag; its <code>site/data</code> folder is the exact data used. The pipeline code is in the same repository, so any figure can be rebuilt from source.</p>
+      </div></div>
+      <h2 class="govuk-heading-l">Datasets</h2>
+      <div class="ba-table-wrap"><table class="govuk-table"><thead class="govuk-table__head"><tr class="govuk-table__row"><th class="govuk-table__header" scope="col">Dataset</th><th class="govuk-table__header" scope="col">Latest period</th><th class="govuk-table__header govuk-table__header--numeric" scope="col">Rows</th><th class="govuk-table__header" scope="col">Files</th></tr></thead><tbody class="govuk-table__body">
+      ${cat.map((m) => `<tr class="govuk-table__row"><th class="govuk-table__header" scope="row" style="font-weight:400"><a class="govuk-link" href="#/data/${m.id}">${esc(m.title)}</a><br><span class="ba-small">${esc(m.publisher)}</span></th><td class="govuk-table__cell ba-small">${esc(m.latest_period || m.period)} ${BA.ageTag(m.latest_period || m.period)}</td><td class="govuk-table__cell govuk-table__cell--numeric">${BA.fmt(m.row_count, 'count')}</td><td class="govuk-table__cell"><a class="govuk-link" href="data/downloads/csv/${m.id}.csv" download>CSV</a> · <a class="govuk-link" href="data/${m.id}.json">JSON</a></td></tr>`).join('')}</tbody></table></div>`;
+  });
+
+  /* ---------- changes ---------- */
+  BA.route(/^\/changes$/, async (app) => {
+    const log = (await BA.tryJson('data/changes.json')) || [];
+    const due = BA.catalogue.filter((m) => m.next_update && !/unknown/i.test(m.next_update)).sort((a, b) => String(a.next_update).localeCompare(String(b.next_update)));
+    app.innerHTML = `<span class="govuk-caption-xl">Transparency</span><h1 class="govuk-heading-xl">What has changed</h1>
+      <p class="govuk-body-l">Every feed is checked weekly. A refresh is published only when a source has new or revised figures and the checks pass.</p>
+      ${log.length ? log.map((e) => `<h2 class="govuk-heading-m">${esc(e.date)} <span class="ba-small">· <a class="govuk-link" href="https://github.com/zerosumpain/beds_analysis/tree/${esc(e.tag)}/site/data">${esc(e.tag)}</a></span></h2>
+        <ul class="govuk-list govuk-list--bullet">${e.datasets.map((d) => `<li><a class="govuk-link" href="#/data/${esc(d.id)}">${esc(d.title || d.id)}</a>: ${d.change === 'new period' ? `new data, ${esc(d.from_period)} → <strong>${esc(d.to_period)}</strong>` : d.change === 'new dataset' ? `<strong>new dataset</strong> (${esc(d.to_period)})` : `figures revised (${esc(d.to_period)})`}${d.rows_before != null ? ` <span class="ba-small">${d.rows_before} → ${d.rows_after} rows</span>` : ''}</li>`).join('')}</ul>`).join('') : '<p class="govuk-body">No refreshes have been published since the change log started.</p>'}
+      <h2 class="govuk-heading-l govuk-!-margin-top-6">Coming up</h2>
+      <div class="ba-table-wrap"><table class="govuk-table"><thead class="govuk-table__head"><tr class="govuk-table__row"><th class="govuk-table__header" scope="col">Dataset</th><th class="govuk-table__header" scope="col">Current period</th><th class="govuk-table__header" scope="col">Frequency</th><th class="govuk-table__header" scope="col">Next update</th></tr></thead><tbody class="govuk-table__body">${due.map((m) => `<tr class="govuk-table__row"><td class="govuk-table__cell"><a class="govuk-link" href="#/data/${m.id}">${esc(m.title)}</a></td><td class="govuk-table__cell ba-small">${esc(m.latest_period || m.period)}</td><td class="govuk-table__cell ba-small">${esc(m.frequency)}</td><td class="govuk-table__cell ba-small">${esc(m.next_update)}</td></tr>`).join('')}</tbody></table></div>`;
+  });
+
   /* ---------- method ---------- */
   BA.route(/^\/method$/, async (app) => {
     app.innerHTML = `<h1 class="govuk-heading-xl">Method and caveats</h1><div class="govuk-grid-row"><div class="govuk-grid-column-two-thirds">
@@ -418,6 +500,12 @@
       <h2 class="govuk-heading-m">Census 2021</h2><p class="govuk-body">The Census was taken on 21 March 2021, during lockdown and the furlough scheme. Furloughed people were counted as employed. Students are counted at their term-time address. Small counts are perturbed by cell-key methods, so LSOA figures may not add up exactly.</p>
       <h2 class="govuk-heading-m">Claimant count</h2><p class="govuk-body">The claimant count includes Universal Credit claimants who must look for work, some of whom are in low-paid work. It is not a measure of unemployment, and it misses unemployed people who do not claim.</p>
       <h2 class="govuk-heading-m">Business case engine</h2><p class="govuk-body">The engine combines published cohort sizes with editable assumptions about demand, engagement, training costs and benefits. Every default is labelled with its source or marked illustrative. It is a planning model, not a forecast. Use it to test which assumptions the case is most sensitive to.</p>
+      <h2 class="govuk-heading-m">Journey times to the site</h2><p class="govuk-body">Journey times run from each neighbourhood's centre to the site, arriving by 08:30 on a weekday. They are computed with OpenTripPlanner over current bus timetables (DfT Bus Open Data Service) and the OpenStreetMap road and path network. The <a class="govuk-link" href="#/data/travel_lsoa">travel-time dataset</a> records the timetable date and how rail is modelled. Car times assume free-flowing traffic. “Mixed” reach treats each neighbourhood's households without a car (Census 2021) as relying on public transport or cycling, and the rest as able to drive. Where car data is missing it assumes 25% of households have no car. That is a household measure; young people are less likely to drive than the figure implies.</p>
+      <h2 class="govuk-heading-m">Labour balance</h2><p class="govuk-body">Each engine cohort is spread across neighbourhoods using the nearest small-area count, then weighted by the share of residents able to reach the site. Examples: residents aged 16-19 for school leavers and NEET young people; claimants by age; and Census inactive people who are sick, caring, looking after home or other. Engagement, completion and job rates then apply to people who can reach the site.</p>
+      <h2 class="govuk-heading-m">Fiscal values</h2><p class="govuk-body">The fiscal benefit of each extra person in work comes from the GMCA Unit Cost Database. Values for claimants moving into full-time work are scaled to the resort's 0.74 FTE per head. For inactive adults aged 25+, half are assumed to claim a health-related benefit. NEET values use the database's NEET costs. The economic benefit counts a share of earnings, set in the engine.</p>
+      <h2 class="govuk-heading-m">Uncertainty ranges</h2><p class="govuk-body">The engine's Monte Carlo varies each assumption on a triangular distribution with the current value as the mode. The ranges, as multiples of the current value, are: deadweight 0.5-1.5; displacement 0.5-1.6; persistence 0.67-1.67; drop-off 0.5-1.5; fiscal values 0.7-1.3; wage 0.9-1.1; share of earnings counted 0.6-1.3; reach 0.85-1.1; engagement 0.5-1.5; completion 0.8-1.15; job rate 0.7-1.25; cost 0.75-1.4. Rates are capped at their natural maximum. The seed is fixed, so the same inputs always give the same result.</p>
+      <h2 class="govuk-heading-m">Area profiles</h2><p class="govuk-body">Profiles add up neighbourhood (LSOA) figures. Counts are summed. Percentages are recomputed from summed numerators and denominators. Scores, deciles and journey times show the median neighbourhood. Postcode search sends only the postcode to postcodes.io, which returns its location; the neighbourhood is then found in your browser.</p>
+      <h2 class="govuk-heading-m">Refresh and checks</h2><p class="govuk-body">Every feed is re-fetched each week. Nothing is published if a dataset disappears, loses more than 30% of its rows or an indicator, or its latest period moves backwards. Each published refresh is tagged <code>data-YYYY-MM-DD</code> in the <a class="govuk-link" href="https://github.com/zerosumpain/beds_analysis/tags">source repository</a>, so a business case can cite the exact data it used. See <a class="govuk-link" href="#/changes">what has changed</a>.</p>
       <h2 class="govuk-heading-m">Privacy</h2><p class="govuk-body">Only published aggregate statistics are used. No personal data is collected, stored or inferred, and the site sets no cookies.</p>
     </div></div>`;
   });
