@@ -145,3 +145,6 @@ body, .govuk-template, button, input, select, textarea { font-family: arial, san
 .ba-finding--warn { border-left-color: var(--amber); }
 .ba-finding--bad { border-left-color: var(--red); }
 .ba-finding--good { border-left-color: var(--green); }
+/* Keep wide tables inside collapsed details from widening the page on phones. */
+.govuk-details__text { min-width: 0; max-width: 100%; overflow-x: auto; }
+#app { overflow-x: clip; }
