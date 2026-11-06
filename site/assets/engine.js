@@ -8,28 +8,28 @@
   // Scalar assumptions. src = where the default comes from (shown under each input).
   BA.ENGINE_PARAMS = [
     { g: 'Demand: the development', items: [
-      { id: 'start_year', label: 'Skills programme starts', v: 2026, unit: 'year', src: 'Assumption' },
-      { id: 'open_year', label: 'Opening year', v: 2031, unit: 'year', src: 'Promoter\'s stated target' },
-      { id: 'constr_peak', label: 'Construction workforce at peak (on site, winter 2029)', v: 5380, unit: 'count', src: '<a class="govuk-link" href="https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf" target="_blank" rel="noopener">Employment &amp; Skills Plan</a> para 4.3 (4,525 UK-hired, 855 from abroad). The “nearly 20,000” headline counts everyone over the whole build.' },
-      { id: 'constr_local', label: 'Construction jobs filled by Bedfordshire residents', v: 35, unit: '%', src: 'Assumption. The ES assumes 71% of the peak (3,215) comes from the wider 60-minute catchment, so the Bedfordshire share is lower.' },
-      { id: 'ops_jobs', label: 'Direct operational jobs at opening, 2031 (headcount)', v: 8050, unit: 'count', src: '<a class="govuk-link" href="https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf" target="_blank" rel="noopener">Employment &amp; Skills Plan</a>: 5,950 FTE (4,090 full-time, 3,960 part-time), rising to 10,000 by 2051' },
-      { id: 'ops_local', label: 'Operational jobs filled by Bedfordshire residents', v: 69, unit: '%', src: 'ES: 5,530 of 8,050 jobs to Bedford and Central Bedfordshire residents. Luton is not counted in that figure.' },
-      { id: 'turnover', label: 'Annual staff turnover in operations', v: 30, unit: '%', src: 'Assumption. Hospitality turnover is typically 30% or more a year; Alton Towers recruits 1,000+ seasonal staff a year.' },
+      { id: 'start_year', kind: 'assumption', label: 'Skills programme starts', v: 2026, unit: 'year', src: 'Assumption' },
+      { id: 'open_year', kind: 'document', label: 'Opening year', v: 2031, unit: 'year', src: 'Promoter\'s stated target' },
+      { id: 'constr_peak', kind: 'document', label: 'Construction workforce at peak (on site, winter 2029)', v: 5380, unit: 'count', src: '<a class="govuk-link" href="https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf" target="_blank" rel="noopener">Employment &amp; Skills Plan</a> para 4.3 (4,525 UK-hired, 855 from abroad). The “nearly 20,000” headline counts everyone over the whole build.' },
+      { id: 'constr_local', kind: 'assumption', label: 'Construction jobs filled by Bedfordshire residents', v: 35, unit: '%', src: 'Assumption. The ES assumes 71% of the peak (3,215) comes from the wider 60-minute catchment, so the Bedfordshire share is lower.' },
+      { id: 'ops_jobs', kind: 'document', label: 'Direct operational jobs at opening, 2031 (headcount)', v: 8050, unit: 'count', src: '<a class="govuk-link" href="https://assets.publishing.service.gov.uk/media/685d759ef85b4b993fd75311/12_-_6.12.0_Employment___Skills_Plan.pdf" target="_blank" rel="noopener">Employment &amp; Skills Plan</a>: 5,950 FTE (4,090 full-time, 3,960 part-time), rising to 10,000 by 2051' },
+      { id: 'ops_local', kind: 'document', label: 'Operational jobs filled by Bedfordshire residents', v: 69, unit: '%', src: 'ES: 5,530 of 8,050 jobs to Bedford and Central Bedfordshire residents. Luton is not counted in that figure.' },
+      { id: 'turnover', kind: 'assumption', label: 'Annual staff turnover in operations', v: 30, unit: '%', src: 'Assumption. Hospitality turnover is typically 30% or more a year; Alton Towers recruits 1,000+ seasonal staff a year.' },
     ] },
     { g: 'Operational job mix (share of roles)', items: [
-      { id: 'mix_entry', label: 'Entry level (“limited skill”)', v: 57, unit: '%', src: 'Employment & Skills Plan career-level split (UDX taxonomy, not RQF)' },
-      { id: 'mix_l2', label: 'Vocational, around Level 2 (e.g. hospitality team member, retail)', v: 24, unit: '%', src: 'Employment & Skills Plan (“vocational skill”)' },
-      { id: 'mix_l3', label: 'Level 3 (supervisors, technicians, chefs)', v: 12, unit: '%', src: 'Assumption: splits the remaining 19%' },
-      { id: 'mix_l4', label: 'Level 4+ (managers, engineers, specialists)', v: 7, unit: '%', src: 'Assumption: splits the remaining 19%' },
+      { id: 'mix_entry', kind: 'document', label: 'Entry level (“limited skill”)', v: 57, unit: '%', src: 'Employment & Skills Plan career-level split (UDX taxonomy, not RQF)' },
+      { id: 'mix_l2', kind: 'document', label: 'Vocational, around Level 2 (e.g. hospitality team member, retail)', v: 24, unit: '%', src: 'Employment & Skills Plan (“vocational skill”)' },
+      { id: 'mix_l3', kind: 'assumption', label: 'Level 3 (supervisors, technicians, chefs)', v: 12, unit: '%', src: 'Assumption: splits the remaining 19%' },
+      { id: 'mix_l4', kind: 'assumption', label: 'Level 4+ (managers, engineers, specialists)', v: 7, unit: '%', src: 'Assumption: splits the remaining 19%' },
     ] },
     { g: 'Benefits and appraisal (HM Treasury Green Book)', items: [
-      { id: 'wage', label: 'Annual earnings per new job (part-time adjusted)', v: 18300, unit: '£', src: 'National Living Wage £12.71/hr (Apr 2026) × 37.5 hrs × 52 weeks × 0.74 FTE per head (Employment & Skills Plan). The promoter commits to at least the NLW.' },
-      { id: 'econ_share', label: 'Share of earnings counted as economic (GVA) gain', v: 60, unit: '%', src: 'Assumption, to avoid double counting with the fiscal benefit' },
-      { id: 'persist', label: 'Years an outcome persists', v: 3, unit: 'years', src: 'Assumption (conservative)' },
-      { id: 'decay', label: 'Annual drop-off in sustained employment', v: 20, unit: '%', src: 'Assumption' },
-      { id: 'deadweight', label: 'Deadweight (would have found work anyway)', v: 30, unit: '%', src: 'Assumption, in line with employment programme evaluations' },
-      { id: 'displacement', label: 'Displacement (jobs taken from other local employers)', v: 25, unit: '%', src: 'Assumption. Hospitality displacement can be high.' },
-      { id: 'discount', label: 'Discount rate', v: 3.5, unit: '%', src: 'HM Treasury Green Book' },
+      { id: 'wage', kind: 'calculated', label: 'Annual earnings per new job (part-time adjusted)', v: 18300, unit: '£', src: 'National Living Wage £12.71/hr (Apr 2026) × 37.5 hrs × 52 weeks × 0.74 FTE per head (Employment & Skills Plan). The promoter commits to at least the NLW.' },
+      { id: 'econ_share', kind: 'assumption', label: 'Share of earnings counted as economic (GVA) gain', v: 60, unit: '%', src: 'Assumption, to avoid double counting with the fiscal benefit' },
+      { id: 'persist', kind: 'assumption', label: 'Years an outcome persists', v: 3, unit: 'years', src: 'Assumption (conservative)' },
+      { id: 'decay', kind: 'assumption', label: 'Annual drop-off in sustained employment', v: 20, unit: '%', src: 'Assumption' },
+      { id: 'deadweight', kind: 'assumption', label: 'Deadweight (would have found work anyway)', v: 30, unit: '%', src: 'Assumption, in line with employment programme evaluations' },
+      { id: 'displacement', kind: 'assumption', label: 'Displacement (jobs taken from other local employers)', v: 25, unit: '%', src: 'Assumption. Hospitality displacement can be high.' },
+      { id: 'discount', kind: 'document', label: 'Discount rate', v: 3.5, unit: '%', src: 'HM Treasury Green Book' },
     ] },
   ];
 
@@ -42,6 +42,16 @@
     { id: 'cc25', reach: 100, fiscal: 9000, label: 'Claimants aged 25+', cohort: '25+ inactive', count: 9000, engage: 15, complete: 70, job: 55, cost: 2500, workless: true, path: 'SWAP, bootcamp, construction entry (CSCS)' },
     { id: 'inact25', reach: 100, fiscal: 4500, label: 'Inactive 25-64: long-term sick, carers, looking after home, other', cohort: '25+ inactive', count: 40000, engage: 4, complete: 60, job: 45, cost: 5000, workless: true, path: 'Health and childcare wraparound, flexible-hours academy' },
   ];
+  // Provenance of each per-cohort input (shown as tags beside them and on #/provenance).
+  BA.ENGINE_POOL_KINDS = {
+    count: { label: 'Cohort size', kind: 'published', basis: 'From the data where loaded (tag beside each shows whether the Bedfordshire figure is published or summed by this site). If the data fails to load, a placeholder is used and tagged as an assumption.' },
+    reach: { label: 'Can reach the site for a shift', kind: 'modelled', basis: 'Journey-time model (see above): share of the cohort, weighted by where they live, who can reach the site within 45 minutes by car if their household has one, otherwise public transport or cycling.' },
+    engage: { label: 'Engaged', kind: 'assumption', basis: 'Illustrative. Replace with provider evidence.' },
+    complete: { label: 'Complete training', kind: 'assumption', basis: 'Illustrative. Replace with provider achievement rates.' },
+    job: { label: 'Move into a job', kind: 'assumption', basis: 'Illustrative. Replace with programme job-outcome rates.' },
+    cost: { label: 'Cost per participant', kind: 'assumption', basis: 'Illustrative. Replace with provider quotes.' },
+    fiscal: { label: 'Annual fiscal benefit per extra person in work', kind: 'document', basis: 'GMCA Unit Cost Database v3.0 value for the cohort, adjusted by this site: x 0.74 FTE per head (claimants); x 0.74 and x 50% assumed to be claiming (inactive 25+). Illustrative if the database did not load.' },
+  };
   BA.ENGINE_SOURCES = {}; // pool id -> async () => ({ value, note, dataset })
   BA.ENGINE_DATASETS = [];
   const PRESETS = { cautious: 0.6, central: 1, ambitious: 1.5 };
@@ -161,22 +171,22 @@
     BA.applyUnitCosts();
     let s = readState();
 
-    const inp = (id, label, v, unit, src) => `<div class="ba-inp"><label for="p-${id}">${esc(label)}${unit && unit !== 'count' && unit !== 'year' ? ' <span class="ba-small">(' + esc(unit) + ')</span>' : ''}</label><input id="p-${id}" data-k="${id}" type="number" inputmode="decimal" step="any" value="${v}">${src ? `<span class="ba-src">${src}</span>` : ''}</div>`;
+    const inp = (id, label, v, unit, src, kind) => `<div class="ba-inp"><label for="p-${id}">${esc(label)}${kind ? ' ' + BA.provTag(kind) : ''}${unit && unit !== 'count' && unit !== 'year' ? ' <span class="ba-small">(' + esc(unit) + ')</span>' : ''}</label><input id="p-${id}" data-k="${id}" type="number" inputmode="decimal" step="any" value="${v}">${src ? `<span class="ba-src">${src}</span>` : ''}</div>`;
     app.innerHTML = `<span class="govuk-caption-xl">Business case engine</span><h1 class="govuk-heading-xl">What would a skills programme need to deliver, and what is it worth?</h1>
       <p class="govuk-body-l">Start with cohort sizes taken from the data, then adjust the assumptions. The engine sizes local demand in each phase and how much of it the target cohorts could fill. It then costs the training and values the outcomes on Green Book principles.</p>
-      <div class="ba-callout ba-callout--warn ba-noprint"><p class="govuk-body govuk-!-margin-bottom-0">Defaults marked <em>illustrative</em> are placeholders. Replace them with the promoter's workforce plan and local provider quotes before using results in a submission. The model is deliberately simple and transparent: each figure on the right can be reproduced from the inputs on the left.</p></div>
+      <div class="ba-callout ba-callout--warn ba-noprint"><p class="govuk-body govuk-!-margin-bottom-0">Inputs tagged ${BA.provTag('assumption')} are placeholders chosen for the model, not evidence. Replace them with the promoter's workforce plan and local provider quotes before using results in a submission. The model is deliberately simple and transparent: each figure on the right can be reproduced from the inputs on the left.</p></div>
       ${commitments()}
       <div class="ba-filterbar ba-noprint"><div class="govuk-button-group govuk-!-margin-bottom-0">
         ${Object.keys(PRESETS).map((k) => `<button class="govuk-button govuk-button--secondary" data-preset="${k}">${k[0].toUpperCase() + k.slice(1)} scenario</button>`).join('')}
         <button class="govuk-button govuk-button--secondary" id="reset">Reset</button><button class="govuk-button" id="share">Copy link to this scenario</button>
         <button class="govuk-button govuk-button--secondary" id="csv">Download results (CSV)</button><button class="govuk-button govuk-button--secondary" onclick="window.print()">Print</button></div></div>
       <div class="ba-engine"><div class="ba-engine__inputs ba-noprint">
-        ${BA.ENGINE_PARAMS.map((g, gi) => `<details class="govuk-details" ${gi === 0 ? 'open' : ''}><summary class="govuk-details__summary"><span class="govuk-details__summary-text">${esc(g.g)}</span></summary><div class="govuk-details__text">${g.items.map((p) => inp(p.id, p.label, s[p.id], p.unit, p.src)).join('')}</div></details>`).join('')}
+        ${BA.ENGINE_PARAMS.map((g, gi) => `<details class="govuk-details" ${gi === 0 ? 'open' : ''}><summary class="govuk-details__summary"><span class="govuk-details__summary-text">${esc(g.g)}</span></summary><div class="govuk-details__text">${g.items.map((p) => inp(p.id, p.label, s[p.id], p.unit, p.src, p.kind)).join('')}</div></details>`).join('')}
         <details class="govuk-details" open><summary class="govuk-details__summary"><span class="govuk-details__summary-text">Supply cohorts (sized from the data)</span></summary><div class="govuk-details__text">
           ${BA.ENGINE_POOLS.map((p) => `<h3 class="govuk-heading-s govuk-!-margin-bottom-1 govuk-!-margin-top-4">${esc(p.label)}</h3><p class="ba-small govuk-!-margin-bottom-2">${esc(p.path)}${notes[p.id] ? ` · <a class="govuk-link" href="#/data/${notes[p.id].dataset}">${esc(notes[p.id].note)}</a>` : ' · default (data not loaded)'}</p>
-            ${inp(p.id + '_count', p.years === 'perYear' ? 'Cohort size per year' : 'Cohort size', s[p.id + '_count'], 'count')}${inp(p.id + '_reach', 'Can reach the site for a shift', s[p.id + '_reach'], '%', notes[p.id + '_reach'] ? `<a class="govuk-link" href="#/balance">${esc(notes[p.id + '_reach'].note)}</a>` : 'No travel-time data loaded: 100% assumed')}${inp(p.id + '_engage', 'Engaged (of those who can reach it)', s[p.id + '_engage'], '%')}${inp(p.id + '_complete', 'Complete training', s[p.id + '_complete'], '%')}${inp(p.id + '_job', 'Move into a job', s[p.id + '_job'], '%')}${inp(p.id + '_cost', 'Cost per participant', s[p.id + '_cost'], '£', 'Illustrative')}${p.workless ? inp(p.id + '_fiscal', 'Annual fiscal benefit per extra person in work', s[p.id + '_fiscal'], '£', p.fiscalNote ? `${esc(p.fiscalNote)}, <a class="govuk-link" href="${esc(BA.unitCosts.url)}">Unit Cost Database</a>` : 'Illustrative') : ''}`).join('')}
+            ${inp(p.id + '_count', p.years === 'perYear' ? 'Cohort size per year' : 'Cohort size', s[p.id + '_count'], 'count', null, notes[p.id] ? notes[p.id].prov || 'published' : 'assumption')}${inp(p.id + '_reach', 'Can reach the site for a shift', s[p.id + '_reach'], '%', notes[p.id + '_reach'] ? `<a class="govuk-link" href="#/balance">${esc(notes[p.id + '_reach'].note)}</a>` : 'No travel-time data loaded: 100% assumed', notes[p.id + '_reach'] ? 'modelled' : 'assumption')}${inp(p.id + '_engage', 'Engaged (of those who can reach it)', s[p.id + '_engage'], '%', 'Illustrative', 'assumption')}${inp(p.id + '_complete', 'Complete training', s[p.id + '_complete'], '%', 'Illustrative', 'assumption')}${inp(p.id + '_job', 'Move into a job', s[p.id + '_job'], '%', 'Illustrative', 'assumption')}${inp(p.id + '_cost', 'Cost per participant', s[p.id + '_cost'], '£', 'Illustrative', 'assumption')}${p.workless ? inp(p.id + '_fiscal', 'Annual fiscal benefit per extra person in work', s[p.id + '_fiscal'], '£', p.fiscalNote ? `${esc(p.fiscalNote)}, <a class="govuk-link" href="${esc(BA.unitCosts.url)}">Unit Cost Database</a>` : 'Illustrative', p.fiscalNote ? 'document' : 'assumption') : ''}`).join('')}
         </div></details>
-      </div><div><p class="govuk-visually-hidden" aria-live="polite" id="live"></p><div id="out"></div>
+      </div><div><p class="govuk-visually-hidden" aria-live="polite" id="live"></p><p class="govuk-body ba-small">${BA.provTag('modelled')} Every result below is calculated by the model from the inputs on the left. Each input is tagged with where it comes from.</p><div id="out"></div>
         <h2 class="govuk-heading-m govuk-!-margin-top-6">How confident can we be?</h2>
         <p class="govuk-body-s">1,500 runs of the model, each drawing every uncertain assumption (deadweight, displacement, persistence, drop-off, benefit values, reach, engagement, completion, job and cost rates for each cohort) from a triangular range around the value you have set. Ranges are listed in the <a class="govuk-link" href="#/method">method</a>.</p>
         <div id="mc"></div>

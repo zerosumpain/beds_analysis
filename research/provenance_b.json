@@ -1,0 +1,739 @@
+{
+ "datasets": {
+  "dfe_neet": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "LA, East of England and England rows are copied from DfE's NEET/participation CSVs (EES data-set files a9b8ebe6, a7bc111a, e1f4011a); the Bedfordshire row is ours: counts summed across the 3 UAs and the three NEET/not-known rates recomputed from summed counts over the summed Dec-Feb average cohort, while participation-type percentages have no Bedfordshire row."
+  },
+  "dfe_apprenticeships": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "published"
+   },
+   "note": "Starts, achievements, participation, DfE's own starts-per-100,000 rate and population are copied from DfE's apprenticeships CSVs (by learner home LA, region, England and Bedford/Luton-named 2024 parliamentary constituencies as the small-area level); Bedfordshire rows are our sums of the 3 UAs' rounded counts and a starts rate recomputed from summed starts over summed population."
+  },
+  "dfe_fe_skills": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "Values are copied from DfE's further education and skills geography CSVs (learner home LA, region, England; constituency rows are dropped); Bedfordshire rows are our sums of the 3 UAs' rounded counts, and the per-100,000 rates have no Bedfordshire row."
+  },
+  "dfe_ks5_destinations": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "Percentages are copied from DfE's 16-18 destination measures via the EES API (data set 019d4e73-6440-7523-b60c-bfab1ad4a30d, LA of institution, region, England, by disadvantage status); the Bedfordshire row is recomputed by us as 100 x summed sustaining pupils / summed cohort of the 3 UAs."
+  },
+  "dfe_ks4_destinations": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "Percentages are copied from DfE's Key stage 4 destination measures via the EES API (data set 019d4f41-22d1-71b2-a1a7-f3b91026815b, LA of institution, region, England, by disadvantage status); the Bedfordshire row is recomputed by us as 100 x summed sustaining pupils / summed cohort of the 3 UAs."
+  },
+  "dfe_l2l3_19": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "Percentages and gaps are copied from DfE's Level 2 and 3 attainment by 19 CSV (data-set file 882297f8, LA of school at 15, region, England); the Bedfordshire row is recomputed by us from summed number / number_in_ss_cohort, and DfE's percentage-point gaps have no Bedfordshire row."
+  },
+  "dfe_care_leavers": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "Activity percentages and counts are copied from DfE's care leavers activity CSV (data-set file 5279794c, responsible LA, region, England); Bedfordshire rows are ours: the care-leaver total summed across the 3 UAs and the EET/NEET rates recomputed from summed counts, with no Bedfordshire row for the per-activity breakdown."
+  },
+  "dfe_ehcp": {
+   "class": "calculated",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "calculated",
+    "region": "calculated",
+    "country": "calculated",
+    "small_area": "absent"
+   },
+   "note": "Counts come from DfE's EHC plans data set via the EES API (01a0aa37) by maintaining LA, region and England; the 'all ages' band is DfE's own total copied as is, but the 16-19 and 20-25 bands are our sums of DfE's single-year-of-age counts, and Bedfordshire is our sum of the 3 UAs."
+  },
+  "providers": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "calculated",
+    "region": "absent",
+    "country": "absent",
+    "small_area": "published"
+   },
+   "note": "Provider points copy GIAS register fields (pupils on roll, % FSM) for open establishments we select and classify; the LA and Bedfordshire provider counts are ours, counting GIAS records in each category we assign."
+  },
+  "school_pipeline": {
+   "class": "calculated",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "Year-group headcounts and secondary FSM/SEN percentages are copied from DfE school census data sets (EES API) at LA, region and England; Y7-11/Y12-13 totals and the age-16 and 16-18 cohort roll-forwards are our arithmetic at every level, and every Bedfordshire row is our sum or recomputed rate."
+  },
+  "dfe_ks4_la": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "KS4 averages, percentages and pupil counts are copied from DfE's KS4 performance data sets via the EES API at LA, region and England; Bedfordshire rows are recomputed by us from summed numerators and pupils, and the disadvantage gap and % disadvantaged are our arithmetic at every level."
+  },
+  "dfe_ks4_school": {
+   "class": "published",
+   "levels": {
+    "BEDS": "absent",
+    "LA": "absent",
+    "region": "absent",
+    "country": "absent",
+    "small_area": "published"
+   },
+   "note": "School-level KS4 results are copied as is from DfE's school performance data set via the EES API (19e39901) for schools in the 3 UAs, with coordinates joined from GIAS by URN; there are no area totals."
+  },
+  "dfe_16_18_la": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "16-18 attainment and retention figures are copied from DfE's 16 to 18 performance data sets via the EES API (LA of institution, region, England; England retention comes from DfE's national time series); the only Bedfordshire rows are our sums of student counts."
+  },
+  "dfe_absence_exclusions": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "Persistent absence and suspension/exclusion rates for state-funded secondary schools are copied from DfE (absence via EES API data set 019d209c, suspensions via EES data-catalogue CSV 59d8b51e) at LA, region and England; Bedfordshire rows are recomputed by us from summed counts over summed enrolments or headcount."
+  },
+  "affordability": {
+   "class": "published",
+   "levels": {
+    "BEDS": "absent",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "House price to earnings ratios and private rents are copied from ONS spreadsheets at LA, region and England; the rent share of National Living Wage pay is our arithmetic, and there is no Bedfordshire total."
+  },
+  "childcare": {
+   "class": "calculated",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "calculated",
+    "region": "calculated",
+    "country": "calculated",
+    "small_area": "absent"
+   },
+   "note": "Every figure is our arithmetic on Ofsted's provider-level childcare register file (counting active Early Years Register providers and summing their places by provider LA, region and England) plus ONS mid-year population summed over single ages 0-4 from Nomis."
+  },
+  "ofsted_fe": {
+   "class": "calculated",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "calculated",
+    "region": "calculated",
+    "country": "calculated",
+    "small_area": "published"
+   },
+   "note": "Provider rows copy each Bedfordshire FE and skills provider's legacy Ofsted grade from Ofsted's MI file, while all area counts and the good-or-outstanding share are our tallies of that provider file (LA, Bedfordshire, East of England, England)."
+  },
+  "travel_lsoa": {
+   "class": "modelled",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "calculated",
+    "region": "absent",
+    "country": "absent",
+    "small_area": "modelled"
+   },
+   "note": "LSOA journey times are our OpenTripPlanner 2.8.1 model output for one weekday (Tue 17 Nov 2026) over OSM roads, BODS bus timetables and a partly hand-built rail timetable, and the LA and Bedfordshire rows are our population-weighted shares (ONS 16-64 small-area estimates) of those modelled LSOA results."
+  },
+  "dwp_uc": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "published"
+   },
+   "note": "Counts of people on Universal Credit by conditionality regime are copied from DWP Stat-Xplore UC_Monthly tables at LA, region, England and LSOA21 (MSOA21 fallback); Bedfordshire is our sum of the 3 UAs, planning+preparing is our sum of two regimes and the no-work-requirements rate is ours (the fetcher has not yet run, so dwp_uc.json does not exist)."
+  }
+ },
+ "indicators": {
+  "dfe_neet_pct_neet_nk": {
+   "class": "published",
+   "method": "DfE NEET-by-characteristics CSV column neet_nk_percent; Bedfordshire recomputed by us as 100 x summed avg_neet_nk_count / summed avg_cohort_count of the 3 UAs (Total breakdown only)."
+  },
+  "dfe_neet_pct_neet": {
+   "class": "published",
+   "method": "DfE NEET-by-characteristics CSV column neet_percent; Bedfordshire recomputed as 100 x summed avg_neet_count / summed avg_cohort_count."
+  },
+  "dfe_neet_pct_not_known": {
+   "class": "published",
+   "method": "DfE NEET-by-characteristics CSV column nk_percent; Bedfordshire recomputed as 100 x summed avg_nk_count / summed avg_cohort_count."
+  },
+  "dfe_neet_n_neet_nk": {
+   "class": "published",
+   "method": "DfE NEET-by-characteristics CSV column avg_neet_nk_count (Dec-Feb average); Bedfordshire = sum of the 3 UAs when all are unsuppressed."
+  },
+  "dfe_neet_n_neet": {
+   "class": "published",
+   "method": "DfE NEET-by-characteristics CSV column avg_neet_count; Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_neet_n_not_known": {
+   "class": "published",
+   "method": "DfE NEET-by-characteristics CSV column avg_nk_count; Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_neet_n_cohort_avg": {
+   "class": "published",
+   "method": "DfE NEET-by-characteristics CSV column avg_cohort_count (Total grouping); Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_neet_cohort": {
+   "class": "published",
+   "method": "DfE 'Participation in education, training and NEET age 16 to 17 by LA', participation-by-type CSV, participation_type 'cohort' count (end of December); Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_neet_pct_participating": {
+   "class": "published",
+   "method": "DfE 'Participation in education, training and NEET age 16 to 17 by LA', participation-by-type CSV percent for 'TOTAL participating in education and training' (headline) and the participation-by-characteristics CSV column total_in_education_and_training_percent (sex/ethnicity/SEND splits).",
+   "beds": "absent"
+  },
+  "dfe_neet_pct_meeting_duty": {
+   "class": "published",
+   "method": "DfE 'Participation in education, training and NEET age 16 to 17 by LA', participation-by-type CSV, percent column for participation_type 'TOTAL meeting the duty to participate'.",
+   "beds": "absent"
+  },
+  "dfe_neet_pct_fte": {
+   "class": "published",
+   "method": "DfE 'Participation in education, training and NEET age 16 to 17 by LA', participation-by-type CSV, percent column for participation_type 'Full-time education'.",
+   "beds": "absent"
+  },
+  "dfe_neet_pct_apprenticeship": {
+   "class": "published",
+   "method": "DfE 'Participation in education, training and NEET age 16 to 17 by LA', participation-by-type CSV, percent column for participation_type 'Apprenticeship'.",
+   "beds": "absent"
+  },
+  "dfe_neet_pct_wbl": {
+   "class": "published",
+   "method": "DfE 'Participation in education, training and NEET age 16 to 17 by LA', participation-by-type CSV, percent column for participation_type 'Work based learning'.",
+   "beds": "absent"
+  },
+  "dfe_neet_pct_pte": {
+   "class": "published",
+   "method": "DfE 'Participation in education, training and NEET age 16 to 17 by LA', participation-by-type CSV, percent column for participation_type 'Part-time education'.",
+   "beds": "absent"
+  },
+  "dfe_neet_pct_emp_study": {
+   "class": "published",
+   "method": "DfE 'Participation in education, training and NEET age 16 to 17 by LA', participation-by-type CSV, percent column for participation_type 'Employment combined with study'.",
+   "beds": "absent"
+  },
+  "dfe_neet_pct_other_et": {
+   "class": "published",
+   "method": "DfE 'Participation in education, training and NEET age 16 to 17 by LA', participation-by-type CSV, percent column for participation_type 'Other participation type'.",
+   "beds": "absent"
+  },
+  "dfe_apps_starts": {
+   "class": "published",
+   "method": "DfE Apprenticeships publication, geography x age x level CSV (data-set file a7743194), column starts; Bedfordshire = sum of the 3 UAs (all three unsuppressed)."
+  },
+  "dfe_apps_achievements": {
+   "class": "published",
+   "method": "DfE Apprenticeships publication, geography x age x level CSV (data-set file a7743194), column achievements; Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_apps_participation": {
+   "class": "published",
+   "method": "DfE Apprenticeships publication, geography x age x level CSV (data-set file a7743194), column participation; Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_apps_starts_rate": {
+   "class": "published",
+   "method": "DfE Apprenticeships publication, geography x age x level CSV (data-set file a7743194), DfE's own column starts_rate_per_100000_population; Bedfordshire recomputed by us as summed starts x 100,000 / summed dfe_apps_population (all-levels and age-only breakdowns)."
+  },
+  "dfe_apps_population": {
+   "class": "published",
+   "method": "DfE Apprenticeships publication, geography x age x level CSV (data-set file a7743194), column population_estimate (the ONS mid-year figure DfE uses for its rates, level Total only); Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_apps_ssa_starts": {
+   "class": "published",
+   "method": "DfE Apprenticeships region and LAD by sector subject area x level CSVs (current in-year file 8ea0da62 plus the 2024/25 and 2023/24 final-year files), column starts, sex and ethnicity Total; Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_apps_ssa_achievements": {
+   "class": "published",
+   "method": "Same DfE SSA x level CSVs, column achievements; Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_fe_participation": {
+   "class": "published",
+   "method": "DfE Further education and skills geography x provision type x level x age CSV (data-set file 66fd40a0), regulated_status Total, column participation; Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_fe_achievements": {
+   "class": "published",
+   "method": "DfE Further education and skills geography x provision type x level x age CSV (data-set file 66fd40a0), regulated_status Total, column learner_achievements; Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_fe_starts": {
+   "class": "published",
+   "method": "DfE Further education and skills geography x provision type x level x age CSV (data-set file 66fd40a0), regulated_status Total, column starts; Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_fe_participation_rate": {
+   "class": "published",
+   "method": "DfE Further education and skills geography x provision type x level x age CSV (data-set file 66fd40a0), regulated_status Total, DfE's own column participation_rate_per_100000_population (provision-type totals only).",
+   "beds": "absent"
+  },
+  "dfe_fe_achievements_rate": {
+   "class": "published",
+   "method": "DfE Further education and skills geography x provision type x level x age CSV (data-set file 66fd40a0), regulated_status Total, DfE's own column learner_achievements_rate_per_100000_population (provision-type totals only).",
+   "beds": "absent"
+  },
+  "dfe_fe_ssa_enrolments": {
+   "class": "published",
+   "method": "DfE FE and skills LAD x sector subject area x level CSV (data-set file c7199761), column enrolments, latest period, sex/ethnicity Total; Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_fe_ssa_aim_achievements": {
+   "class": "published",
+   "method": "Same DfE SSA CSV, column aim_achievements; Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_ks5d_pct_overall": {
+   "class": "published",
+   "method": "EES API 16-18 destination measures (data set 019d4e73-6440-7523-b60c-bfab1ad4a30d), indicator 'Percentage of pupils sustaining a destination' for destination measure 'Sustained education, employment & apprenticeships'; Bedfordshire recomputed as 100 x summed 'Number of pupils sustaining a destination' / summed cohort count."
+  },
+  "dfe_ks5d_pct_education": {
+   "class": "published",
+   "method": "EES API 16-18 destination measures (data set 019d4e73-6440-7523-b60c-bfab1ad4a30d), indicator 'Percentage of pupils sustaining a destination' for destination measure 'Sustained education destination'; Bedfordshire recomputed as 100 x summed 'Number of pupils sustaining a destination' / summed cohort count."
+  },
+  "dfe_ks5d_pct_apprenticeship": {
+   "class": "published",
+   "method": "EES API 16-18 destination measures (data set 019d4e73-6440-7523-b60c-bfab1ad4a30d), indicator 'Percentage of pupils sustaining a destination' for destination measure 'Sustained apprenticeships'; Bedfordshire recomputed as 100 x summed 'Number of pupils sustaining a destination' / summed cohort count."
+  },
+  "dfe_ks5d_pct_employment": {
+   "class": "published",
+   "method": "EES API 16-18 destination measures (data set 019d4e73-6440-7523-b60c-bfab1ad4a30d), indicator 'Percentage of pupils sustaining a destination' for destination measure 'Sustained employment destination'; Bedfordshire recomputed as 100 x summed 'Number of pupils sustaining a destination' / summed cohort count."
+  },
+  "dfe_ks5d_pct_not_sustained": {
+   "class": "published",
+   "method": "EES API 16-18 destination measures (data set 019d4e73-6440-7523-b60c-bfab1ad4a30d), indicator 'Percentage of pupils sustaining a destination' for destination measure 'Not recorded as a sustained destination'; Bedfordshire recomputed as 100 x summed 'Number of pupils sustaining a destination' / summed cohort count."
+  },
+  "dfe_ks5d_pct_not_captured": {
+   "class": "published",
+   "method": "EES API 16-18 destination measures (data set 019d4e73-6440-7523-b60c-bfab1ad4a30d), indicator 'Percentage of pupils sustaining a destination' for destination measure 'Activity not captured'; Bedfordshire recomputed as 100 x summed 'Number of pupils sustaining a destination' / summed cohort count."
+  },
+  "dfe_ks4d_pct_overall": {
+   "class": "published",
+   "method": "EES API Key stage 4 destination measures (data set 019d4f41-22d1-71b2-a1a7-f3b91026815b), indicator 'Percentage of pupils sustaining a destination' for destination measure 'Sustained education, employment & apprenticeships'; Bedfordshire recomputed as 100 x summed 'Number of pupils sustaining a destination' / summed cohort count."
+  },
+  "dfe_ks4d_pct_education": {
+   "class": "published",
+   "method": "EES API Key stage 4 destination measures (data set 019d4f41-22d1-71b2-a1a7-f3b91026815b), indicator 'Percentage of pupils sustaining a destination' for destination measure 'Sustained education destination'; Bedfordshire recomputed as 100 x summed 'Number of pupils sustaining a destination' / summed cohort count."
+  },
+  "dfe_ks4d_pct_apprenticeship": {
+   "class": "published",
+   "method": "EES API Key stage 4 destination measures (data set 019d4f41-22d1-71b2-a1a7-f3b91026815b), indicator 'Percentage of pupils sustaining a destination' for destination measure 'Sustained apprenticeships'; Bedfordshire recomputed as 100 x summed 'Number of pupils sustaining a destination' / summed cohort count."
+  },
+  "dfe_ks4d_pct_employment": {
+   "class": "published",
+   "method": "EES API Key stage 4 destination measures (data set 019d4f41-22d1-71b2-a1a7-f3b91026815b), indicator 'Percentage of pupils sustaining a destination' for destination measure 'Sustained employment destination'; Bedfordshire recomputed as 100 x summed 'Number of pupils sustaining a destination' / summed cohort count."
+  },
+  "dfe_ks4d_pct_not_sustained": {
+   "class": "published",
+   "method": "EES API Key stage 4 destination measures (data set 019d4f41-22d1-71b2-a1a7-f3b91026815b), indicator 'Percentage of pupils sustaining a destination' for destination measure 'Not recorded as a sustained destination'; Bedfordshire recomputed as 100 x summed 'Number of pupils sustaining a destination' / summed cohort count."
+  },
+  "dfe_ks4d_pct_not_captured": {
+   "class": "published",
+   "method": "EES API Key stage 4 destination measures (data set 019d4f41-22d1-71b2-a1a7-f3b91026815b), indicator 'Percentage of pupils sustaining a destination' for destination measure 'Activity not captured'; Bedfordshire recomputed as 100 x summed 'Number of pupils sustaining a destination' / summed cohort count."
+  },
+  "dfe_l23_pct_l2_by19": {
+   "class": "published",
+   "method": "DfE Level 2 and 3 attainment by age 19 CSV (data-set file 882297f8), column percentage (rounded to 1 dp) for qualification_level/subject/type 'Level 2 / Total / Total Level 2', age 'by age 19'; Bedfordshire recomputed as 100 x summed number / summed number_in_ss_cohort."
+  },
+  "dfe_l23_gap_fsm_l2_by19": {
+   "class": "published",
+   "method": "DfE Level 2 and 3 attainment by age 19 CSV (data-set file 882297f8), DfE's own published percentage-point gap row (breakdown containing 'gap') under breakdown_topic 'FSM' for 'Level 2 / Total / Total Level 2'.",
+   "beds": "absent"
+  },
+  "dfe_l23_gap_disadv_l2_by19": {
+   "class": "published",
+   "method": "DfE Level 2 and 3 attainment by age 19 CSV (data-set file 882297f8), DfE's own published percentage-point gap row (breakdown containing 'gap') under breakdown_topic 'Disadvantaged status' for 'Level 2 / Total / Total Level 2'.",
+   "beds": "absent"
+  },
+  "dfe_l23_gap_sen_l2_by19": {
+   "class": "published",
+   "method": "DfE Level 2 and 3 attainment by age 19 CSV (data-set file 882297f8), DfE's own published percentage-point gap row (breakdown containing 'gap') under breakdown_topic 'SEN (Special Educational Need)' for 'Level 2 / Total / Total Level 2'.",
+   "beds": "absent"
+  },
+  "dfe_l23_pct_l3_by19": {
+   "class": "published",
+   "method": "DfE Level 2 and 3 attainment by age 19 CSV (data-set file 882297f8), column percentage (rounded to 1 dp) for qualification_level/subject/type 'Level 3 / Total / Total Level 3', age 'by age 19'; Bedfordshire recomputed as 100 x summed number / summed number_in_ss_cohort."
+  },
+  "dfe_l23_gap_fsm_l3_by19": {
+   "class": "published",
+   "method": "DfE Level 2 and 3 attainment by age 19 CSV (data-set file 882297f8), DfE's own published percentage-point gap row (breakdown containing 'gap') under breakdown_topic 'FSM' for 'Level 3 / Total / Total Level 3'.",
+   "beds": "absent"
+  },
+  "dfe_l23_gap_disadv_l3_by19": {
+   "class": "published",
+   "method": "DfE Level 2 and 3 attainment by age 19 CSV (data-set file 882297f8), DfE's own published percentage-point gap row (breakdown containing 'gap') under breakdown_topic 'Disadvantaged status' for 'Level 3 / Total / Total Level 3'.",
+   "beds": "absent"
+  },
+  "dfe_l23_gap_sen_l3_by19": {
+   "class": "published",
+   "method": "DfE Level 2 and 3 attainment by age 19 CSV (data-set file 882297f8), DfE's own published percentage-point gap row (breakdown containing 'gap') under breakdown_topic 'SEN (Special Educational Need)' for 'Level 3 / Total / Total Level 3'.",
+   "beds": "absent"
+  },
+  "dfe_l23_pct_l2_em_by19": {
+   "class": "published",
+   "method": "DfE Level 2 and 3 attainment by age 19 CSV (data-set file 882297f8), column percentage (rounded to 1 dp) for qualification_level/subject/type 'Level 2 / Attained Level 2 English & Maths / Total (GCSE and other equivalent)', age 'by age 19'; Bedfordshire recomputed as 100 x summed number / summed number_in_ss_cohort."
+  },
+  "dfe_l23_gap_fsm_l2_em_by19": {
+   "class": "published",
+   "method": "DfE Level 2 and 3 attainment by age 19 CSV (data-set file 882297f8), DfE's own published percentage-point gap row (breakdown containing 'gap') under breakdown_topic 'FSM' for 'Level 2 / Attained Level 2 English & Maths / Total (GCSE and other equivalent)'.",
+   "beds": "absent"
+  },
+  "dfe_l23_gap_disadv_l2_em_by19": {
+   "class": "published",
+   "method": "DfE Level 2 and 3 attainment by age 19 CSV (data-set file 882297f8), DfE's own published percentage-point gap row (breakdown containing 'gap') under breakdown_topic 'Disadvantaged status' for 'Level 2 / Attained Level 2 English & Maths / Total (GCSE and other equivalent)'.",
+   "beds": "absent"
+  },
+  "dfe_l23_gap_sen_l2_em_by19": {
+   "class": "published",
+   "method": "DfE Level 2 and 3 attainment by age 19 CSV (data-set file 882297f8), DfE's own published percentage-point gap row (breakdown containing 'gap') under breakdown_topic 'SEN (Special Educational Need)' for 'Level 2 / Attained Level 2 English & Maths / Total (GCSE and other equivalent)'.",
+   "beds": "absent"
+  },
+  "dfe_cl_pct_neet": {
+   "class": "published",
+   "method": "DfE Children looked after in England, care leavers activity CSV (data-set file 5279794c), care_leaver_percent of DfE's 'Total not in education, employment or training' line (relabelled); Bedfordshire recomputed as round(100 x summed NEET count / summed care-leaver total)."
+  },
+  "dfe_cl_pct_eet": {
+   "class": "published",
+   "method": "DfE Children looked after in England, care leavers activity CSV (data-set file 5279794c), care_leaver_percent of DfE's 'Total in education, employment or training' line (relabelled); Bedfordshire recomputed as round(100 x summed EET count / summed care-leaver total)."
+  },
+  "dfe_cl_pct_activity": {
+   "class": "published",
+   "method": "DfE Children looked after in England, care leavers activity CSV (data-set file 5279794c), care_leaver_percent for every activity breakdown line.",
+   "beds": "absent"
+  },
+  "dfe_cl_n_total": {
+   "class": "published",
+   "method": "DfE Children looked after in England, care leavers activity CSV (data-set file 5279794c), care_leaver_count of the 'Total' breakdown; Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_ehcp_n": {
+   "class": "calculated",
+   "method": "EES API EHC plans data set 01a0aa37, indicator 'Number of EHC plans', setting 'Total': 'age all ages' copies DfE's 'All EHC plans' figure; 'age 16-19' sums single ages 16-19 and 'age 20-25' sums ages 20-25 (a band is null if any age is suppressed); Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_ehcp_n_neet": {
+   "class": "calculated",
+   "method": "EES API EHC plans data set 01a0aa37, indicator 'Number of EHC plans', setting 'Not in employment, education or training': all-ages copied, 16-19 and 20-25 bands summed from single ages by us; Bedfordshire = sum of the 3 UAs."
+  },
+  "dfe_ehcp_n_fe_college": {
+   "class": "calculated",
+   "method": "EES API EHC plans data set 01a0aa37, indicator 'Number of EHC plans', setting 'General FE tertiary colleges': all-ages copied, 16-19 and 20-25 bands summed from single ages by us; Bedfordshire = sum of the 3 UAs."
+  },
+  "providers_pupils": {
+   "class": "published",
+   "method": "GIAS all-establishments daily extract (edubasealldata), field NumberOfPupils (from the last school census), one point per selected provider.",
+   "beds": "absent"
+  },
+  "providers_pct_fsm": {
+   "class": "published",
+   "method": "GIAS all-establishments extract, field PercentageFSM, one point per selected provider.",
+   "beds": "absent"
+  },
+  "providers_count": {
+   "class": "calculated",
+   "method": "Count of open GIAS establishments in each Bedfordshire UA by a provider category our classify() function assigns from establishment type, group, phase and age range; Bedfordshire = sum of the 3 UAs' counts (neighbouring-LA colleges not counted)."
+  },
+  "pipeline_pupils_by_ncy": {
+   "class": "published",
+   "method": "EES API Schools, pupils and their characteristics data set 019e7403, 'Count of pupils in year group N' (Y7-Y13, latest January census, all filters Total); Bedfordshire = sum of the UAs' non-null values."
+  },
+  "pipeline_pupils_y7_11": {
+   "class": "calculated",
+   "method": "Sum of DfE census counts for year groups 7-11 (data set 019e7403) at every level; Bedfordshire = sum of the UAs' sums."
+  },
+  "pipeline_pupils_y12_13": {
+   "class": "calculated",
+   "method": "Sum of DfE census counts for year groups 12 and 13 in schools (data set 019e7403) at every level; Bedfordshire = sum of the UAs' sums."
+  },
+  "pipeline_aged16_by_year": {
+   "class": "calculated",
+   "method": "Cohort roll-forward: the latest census count of the national curriculum year that will be aged 16 at the start of each target academic year (NC year = 12 - (target - base year)), with no migration or mortality adjustment; Bedfordshire uses the summed UA year-group counts."
+  },
+  "pipeline_aged16_18_by_year": {
+   "class": "calculated",
+   "method": "Cohort roll-forward: sum of the latest census counts of the three NC year groups that will be aged 16, 17 and 18 in each target academic year (only when all three are now in Y1-Y11), no migration or mortality adjustment; Bedfordshire uses summed UA year-group counts."
+  },
+  "pipeline_fsm_pct_secondary": {
+   "class": "published",
+   "method": "EES API free school meals data set 019e7404, 'Percentage of pupils' FSM eligible, state-funded secondary; Bedfordshire recomputed as 100 x summed FSM-eligible pupils / summed total pupils."
+  },
+  "pipeline_sen_support_pct_secondary": {
+   "class": "published",
+   "method": "EES API SEN data set 019df85e, 'Percentage of pupils' for 'SEN support / SEN without an EHC plan', state-funded secondary; Bedfordshire recomputed as 100 x summed headcount / summed total headcount."
+  },
+  "pipeline_ehcp_pct_secondary": {
+   "class": "published",
+   "method": "EES API SEN data set 019df85e, 'Percentage of pupils' with an EHC plan, state-funded secondary; Bedfordshire recomputed as 100 x summed headcount / summed total headcount."
+  },
+  "ks4_att8": {
+   "class": "published",
+   "method": "EES API KS4 performance by geography data set 18e39901, school type 'All state-funded', 'Average Attainment 8 score'; Bedfordshire recomputed as summed 'Sum of Attainment 8 scores' / summed pupils."
+  },
+  "ks4_pct_em_5plus": {
+   "class": "published",
+   "method": "EES API KS4 performance by geography data set 18e39901, school type 'All state-funded', 'Percentage of pupils achieving grades 5 or above in English and maths GCSEs'; Bedfordshire recomputed as 100 x summed achievers / summed pupils."
+  },
+  "ks4_pct_em_4plus": {
+   "class": "published",
+   "method": "EES API KS4 performance by geography data set 18e39901, school type 'All state-funded', 'Percentage of pupils achieving grades 4 or above in English and maths GCSEs'; Bedfordshire recomputed as 100 x summed achievers / summed pupils."
+  },
+  "ks4_pct_ebacc_entry": {
+   "class": "published",
+   "method": "EES API KS4 data set 18e39901 version 1.0.1, 'Percentage of pupils entering the EBacc' (to 2024/25); Bedfordshire recomputed as 100 x summed entrants / summed pupils."
+  },
+  "ks4_pupils": {
+   "class": "published",
+   "method": "EES API KS4 performance by geography data set 18e39901, school type 'All state-funded', 'Number of pupils at the end of KS4'; Bedfordshire = sum of the 3 UAs."
+  },
+  "ks4_att8_disadv": {
+   "class": "published",
+   "method": "EES API KS4 by characteristics data set b3e19901, 'Average Attainment 8 score' for disadvantaged pupils; Bedfordshire recomputed as summed A8 points / summed disadvantaged pupils."
+  },
+  "ks4_att8_nondisadv": {
+   "class": "published",
+   "method": "EES API KS4 by characteristics data set b3e19901, 'Average Attainment 8 score' for pupils not known to be disadvantaged; Bedfordshire recomputed as summed A8 points / summed pupils."
+  },
+  "ks4_att8_disadv_gap": {
+   "class": "calculated",
+   "method": "Our difference: average A8 of not-known-to-be-disadvantaged pupils minus average A8 of disadvantaged pupils (data set b3e19901) at every level; Bedfordshire uses the recomputed averages."
+  },
+  "ks4_pct_disadvantaged": {
+   "class": "calculated",
+   "method": "Our share: disadvantaged end-of-KS4 pupils / (disadvantaged + not known to be disadvantaged pupils) x 100 (data set b3e19901) at every level; Bedfordshire from summed pupil counts."
+  },
+  "ks4s_att8": {
+   "class": "published",
+   "method": "EES API KS4 school-level data set 19e39901 (all filters Total), 'Average Attainment 8 score' per school."
+  },
+  "ks4s_pct_em_5plus": {
+   "class": "published",
+   "method": "EES API KS4 school-level data set 19e39901 (all filters Total), 'Percentage of pupils achieving grades 5 or above in English and maths GCSEs' per school."
+  },
+  "ks4s_pct_em_4plus": {
+   "class": "published",
+   "method": "EES API KS4 school-level data set 19e39901 (all filters Total), 'Percentage of pupils achieving grades 4 or above in English and maths GCSEs' per school."
+  },
+  "ks4s_pupils": {
+   "class": "published",
+   "method": "EES API KS4 school-level data set 19e39901 (all filters Total), 'Number of pupils at the end of KS4' per school."
+  },
+  "ks5_aps_per_entry": {
+   "class": "published",
+   "method": "EES API 16-18 performance data set 019d9133, 'APS per entry' for all state-funded students by exam cohort (A level, Applied general, Tech level, Technical certificate).",
+   "beds": "absent"
+  },
+  "ks5_pct_2_substantial_l3": {
+   "class": "published",
+   "method": "EES API 16-18 performance data set 019d9133, '% achieving >= 2 substantial level 3 results' (A level and Level 3 cohorts).",
+   "beds": "absent"
+  },
+  "ks5_students": {
+   "class": "published",
+   "method": "EES API 16-18 performance data set 019d9133, 'Number of students' by exam cohort; Bedfordshire = sum of the UAs' non-null values."
+  },
+  "ks5_retained_assessed_pct": {
+   "class": "published",
+   "method": "EES API retention data set 019d9139 (LA, region) and national time series 019d9138 (England), '% retained and assessed' by exam cohort and qualification level.",
+   "beds": "absent"
+  },
+  "abs_persistent_pct_secondary": {
+   "class": "published",
+   "method": "EES API pupil absence data set 019d209c, 'Percentage of pupil enrolments' for absence type 'Persistent absence', state-funded secondary; Bedfordshire recomputed as 100 x summed persistently absent enrolments / summed total enrolments."
+  },
+  "excl_suspension_rate_secondary": {
+   "class": "published",
+   "method": "DfE suspensions and permanent exclusions by geography CSV (59d8b51e), column susp_rate, state-funded secondary; Bedfordshire recomputed as 100 x summed suspensions / summed headcount."
+  },
+  "excl_one_plus_susp_pct_secondary": {
+   "class": "published",
+   "method": "DfE suspensions CSV (59d8b51e), column one_plus_susp_rate, state-funded secondary; Bedfordshire recomputed as 100 x summed pupils with 1+ suspension / summed headcount."
+  },
+  "excl_perm_excl_rate_secondary": {
+   "class": "published",
+   "method": "DfE suspensions CSV (59d8b51e), column perm_excl_rate, state-funded secondary; Bedfordshire recomputed as 100 x summed permanent exclusions / summed headcount."
+  },
+  "aff_hp_earn_ratio": {
+   "class": "published",
+   "method": "ONS 'Ratio of house price to residence-based earnings' workbook (aff2), sheet 5c (LA) and 1c (region, England), median ratio."
+  },
+  "aff_lq_hp_earn_ratio": {
+   "class": "published",
+   "method": "ONS 'Ratio of house price to residence-based earnings' workbook (aff2), sheet 6c (LA) and 2c (region, England), lower-quartile ratio."
+  },
+  "aff_rent_monthly": {
+   "class": "published",
+   "method": "ONS Price Index of Private Rents monthly workbook, Table 1 'Rental price' columns (all properties and by number of bedrooms)."
+  },
+  "aff_rent_share_nlw": {
+   "class": "calculated",
+   "method": "Our calculation: 12 x ONS PIPR average monthly rent / annual full-time National Living Wage pay (GBP 12.71 x 37.5 hours x 52 weeks = GBP 24,784.50, a fixed figure in the fetcher) x 100."
+  },
+  "cc_providers": {
+   "class": "calculated",
+   "method": "Count of active Early Years Register providers in Ofsted's childcare providers and inspections MI provider-level CSV, by provider local authority, East of England region and England, and by our grouping of provider type; Bedfordshire = providers in the 3 UAs."
+  },
+  "cc_places": {
+   "class": "calculated",
+   "method": "Sum of 'Places including estimates' over active Early Years Register providers in Ofsted's provider-level CSV, by area and provider type, rounded to whole places."
+  },
+  "cc_places_per_100_0_4": {
+   "class": "calculated",
+   "method": "Our rate: summed Ofsted EYR places / ONS mid-year population aged 0-4 x 100."
+  },
+  "cc_pop_0_4": {
+   "class": "calculated",
+   "method": "Sum of ONS mid-year population estimates for single years of age 0 to 4 (Nomis NM_2002_1, c_age 101-105, latest year); Bedfordshire = sum of the 3 UAs."
+  },
+  "ofsted_fe_overall": {
+   "class": "published",
+   "method": "Ofsted further education and skills inspections MI 'as at' state-of-the-nation CSV, field 'Latest overall effectiveness before renewed EIF' (1-4) copied per provider located in the 3 UAs.",
+   "beds": "absent"
+  },
+  "ofsted_fe_rc_below_expected": {
+   "class": "calculated",
+   "method": "Our count of renewed-EIF report-card evaluation areas graded 'Needs attention' or 'Urgent improvement' in the provider's latest inspection in Ofsted's renewed-EIF inspections CSV.",
+   "beds": "absent"
+  },
+  "ofsted_fe_providers": {
+   "class": "calculated",
+   "method": "Our count of providers in the Ofsted further education and skills inspections MI state file whose Ofsted LA/region places them in each area (England-region providers only)."
+  },
+  "ofsted_fe_grade_count": {
+   "class": "calculated",
+   "method": "Our count of providers in the Ofsted further education and skills inspections MI state file by 'Latest overall effectiveness before renewed EIF' grade (plus 'no graded inspection'), by area."
+  },
+  "ofsted_fe_pct_good_plus": {
+   "class": "calculated",
+   "method": "Our share: providers with legacy grade 1 or 2 / providers with any legacy grade 1-4 x 100, from our counts."
+  },
+  "ofsted_fe_rc_count": {
+   "class": "calculated",
+   "method": "Our count of providers in each area with at least one renewed-EIF report-card inspection in the Ofsted further education and skills inspections MI inspections CSV."
+  },
+  "tt_pt_am_min": {
+   "class": "modelled",
+   "method": "OTP public transport + walk model, shortest itinerary from the LSOA 2021 population-weighted centroid to the Kempston Hardwick site (52.0898, -0.4996) arriving 07:30-08:30, over BODS registered bus timetables (south_east, east_anglia, east_midlands, cut to trips on the day touching a Bedfordshire box) and the rail GTFS; approximations: Rail inputs (pipeline/travel/make_rail_gtfs.py and rail_gtfs/): Marston Vale Bedford-Bletchley Mon-Fri trains transcribed train by train from LNR's 18 May-11 Dec 2026 PDF; Thameslink Bedford-Luton Airport Parkway modelled as fixed headways (frequencies.txt, exact_times=1) with one fixed running-time template per direction (every 15 min by day, every 30 min southbound after 22:14, every 15 min northbound 23:10-24:56); EMR Connect Bedford-Luton-Luton Airport Parkway modelled as 30-min headways plus two single late southbound trips; peak fast Thameslink and all other rail (East Coast Main Line Sandy/Biggleswade/Arlesey, Midland Main Line beyond these stations) omitted; walk 1.33 m/s, 2-min transfer slack, access/egress walk max 45 min, walk-only answers capped at 60 min.",
+   "beds": "absent"
+  },
+  "tt_pt_late_min": {
+   "class": "modelled",
+   "method": "OTP public transport model, minutes from leaving the site at 22:30 until earliest arrival at the LSOA centroid (null if not home by 00:30), same bus/rail inputs and the same rail approximations (Rail inputs (pipeline/travel/make_rail_gtfs.py and rail_gtfs/): Marston Vale Bedford-Bletchley Mon-Fri trains transcribed train by train from LNR's 18 May-11 Dec 2026 PDF; Thameslink Bedford-Luton Airport Parkway modelled as fixed headways (frequencies.txt, exact_times=1) with one fixed running-time template per direction (every 15 min by day, every 30 min southbound after 22:14, every 15 min northbound 23:10-24:56); EMR Connect Bedford-Luton-Luton Airport Parkway modelled as 30-min headways plus two single late southbound trips; peak fast Thameslink and all other rail (East Coast Main Line Sandy/Biggleswade/Arlesey, Midland Main Line beyond these stations) omitted).",
+   "beds": "absent"
+  },
+  "tt_pt_late_ok_pct": {
+   "class": "modelled",
+   "method": "LSOA: 100 if the modelled late journey home (tt_pt_late_min) is 90 min or less, else 0; LA and Bedfordshire: our share of residents aged 16-64 (ONS small-area estimates, pop_lsoa popsa_16_64) living in LSOAs where it is 100."
+  },
+  "tt_car_min": {
+   "class": "modelled",
+   "method": "OTP car routing from the LSOA 2021 population-weighted centroid to the Kempston Hardwick site (52.0898, -0.4996) on the Geofabrik Bedfordshire OSM extract with UK tag-mapping free-flow road speeds: no congestion, junction delay or parking.",
+   "beds": "absent"
+  },
+  "tt_cycle_min": {
+   "class": "modelled",
+   "method": "OTP bicycle routing from the LSOA 2021 population-weighted centroid to the Kempston Hardwick site (52.0898, -0.4996) on OSM at a flat 5 m/s (18 km/h), ignoring hills and route quality.",
+   "beds": "absent"
+  },
+  "tt_walk_min": {
+   "class": "modelled",
+   "method": "OTP walk routing from the LSOA 2021 population-weighted centroid to the Kempston Hardwick site (52.0898, -0.4996) on OSM at 1.33 m/s.",
+   "beds": "absent"
+  },
+  "tt_pop1664_pt45_pct": {
+   "class": "modelled",
+   "method": "Our share of residents aged 16-64 (ONS small-area estimates via pop_lsoa) living in LSOAs whose modelled tt_pt_am_min is 45 min or less, by UA and Bedfordshire."
+  },
+  "tt_pop1664_pt60_pct": {
+   "class": "modelled",
+   "method": "Our share of residents aged 16-64 living in LSOAs whose modelled tt_pt_am_min is 60 min or less, by UA and Bedfordshire."
+  },
+  "tt_pop1664_car30_pct": {
+   "class": "modelled",
+   "method": "Our share of residents aged 16-64 living in LSOAs whose modelled free-flow tt_car_min is 30 min or less, by UA and Bedfordshire."
+  },
+  "uc_people": {
+   "class": "published",
+   "method": "DWP Stat-Xplore UC_Monthly 'People on Universal Credit' (V_F_UC_CASELOAD_FULL) by CCCONDITIONALITY_REGIME, the conditionality-regime Total cell (includes unknown/missing); Bedfordshire = sum of the 3 UAs."
+  },
+  "uc_searching": {
+   "class": "published",
+   "method": "DWP Stat-Xplore UC_Monthly 'People on Universal Credit' (V_F_UC_CASELOAD_FULL) by CCCONDITIONALITY_REGIME, regime 'Searching for work'; Bedfordshire = sum of the 3 UAs."
+  },
+  "uc_working_req": {
+   "class": "published",
+   "method": "DWP Stat-Xplore UC_Monthly 'People on Universal Credit' (V_F_UC_CASELOAD_FULL) by CCCONDITIONALITY_REGIME, regime 'Working - with requirements'; Bedfordshire = sum of the 3 UAs."
+  },
+  "uc_nwr": {
+   "class": "published",
+   "method": "DWP Stat-Xplore UC_Monthly 'People on Universal Credit' (V_F_UC_CASELOAD_FULL) by CCCONDITIONALITY_REGIME, regime 'No work requirements'; Bedfordshire = sum of the 3 UAs."
+  },
+  "uc_planning_preparing": {
+   "class": "calculated",
+   "method": "Our sum of the Stat-Xplore 'Planning for work' and 'Preparing for work' regime counts; Bedfordshire = sum of the 3 UAs."
+  },
+  "uc_working_noreq": {
+   "class": "published",
+   "method": "DWP Stat-Xplore UC_Monthly 'People on Universal Credit' (V_F_UC_CASELOAD_FULL) by CCCONDITIONALITY_REGIME, regime 'Working - no requirements'; Bedfordshire = sum of the 3 UAs."
+  },
+  "uc_nwr_rate": {
+   "class": "calculated",
+   "method": "Our rate: uc_nwr / ONS population aged 16-64 x 100 (pop_mye for LA/region/England/Bedfordshire, pop_lsoa small-area estimates for LSOA/MSOA; nearest mid-year at or before the month)."
+  }
+ }
+}

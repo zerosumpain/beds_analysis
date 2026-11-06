@@ -80,7 +80,9 @@
     const out = await Promise.all(tiles.map(async (t) => ({ t, r: await tileValue(t).catch(() => null) })));
     el.innerHTML = out.filter((x) => x.r).map(({ t, r }) => {
       const ind = BA.indicators[r.id];
-      return `<div class="ba-tile ${t.tone ? 'ba-tile--' + t.tone : ''}"><p class="ba-tile__label">${esc(t.label)}</p><p class="ba-tile__value ba-num">${t.unit === 'percent' || ind.unit === 'percent' ? BA.fmt(r.v, 'percent') : BA.big(r.v)}</p><p class="ba-tile__sub">${esc(t.sub || '')}${r.period ? ' · ' + esc(r.period) : ''} · <a class="govuk-link" href="#/data/${ind.dataset}">source</a></p></div>`;
+      const code = t.provCode || t.code || 'BEDS';
+      const pv = t.prov || BA.provRow({ indicator: r.id, code, level: code === 'BEDS' ? 'county' : BA.LAS[code] ? 'LA' : 'country' });
+      return `<div class="ba-tile ${t.tone ? 'ba-tile--' + t.tone : ''}"><p class="ba-tile__label">${esc(t.label)} ${BA.provTag(pv)}</p><p class="ba-tile__value ba-num">${t.unit === 'percent' || ind.unit === 'percent' ? BA.fmt(r.v, 'percent') : BA.big(r.v)}</p><p class="ba-tile__sub">${esc(t.sub || '')}${r.period ? ' · ' + esc(r.period) : ''} · <a class="govuk-link" href="#/data/${ind.dataset}">source</a></p></div>`;
     }).join('') || '<p class="govuk-body ba-small">Headline figures appear once the data pipeline has run.</p>';
   }
   BA.renderTiles = renderTiles;
@@ -96,7 +98,7 @@
       <h1 class="govuk-heading-xl">Labour supply, skills and training evidence base</h1>
       <div class="govuk-grid-row"><div class="govuk-grid-column-two-thirds">
         <p class="govuk-body-l">A major leisure and infrastructure development, ${esc(p.name ? 'the Universal United Kingdom Resort' : 'a resort')}, is planned on the former brickworks at Kempston Hardwick, south-west of Bedford, and is due to open in 2031. This tool brings together the best publicly available data on the potential local workforce. Its purpose is an evidence-based case for investment in skills and training, across construction, pre-opening and operations.</p>
-        <p class="govuk-body">It covers three cohorts: <strong>16 to 19 year olds</strong>, <strong>18 to 24 year olds</strong> and <strong>economically inactive adults aged 25 and over</strong>. Every figure is an aggregate from published statistics. The tool does not identify individuals.</p>
+        <p class="govuk-body">It covers three cohorts: <strong>16 to 19 year olds</strong>, <strong>18 to 24 year olds</strong> and <strong>economically inactive adults aged 25 and over</strong>. Every figure is built from published aggregate statistics and tagged by where it comes from. The tool does not identify individuals.</p>
       </div><div class="govuk-grid-column-one-third">
         <div class="ba-callout"><p class="govuk-body govuk-!-margin-bottom-1"><strong>${BA.catalogue.length}</strong> datasets loaded, <strong>${Object.keys(BA.indicators).length}</strong> indicators</p>
         <p class="govuk-body govuk-!-margin-bottom-1"><strong>${BA.sources.length}</strong> sources assessed</p>
@@ -144,34 +146,34 @@
     const pc = (n) => Math.round(n) + '%';
     const v = async (id, code, bd) => { if (!BA.indicators[id]) return null; const r = await BA.value(id, code || 'BEDS', bd === undefined ? null : bd); return r && r.value != null ? r : null; };
     const out = [];
-    const add = (num, text, href, tone) => out.push({ num, text, href, tone });
+    const add = (num, text, href, tone, prov, how) => out.push({ num, text, href, tone, prov, how });
     const { s } = await BA.engineState(BA.REACH_DEFAULT);
     const m = BA.engineModel(s);
-    add(T(m.demand.ops), `of the resort's ${T(s.ops_jobs)} operational jobs at opening in ${s.open_year} are expected to go to local residents, on top of ${T(s.constr_peak)} construction workers on site at the peak.`, '#/case');
-    add(pc(100 * m.tot.jobs / Math.max(1, m.demand.ops)), `of those local jobs (about ${T(m.tot.jobs)}) could realistically be filled from the three target cohorts on the central assumptions. The other ${T(Math.max(0, m.demand.ops - m.tot.jobs))} would come from people already in work, in-commuters or a bigger programme.`, '#/balance', 'warn');
+    add(T(m.demand.ops), `of the resort's ${T(s.ops_jobs)} operational jobs at opening in ${s.open_year} are expected to go to local residents, on top of ${T(s.constr_peak)} construction workers on site at the peak.`, '#/case', null, 'document', 'Promoter\'s Environmental Statement: 8,050 jobs x 69% local.');
+    add(pc(100 * m.tot.jobs / Math.max(1, m.demand.ops)), `of those local jobs (about ${T(m.tot.jobs)}) could realistically be filled from the three target cohorts on the central assumptions. The other ${T(Math.max(0, m.demand.ops - m.tot.jobs))} would come from people already in work, in-commuters or a bigger programme.`, '#/balance', 'warn', 'modelled', 'Business case model on its default inputs, several of which are assumptions.');
     const tt = await BA.travelLsoa();
     if (tt) {
       const w = await BA.lsoaWeights(['popsa_16_64']); const tot = Object.values(w).reduce((a, x) => a + x, 0);
       const share = (o) => { let n = 0; Object.entries(w).forEach(([c, x]) => (n += x * (BA.reachFrac(tt[c], o) || 0))); return 100 * n / tot; };
       const pt = share({ mode: 'pt', minutes: 45 }), car = share({ mode: 'car', minutes: 45 }), late = share({ mode: 'pt', minutes: 90, late: true }), ptAny = share({ mode: 'pt', minutes: 90 });
-      add(pc(pt), `of working-age residents can get to an 08:30 shift within 45 minutes by public transport, against ${pc(car)} by car in free-flowing traffic. Transport, not distance, is the binding constraint for people without a car.`, '#/balance?mode=pt', pt < 50 ? 'bad' : 'warn');
-      if (ptAny > 0) add(pc(late), `of working-age residents could get home by public transport after a shift ending at 22:30 (${pc(ptAny)} can get there by public transport within 90 minutes). Late finishes need staff transport or shift design.`, '#/balance?mode=pt&late=1&min=90', 'bad');
+      add(pc(pt), `of working-age residents can get to an 08:30 shift within 45 minutes by public transport, against ${pc(car)} by car in free-flowing traffic. Transport, not distance, is the binding constraint for people without a car.`, '#/balance?mode=pt', pt < 50 ? 'bad' : 'warn', 'modelled', 'Journey-time model; Thameslink/EMR trains approximated, car times free-flow.');
+      if (ptAny > 0) add(pc(late), `of working-age residents could get home by public transport after a shift ending at 22:30 (${pc(ptAny)} can get there by public transport within 90 minutes). Late finishes need staff transport or shift design.`, '#/balance?mode=pt&late=1&min=90', 'bad', 'modelled', 'Journey-time model.');
     }
     const a25 = await v('snpp_16_19'); const rows = BA.indicators.snpp_16_19 ? (await BA.rowsFor('snpp_16_19')).filter((r) => r.code === 'BEDS') : [];
     const y0 = rows.find((r) => String(r.period) === '2025'), y1 = rows.find((r) => String(r.period) === String(s.open_year));
-    if (a25 && y0 && y1) add((y1.value >= y0.value ? '+' : '') + T(y1.value - y0.value), `more 16 to 19 year olds in Bedfordshire by ${s.open_year} than in 2025 (${T(y0.value)} to ${T(y1.value)}, ONS projection). Today's secondary pupils are the opening-year intake.`, '#/cohort/16-19', 'good');
+    if (a25 && y0 && y1) add((y1.value >= y0.value ? '+' : '') + T(y1.value - y0.value), `more 16 to 19 year olds in Bedfordshire by ${s.open_year} than in 2025 (${T(y0.value)} to ${T(y1.value)}, ONS projection). Today's secondary pupils are the opening-year intake.`, '#/cohort/16-19', 'good', 'calculated', 'Difference between two years of the ONS 2022-based projection, Bedfordshire summed from the three authorities.');
     const ia = ['census_inact_home_family', 'census_inact_lt_sick', 'census_inact_other'];
     const parts = await Promise.all(ia.map((id) => v(id, 'BEDS', 'age 25-64')));
-    if (parts.every(Boolean)) add(T(parts.reduce((x, r) => x + r.value, 0)), `adults aged 25-64 were economically inactive for reasons other than study or retirement at the 2021 Census, ${T(parts[1].value)} of them long-term sick or disabled. Most are invisible in benefit data.`, '#/cohort/25-inactive');
+    if (parts.every(Boolean)) add(T(parts.reduce((x, r) => x + r.value, 0)), `adults aged 25-64 were economically inactive for reasons other than study or retirement at the 2021 Census, ${T(parts[1].value)} of them long-term sick or disabled. Most are invisible in benefit data.`, '#/cohort/25-inactive', null, 'calculated', 'Sum of three published Census 2021 categories.');
     const lut = await v('aps_inact_rate_16_64', 'E06000032'), eng = await v('aps_inact_rate_16_64', 'E92000001');
-    if (lut && eng) add(BA.fmt(lut.value, 'percent'), `of Luton's 16-64 population is economically inactive (England ${BA.fmt(eng.value, 'percent')}, ${esc(lut.period)}). Luton residents are not counted in the promoter's 69% local-jobs figure.`, '#/cohort/25-inactive', 'bad');
+    if (lut && eng) add(BA.fmt(lut.value, 'percent'), `of Luton's 16-64 population is economically inactive (England ${BA.fmt(eng.value, 'percent')}, ${esc(lut.period)}). Luton residents are not counted in the promoter's 69% local-jobs figure.`, '#/cohort/25-inactive', 'bad', 'published', 'ONS Annual Population Survey via Nomis.');
     let neet = 0, ok = true; for (const c of Object.keys(BA.LAS)) { const r = await v('dfe_neet_n_neet_nk', c, 'age 16-17'); if (!r) { ok = false; break; } neet += r.value; }
-    if (ok) add(T(neet), `16 and 17 year olds are NEET or their activity is not known, the most direct target for pre-employment and apprenticeship routes.`, '#/cohort/16-19', 'warn');
+    if (ok) add(T(neet), `16 and 17 year olds are NEET or their activity is not known, the most direct target for pre-employment and apprenticeship routes.`, '#/cohort/16-19', 'warn', 'calculated', 'DfE NEET or not known counts for the three authorities, added together.');
     const wh = await v('bres_emp_warehousing'), af = await v('bres_emp_accom_food');
-    if (wh && af) add(T(wh.value), `people already work in warehousing and logistics in Bedfordshire, and ${T(af.value)} in accommodation and food. The resort will compete with both for entry-level staff.`, '#/balance', 'warn');
+    if (wh && af) add(T(wh.value), `people already work in warehousing and logistics in Bedfordshire, and ${T(af.value)} in accommodation and food. The resort will compete with both for entry-level staff.`, '#/balance', 'warn', BA.provRow({ indicator: 'bres_emp_warehousing', code: 'BEDS', level: 'county' }), 'ONS Business Register and Employment Survey.');
     const rent = await v('aff_rent_share_nlw', 'E06000055');
-    if (rent) add(BA.fmt(rent.value, 'percent'), `of a full-time National Living Wage worker's gross pay would go on the average private rent in Bedford. Pay and housing costs affect who can take the jobs.`, '#/data/affordability', 'warn');
-    el.innerHTML = out.map((f) => `<a class="ba-finding ba-finding--${f.tone || 'info'}" href="${f.href}"><span class="ba-finding__num">${f.num}</span><span class="ba-finding__text">${f.text}</span></a>`).join('');
+    if (rent) add(BA.fmt(rent.value, 'percent'), `of a full-time National Living Wage worker's gross pay would go on the average private rent in Bedford. Pay and housing costs affect who can take the jobs.`, '#/data/affordability', 'warn', 'calculated', BA.provOf('aff_rent_share_nlw').method);
+    el.innerHTML = out.map((f) => `<a class="ba-finding ba-finding--${f.tone || 'info'}" href="${f.href}"><span class="ba-finding__num">${f.num}</span><span class="ba-finding__text">${f.text} ${f.prov ? BA.provTag(f.prov, f.how).replace('<a ', '<span ').replace('</a>', '</span>').replace(/ href="[^"]*"/, '') : ''}</span></a>`).join('');
   }
 
   function projectBlock(p) {
@@ -261,7 +263,7 @@
 
   // Lazily rendered indicator card.
   function indicatorCard(ind) {
-    const card = BA.el(`<div class="ba-card"><h4 class="govuk-heading-s">${esc(ind.label)}</h4><p class="ba-card__meta">${esc(ind.description || '')}</p><div class="ba-chart"><canvas aria-label="${esc(ind.label)} by area" role="img"></canvas></div><p class="ba-card__foot"></p></div>`);
+    const card = BA.el(`<div class="ba-card"><h4 class="govuk-heading-s">${esc(ind.label)} ${BA.provIndTag(ind.id)}</h4><p class="ba-card__meta">${esc(ind.description || '')}${esc(BA.provBedsNote(ind.id))}</p><div class="ba-chart"><canvas aria-label="${esc(ind.label)} by area" role="img"></canvas></div><p class="ba-card__foot"></p></div>`);
     const io = new IntersectionObserver((ents) => { if (ents.some((e) => e.isIntersecting)) { io.disconnect(); fillCard(card, ind).catch((e) => { card.querySelector('.ba-chart').innerHTML = '<p class="ba-small">' + esc(e.message) + '</p>'; }); } }, { rootMargin: '300px' });
     io.observe(card);
     return card;
@@ -405,6 +407,18 @@
   function shortPub(p) { p = String(p || 'Unknown'); return p.length > 30 ? p.replace(/\(.*?\)/g, '').slice(0, 30) : p; }
 
   /* ---------- dataset detail ---------- */
+  function provBlock(id, m) {
+    if (!BA.provOf) return '';
+    const d = ((BA.provenance || {}).datasets || {})[id] || {};
+    const L = { BEDS: 'Bedfordshire total', LA: 'Each authority', region: 'East of England', country: 'England', small_area: 'Neighbourhoods and other small areas' };
+    const lv = Object.entries(d.levels || {}).filter(([, v]) => v && v !== 'absent');
+    const rowsFor = (m.indicators || []).map((i) => { const p = BA.provOf(i.id); return `<tr class="govuk-table__row"><th class="govuk-table__header" scope="row" style="font-weight:400">${esc(i.label)}</th><td class="govuk-table__cell">${p.class ? BA.provTag(p.class) : 'Not classified'}</td><td class="govuk-table__cell ba-small">${esc(p.method)}</td></tr>`; }).join('');
+    return `<h2 class="govuk-heading-l" id="prov">Where each figure comes from</h2>
+      ${d.note ? `<p class="govuk-body">${esc(d.note)}</p>` : ''}
+      ${lv.length ? `<ul class="govuk-list">${lv.map(([k, v]) => `<li>${BA.provTag(v)} ${esc(L[k] || k)}</li>`).join('')}</ul>` : ''}
+      <details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">Method for each indicator</span></summary><div class="govuk-details__text"><div class="ba-table-wrap"><table class="govuk-table ba-mini"><thead class="govuk-table__head"><tr class="govuk-table__row"><th class="govuk-table__header" scope="col">Indicator</th><th class="govuk-table__header" scope="col">Provenance</th><th class="govuk-table__header" scope="col">How it is made</th></tr></thead><tbody class="govuk-table__body">${rowsFor}</tbody></table></div></div></details>
+      <p class="govuk-body ba-small"><a class="govuk-link" href="#/provenance">What the tags mean</a></p>`;
+  }
   BA.route(/^\/data\/([\w-]+)$/, async (app, id) => {
     const ds = await BA.dataset(id); const m = ds.meta;
     const src = BA.sources.find((s) => s.url && [].concat(m.api_url || []).concat(m.source_url || []).some((u) => String(u).includes(s.url))) || null;
@@ -414,7 +428,7 @@
       <div class="ba-lineage-step">
         <div><h4>1. Source</h4>${esc(m.publisher)}<br>${BA.link(m.source_url, 'Landing page')}<br><span class="ba-small">${esc(m.licence)}</span></div>
         <div><h4>2. Fetch</h4>${esc(m.access)}<br><span class="ba-small">Retrieved ${esc(m.retrieved_at)}</span><br>${[].concat(m.api_url || []).slice(0, 4).map((u) => `<code class="ba-small" style="word-break:break-all">${esc(String(u).slice(0, 160))}</code>`).join('<br>')}</div>
-        <div><h4>3. Transform</h4>Filtered to Bedfordshire and comparators, then reshaped to long format.<br><span class="ba-small">Levels: ${esc(levels.join(', '))}</span><br><span class="ba-small">${m.row_count} rows${m.sha256 ? ' · sha256 ' + esc(m.sha256) : ''}</span></div>
+        <div><h4>3. Transform</h4>Filtered to Bedfordshire and comparators, then reshaped to long format.${(() => { const d = ((BA.provenance || {}).datasets || {})[id] || {}; return d.class && (d.class !== 'published' || Object.values(d.levels || {}).includes('calculated')) ? ' <strong>Some figures are calculated by this site</strong>: see <a class="govuk-link" href="#prov">where each figure comes from</a>.' : ''; })()}<br><span class="ba-small">Levels: ${esc(levels.join(', '))}</span><br><span class="ba-small">${m.row_count} rows${m.sha256 ? ' · sha256 ' + esc(m.sha256) : ''}</span></div>
         <div><h4>4. Output</h4>${(m.indicators || []).length} indicators<br>${m.live ? '<a class="govuk-link" href="#/connect">Live, with your API key</a> · ' : `<a class="govuk-link" href="data/${id}.json">JSON</a> · `}<a class="govuk-link" href="#" id="dlcsv">CSV</a></div>
       </div>
       <dl class="ba-kv govuk-!-margin-bottom-6">
@@ -423,6 +437,7 @@
         <dt>Quality</dt><dd>${esc(m.quality)}</dd><dt>Limitations</dt><dd>${esc(m.limitations)}</dd>
         ${src ? `<dt>Research note</dt><dd>${esc(src.why_it_matters || '')}</dd>` : ''}
       </dl>
+      ${provBlock(id, m)}
       <h2 class="govuk-heading-l">Indicators</h2>
       <div class="ba-cards" id="cards"></div>
       <h2 class="govuk-heading-l govuk-!-margin-top-6">Rows</h2>

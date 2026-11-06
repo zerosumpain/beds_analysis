@@ -96,6 +96,7 @@
     const hasTravel = BA.has('travel_lsoa');
     app.innerHTML = `<span class="govuk-caption-xl">Labour balance</span>
       <h1 class="govuk-heading-xl">Can Bedfordshire staff the resort?</h1>
+      <div class="ba-callout ba-callout--warn"><p class="govuk-body govuk-!-margin-bottom-0">${BA.provTag('modelled')} <strong>Everything on this page is model output</strong>, not official statistics. It combines published cohort sizes with the site's journey-time model and the business case defaults, several of which are assumptions. <a class="govuk-link" href="#/provenance">See what is assumed or approximated</a>.</p></div>
       <p class="govuk-body-l">This page follows each target cohort from its size in the data, through whether people can physically get to a shift, to how many a skills programme could realistically move into work. It sets that against the local share of the resort's jobs.</p>
       ${hasTravel ? '' : '<div class="ba-callout ba-callout--warn"><p class="govuk-body govuk-!-margin-bottom-0">Travel-time data has not loaded, so everyone is treated as able to reach the site.</p></div>'}
       <div class="ba-filterbar ba-noprint">

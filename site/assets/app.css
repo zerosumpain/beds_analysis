@@ -149,3 +149,13 @@ body, .govuk-template, button, input, select, textarea { font-family: arial, san
 /* Keep wide tables inside collapsed details from widening the page on phones. */
 .govuk-details__text { min-width: 0; max-width: 100%; overflow-x: auto; }
 #app { overflow-x: clip; }
+
+/* provenance tags */
+.ba-prov { font-size: .75rem; line-height: 1.2; padding: 1px 5px 2px; vertical-align: 1px; text-decoration: none; white-space: nowrap; font-weight: 700; }
+a.ba-prov:hover, a.ba-prov:focus { text-decoration: underline; }
+a.ba-prov:focus { outline: 3px solid #fd0; color: #0b0c0c; background: #fd0; box-shadow: 0 2px #0b0c0c; }
+.ba-provbar { font-size: .875rem; margin: 10px 0 0; line-height: 1.9; }
+.ba-provkey > div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.ba-provkey dd { margin: 0; }
+@media (max-width: 640px) { .ba-provkey > div { grid-template-columns: minmax(0, 1fr); } }
+@media print { .ba-prov { border: 1px solid #0b0c0c; } }

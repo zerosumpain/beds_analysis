@@ -459,8 +459,8 @@ def build_claimant(pop, mye_years):
             rows.append(row("BEDS", f"claimant_count_{suf}", tot_c, label, series="monthly"))
             # BEDS rate recomputed from summed counts and summed populations.
             if age == "4" and tot_c is not None:
-                o = sum(v.get((c, date, "20")) or 0 for c in LAS)
-                bcr = tot_c - o
+                os_ = [v.get((c, date, "20")) for c in LAS]
+                bcr = None if None in os_ else tot_c - sum(os_)  # match the LA rule: no 65+ figure, no rate
             else:
                 bcr = tot_c
             brate = r1(100 * bcr / tot_p) if bcr is not None and tot_p else None

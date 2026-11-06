@@ -553,10 +553,10 @@ def main():
         "18 May-11 Dec 2026 (" + LNR_MV_URL + "; full hourly train service assumed running as published, "
         "after the 2022-24 suspension ended 19 Feb 2024 - no current suspension found, but East West Rail "
         "works can bring bus replacement at short notice). Thameslink Bedford-Flitwick-Harlington-Leagrave-"
-        "Luton-Luton Airport Parkway (every 15 min ~05:15-22:00, then every 30 min; ~25 min end to end) and "
+        "Luton-Luton Airport Parkway (southbound every 15 min 05:16-21:47 then every 30 min to 23:45; northbound every 15 min 05:31-00:56; ~25 min end to end) and "
         "EMR Connect Bedford-Luton-Luton Airport Parkway (every 30 min, 15 min non-stop) are MODELLED as "
         "regular headways (frequencies.txt) from the Summer 2026 (to 12 Dec 2026) weekday pattern; real "
-        "departures differ by a few minutes and peak-only fast Thameslink trains are omitted. No other rail."
+        "departures differ by a few minutes and peak-only fast Thameslink trains are omitted. No other rail: in particular no East Coast Main Line (Sandy, Biggleswade, Arlesey), so journeys from east Central Bedfordshire are overstated where rail would help."
     )
     vals = [r["value"] for r in rows if r["indicator"] == "tt_pt_am_min" and r["value"] is not None]
     meta = {

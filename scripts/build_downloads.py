@@ -18,7 +18,9 @@ https://beds.strangeramblings.com/  ·  source: https://github.com/zerosumpain/b
 Every CSV in csv/ is one dataset in long format, one value per row:
   code, name, level   area code (ONS GSS, BEDS for the 3-UA Bedfordshire total, or a provider id),
                       name and level (LA, county, region, country, LSOA, MSOA, PCON, point)
-  indicator           indicator id; labels, units and polarity are in indicators.csv
+  indicator           indicator id; labels, units, polarity and provenance are in indicators.csv
+                      (provenance: published = as released; calculated = arithmetic by this site,
+                      method given; modelled = this site's model, e.g. journey times)
   breakdown           e.g. "age 16-17"; blank for the headline value
   period, value       reference period and value (blank value = suppressed or not available)
   ci                  ± half-width of the 95% confidence interval (survey sources)
@@ -34,6 +36,8 @@ times use OpenStreetMap data (ODbL). See catalogue.json for each dataset's licen
 def main():
     (OUT / "csv").mkdir(parents=True, exist_ok=True)
     datasets, inds = [], []
+    prov_path = DATA / "research_provenance.json"
+    prov = json.loads(prov_path.read_text()) if prov_path.exists() else {"datasets": {}, "indicators": {}}
     for p in sorted(DATA.glob("*.json")):
         doc = json.loads(p.read_text())
         if not (isinstance(doc, dict) and "meta" in doc and "rows" in doc):
@@ -47,16 +51,20 @@ def main():
         (OUT / "csv" / f"{m['id']}.csv").write_text(buf.getvalue())
         datasets.append(m["id"])
         for i in m.get("indicators", []):
-            inds.append({"dataset": m["id"], **{k: i.get(k, "") for k in ("id", "label", "unit", "cohort", "polarity", "description")}})
+            pv = prov["indicators"].get(i["id"], {})
+            dv = prov["datasets"].get(m["id"], {})
+            inds.append({"dataset": m["id"], **{k: i.get(k, "") for k in ("id", "label", "unit", "cohort", "polarity", "description")},
+                         "provenance": pv.get("class") or dv.get("class", ""), "provenance_method": pv.get("method", ""),
+                         "bedfordshire_total": pv.get("beds") or (dv.get("levels") or {}).get("BEDS", "")})
     buf = io.StringIO()
-    w = csv.DictWriter(buf, ["dataset", "id", "label", "unit", "cohort", "polarity", "description"])
+    w = csv.DictWriter(buf, ["dataset", "id", "label", "unit", "cohort", "polarity", "description", "provenance", "provenance_method", "bedfordshire_total"])
     w.writeheader()
     w.writerows(inds)
     (OUT / "indicators.csv").write_text(buf.getvalue())
     with zipfile.ZipFile(OUT / "bedfordshire-evidence-base.zip", "w", zipfile.ZIP_DEFLATED) as z:
         z.writestr("README.txt", README)
         z.write(OUT / "indicators.csv", "indicators.csv")
-        for f in ("catalogue.json", "research_sources.json", "changes.json"):
+        for f in ("catalogue.json", "research_sources.json", "research_provenance.json", "changes.json"):
             if (DATA / f).exists():
                 z.write(DATA / f, f)
         for d in datasets:

@@ -180,7 +180,7 @@
       }).addTo(map);
       choro.bringToBack();
       if (la && choro.getBounds().isValid()) map.fitBounds(choro.getBounds(), { padding: [10, 10] });
-      legend.getContainer().innerHTML = `<strong>${esc(ind.label)}</strong><br><span class="ba-small">${esc(lp || '')}${bd ? ' · ' + esc(bd) : ''}</span><br>` +
+      legend.getContainer().innerHTML = `<strong>${esc(ind.label)}</strong> ${BA.provIndTag(ind.id)}<br><span class="ba-small">${esc(lp || '')}${bd ? ' · ' + esc(bd) : ''}</span><br>` +
         ramp.map((c, i) => `<i style="background:${c}"></i>${i === 0 ? '≤ ' + BA.fmt(brk[0], ind.unit) : i === 5 ? '> ' + BA.fmt(brk[4], ind.unit) : BA.fmt(brk[i - 1], ind.unit) + ' – ' + BA.fmt(brk[i], ind.unit)}`).join('<br>') + '<br><i style="background:#d9d9d9"></i>No data' +
         ($('l-prov').checked ? '<hr style="margin:6px 0">' + Object.keys(PROVIDER_COLORS).map((k) => `<i style="background:${PROVIDER_COLORS[k]};border-radius:50%;width:12px"></i>${PROVIDER_LABELS[k]}`).join('<br>') : '');
       const top = geo.features.filter(inLA).map((f) => ({ f, r: vals[f.properties.code] })).filter((x) => x.r && x.r.value != null).sort((a, b) => b.r.value - a.r.value).slice(0, 15);
@@ -235,7 +235,7 @@
         return { ind, s, n };
       }));
       const nIn = Object.values(weight).filter((w) => w >= 0.5).length;
-      $('catch').innerHTML = `<p class="govuk-body-s govuk-!-margin-bottom-1">${mode === 'km' ? `<strong>${nIn}</strong> Bedfordshire neighbourhoods within ${rad} km of the site (by centroid).` : `People who can reach the site within <strong>${rad} minutes</strong> (${esc(BA.REACH_MODES[mode].toLowerCase())}), arriving by 08:30. Mostly reachable neighbourhoods are outlined in red.`} Neighbouring authorities are not included.</p><table><tbody>${sums.filter((x) => x.n).map((x) => `<tr><td>${esc(x.ind.label)}</td><td>${BA.fmt(Math.round(x.s), 'count')}</td></tr>`).join('')}</tbody></table>`;
+      $('catch').innerHTML = `<p class="govuk-body-s govuk-!-margin-bottom-1">${mode === 'km' ? '' : BA.provTag('modelled', 'Journey-time model.') + ' '}${mode === 'km' ? `<strong>${nIn}</strong> Bedfordshire neighbourhoods within ${rad} km of the site (by centroid).` : `People who can reach the site within <strong>${rad} minutes</strong> (${esc(BA.REACH_MODES[mode].toLowerCase())}), arriving by 08:30. Mostly reachable neighbourhoods are outlined in red.`} Neighbouring authorities are not included.</p><table><tbody>${sums.filter((x) => x.n).map((x) => `<tr><td>${esc(x.ind.label)}</td><td>${BA.fmt(Math.round(x.s), 'count')}</td></tr>`).join('')}</tbody></table>`;
       BA.lastCatchment = { mode, rad, sums };
       syncURL();
     }

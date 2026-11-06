@@ -73,6 +73,12 @@ def main():
     for name, new in now.items():
         if name not in {t.split("/")[-1] for t in tracked}:
             changes.append({"id": new["id"], "title": new.get("title"), "change": "new dataset", "to_period": new.get("latest_period") or new.get("period"), "rows_after": new["row_count"]})
+    pp = OUT / "research_provenance.json"
+    known = set(json.loads(pp.read_text()).get("indicators", {})) if pp.exists() else set()
+    for name, new in now.items():
+        missing = [i["id"] for i in new.get("indicators", []) if i["id"] not in known]
+        if missing:  # shown on the site as "not yet classified"; add them to research/provenance_*.json
+            print(f"WARNING {name}: no provenance recorded for {', '.join(missing)}")
     for e in errors:
         print("ERROR", e)
     if errors:

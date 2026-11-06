@@ -1,0 +1,1053 @@
+{
+ "datasets": {
+  "pop_mye": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "ONS mid-year estimates (Nomis NM_2002_1) copied for LA, East of England and England; the Bedfordshire total is the sum of the three LA values, and the 16-19 and 25-64 bands are sums of published cells."
+  },
+  "pop_snpp": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "ONS 2022-based subnational population projections (Nomis NM_2006_1) copied for LA, region and England; the Bedfordshire total sums the three LAs and the 16-19 band sums four single years."
+  },
+  "aps": {
+   "class": "published",
+   "levels": {
+    "BEDS": "absent",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "Annual Population Survey rates, counts and confidence intervals copied from Nomis NM_17_5, plus ONS model-based unemployment from NM_127_1; estimates Nomis flags unreliable are nulled, and no Bedfordshire total is produced."
+  },
+  "claimant": {
+   "class": "calculated",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "Claimant counts are copied from Nomis NM_162_1 for LA, region and England and summed for Bedfordshire; every claimant rate, at every level including region and England, is computed here with ONS mid-year population denominators."
+  },
+  "ashe_res": {
+   "class": "published",
+   "levels": {
+    "BEDS": "absent",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "ASHE median pay copied from Nomis NM_30_1 (residence) and NM_99_1 (workplace); only the confidence interval is derived here from the published coefficient of variation, and there is no Bedfordshire total."
+  },
+  "bres_sectors": {
+   "class": "calculated",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "BRES employee counts are copied from Nomis NM_189_1 for LA, region and England and summed for Bedfordshire; sector shares and location quotients are computed here at every level from those rounded counts."
+  },
+  "jobs_density": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "Total jobs and jobs density are copied from Nomis NM_57_1 for LA, region and England; the Bedfordshire total jobs are summed and its density is computed here."
+  },
+  "census_age_activity": {
+   "class": "calculated",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "absent"
+   },
+   "note": "Cells come from the ONS Census 2021 custom-dataset API (economic_activity_status_12a by resident_age_6a/7a) for LA, region and England, but every published figure here is built by summing status categories and/or age bands, percentages are computed here, and Bedfordshire sums the three LAs."
+  },
+  "census_od": {
+   "class": "calculated",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "absent",
+    "country": "absent",
+    "small_area": "absent"
+   },
+   "note": "Census 2021 origin-destination flows (ODWP01EW LTLA bulk file) are copied pair by pair for each LA, but totals, the 'all other areas' remainder, net commuting and percentages are calculated, and Bedfordshire rows aggregate the three LAs as one area; there are no region or England rows."
+  },
+  "census_lsoa": {
+   "class": "calculated",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "published"
+   },
+   "note": "Census 2021 TS066/TS067/TS039/TS038/TS007 cells are copied from Nomis at LSOA, LA, region and England level; several counts sum categories, all percentages are computed here, and Bedfordshire sums the three LA rows."
+  },
+  "pop_lsoa": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "calculated",
+    "region": "absent",
+    "country": "absent",
+    "small_area": "published"
+   },
+   "note": "ONS small-area mid-year estimates (Nomis NM_2014_1) are copied at LSOA level; LA and Bedfordshire rows are sums of the LSOAs, and the 16-19 and 25-64 bands are sums of published cells."
+  },
+  "claimant_lsoa": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "published"
+   },
+   "note": "Claimant counts are copied from Nomis NM_162_1 at LSOA (latest month) and at LA, region and England (24 months) and summed for Bedfordshire; rates are computed here for LSOA, LA and Bedfordshire only, with small-area population denominators."
+  },
+  "imd2025": {
+   "class": "published",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "calculated",
+    "region": "absent",
+    "country": "absent",
+    "small_area": "published"
+   },
+   "note": "IoD2025 scores, ranks and deciles are copied from MHCLG File 7 at LSOA level; the LA and Bedfordshire rows are our own counts and shares of LSOAs in the most deprived national deciles."
+  },
+  "census_barriers": {
+   "class": "calculated",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "published",
+    "region": "published",
+    "country": "published",
+    "small_area": "published"
+   },
+   "note": "Census 2021 TS045/TS029/TS003/TS037 cells are copied from Nomis at LSOA, LA, region and England; two counts sum categories, all percentages are computed here, and Bedfordshire sums the three LA rows."
+  },
+  "geo_boundaries": {
+   "class": "calculated",
+   "levels": {
+    "BEDS": "calculated",
+    "LA": "calculated",
+    "region": "absent",
+    "country": "absent",
+    "small_area": "absent"
+   },
+   "note": "A lineage-only dataset: we count the boundary polygons we downloaded from the ONS Open Geography Portal for each map layer; no statistic is published by the source."
+  }
+ },
+ "indicators": {
+  "pop_mye_16_17": {
+   "class": "published",
+   "method": "ONS mid-year population estimate, Nomis NM_2002_1 c_age 204 'Aged 16 to 17', persons, copied as published; BEDS = sum of the 3 LAs."
+  },
+  "pop_mye_18_24": {
+   "class": "published",
+   "method": "ONS mid-year population estimate, Nomis NM_2002_1 c_age 205 'Aged 18 to 24', persons, copied as published; BEDS = sum of the 3 LAs."
+  },
+  "pop_mye_16_24": {
+   "class": "published",
+   "method": "ONS mid-year population estimate, Nomis NM_2002_1 c_age 250 'Aged 16 to 24', persons, copied as published; BEDS = sum of the 3 LAs."
+  },
+  "pop_mye_25_49": {
+   "class": "published",
+   "method": "ONS mid-year population estimate, Nomis NM_2002_1 c_age 207 'Aged 25 to 49', persons, copied as published; BEDS = sum of the 3 LAs."
+  },
+  "pop_mye_16_64": {
+   "class": "published",
+   "method": "ONS mid-year population estimate, Nomis NM_2002_1 c_age 203 'Aged 16 to 64', persons, copied as published; BEDS = sum of the 3 LAs."
+  },
+  "pop_mye_50_64": {
+   "class": "published",
+   "method": "ONS mid-year population estimate, Nomis NM_2002_1 c_age 208 'Aged 50 to 64', persons, copied as published; BEDS = sum of the 3 LAs."
+  },
+  "pop_mye_65_plus": {
+   "class": "published",
+   "method": "ONS mid-year population estimate, Nomis NM_2002_1 c_age 209 'Aged 65+', persons, copied as published; BEDS = sum of the 3 LAs."
+  },
+  "pop_mye_total": {
+   "class": "published",
+   "method": "ONS mid-year population estimate, Nomis NM_2002_1 c_age 200 'All Ages', persons, copied as published; BEDS = sum of the 3 LAs."
+  },
+  "pop_mye_16_19": {
+   "class": "calculated",
+   "method": "Sum of ONS mid-year estimates for single years of age 16, 17, 18 and 19 (Nomis NM_2002_1 c_age 117-120); BEDS = sum of the 3 LAs."
+  },
+  "pop_mye_25_64": {
+   "class": "calculated",
+   "method": "Sum of ONS mid-year estimate bands 25-49 and 50-64 (Nomis NM_2002_1 c_age 207 + 208); BEDS = sum of the 3 LAs."
+  },
+  "pop_single_age": {
+   "class": "published",
+   "method": "ONS mid-year estimate by single year of age 14-24 (Nomis NM_2002_1 c_age 115-125), latest year, copied as published; BEDS = sum of the 3 LAs."
+  },
+  "snpp_18_24": {
+   "class": "published",
+   "method": "ONS 2022-based SNPP principal projection, Nomis NM_2006_1 c_age 205 (aged 18-24), copied by projection year; BEDS = sum of the 3 LAs."
+  },
+  "snpp_16_24": {
+   "class": "published",
+   "method": "ONS 2022-based SNPP principal projection, Nomis NM_2006_1 c_age 250 (aged 16-24), copied by projection year; BEDS = sum of the 3 LAs."
+  },
+  "snpp_16_64": {
+   "class": "published",
+   "method": "ONS 2022-based SNPP principal projection, Nomis NM_2006_1 c_age 203 (aged 16-64), copied by projection year; BEDS = sum of the 3 LAs."
+  },
+  "snpp_total": {
+   "class": "published",
+   "method": "ONS 2022-based SNPP principal projection, Nomis NM_2006_1 c_age 200 (aged all ages), copied by projection year; BEDS = sum of the 3 LAs."
+  },
+  "snpp_16_19": {
+   "class": "calculated",
+   "method": "Sum of ONS 2022-based SNPP projections for single years of age 16-19 (Nomis NM_2006_1 c_age 117-120); BEDS = sum of the 3 LAs."
+  },
+  "aps_emp_rate_16_64": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 45 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_unemp_rate_16_64": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 84 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_inact_rate_16_64": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 111 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_inact_want_job_16_64": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 1487 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_inact_reason_student": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 1493 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_inact_reason_family_home": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 1494 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_inact_reason_temp_sick": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 1495 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_inact_reason_lt_sick": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 1496 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_inact_reason_discouraged": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 1497 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_inact_reason_retired": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 1498 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_inact_reason_other": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 1499 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_emp_rate_16_24": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 1207 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_unemp_rate_16_24": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 1213 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_inact_rate_16_24": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 1219 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_emp_rate_16_19": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 46 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_inact_rate_16_19": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 112 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_emp_rate_20_24": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 47 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_inact_rate_20_24": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 113 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_pct_18_24_ft_education": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 544 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_inact_rate_25_34": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 114 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_inact_rate_35_49": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 115 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_inact_rate_50_64": {
+   "class": "published",
+   "method": "APS percentage, Nomis NM_17_5 variable 117 (measure 20599, with published num 21001, den 21002 and 95% CI 21003), copied as published; nulled where Nomis withholds the CI (sample 3-9) or the value."
+  },
+  "aps_qual_rqf4plus_16_64": {
+   "class": "published",
+   "method": "APS qualification percentage, Nomis NM_17_5 variable 1902 (measure 20599 with published num/den/CI), Jan-Dec periods only, copied as published."
+  },
+  "aps_qual_rqf3plus_16_64": {
+   "class": "published",
+   "method": "APS qualification percentage, Nomis NM_17_5 variable 2010 (measure 20599 with published num/den/CI), Jan-Dec periods only, copied as published."
+  },
+  "aps_qual_rqf2plus_16_64": {
+   "class": "published",
+   "method": "APS qualification percentage, Nomis NM_17_5 variable 2011 (measure 20599 with published num/den/CI), Jan-Dec periods only, copied as published."
+  },
+  "aps_qual_none_16_64": {
+   "class": "published",
+   "method": "APS qualification percentage, Nomis NM_17_5 variable 1947 (measure 20599 with published num/den/CI), Jan-Dec periods only, copied as published."
+  },
+  "aps_unemp_rate_model_16plus": {
+   "class": "published",
+   "method": "ONS model-based unemployment rate 16+, Nomis NM_127_1 item 2 (measure 20100, CI 20701), copied as published (ONS's own model, not ours)."
+  },
+  "aps_unemp_count_model_16plus": {
+   "class": "published",
+   "method": "ONS model-based unemployment count 16+, Nomis NM_127_1 item 1 (measure 20100, CI 20701), copied as published (ONS's own model, not ours)."
+  },
+  "claimant_count_16_17": {
+   "class": "published",
+   "method": "Claimant count aged 16-17, Nomis NM_162_1 age 10, measure 1 (count), copied monthly as published; BEDS = sum of the 3 LAs."
+  },
+  "claimant_count_18_24": {
+   "class": "published",
+   "method": "Claimant count aged 18-24, Nomis NM_162_1 age 11, measure 1 (count), copied monthly as published; BEDS = sum of the 3 LAs."
+  },
+  "claimant_count_25_49": {
+   "class": "published",
+   "method": "Claimant count aged 25-49, Nomis NM_162_1 age 3, measure 1 (count), copied monthly as published; BEDS = sum of the 3 LAs."
+  },
+  "claimant_count_50_plus": {
+   "class": "published",
+   "method": "Claimant count aged 50+, Nomis NM_162_1 age 4, measure 1 (count), copied monthly as published; BEDS = sum of the 3 LAs."
+  },
+  "claimant_count_16_plus": {
+   "class": "published",
+   "method": "Claimant count aged 16+ (all ages), Nomis NM_162_1 age 0, measure 1 (count), copied monthly as published; BEDS = sum of the 3 LAs."
+  },
+  "claimant_rate_16_17": {
+   "class": "calculated",
+   "method": "Claimants aged 16-17 (Nomis NM_162_1) / ONS mid-year population aged 16-17 (NM_2002_1 c_age 204) x 100, using that year's MYE or the latest MYE for later months; BEDS from summed counts / summed populations."
+  },
+  "claimant_rate_18_24": {
+   "class": "calculated",
+   "method": "Claimants aged 18-24 (Nomis NM_162_1) / ONS mid-year population aged 18-24 (c_age 205) x 100, using that year's MYE or the latest MYE for later months; BEDS from summed counts / summed populations."
+  },
+  "claimant_rate_25_49": {
+   "class": "calculated",
+   "method": "Claimants aged 25-49 (Nomis NM_162_1) / ONS mid-year population aged 25-49 (c_age 207) x 100, using that year's MYE or the latest MYE for later months; BEDS from summed counts / summed populations."
+  },
+  "claimant_rate_50_plus": {
+   "class": "calculated",
+   "method": "(Claimants aged 50+ minus claimants aged 65+, Nomis NM_162_1 age 4 minus age 20) / ONS mid-year population aged 50-64 (NM_2002_1 c_age 208) x 100, latest MYE for later months; BEDS from summed counts / summed populations."
+  },
+  "claimant_rate_16_plus": {
+   "class": "calculated",
+   "method": "All claimants aged 16+ (Nomis NM_162_1 age 0) / ONS mid-year population aged 16-64 (NM_2002_1 c_age 203) x 100, latest MYE for later months; BEDS from summed counts / summed populations."
+  },
+  "ashe_res_wk_ft": {
+   "class": "published",
+   "method": "ASHE median (full-time workers, gross weekly pay) by place of residence, Nomis NM_30_1 sex 8, pay 1, item 2 (median), copied as published; ci is calculated here as 1.96 x published CV x value."
+  },
+  "ashe_res_hr_ft": {
+   "class": "published",
+   "method": "ASHE median (full-time workers, gross hourly pay) by place of residence, Nomis NM_30_1 sex 8, pay 5, item 2 (median), copied as published; ci is calculated here as 1.96 x published CV x value."
+  },
+  "ashe_res_hr_xot_ft": {
+   "class": "published",
+   "method": "ASHE median (full-time workers, hourly pay excluding overtime) by place of residence, Nomis NM_30_1 sex 8, pay 6, item 2 (median), copied as published; ci is calculated here as 1.96 x published CV x value."
+  },
+  "ashe_res_wk_all": {
+   "class": "published",
+   "method": "ASHE median (all employees, gross weekly pay) by place of residence, Nomis NM_30_1 sex 7, pay 1, item 2 (median), copied as published; ci is calculated here as 1.96 x published CV x value."
+  },
+  "ashe_res_hr_all": {
+   "class": "published",
+   "method": "ASHE median (all employees, gross hourly pay) by place of residence, Nomis NM_30_1 sex 7, pay 5, item 2 (median), copied as published; ci is calculated here as 1.96 x published CV x value."
+  },
+  "ashe_wp_wk_ft": {
+   "class": "published",
+   "method": "ASHE median (full-time workers, gross weekly pay) by place of work, Nomis NM_99_1 sex 8, pay 1, item 2 (median), copied as published; ci is calculated here as 1.96 x published CV x value."
+  },
+  "ashe_wp_hr_ft": {
+   "class": "published",
+   "method": "ASHE median (full-time workers, gross hourly pay) by place of work, Nomis NM_99_1 sex 8, pay 5, item 2 (median), copied as published; ci is calculated here as 1.96 x published CV x value."
+  },
+  "ashe_wp_hr_xot_ft": {
+   "class": "published",
+   "method": "ASHE median (full-time workers, hourly pay excluding overtime) by place of work, Nomis NM_99_1 sex 8, pay 6, item 2 (median), copied as published; ci is calculated here as 1.96 x published CV x value."
+  },
+  "ashe_wp_wk_all": {
+   "class": "published",
+   "method": "ASHE median (all employees, gross weekly pay) by place of work, Nomis NM_99_1 sex 7, pay 1, item 2 (median), copied as published; ci is calculated here as 1.96 x published CV x value."
+  },
+  "ashe_wp_hr_all": {
+   "class": "published",
+   "method": "ASHE median (all employees, gross hourly pay) by place of work, Nomis NM_99_1 sex 7, pay 5, item 2 (median), copied as published; ci is calculated here as 1.96 x published CV x value."
+  },
+  "bres_emp_total": {
+   "class": "published",
+   "method": "BRES employees, all industries, Nomis NM_189_1 industry 37748736, employment_status 1 (employees), copied as published; BEDS = sum of the 3 LAs."
+  },
+  "bres_emp_accom_food": {
+   "class": "published",
+   "method": "BRES employees, Nomis NM_189_1 industry 150994953 (section I), copied as published (rounded); BEDS = sum of the 3 LAs."
+  },
+  "bres_share_accom_food": {
+   "class": "calculated",
+   "method": "BRES employees in industry 150994953 (section I) / BRES employees in all industries (Nomis NM_189_1) x 100, from rounded published counts."
+  },
+  "bres_lq_accom_food": {
+   "class": "calculated",
+   "method": "Location quotient: (area employees in industry 150994953 (section I) / area all-industry employees) / (England employees in that industry / England all-industry employees), from rounded Nomis NM_189_1 counts."
+  },
+  "bres_emp_arts_rec": {
+   "class": "published",
+   "method": "BRES employees, Nomis NM_189_1 industry 150994962 (section R), copied as published (rounded); BEDS = sum of the 3 LAs."
+  },
+  "bres_share_arts_rec": {
+   "class": "calculated",
+   "method": "BRES employees in industry 150994962 (section R) / BRES employees in all industries (Nomis NM_189_1) x 100, from rounded published counts."
+  },
+  "bres_lq_arts_rec": {
+   "class": "calculated",
+   "method": "Location quotient: (area employees in industry 150994962 (section R) / area all-industry employees) / (England employees in that industry / England all-industry employees), from rounded Nomis NM_189_1 counts."
+  },
+  "bres_emp_construction": {
+   "class": "published",
+   "method": "BRES employees, Nomis NM_189_1 industry 150994950 (section F), copied as published (rounded); BEDS = sum of the 3 LAs."
+  },
+  "bres_share_construction": {
+   "class": "calculated",
+   "method": "BRES employees in industry 150994950 (section F) / BRES employees in all industries (Nomis NM_189_1) x 100, from rounded published counts."
+  },
+  "bres_lq_construction": {
+   "class": "calculated",
+   "method": "Location quotient: (area employees in industry 150994950 (section F) / area all-industry employees) / (England employees in that industry / England all-industry employees), from rounded Nomis NM_189_1 counts."
+  },
+  "bres_emp_retail": {
+   "class": "published",
+   "method": "BRES employees, Nomis NM_189_1 industry 163577863 (broad group retail), copied as published (rounded); BEDS = sum of the 3 LAs."
+  },
+  "bres_share_retail": {
+   "class": "calculated",
+   "method": "BRES employees in industry 163577863 (broad group retail) / BRES employees in all industries (Nomis NM_189_1) x 100, from rounded published counts."
+  },
+  "bres_lq_retail": {
+   "class": "calculated",
+   "method": "Location quotient: (area employees in industry 163577863 (broad group retail) / area all-industry employees) / (England employees in that industry / England all-industry employees), from rounded Nomis NM_189_1 counts."
+  },
+  "bres_emp_transport": {
+   "class": "published",
+   "method": "BRES employees, Nomis NM_189_1 industry 150994952 (section H), copied as published (rounded); BEDS = sum of the 3 LAs."
+  },
+  "bres_share_transport": {
+   "class": "calculated",
+   "method": "BRES employees in industry 150994952 (section H) / BRES employees in all industries (Nomis NM_189_1) x 100, from rounded published counts."
+  },
+  "bres_lq_transport": {
+   "class": "calculated",
+   "method": "Location quotient: (area employees in industry 150994952 (section H) / area all-industry employees) / (England employees in that industry / England all-industry employees), from rounded Nomis NM_189_1 counts."
+  },
+  "bres_emp_sports_amuse": {
+   "class": "published",
+   "method": "BRES employees, Nomis NM_189_1 industry 146800733 (division 93), copied as published (rounded); BEDS = sum of the 3 LAs."
+  },
+  "bres_share_sports_amuse": {
+   "class": "calculated",
+   "method": "BRES employees in industry 146800733 (division 93) / BRES employees in all industries (Nomis NM_189_1) x 100, from rounded published counts."
+  },
+  "bres_lq_sports_amuse": {
+   "class": "calculated",
+   "method": "Location quotient: (area employees in industry 146800733 (division 93) / area all-industry employees) / (England employees in that industry / England all-industry employees), from rounded Nomis NM_189_1 counts."
+  },
+  "bres_emp_accommodation": {
+   "class": "published",
+   "method": "BRES employees, Nomis NM_189_1 industry 146800695 (division 55), copied as published (rounded); BEDS = sum of the 3 LAs."
+  },
+  "bres_share_accommodation": {
+   "class": "calculated",
+   "method": "BRES employees in industry 146800695 (division 55) / BRES employees in all industries (Nomis NM_189_1) x 100, from rounded published counts."
+  },
+  "bres_lq_accommodation": {
+   "class": "calculated",
+   "method": "Location quotient: (area employees in industry 146800695 (division 55) / area all-industry employees) / (England employees in that industry / England all-industry employees), from rounded Nomis NM_189_1 counts."
+  },
+  "bres_emp_food_bev": {
+   "class": "published",
+   "method": "BRES employees, Nomis NM_189_1 industry 146800696 (division 56), copied as published (rounded); BEDS = sum of the 3 LAs."
+  },
+  "bres_share_food_bev": {
+   "class": "calculated",
+   "method": "BRES employees in industry 146800696 (division 56) / BRES employees in all industries (Nomis NM_189_1) x 100, from rounded published counts."
+  },
+  "bres_lq_food_bev": {
+   "class": "calculated",
+   "method": "Location quotient: (area employees in industry 146800696 (division 56) / area all-industry employees) / (England employees in that industry / England all-industry employees), from rounded Nomis NM_189_1 counts."
+  },
+  "bres_emp_warehousing": {
+   "class": "published",
+   "method": "BRES employees, Nomis NM_189_1 industry 146800692 (division 52), copied as published (rounded); BEDS = sum of the 3 LAs."
+  },
+  "bres_share_warehousing": {
+   "class": "calculated",
+   "method": "BRES employees in industry 146800692 (division 52) / BRES employees in all industries (Nomis NM_189_1) x 100, from rounded published counts."
+  },
+  "bres_lq_warehousing": {
+   "class": "calculated",
+   "method": "Location quotient: (area employees in industry 146800692 (division 52) / area all-industry employees) / (England employees in that industry / England all-industry employees), from rounded Nomis NM_189_1 counts."
+  },
+  "bres_emp_land_transport": {
+   "class": "published",
+   "method": "BRES employees, Nomis NM_189_1 industry 146800689 (division 49), copied as published (rounded); BEDS = sum of the 3 LAs."
+  },
+  "bres_share_land_transport": {
+   "class": "calculated",
+   "method": "BRES employees in industry 146800689 (division 49) / BRES employees in all industries (Nomis NM_189_1) x 100, from rounded published counts."
+  },
+  "bres_lq_land_transport": {
+   "class": "calculated",
+   "method": "Location quotient: (area employees in industry 146800689 (division 49) / area all-industry employees) / (England employees in that industry / England all-industry employees), from rounded Nomis NM_189_1 counts."
+  },
+  "bres_emp_air": {
+   "class": "published",
+   "method": "BRES employees, Nomis NM_189_1 industry 146800691 (division 51), copied as published (rounded); BEDS = sum of the 3 LAs."
+  },
+  "bres_share_air": {
+   "class": "calculated",
+   "method": "BRES employees in industry 146800691 (division 51) / BRES employees in all industries (Nomis NM_189_1) x 100, from rounded published counts."
+  },
+  "bres_lq_air": {
+   "class": "calculated",
+   "method": "Location quotient: (area employees in industry 146800691 (division 51) / area all-industry employees) / (England employees in that industry / England all-industry employees), from rounded Nomis NM_189_1 counts."
+  },
+  "bres_emp_wholesale": {
+   "class": "published",
+   "method": "BRES employees, Nomis NM_189_1 industry 146800686 (division 46), copied as published (rounded); BEDS = sum of the 3 LAs."
+  },
+  "bres_share_wholesale": {
+   "class": "calculated",
+   "method": "BRES employees in industry 146800686 (division 46) / BRES employees in all industries (Nomis NM_189_1) x 100, from rounded published counts."
+  },
+  "bres_lq_wholesale": {
+   "class": "calculated",
+   "method": "Location quotient: (area employees in industry 146800686 (division 46) / area all-industry employees) / (England employees in that industry / England all-industry employees), from rounded Nomis NM_189_1 counts."
+  },
+  "bres_emp_by_group": {
+   "class": "published",
+   "method": "BRES employees for each of the 18 ONS broad industrial groups (Nomis NM_189_1 industries 163577857-163577874), latest year, copied as published; BEDS = sum of the 3 LAs."
+  },
+  "bres_lq_by_group": {
+   "class": "calculated",
+   "method": "Location quotient per broad industrial group: area share of all employees / England share, from rounded Nomis NM_189_1 counts, latest year."
+  },
+  "jobs_total": {
+   "class": "published",
+   "method": "ONS total jobs, Nomis NM_57_1 item 1, copied as published; BEDS = sum of the 3 LAs."
+  },
+  "jobs_density": {
+   "class": "published",
+   "method": "ONS jobs density, Nomis NM_57_1 item 3, copied as published for LA, region and England; BEDS = summed total jobs / summed ONS mid-year population aged 16-64 (NM_2002_1 c_age 203), only for years with an MYE."
+  },
+  "census_pop": {
+   "class": "calculated",
+   "method": "Sum of all 11 economic_activity_status_12a categories for the age band (ONS Census 2021 custom-dataset API), with composite bands 25-64, 16-64 and 18-24 also summed across age bands; BEDS = sum of the 3 LAs."
+  },
+  "census_employed": {
+   "class": "calculated",
+   "method": "Sum of Census 2021 economic_activity_status_12a categories 1, 2, 3 and 5 (the in-employment categories) for the age band (ONS custom-dataset API), composite age bands summed; BEDS = sum of the 3 LAs."
+  },
+  "census_unemployed": {
+   "class": "calculated",
+   "method": "Sum of Census 2021 TS066 categories 7 + 14 (unemployed excl. and incl. full-time students), via Nomis, at each geography; BEDS = sum of the 3 LAs."
+  },
+  "census_inact_total": {
+   "class": "calculated",
+   "method": "Sum of Census 2021 economic_activity_status_12a inactive categories 7-11 for the age band (ONS custom-dataset API), composite age bands summed; BEDS = sum of the 3 LAs."
+  },
+  "census_inact_retired": {
+   "class": "calculated",
+   "method": "Census 2021 economic_activity_status_12a category 7 (retired) from the ONS custom-dataset API: copied as is for the single age bands, but summed by us for the composite bands 25-64, 16-64 and 18-24; BEDS = sum of the 3 LAs."
+  },
+  "census_inact_student": {
+   "class": "calculated",
+   "method": "Census 2021 economic_activity_status_12a category 8 (student) from the ONS custom-dataset API: copied as is for the single age bands, but summed by us for the composite bands 25-64, 16-64 and 18-24; BEDS = sum of the 3 LAs."
+  },
+  "census_inact_home_family": {
+   "class": "calculated",
+   "method": "Census 2021 economic_activity_status_12a category 9 (looking after home or family) from the ONS custom-dataset API: copied as is for the single age bands, but summed by us for the composite bands 25-64, 16-64 and 18-24; BEDS = sum of the 3 LAs."
+  },
+  "census_inact_lt_sick": {
+   "class": "calculated",
+   "method": "Census 2021 economic_activity_status_12a category 10 (long-term sick or disabled) from the ONS custom-dataset API: copied as is for the single age bands, but summed by us for the composite bands 25-64, 16-64 and 18-24; BEDS = sum of the 3 LAs."
+  },
+  "census_inact_other": {
+   "class": "calculated",
+   "method": "Census 2021 economic_activity_status_12a category 11 (other) from the ONS custom-dataset API: copied as is for the single age bands, but summed by us for the composite bands 25-64, 16-64 and 18-24; BEDS = sum of the 3 LAs."
+  },
+  "census_employed_pct": {
+   "class": "calculated",
+   "method": "census_employed / census_pop (sum of all 11 status categories) for the same age band x 100, from ONS Census 2021 custom-dataset API cells; BEDS from summed counts."
+  },
+  "census_unemployed_pct": {
+   "class": "calculated",
+   "method": "Sum of Census 2021 TS066 categories 7 + 14 (unemployed excl. and incl. full-time students) / usual residents 16+ (category 0) x 100; BEDS from summed counts."
+  },
+  "census_inact_total_pct": {
+   "class": "calculated",
+   "method": "census_inact_total / census_pop (sum of all 11 status categories) for the same age band x 100, from ONS Census 2021 custom-dataset API cells; BEDS from summed counts."
+  },
+  "census_inact_retired_pct": {
+   "class": "calculated",
+   "method": "census_inact_retired / census_pop (sum of all 11 status categories) for the same age band x 100, from ONS Census 2021 custom-dataset API cells; BEDS from summed counts."
+  },
+  "census_inact_student_pct": {
+   "class": "calculated",
+   "method": "census_inact_student / census_pop (sum of all 11 status categories) for the same age band x 100, from ONS Census 2021 custom-dataset API cells; BEDS from summed counts."
+  },
+  "census_inact_home_family_pct": {
+   "class": "calculated",
+   "method": "census_inact_home_family / census_pop (sum of all 11 status categories) for the same age band x 100, from ONS Census 2021 custom-dataset API cells; BEDS from summed counts."
+  },
+  "census_inact_lt_sick_pct": {
+   "class": "calculated",
+   "method": "census_inact_lt_sick / census_pop (sum of all 11 status categories) for the same age band x 100, from ONS Census 2021 custom-dataset API cells; BEDS from summed counts."
+  },
+  "census_inact_other_pct": {
+   "class": "calculated",
+   "method": "census_inact_other / census_pop (sum of all 11 status categories) for the same age band x 100, from ONS Census 2021 custom-dataset API cells; BEDS from summed counts."
+  },
+  "od_inflow_by_residence": {
+   "class": "calculated",
+   "method": "Top-25 rows are published ODWP01EW LTLA flows (place-of-work category 3) into the focus LA by residence LA, copied as is; the 'all other areas' row is our remainder (total minus top 25) and BEDS rows sum flows into all 3 LAs."
+  },
+  "od_outflow_by_workplace": {
+   "class": "calculated",
+   "method": "Top-25 rows are published ODWP01EW LTLA flows (category 3) from the focus LA by workplace LA, copied as is; the 'all other areas' row is our remainder and BEDS rows sum flows out of all 3 LAs."
+  },
+  "od_workplace_commuters": {
+   "class": "calculated",
+   "method": "Sum of all ODWP01EW category-3 flows whose workplace is in the focus area (any residence)."
+  },
+  "od_resident_commuters": {
+   "class": "calculated",
+   "method": "Sum of all ODWP01EW category-3 flows from residents of the focus area to any UK workplace."
+  },
+  "od_home_or_no_fixed_place": {
+   "class": "published",
+   "method": "ODWP01EW place-of-work category 1 (mainly at or from home) count for the residence LA, copied as published; BEDS = sum of the 3 LAs."
+  },
+  "od_net_commuting": {
+   "class": "calculated",
+   "method": "od_workplace_commuters minus od_resident_commuters, from summed ODWP01EW flows."
+  },
+  "od_self_containment_pct": {
+   "class": "calculated",
+   "method": "Residents working in the same area (ODWP01EW within-area flows) / od_resident_commuters x 100; for BEDS, within-area means any of the 3 LAs."
+  },
+  "od_jobs_filled_by_incommuters_pct": {
+   "class": "calculated",
+   "method": "(od_workplace_commuters minus within-area flows) / od_workplace_commuters x 100, from ODWP01EW flows."
+  },
+  "census_inactive": {
+   "class": "published",
+   "method": "Census 2021 TS066 (NM_2083_1) category 1011 'Economically inactive', via Nomis, copied as published at LSOA, LA, region and England; BEDS = sum of the 3 LAs."
+  },
+  "census_inactive_pct": {
+   "class": "calculated",
+   "method": "Census 2021 TS066 (NM_2083_1) category 1011 'Economically inactive' / usual residents 16+ (category 0) (table total, category 0) x 100; BEDS from summed counts."
+  },
+  "census_inactive_student": {
+   "class": "published",
+   "method": "Census 2021 TS066 category 16 (inactive: student), via Nomis, copied as published at LSOA, LA, region and England; BEDS = sum of the 3 LAs."
+  },
+  "census_inactive_student_pct": {
+   "class": "calculated",
+   "method": "Census 2021 TS066 category 16 (inactive: student) / usual residents 16+ (table total, category 0) x 100; BEDS from summed counts."
+  },
+  "census_inactive_retired": {
+   "class": "published",
+   "method": "Census 2021 TS066 category 15 (inactive: retired), via Nomis, copied as published at LSOA, LA, region and England; BEDS = sum of the 3 LAs."
+  },
+  "census_inactive_retired_pct": {
+   "class": "calculated",
+   "method": "Census 2021 TS066 category 15 (inactive: retired) / usual residents 16+ (table total, category 0) x 100; BEDS from summed counts."
+  },
+  "census_inactive_home": {
+   "class": "published",
+   "method": "Census 2021 TS066 category 17 (inactive: looking after home or family), via Nomis, copied as published at LSOA, LA, region and England; BEDS = sum of the 3 LAs."
+  },
+  "census_inactive_home_pct": {
+   "class": "calculated",
+   "method": "Census 2021 TS066 category 17 (inactive: looking after home or family) / usual residents 16+ (table total, category 0) x 100; BEDS from summed counts."
+  },
+  "census_inactive_ltsick": {
+   "class": "published",
+   "method": "Census 2021 TS066 category 18 (inactive: long-term sick or disabled), via Nomis, copied as published at LSOA, LA, region and England; BEDS = sum of the 3 LAs."
+  },
+  "census_inactive_ltsick_pct": {
+   "class": "calculated",
+   "method": "Census 2021 TS066 category 18 (inactive: long-term sick or disabled) / usual residents 16+ (table total, category 0) x 100; BEDS from summed counts."
+  },
+  "census_inactive_other": {
+   "class": "published",
+   "method": "Census 2021 TS066 category 19 (inactive: other), via Nomis, copied as published at LSOA, LA, region and England; BEDS = sum of the 3 LAs."
+  },
+  "census_inactive_other_pct": {
+   "class": "calculated",
+   "method": "Census 2021 TS066 category 19 (inactive: other) / usual residents 16+ (table total, category 0) x 100; BEDS from summed counts."
+  },
+  "census_noqual": {
+   "class": "published",
+   "method": "Census 2021 TS067 (NM_2084_1) category 1 (no qualifications), via Nomis, copied as published at LSOA, LA, region and England; BEDS = sum of the 3 LAs."
+  },
+  "census_noqual_pct": {
+   "class": "calculated",
+   "method": "Census 2021 TS067 (NM_2084_1) category 1 (no qualifications) / usual residents 16+ (table total, category 0) x 100; BEDS from summed counts."
+  },
+  "census_level4plus": {
+   "class": "published",
+   "method": "Census 2021 TS067 category 6 (Level 4 and above), via Nomis, copied as published at LSOA, LA, region and England; BEDS = sum of the 3 LAs."
+  },
+  "census_level4plus_pct": {
+   "class": "calculated",
+   "method": "Census 2021 TS067 category 6 (Level 4 and above) / usual residents 16+ (table total, category 0) x 100; BEDS from summed counts."
+  },
+  "census_apprenticeship": {
+   "class": "published",
+   "method": "Census 2021 TS067 category 4 (apprenticeship), via Nomis, copied as published at LSOA, LA, region and England; BEDS = sum of the 3 LAs."
+  },
+  "census_apprenticeship_pct": {
+   "class": "calculated",
+   "method": "Census 2021 TS067 category 4 (apprenticeship) / usual residents 16+ (table total, category 0) x 100; BEDS from summed counts."
+  },
+  "census_disabled": {
+   "class": "published",
+   "method": "Census 2021 TS038 (NM_2056_1) category 1001 (disabled under the Equality Act), via Nomis, copied as published at LSOA, LA, region and England; BEDS = sum of the 3 LAs."
+  },
+  "census_disabled_pct": {
+   "class": "calculated",
+   "method": "Census 2021 TS038 (NM_2056_1) category 1001 (disabled under the Equality Act) / all usual residents (table total, category 0) x 100; BEDS from summed counts."
+  },
+  "census_inactive_non_student_non_retired": {
+   "class": "calculated",
+   "method": "Sum of Census 2021 TS066 categories 17 + 18 + 19 (home/family, long-term sick, other), via Nomis, at each geography; BEDS = sum of the 3 LAs."
+  },
+  "census_inactive_non_student_non_retired_pct": {
+   "class": "calculated",
+   "method": "Sum of Census 2021 TS066 categories 17 + 18 + 19 (home/family, long-term sick, other) / usual residents 16+ (category 0) x 100; BEDS from summed counts."
+  },
+  "census_level3plus": {
+   "class": "calculated",
+   "method": "Sum of Census 2021 TS067 categories 5 + 6 (Level 3, Level 4+), via Nomis, at each geography; BEDS = sum of the 3 LAs."
+  },
+  "census_level3plus_pct": {
+   "class": "calculated",
+   "method": "Sum of Census 2021 TS067 categories 5 + 6 (Level 3, Level 4+) / usual residents 16+ (category 0) x 100; BEDS from summed counts."
+  },
+  "census_care20plus": {
+   "class": "calculated",
+   "method": "Sum of Census 2021 TS039 (NM_2057_1) categories 102 (20-49 hours) + 6 (50+ hours), via Nomis, at each geography; BEDS = sum of the 3 LAs."
+  },
+  "census_care20plus_pct": {
+   "class": "calculated",
+   "method": "Sum of Census 2021 TS039 (NM_2057_1) categories 102 (20-49 hours) + 6 (50+ hours) / usual residents aged 5+ (category 0) x 100; BEDS from summed counts."
+  },
+  "census_unemp_rate_pct": {
+   "class": "calculated",
+   "method": "Census 2021 TS066 unemployed (categories 7 + 14) / economically active (categories 1001 + 1006, excl. and incl. full-time students) x 100; BEDS from summed counts."
+  },
+  "census_pop_16_19": {
+   "class": "published",
+   "method": "Census 2021 TS007 (NM_2027_1) category 1004 'Aged 16 to 19', via Nomis, copied as published for LA, region and England (no LSOA rows were produced); BEDS = sum of the 3 LAs."
+  },
+  "census_pop_18_24": {
+   "class": "calculated",
+   "method": "Sum of Census 2021 TS007 (NM_2027_1) single ages 18 and 19 (categories 19, 20) and band 20-24 (category 1005), for LA, region and England (no LSOA rows were produced); BEDS = sum of the 3 LAs."
+  },
+  "popsa_18_24": {
+   "class": "published",
+   "method": "ONS small-area mid-year estimate, Nomis NM_2014_1 c_age 205 (aged 18-24), copied at LSOA; LA and BEDS rows are sums of LSOAs."
+  },
+  "popsa_16_24": {
+   "class": "published",
+   "method": "ONS small-area mid-year estimate, Nomis NM_2014_1 c_age 250 (aged 16-24), copied at LSOA; LA and BEDS rows are sums of LSOAs."
+  },
+  "popsa_25_49": {
+   "class": "published",
+   "method": "ONS small-area mid-year estimate, Nomis NM_2014_1 c_age 207 (aged 25-49), copied at LSOA; LA and BEDS rows are sums of LSOAs."
+  },
+  "popsa_16_64": {
+   "class": "published",
+   "method": "ONS small-area mid-year estimate, Nomis NM_2014_1 c_age 203 (aged 16-64), copied at LSOA; LA and BEDS rows are sums of LSOAs."
+  },
+  "popsa_all": {
+   "class": "published",
+   "method": "ONS small-area mid-year estimate, Nomis NM_2014_1 c_age 200 (aged all ages), copied at LSOA; LA and BEDS rows are sums of LSOAs."
+  },
+  "popsa_16_19": {
+   "class": "calculated",
+   "method": "Sum of ONS small-area mid-year estimates for single ages 16-19 (Nomis NM_2014_1 c_age 117-120) at LSOA; LA and BEDS rows sum the LSOAs."
+  },
+  "popsa_25_64": {
+   "class": "calculated",
+   "method": "Sum of ONS small-area mid-year estimate bands 25-49 and 50-64 (Nomis NM_2014_1 c_age 207 + 208) at LSOA; LA and BEDS rows sum the LSOAs."
+  },
+  "cc_all": {
+   "class": "published",
+   "method": "Claimant count aged 16+ (all), Nomis NM_162_1 age 0, measure 1, copied as published at LSOA (rounded to 5), LA, region and England; BEDS = sum of the 3 LAs."
+  },
+  "cc_16_24": {
+   "class": "published",
+   "method": "Claimant count aged 16-24, Nomis NM_162_1 age 2, measure 1, copied as published at LSOA (rounded to 5), LA, region and England; BEDS = sum of the 3 LAs."
+  },
+  "cc_25_49": {
+   "class": "published",
+   "method": "Claimant count aged 25-49, Nomis NM_162_1 age 3, measure 1, copied as published at LSOA (rounded to 5), LA, region and England; BEDS = sum of the 3 LAs."
+  },
+  "cc_50plus": {
+   "class": "published",
+   "method": "Claimant count aged 50+, Nomis NM_162_1 age 4, measure 1, copied as published at LSOA (rounded to 5), LA, region and England; BEDS = sum of the 3 LAs."
+  },
+  "cc_all_rate": {
+   "class": "calculated",
+   "method": "All claimants 16+ (Nomis NM_162_1, latest month) / ONS small-area population aged 16-64 (NM_2014_1, summed to LA/BEDS from LSOAs) x 100; LSOA, LA and BEDS only, no region or England rate."
+  },
+  "cc_16_24_rate": {
+   "class": "calculated",
+   "method": "Claimants aged 16-24 (Nomis NM_162_1, latest month) / ONS small-area population aged 16-24 (NM_2014_1 c_age 250, summed to LA/BEDS from LSOAs) x 100; LSOA, LA and BEDS only."
+  },
+  "cc_25_49_rate": {
+   "class": "calculated",
+   "method": "Claimants aged 25-49 (Nomis NM_162_1, latest month) / ONS small-area population aged 25-49 (NM_2014_1 c_age 207, summed to LA/BEDS from LSOAs) x 100; LSOA, LA and BEDS only."
+  },
+  "imd25_imd_score": {
+   "class": "published",
+   "method": "IoD2025 Index of Multiple Deprivation score, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 4, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_imd_rank": {
+   "class": "published",
+   "method": "IoD2025 Index of Multiple Deprivation rank, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 5, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_imd_decile": {
+   "class": "published",
+   "method": "IoD2025 Index of Multiple Deprivation decile, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 6, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_income_score": {
+   "class": "published",
+   "method": "IoD2025 Income domain score, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 7, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_income_rank": {
+   "class": "published",
+   "method": "IoD2025 Income domain rank, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 8, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_income_decile": {
+   "class": "published",
+   "method": "IoD2025 Income domain decile, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 9, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_employment_score": {
+   "class": "published",
+   "method": "IoD2025 Employment domain score, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 10, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_employment_rank": {
+   "class": "published",
+   "method": "IoD2025 Employment domain rank, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 11, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_employment_decile": {
+   "class": "published",
+   "method": "IoD2025 Employment domain decile, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 12, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_education_score": {
+   "class": "published",
+   "method": "IoD2025 Education, Skills and Training domain score, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 13, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_education_rank": {
+   "class": "published",
+   "method": "IoD2025 Education, Skills and Training domain rank, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 14, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_education_decile": {
+   "class": "published",
+   "method": "IoD2025 Education, Skills and Training domain decile, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 15, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_cyp_score": {
+   "class": "published",
+   "method": "IoD2025 Children and Young People sub-domain score, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 37, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_cyp_rank": {
+   "class": "published",
+   "method": "IoD2025 Children and Young People sub-domain rank, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 38, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_cyp_decile": {
+   "class": "published",
+   "method": "IoD2025 Children and Young People sub-domain decile, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 39, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_adultskills_score": {
+   "class": "published",
+   "method": "IoD2025 Adult Skills sub-domain score, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 40, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_adultskills_rank": {
+   "class": "published",
+   "method": "IoD2025 Adult Skills sub-domain rank, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 41, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_adultskills_decile": {
+   "class": "published",
+   "method": "IoD2025 Adult Skills sub-domain decile, MHCLG File 7 (All ranks, scores, deciles and population denominators) column 42, copied per LSOA.",
+   "beds": "absent"
+  },
+  "imd25_imd_lsoas_top10": {
+   "class": "calculated",
+   "method": "Count of the area's LSOAs in national Index of Multiple Deprivation decile 1 (MHCLG IoD2025 File 7), LA and BEDS."
+  },
+  "imd25_imd_lsoas_top10_pct": {
+   "class": "calculated",
+   "method": "LSOAs in national Index of Multiple Deprivation decile 1 / all LSOAs in the area x 100 (MHCLG IoD2025 File 7)."
+  },
+  "imd25_imd_lsoas_top20": {
+   "class": "calculated",
+   "method": "Count of the area's LSOAs in national Index of Multiple Deprivation deciles 1-2 (MHCLG IoD2025 File 7), LA and BEDS."
+  },
+  "imd25_imd_lsoas_top20_pct": {
+   "class": "calculated",
+   "method": "LSOAs in national Index of Multiple Deprivation deciles 1-2 / all LSOAs in the area x 100 (MHCLG IoD2025 File 7)."
+  },
+  "imd25_income_lsoas_top10": {
+   "class": "calculated",
+   "method": "Count of the area's LSOAs in national Income domain decile 1 (MHCLG IoD2025 File 7), LA and BEDS."
+  },
+  "imd25_income_lsoas_top10_pct": {
+   "class": "calculated",
+   "method": "LSOAs in national Income domain decile 1 / all LSOAs in the area x 100 (MHCLG IoD2025 File 7)."
+  },
+  "imd25_income_lsoas_top20": {
+   "class": "calculated",
+   "method": "Count of the area's LSOAs in national Income domain deciles 1-2 (MHCLG IoD2025 File 7), LA and BEDS."
+  },
+  "imd25_income_lsoas_top20_pct": {
+   "class": "calculated",
+   "method": "LSOAs in national Income domain deciles 1-2 / all LSOAs in the area x 100 (MHCLG IoD2025 File 7)."
+  },
+  "imd25_employment_lsoas_top10": {
+   "class": "calculated",
+   "method": "Count of the area's LSOAs in national Employment domain decile 1 (MHCLG IoD2025 File 7), LA and BEDS."
+  },
+  "imd25_employment_lsoas_top10_pct": {
+   "class": "calculated",
+   "method": "LSOAs in national Employment domain decile 1 / all LSOAs in the area x 100 (MHCLG IoD2025 File 7)."
+  },
+  "imd25_employment_lsoas_top20": {
+   "class": "calculated",
+   "method": "Count of the area's LSOAs in national Employment domain deciles 1-2 (MHCLG IoD2025 File 7), LA and BEDS."
+  },
+  "imd25_employment_lsoas_top20_pct": {
+   "class": "calculated",
+   "method": "LSOAs in national Employment domain deciles 1-2 / all LSOAs in the area x 100 (MHCLG IoD2025 File 7)."
+  },
+  "imd25_education_lsoas_top10": {
+   "class": "calculated",
+   "method": "Count of the area's LSOAs in national Education, Skills and Training domain decile 1 (MHCLG IoD2025 File 7), LA and BEDS."
+  },
+  "imd25_education_lsoas_top10_pct": {
+   "class": "calculated",
+   "method": "LSOAs in national Education, Skills and Training domain decile 1 / all LSOAs in the area x 100 (MHCLG IoD2025 File 7)."
+  },
+  "imd25_education_lsoas_top20": {
+   "class": "calculated",
+   "method": "Count of the area's LSOAs in national Education, Skills and Training domain deciles 1-2 (MHCLG IoD2025 File 7), LA and BEDS."
+  },
+  "imd25_education_lsoas_top20_pct": {
+   "class": "calculated",
+   "method": "LSOAs in national Education, Skills and Training domain deciles 1-2 / all LSOAs in the area x 100 (MHCLG IoD2025 File 7)."
+  },
+  "cb_hh_nocar": {
+   "class": "published",
+   "method": "Census 2021 TS045 (NM_2063_1) category 1 'No cars or vans in household', via Nomis, copied as published at LSOA, LA, region and England; BEDS = sum of the 3 LAs."
+  },
+  "cb_hh_nocar_pct": {
+   "class": "calculated",
+   "method": "Census 2021 TS045 (NM_2063_1) category 1 'No cars or vans in household' / all households (table total, category 0) x 100; BEDS from summed counts."
+  },
+  "cb_eng_poor": {
+   "class": "calculated",
+   "method": "Sum of Census 2021 TS029 (NM_2048_1) categories 4 + 5 (cannot speak English well / at all), via Nomis, at each geography; BEDS = sum of the 3 LAs."
+  },
+  "cb_eng_poor_pct": {
+   "class": "calculated",
+   "method": "Sum of Census 2021 TS029 (NM_2048_1) categories 4 + 5 (cannot speak English well / at all) / usual residents aged 3+ (table total, category 0) x 100; BEDS from summed counts."
+  },
+  "cb_lone_parent_dep": {
+   "class": "published",
+   "method": "Census 2021 TS003 (NM_2023_1) category 10 (lone parent family with dependent children), via Nomis, copied as published at LSOA, LA, region and England; BEDS = sum of the 3 LAs."
+  },
+  "cb_lone_parent_dep_pct": {
+   "class": "calculated",
+   "method": "Census 2021 TS003 (NM_2023_1) category 10 (lone parent family with dependent children) / all households (table total, category 0) x 100; BEDS from summed counts."
+  },
+  "cb_bad_health": {
+   "class": "calculated",
+   "method": "Sum of Census 2021 TS037 (NM_2055_1) categories 4 + 5 (bad / very bad health), via Nomis, at each geography; BEDS = sum of the 3 LAs."
+  },
+  "cb_bad_health_pct": {
+   "class": "calculated",
+   "method": "Sum of Census 2021 TS037 (NM_2055_1) categories 4 + 5 (bad / very bad health) / all usual residents (table total, category 0) x 100; BEDS from summed counts."
+  },
+  "geo_feature_count": {
+   "class": "calculated",
+   "method": "Count of polygons in each site/data/geo layer built from ONS Open Geography Portal BGC boundary queries, per LA (LSOA, MSOA, ward layers) and in total (BEDS row)."
+  }
+ }
+}

@@ -56,6 +56,7 @@
         <span class="govuk-phase-banner__text">Independent analysis of published open data. Not an official statistic or a government service. Aggregate figures only &mdash; no personal data.</span>
       </p>
     </div>
+    <p class="ba-provbar" id="provbar"><strong>Every figure is tagged by where it comes from:</strong> <a class="govuk-tag govuk-tag--green ba-prov" href="#/provenance?c=published">Published</a> <a class="govuk-tag govuk-tag--blue ba-prov" href="#/provenance?c=calculated">Calculated</a> <a class="govuk-tag govuk-tag--purple ba-prov" href="#/provenance?c=modelled">Modelled</a> <a class="govuk-tag govuk-tag--grey ba-prov" href="#/provenance?c=document">From a document</a> <a class="govuk-tag govuk-tag--orange ba-prov" href="#/provenance?c=assumption">Assumption</a> <a class="govuk-link" href="#/provenance">What each means</a></p>
     <main class="govuk-main-wrapper" id="main-content" role="main" tabindex="-1">
       <div id="app"><p class="govuk-body">Loading evidence base&hellip;</p></div>
     </main>
@@ -67,6 +68,7 @@
         <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
           <h2 class="govuk-visually-hidden">Support links</h2>
           <ul class="govuk-footer__inline-list">
+            <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#/provenance">Where each figure comes from</a></li>
             <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#/lineage">Data lineage</a></li>
             <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#/method">Method and caveats</a></li>
             <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="#/downloads">Download the data</a></li>
@@ -88,6 +90,7 @@
   <script src="assets/vendor/leaflet.min.js"></script>
   <script>window.BA_VERSION = "__V__";</script>
   <script src="assets/core.js?v=__V__"></script>
+  <script src="assets/provenance.js?v=__V__"></script>
   <script src="assets/pages.js?v=__V__"></script>
   <script src="assets/map.js?v=__V__"></script>
   <script src="assets/engine.js?v=__V__"></script>

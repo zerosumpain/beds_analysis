@@ -16,6 +16,14 @@ for name in ("sources", "assessment", "unit_costs", "local_hire_benchmarks"):
                         ids.add(s.get("id"))
         (OUT / f"research_{name}.json").write_text(json.dumps(doc, indent=1))
 
+# Code-verified provenance of every indicator (research/provenance_*.json), merged.
+prov = {"datasets": {}, "indicators": {}}
+for part in sorted((ROOT / "research").glob("provenance_*.json")):
+    doc = json.loads(part.read_text())
+    prov["datasets"].update(doc.get("datasets", {}))
+    prov["indicators"].update(doc.get("indicators", {}))
+(OUT / "research_provenance.json").write_text(json.dumps(prov, indent=1))
+
 metas = []
 for p in sorted(OUT.glob("*.json")):
     if p.name == "catalogue.json" or p.name.startswith("research_") or p.parent.name == "geo":
