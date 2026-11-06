@@ -21,7 +21,15 @@
     if (!cache[path]) cache[path] = fetch(path + (window.BA_VERSION && window.BA_VERSION !== '__V__' ? (path.includes('?') ? '&' : '?') + 'v=' + window.BA_VERSION : '')).then((r) => { if (!r.ok) throw new Error(path + ' ' + r.status); return r.json(); });
     return cache[path];
   };
-  BA.dataset = (id) => BA.json('data/' + id + '.json');
+  // A provider (e.g. a live API the visitor has connected) replaces the published file for that dataset.
+  BA.providers = {};
+  BA.dataset = function (id) {
+    if (!BA.providers[id]) return BA.json('data/' + id + '.json');
+    const k = 'live:' + id;
+    if (!cache[k]) cache[k] = BA.providers[id]().catch((e) => { delete cache[k]; throw e; });
+    return cache[k];
+  };
+  BA.forget = (id) => { delete cache['live:' + id]; delete cache['data/' + id + '.json']; };
   BA.tryJson = (path) => BA.json(path).catch(() => null);
 
   BA.init = async function () {

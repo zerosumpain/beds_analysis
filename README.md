@@ -62,8 +62,11 @@ scripts/deploy.sh                # porkserv only: /srv/apps/beds (home-app lane)
 runs the checks, and only when something substantive changed commits, tags `data-YYYY-MM-DD`,
 pushes and deploys. Log: `~/.local/state/beds-refresh.log`.
 
-Universal Credit by conditionality (DWP Stat-Xplore) switches on once a free API key is saved to
-`~/.config/beds/statxplore.key`; see `pipeline/fetch_dwp_uc.py`.
+Universal Credit by conditionality (DWP Stat-Xplore) needs a free API key. Any visitor can paste their
+own key on the **API keys** page (`#/connect`, footer link): it is kept in that browser only and the data
+is fetched live from Stat-Xplore by the browser (`site/assets/connect.js`), never via this server.
+To publish it for everyone instead, save a key to `~/.config/beds/statxplore.key` on porkserv and the
+weekly refresh runs `pipeline/fetch_dwp_uc.py`.
 
 Local preview: `PORT=5661 HOST=<bind address> node server.mjs`, then open
 `http://<bind address>:5661/`.

@@ -91,8 +91,9 @@ body, .govuk-template, button, input, select, textarea { font-family: arial, san
 /* engine */
 .ba-engine { display: grid; grid-template-columns: 420px minmax(0, 1fr); gap: 30px; }
 @media (max-width: 1000px) { .ba-engine { grid-template-columns: minmax(0, 1fr); } }
-.ba-engine__inputs { max-height: calc(100vh - 40px); overflow: auto; position: sticky; top: 10px; padding-right: 8px; }
-@media (max-width: 1000px) { .ba-engine__inputs { position: static; max-height: none; } }
+/* The inputs column grows with its content: no nested scroll box, and nothing may be wider than it. */
+.ba-engine__inputs { min-width: 0; }
+.ba-engine__inputs * { box-sizing: border-box; max-width: 100%; }
 .ba-inp { display: grid; grid-template-columns: 1fr 110px; gap: 8px; align-items: center; margin-bottom: 8px; }
 .ba-inp label { font-size: .9375rem; }
 .ba-inp input { width: 100%; font-size: 1rem; padding: 4px 6px; border: 2px solid var(--ink); text-align: right; font-variant-numeric: tabular-nums; }

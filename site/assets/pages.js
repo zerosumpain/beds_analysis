@@ -239,6 +239,7 @@
       <span class="govuk-caption-xl">Cohort</span>
       <h1 class="govuk-heading-xl">${esc(BA.COHORTS[key].label)}</h1>
       <p class="govuk-body-l">${esc(COHORT_INTRO[slug] || '')}</p>
+      ${key === '25+ inactive' && !BA.has('dwp_uc') ? '<div class="govuk-inset-text ba-noprint">Universal Credit by conditionality (DWP Stat-Xplore) can be added to this page. It needs a free personal API key: <a class="govuk-link" href="#/connect">add your Stat-Xplore key</a>.</div>' : ''}
       <div class="ba-tiles" id="tiles"></div>
       ${key === 'context' ? '' : `<h2 class="govuk-heading-l">Coverage against the brief</h2>${coverageTable(key)}`}
       <h2 class="govuk-heading-l">Indicators</h2>
@@ -413,8 +414,8 @@
       <div class="ba-lineage-step">
         <div><h4>1. Source</h4>${esc(m.publisher)}<br>${BA.link(m.source_url, 'Landing page')}<br><span class="ba-small">${esc(m.licence)}</span></div>
         <div><h4>2. Fetch</h4>${esc(m.access)}<br><span class="ba-small">Retrieved ${esc(m.retrieved_at)}</span><br>${[].concat(m.api_url || []).slice(0, 4).map((u) => `<code class="ba-small" style="word-break:break-all">${esc(String(u).slice(0, 160))}</code>`).join('<br>')}</div>
-        <div><h4>3. Transform</h4>Filtered to Bedfordshire and comparators, then reshaped to long format.<br><span class="ba-small">Levels: ${esc(levels.join(', '))}</span><br><span class="ba-small">${m.row_count} rows · sha256 ${esc(m.sha256)}</span></div>
-        <div><h4>4. Output</h4>${(m.indicators || []).length} indicators<br><a class="govuk-link" href="data/${id}.json">JSON</a> · <a class="govuk-link" href="#" id="dlcsv">CSV</a></div>
+        <div><h4>3. Transform</h4>Filtered to Bedfordshire and comparators, then reshaped to long format.<br><span class="ba-small">Levels: ${esc(levels.join(', '))}</span><br><span class="ba-small">${m.row_count} rows${m.sha256 ? ' · sha256 ' + esc(m.sha256) : ''}</span></div>
+        <div><h4>4. Output</h4>${(m.indicators || []).length} indicators<br>${m.live ? '<a class="govuk-link" href="#/connect">Live, with your API key</a> · ' : `<a class="govuk-link" href="data/${id}.json">JSON</a> · `}<a class="govuk-link" href="#" id="dlcsv">CSV</a></div>
       </div>
       <dl class="ba-kv govuk-!-margin-bottom-6">
         <dt>Geography</dt><dd>${esc(m.geography)}</dd><dt>Cohort</dt><dd>${esc(m.cohort)}</dd>
@@ -462,7 +463,7 @@
 
   /* ---------- downloads ---------- */
   BA.route(/^\/downloads$/, async (app) => {
-    const cat = BA.catalogue.slice().sort((a, b) => String(a.title).localeCompare(String(b.title)));
+    const cat = BA.catalogue.filter((m) => !m.live).sort((a, b) => String(a.title).localeCompare(String(b.title)));
     app.innerHTML = `<span class="govuk-caption-xl">Open data</span><h1 class="govuk-heading-xl">Download the evidence base</h1>
       <div class="govuk-grid-row"><div class="govuk-grid-column-two-thirds">
       <p class="govuk-body-l">Everything on this site is published aggregate statistics, reshaped into one consistent format. Take it into Excel, R, Python or a BI tool.</p>
